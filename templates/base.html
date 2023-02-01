@@ -6,16 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
-    <title>Pinterest Lite</title>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">    
+    <link rel="icon" href="{% static 'logo/pinterest-badge-logo.png' %}" type="image/x-icon">
+    {% block file_css %}
+        
+    {% endblock file_css %}        
+    <title>{% block title %} Pinterest Lite {% endblock title %}</title>
 </head>
 <body>
     
+    <div class="mb-3"></div>
     {% block content %}
         
     {% endblock content %}
-        
-    
-    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+            
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>    
+    {% block file_script %}
+
+    {% endblock file_script %}
 </body>
 </html>

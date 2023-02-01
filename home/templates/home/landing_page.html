@@ -1,8 +1,96 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block file_css %}
+    <link rel="stylesheet" href="{% static 'home/styles/home.css' %}">  
+    
+{% endblock file_css %}
+    
+
+{% block title %} Pinterest - Philippines {% endblock title %}
+    
 
 {% block content %}
-    <h1>Landing page</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, necessitatibus.</p>
+<nav class="d-flex justify-content-sm-between mx-4">
+  <div class="col">
+  <img src="{% static 'logo/pinterest.png' %}" alt="Logo" class="logo">
+</div>
+    <ul class="no-bullet d-flex align-items-center my-auto mx-0">
+      <li class="mx-3"><a href="https://help.pinterest.com/en/guide/all-about-pinterest" target="_blank">About</a></li>
+      <li class="mx-3"><a href="https://business.pinterest.com/en-us/" target="_blank">Business</a></li>
+      <li class="mx-3"><a href="https://newsroom.pinterest.com/en" target="_blank">Blog</a></li>
+      <div class="mx-2"></div>
+      <li class="mx-1"><a href="#log-in" class="log-in background-primaryColor rounded-pill">Log in</a></li>
+      <li class="mx-1"><a href="#" class="sign-up rounded-pill">Sign up</a></li>
+    </ul>
+</nav>
+
+
+<div class="weeknight-dinner">
+  <div class="pictures-container">
+    <div class="first column">
+      <img src="{% static 'images/penne-pasta.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/cast-iron.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="second column">
+      <img src="{% static 'images/avocado-chimichurri.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/beef-quesadillas-cut.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="third column">
+      <img src="{% static 'images/rosemarry-beef.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/steamed-buns.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="fourth column">
+      <img src="{% static 'images/ramen-noodles.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="fourth column">
+      <img src="{% static 'images/kimbap.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="third column">
+      <img src="{% static 'images/turkey-meatballs.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/zucchini-fries.jpg' %}" alt="" class="img-fluid">
+
+    </div>
+    <div class="second column">
+      <img src="{% static 'images/spaghetti-spinach.jpg' %}" alt="" class="img-fluid">
+        <img src="{% static 'images/wonton-soup.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="first column">
+      <img src="{% static 'images/dijon-chicken.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/steak-frites.jpg' %}" alt="" class="img-fluid">
+    </div>
+ 
+  </div>
+  <div class="absolute text-center">
+    <h1 class="log-in">Get your next</h1>
+    <h1 class="text-brownGold">weeknight dinner idea</h1>
+  </div>
+</div>
 {% endblock content %}
-    
+      <!-- <div class="row">
+      <div class="column">    
+        <img src="{% static 'images/penne-pasta.jpg' %}" alt="" class="img-fluid">
+        <img src="{% static 'images/cast-iron.jpg' %}" alt="" class="img-fluid">
+      </div>
+      <div class="column second">      
+        <img src="{% static 'images/avocado-chimichurri.jpg' %}" alt="" class="img-fluid">
+        <img src="{% static 'images/steamed-buns.jpg' %}" alt="" class="img-fluid">
+      </div>
+      <div class="column third">      
+        <img src="{% static 'images/rosemarry-beef.jpg' %}" alt="" class="img-fluid">
+      </div>
+      <div class="column third">      
+        <img src="{% static 'images/ramen-noodles.jpg' %}" alt="" class="img-fluid">
+      </div>
+      <div class="column third">      
+        <img src="{% static 'images/street-bbq.jpg' %}" alt="" class="img-fluid">
+      </div>
+      <div class="column second">      
+        <img src="{% static 'images/spaghetti-spinach.jpg' %}" alt="" class="img-fluid">
+        <img src="{% static 'images/wonton-soup-cut.jpg' %}" alt="" class="img-fluid">
+      </div>
+      <div class="column">    
+        <img src="{% static 'images/dijon-chicken.jpg' %}" alt="" class="img-fluid">
+        <img src="{% static 'images/steak-frites.jpg' %}" alt="" class="img-fluid">
+      </div>
+  </div> -->

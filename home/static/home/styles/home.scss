@@ -1,0 +1,74 @@
+nav {
+    font-weight: 500;
+    .log-in, .sign-up {
+        padding: .8rem .7rem;
+        &:hover, &:hover {
+            text-decoration: none;
+        }
+    }    
+    .log-in{
+        color: white !important;
+        &:hover {
+            background-color: #aa001a;
+        }
+    }
+    .sign-up {
+        background-color: #EFEFEF !important;            
+        &:hover {
+            background-color: #E3E3E2 !important;
+        }
+    }
+    .logo {
+        width: 140px;
+    }
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.no-bullet {
+    list-style-type: none;
+  }
+
+.weeknight-dinner {
+    margin: 13rem 6rem 0 6rem;
+    position: relative; 
+    h1 {
+        font-size: 3.8rem;
+    }
+    img {
+        border-radius: 30px;
+        margin: .5rem;
+    }
+    div.absolute {    
+        position: absolute;
+        top: 1rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+.pictures-container {
+    display: flex;
+    .column {
+        width: 13%;
+        display: flex;
+        flex-direction: column;
+    }
+    .first {
+        margin-top: 1.5rem;
+    }
+    .second {
+        margin-top: 8.4rem;
+    }
+    .third {
+        margin-top: 14rem;
+    }
+    .fourth {
+        margin-top: 21.5rem;
+    }
+}
