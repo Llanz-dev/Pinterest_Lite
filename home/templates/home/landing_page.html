@@ -11,7 +11,7 @@
     
 
 {% block content %}
-<nav class="d-flex justify-content-sm-between mx-4">
+<nav class="top-nav d-flex justify-content-sm-between mx-4 top-margin">
   <div class="col">
   <img src="{% static 'logo/pinterest.png' %}" alt="Logo" class="logo">
 </div>
@@ -25,72 +25,115 @@
     </ul>
 </nav>
 
-
 <div class="weeknight-dinner">
-  <div class="pictures-container">
+  <!-- This container is for 1200 plus width screen size -->
+  <div class="pictures-container-plus">
     <div class="first column">
-      <img src="{% static 'images/penne-pasta.jpg' %}" alt="" class="img-fluid">
-      <img src="{% static 'images/cast-iron.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/penne-pasta.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/cast-iron.jpg' %}" alt="" class="img-fluid">
     </div>
     <div class="second column">
-      <img src="{% static 'images/avocado-chimichurri.jpg' %}" alt="" class="img-fluid">
-      <img src="{% static 'images/beef-quesadillas-cut.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/avocado-chimichurri.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/beef-quesadillas-cut.jpg' %}" alt="" class="img-fluid">
     </div>
     <div class="third column">
-      <img src="{% static 'images/rosemarry-beef.jpg' %}" alt="" class="img-fluid">
-      <img src="{% static 'images/steamed-buns.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/rosemarry-beef.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/steamed-buns.jpg' %}" alt="" class="img-fluid">
     </div>
     <div class="fourth column">
-      <img src="{% static 'images/ramen-noodles.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/ramen-noodles.jpg' %}" alt="" class="img-fluid">
     </div>
     <div class="fourth column">
-      <img src="{% static 'images/kimbap.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/kimbap.jpg' %}" alt="" class="img-fluid">
     </div>
     <div class="third column">
-      <img src="{% static 'images/turkey-meatballs.jpg' %}" alt="" class="img-fluid">
-      <img src="{% static 'images/zucchini-fries.jpg' %}" alt="" class="img-fluid">
-
+      <img src="{% static 'images/foods/turkey-meatballs.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/zucchini-fries.jpg' %}" alt="" class="img-fluid">
     </div>
     <div class="second column">
-      <img src="{% static 'images/spaghetti-spinach.jpg' %}" alt="" class="img-fluid">
-        <img src="{% static 'images/wonton-soup.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/spaghetti-spinach.jpg' %}" alt="" class="img-fluid">
+        <img src="{% static 'images/foods/wonton-soup-cut.jpg' %}" alt="" class="img-fluid">
     </div>
     <div class="first column">
-      <img src="{% static 'images/dijon-chicken.jpg' %}" alt="" class="img-fluid">
-      <img src="{% static 'images/steak-frites.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/dijon-chicken.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/steak-frites.jpg' %}" alt="" class="img-fluid">
     </div>
- 
   </div>
-  <div class="absolute text-center">
-    <h1 class="log-in">Get your next</h1>
+  <!-- This text container is for 800 plus width screen size -->
+   <div class="absolute text-center width-plus">
+    <h1 class="">Get your next</h1>
     <h1 class="text-brownGold">weeknight dinner idea</h1>
   </div>
-</div>
+   <!-- 1200 below width screen size. -->
+  <div class="pictures-container-1200">
+    <div class="">
+      <img src="{% static 'images/foods/penne-pasta.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/avocado-chimichurri.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/ramen-noodles.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="">
+      <img src="{% static 'images/foods/butter-bacon.png' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/rosemarry-beef.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/steak-frites.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div class="">
+      <img src="{% static 'images/foods/crisp-gnocchi.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/kimbap.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/turkey-meatballs.jpg' %}" alt="" class="img-fluid">
+    </div>
+    <div>
+      <img src="{% static 'images/foods/dijon-chicken.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/squash-dumplings.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/street-bbq.jpg' %}" alt="" class="img-fluid">
+    </div>    
+    <!-- 'remove-1200' class will be display:none; when it is reach the breakpoints of 1200 width. -->
+    <div class="remove-1200">
+      <img src="{% static 'images/foods/tomatoes-eggplant.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/garlic-tofu.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/foods/thai-tofu.jpg' %}" alt="" class="img-fluid">
+    </div>
+  </div>
+  <!-- This text container is for 800 below width screen size. -->
+  <div class="absolute text-center width-800">
+    <img src="{% static 'logo/pinterest-white-logo.png' %}" alt="" class="w-25 mb-3">
+    <h1 class="mb-0">Welcome to</h1>
+    <h1 class="text-brownGold">Pinterest</h1>
+    <div class="row mx-2 mt-4">
+      <a href="" class="rounded-pill py-1 mb-2 background-primaryColor log-in">Log In</a>
+      <a href="" class="rounded-pill py-1 sign-up">Sign Up</a>
+    </div>
+  </div>
+   <!-- 800 below width screen size. -->
+   <!-- 'appear-500' will display if its reach the breakpoints of 500px width below. -->
+  <div class="pictures-container-800">
+    <div class="">      
+      <img src="{% static 'images/animals/2-cats.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/person/black-girl.jpg' %}" alt="" class="img-fluid">
+
+      <img src="{% static 'images/travel/beach.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/things/house.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/fashion-wear/london-fashion.jpg' %}" alt="" class="img-fluid appear-500">
+
+
+    </div>
+    <div class="">
+      <img src="{% static 'images/person/shadow-girl.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/things/watch.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/person/elvis-botta.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/things/winter-outfits.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/things/phone.jpg' %}" alt="" class="img-fluid appear-500">
+
+    </div>
+    <div class="">
+      <img src="{% static 'images/person/tommy-shelby.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/things/boat.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/things/home-setup.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/things/hand-bentley.jpg' %}" alt="" class="img-fluid">
+      <img src="{% static 'images/person/nana.jpg' %}" alt="" class="img-fluid appear-500">
+    </div>
+  </div>
 {% endblock content %}
-      <!-- <div class="row">
-      <div class="column">    
-        <img src="{% static 'images/penne-pasta.jpg' %}" alt="" class="img-fluid">
-        <img src="{% static 'images/cast-iron.jpg' %}" alt="" class="img-fluid">
-      </div>
-      <div class="column second">      
-        <img src="{% static 'images/avocado-chimichurri.jpg' %}" alt="" class="img-fluid">
-        <img src="{% static 'images/steamed-buns.jpg' %}" alt="" class="img-fluid">
-      </div>
-      <div class="column third">      
-        <img src="{% static 'images/rosemarry-beef.jpg' %}" alt="" class="img-fluid">
-      </div>
-      <div class="column third">      
-        <img src="{% static 'images/ramen-noodles.jpg' %}" alt="" class="img-fluid">
-      </div>
-      <div class="column third">      
-        <img src="{% static 'images/street-bbq.jpg' %}" alt="" class="img-fluid">
-      </div>
-      <div class="column second">      
-        <img src="{% static 'images/spaghetti-spinach.jpg' %}" alt="" class="img-fluid">
-        <img src="{% static 'images/wonton-soup-cut.jpg' %}" alt="" class="img-fluid">
-      </div>
-      <div class="column">    
-        <img src="{% static 'images/dijon-chicken.jpg' %}" alt="" class="img-fluid">
-        <img src="{% static 'images/steak-frites.jpg' %}" alt="" class="img-fluid">
-      </div>
-  </div> -->
+
+{% block file_script %}
+  <script src="{% static 'home/js/landing_page.js' %}"></script>    
+{% endblock file_script %}
