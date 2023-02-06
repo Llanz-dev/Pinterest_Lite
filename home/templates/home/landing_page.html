@@ -25,9 +25,9 @@
     </ul>
 </nav>
 
-<div class="weeknight-dinner">
+<div id="weeknight-dinner">
   <!-- This container is for 1200 plus width screen size -->
-  <div class="pictures-container-plus">
+  <div id="pictures-container-plus">
     <div class="first column">
       <img src="{% static 'images/foods/penne-pasta.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/foods/cast-iron.jpg' %}" alt="" class="img-fluid">
@@ -61,22 +61,22 @@
   </div>
   <!-- This text container is for 800 plus width screen size -->
    <div class="absolute text-center width-plus">
-    <h1 class="">Get your next</h1>
+    <h1>Get your next</h1>
     <h1 class="text-brownGold">weeknight dinner idea</h1>
   </div>
    <!-- 1200 below width screen size. -->
-  <div class="pictures-container-1200">
-    <div class="">
+  <div id="pictures-container-1200">
+    <div>
       <img src="{% static 'images/foods/penne-pasta.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/foods/avocado-chimichurri.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/foods/ramen-noodles.jpg' %}" alt="" class="img-fluid">
     </div>
-    <div class="">
+    <div>
       <img src="{% static 'images/foods/butter-bacon.png' %}" alt="" class="img-fluid">
       <img src="{% static 'images/foods/rosemarry-beef.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/foods/steak-frites.jpg' %}" alt="" class="img-fluid">
     </div>
-    <div class="">
+    <div>
       <img src="{% static 'images/foods/crisp-gnocchi.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/foods/kimbap.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/foods/turkey-meatballs.jpg' %}" alt="" class="img-fluid">
@@ -105,26 +105,22 @@
   </div>
    <!-- 800 below width screen size. -->
    <!-- 'appear-500' will display if its reach the breakpoints of 500px width below. -->
-  <div class="pictures-container-800">
-    <div class="">      
+  <div id="pictures-container-800">
+    <div>      
       <img src="{% static 'images/animals/2-cats.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/person/black-girl.jpg' %}" alt="" class="img-fluid">
-
       <img src="{% static 'images/travel/beach.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/things/house.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/fashion-wear/london-fashion.jpg' %}" alt="" class="img-fluid appear-500">
-
-
     </div>
-    <div class="">
+    <div>
       <img src="{% static 'images/person/shadow-girl.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/things/watch.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/person/elvis-botta.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/things/winter-outfits.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/things/phone.jpg' %}" alt="" class="img-fluid appear-500">
-
     </div>
-    <div class="">
+    <div>
       <img src="{% static 'images/person/tommy-shelby.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/things/boat.jpg' %}" alt="" class="img-fluid">
       <img src="{% static 'images/things/home-setup.jpg' %}" alt="" class="img-fluid">
@@ -132,6 +128,22 @@
       <img src="{% static 'images/person/nana.jpg' %}" alt="" class="img-fluid appear-500">
     </div>
   </div>
+</div>
+<br>
+<div id="search-idea-container">
+  <div class="row">
+    <div class="col">
+      <div class="pictures-container">
+        <h4 class="p-4 bg-white fw-bold"><img src="{% static 'bootstrap/icons/search.png' %}" alt=""> easy chicken dinner</h4>
+      </div>
+    </div>
+    <div class="col">
+      <h1>Search for an idea</h1>
+      <p class="fs-4">What do you want to try next? Think of something you’re into—like “easy chicken dinner”—and see what you find.</p>
+      <a href=""><button class="text-inherit">Explore</button></a>
+    </div>
+  </div>
+</div>
 {% endblock content %}
 
 {% block file_script %}
