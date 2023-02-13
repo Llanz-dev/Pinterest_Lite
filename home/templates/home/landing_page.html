@@ -25,7 +25,7 @@
     </ul>
 </nav>
 
-<!-- Weeknigh Dinner. -->
+<!-- Weeknight Dinner. -->
 <div id="weeknight-dinner">
   <!-- This container is for 1200 plus width screen size -->
   <div id="pictures-container-plus">
@@ -135,42 +135,57 @@
 
 <!-- Search Idea. -->
 <div id="search-idea-container">
-    <div class="row justify-content-between">
+    <div class="row">
       <div class="col">
         <div class="pictures-container">
-          <img src="{% static 'images/foods/chicken-tonkatsu.jpg' %}" alt="" class="one">
-          <img src="{% static 'images/foods/fryer-chicken.jpg' %}" alt="" class="two">
-          <img src="{% static 'images/foods/grilled-wings.jpg' %}" alt="" class="three">
-          <img src="{% static 'images/foods/bbq-chicken-salad.jpg' %}" alt="" class="four">
+          <img src="{% static 'images/foods/chicken-tonkatsu.jpg' %}" alt="food image" class="one">
+          <img src="{% static 'images/foods/fryer-chicken.jpg' %}" alt="food image" class="two">
+          <img src="{% static 'images/foods/grilled-wings.jpg' %}" alt="food image" class="three">
+          <img src="{% static 'images/foods/bbq-chicken-salad.jpg' %}" alt="food image" class="four">
           <h4 class="p-4 bg-white fw-bold"><img src="{% static 'bootstrap/icons/search.png' %}" alt="food image"> easy chicken dinner</h4>
         </div>
       </div>
       <div class="col text-center description">
-        <h1>Search for an idea</h1>
+        <h1 class="fw-bold">Search for an idea</h1>
         <p class="mx-auto">What do you want to try next? Think of something you’re into—like “easy chicken dinner”—and see what you find.</p>
         <br>
-        <a href="">Explore</a>
+        <a href="" class="fw-bold">Explore</a>
       </div>
     </div>
 </div>
 
 <!-- Save ideas you like. -->
-<div id="save-ideas-container">
-  <div class="row justify-content-between">
+<div id="furniture-container">
+  <div class="row">
+    <div class="col text-center description">
+      <h1 class="fw-bold">Save ideas you like</h1>
+      <p class="mx-auto">Collect your favorites so you can get back to them later.</p>
+      <br>
+      <a href="" class="fw-bold">Explore</a>
+    </div>
     <div class="col">
       <div class="pictures-container">
-        <img src="{% static 'images/foods/chicken-tonkatsu.jpg' %}" alt="" class="one">
-        <img src="{% static 'images/foods/fryer-chicken.jpg' %}" alt="" class="two">
-        <img src="{% static 'images/foods/grilled-wings.jpg' %}" alt="" class="three">
-        <img src="{% static 'images/foods/bbq-chicken-salad.jpg' %}" alt="" class="four">
-        <h4 class="p-4 bg-white fw-bold"><img src="{% static 'bootstrap/icons/search.png' %}" alt="food image"> easy chicken dinner</h4>
+        <div class="one">
+          <img src="{% static 'images/furniture/living-area.jpg' %}" alt="living area image">
+          <h3>Fern future home vibes</h3>          
+        </div>
+        <div class="two">
+          <img src="{% static 'images/furniture/bedroom.jpg' %}" alt="bedroom image">
+          <h3>My Scandinavian home</h3>          
+        </div>
+        <div class="three">
+          <img src="{% static 'images/furniture/deck.jpg' %}" alt="deck image">
+          <h3>The deck of my dreams</h3>          
+        </div>
+        <div class="four">
+          <img src="{% static 'images/furniture/cup.jpg' %}" alt="cup image">
+          <h3>Serve my drinks in style</h3>          
+        </div>
+        <div class="five">
+          <img src="{% static 'images/furniture/bathroom.jpg' %}" alt="bathroom image">
+          <h3>Our bathroom upgrade</h3>          
+        </div>
       </div>
-    </div>
-    <div class="col text-center description">
-      <h1>Search for an idea</h1>
-      <p class="mx-auto">What do you want to try next? Think of something you’re into—like “easy chicken dinner”—and see what you find.</p>
-      <br>
-      <a href="">Explore</a>
     </div>
   </div>
 </div>

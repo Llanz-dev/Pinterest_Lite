@@ -150,6 +150,9 @@ a:hover {
   top: 55%;
   left: 65%;
 }
+#search-idea-container h1, #search-idea-container a {
+  letter-spacing: 1px;
+}
 #search-idea-container h1 {
   font-size: 3.2rem;
 }
@@ -159,6 +162,7 @@ a:hover {
 }
 #search-idea-container .description a {
   margin-top: 1rem;
+  color: #FEFD92;
 }
 #search-idea-container .description p {
   margin: 1rem 0;
@@ -176,11 +180,195 @@ a:hover {
   text-decoration: none;
 }
 
-#save-ideas-container {
+#furniture-container {
+  padding: 8.5rem 5rem;
   background-color: #DBFEF5;
 }
+#furniture-container .pictures-container {
+  position: relative;
+  height: 700px;
+  width: 670px;
+}
+#furniture-container .pictures-container img {
+  filter: brightness(80%);
+}
+#furniture-container .pictures-container h3 {
+  color: white;
+}
+#furniture-container .pictures-container .one {
+  position: relative;
+}
+#furniture-container .pictures-container .one img {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 350px;
+  border-radius: 95px;
+}
+#furniture-container .pictures-container .one h3 {
+  position: absolute;
+  top: 280px;
+  left: 40px;
+  font-size: 3rem;
+  width: 20rem;
+}
+#furniture-container .pictures-container .two {
+  position: relative;
+}
+#furniture-container .pictures-container .two img {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 240px;
+  border-radius: 50px;
+}
+#furniture-container .pictures-container .two h3 {
+  position: absolute;
+  top: 170px;
+  right: 50px;
+  font-size: 1.8rem;
+  width: 10rem;
+}
+#furniture-container .pictures-container .three img {
+  position: absolute;
+  top: 49%;
+  right: 90px;
+  width: 175px;
+  border-radius: 35px;
+}
+#furniture-container .pictures-container .three h3 {
+  position: absolute;
+  top: 449px;
+  right: 90px;
+  font-size: 1.2rem;
+  width: 10rem;
+}
+#furniture-container .pictures-container .four img {
+  position: absolute;
+  top: 67%;
+  left: 110px;
+  width: 215px;
+  border-radius: 50px;
+}
+#furniture-container .pictures-container .four h3 {
+  position: absolute;
+  top: 570px;
+  left: 140px;
+  font-size: 1.6rem;
+  width: 8rem;
+}
+#furniture-container .pictures-container .five img {
+  position: absolute;
+  top: 77%;
+  right: 85px;
+  width: 200px;
+  border-radius: 50px;
+}
+#furniture-container .pictures-container .five h3 {
+  position: absolute;
+  top: 640px;
+  right: 130px;
+  font-size: 1.8rem;
+  width: 8rem;
+}
+#furniture-container .description {
+  color: #0F6A6C;
+  margin: auto 0;
+}
+#furniture-container .description p {
+  margin: 1rem 0;
+  width: 45%;
+  font-size: 24px;
+  word-spacing: 1px;
+}
+#furniture-container h1, #furniture-container a {
+  letter-spacing: 1px;
+}
+#furniture-container h1 {
+  font-size: 3.2rem;
+}
+#furniture-container a {
+  background-color: #0F6A6C;
+  color: #DBFEF5;
+  padding: 1rem;
+  border-radius: 30px;
+}
+#furniture-container a:hover {
+  text-decoration: none;
+}
 
+@media only screen and (max-width: 1400px) {
+  #furniture-container .pictures-container {
+    height: 690px;
+    width: 550px;
+  }
+  #furniture-container .pictures-container .one img {
+    width: 300px;
+    border-radius: 90px;
+  }
+  #furniture-container .pictures-container .one h3 {
+    top: 240px;
+    font-size: 2.5rem;
+    width: 16rem;
+  }
+  #furniture-container .pictures-container .two img {
+    top: 10%;
+    right: 0;
+    width: 190px;
+    border-radius: 45px;
+  }
+  #furniture-container .pictures-container .two h3 {
+    top: 130px;
+    right: 10px;
+    font-size: 1.5rem;
+    width: 10rem;
+  }
+  #furniture-container .pictures-container .three img {
+    top: 40%;
+    right: 80px;
+    width: 135px;
+    border-radius: 30px;
+  }
+  #furniture-container .pictures-container .three h3 {
+    top: 350px;
+    right: 60px;
+    font-size: 1rem;
+    width: 9rem;
+  }
+  #furniture-container .pictures-container .four img {
+    top: 58%;
+    left: 60px;
+    width: 215px;
+    border-radius: 50px;
+  }
+  #furniture-container .pictures-container .four h3 {
+    position: absolute;
+    top: 500px;
+    left: 90px;
+    font-size: 1.6rem;
+    width: 8rem;
+  }
+  #furniture-container .pictures-container .five img {
+    top: 63%;
+    right: 40px;
+    width: 200px;
+    border-radius: 50px;
+  }
+  #furniture-container .pictures-container .five h3 {
+    position: absolute;
+    top: 542px;
+    right: 85px;
+    font-size: 1.8rem;
+    width: 8rem;
+  }
+}
 @media only screen and (max-width: 1300px) {
+  #furniture-container .description p {
+    margin: 1rem 0;
+    width: 60%;
+    font-size: 24px;
+    word-spacing: 1px;
+  }
   #search-idea-container .pictures-container .one {
     width: 130px;
     left: 71%;
@@ -229,6 +417,71 @@ a:hover {
   }
 }
 @media only screen and (max-width: 1100px) {
+  #furniture-container {
+    padding: 6.5rem 3rem;
+  }
+  #furniture-container .pictures-container {
+    height: 650px;
+    width: 480px;
+  }
+  #furniture-container .pictures-container .one img {
+    width: 250px;
+    border-radius: 85px;
+  }
+  #furniture-container .pictures-container .one h3 {
+    top: 200px;
+    left: 30px;
+    font-size: 2rem;
+    width: 12rem;
+  }
+  #furniture-container .pictures-container .two img {
+    top: 10%;
+    right: 0;
+    width: 190px;
+    border-radius: 45px;
+  }
+  #furniture-container .pictures-container .two h3 {
+    top: 130px;
+    right: 10px;
+    font-size: 1.5rem;
+    width: 10rem;
+  }
+  #furniture-container .pictures-container .three img {
+    top: 40%;
+    right: 80px;
+    width: 135px;
+    border-radius: 30px;
+  }
+  #furniture-container .pictures-container .three h3 {
+    top: 340px;
+    right: 60px;
+    font-size: 1rem;
+    width: 9rem;
+  }
+  #furniture-container .pictures-container .four img {
+    top: 52%;
+    left: 20px;
+    width: 165px;
+    border-radius: 45px;
+  }
+  #furniture-container .pictures-container .four h3 {
+    top: 400px;
+    left: 40px;
+    font-size: 1.4rem;
+    width: 7rem;
+  }
+  #furniture-container .pictures-container .five img {
+    top: 64%;
+    right: 90px;
+    width: 150px;
+    border-radius: 45px;
+  }
+  #furniture-container .pictures-container .five h3 {
+    top: 470px;
+    right: 95px;
+    font-size: 1.6rem;
+    width: 8rem;
+  }
   #search-idea-container .pictures-container {
     height: 500px;
     width: 400px;
@@ -259,6 +512,14 @@ a:hover {
   }
 }
 @media only screen and (max-width: 900px) {
+  #pictures-container-1200 .remove-1200 {
+    display: none;
+  }
+  #weeknight-dinner {
+    margin-top: 5rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
   #search-idea-container {
     padding: 4rem 1.5rem;
   }
@@ -274,13 +535,82 @@ a:hover {
   #search-idea-container .pictures-container img {
     width: 12%;
   }
-  #pictures-container-1200 .remove-1200 {
-    display: none;
+  #furniture-container {
+    padding: 6.5rem 3rem;
   }
-  #weeknight-dinner {
-    margin-top: 5rem;
-    margin-left: 3rem;
-    margin-right: 3rem;
+  #furniture-container .row {
+    flex-direction: column-reverse;
+  }
+  #furniture-container .pictures-container {
+    height: 650px;
+    width: 480px;
+    margin: 0 auto;
+  }
+  #furniture-container .pictures-container .one img {
+    width: 250px;
+    border-radius: 85px;
+  }
+  #furniture-container .pictures-container .one h3 {
+    top: 200px;
+    left: 30px;
+    font-size: 2rem;
+    width: 12rem;
+  }
+  #furniture-container .pictures-container .two img {
+    top: 10%;
+    right: 0;
+    width: 190px;
+    border-radius: 45px;
+  }
+  #furniture-container .pictures-container .two h3 {
+    top: 130px;
+    right: 10px;
+    font-size: 1.5rem;
+    width: 10rem;
+  }
+  #furniture-container .pictures-container .three img {
+    top: 40%;
+    right: 80px;
+    width: 135px;
+    border-radius: 30px;
+  }
+  #furniture-container .pictures-container .three h3 {
+    top: 340px;
+    right: 60px;
+    font-size: 1rem;
+    width: 9rem;
+  }
+  #furniture-container .pictures-container .four img {
+    top: 52%;
+    left: 20px;
+    width: 165px;
+    border-radius: 45px;
+  }
+  #furniture-container .pictures-container .four h3 {
+    position: absolute;
+    top: 400px;
+    left: 40px;
+    font-size: 1.4rem;
+    width: 7rem;
+  }
+  #furniture-container .pictures-container .five img {
+    top: 64%;
+    right: 90px;
+    width: 150px;
+    border-radius: 45px;
+  }
+  #furniture-container .pictures-container .five h3 {
+    position: absolute;
+    top: 470px;
+    right: 95px;
+    font-size: 1.6rem;
+    width: 8rem;
+  }
+  #furniture-container .description {
+    margin-top: 1rem;
+  }
+  #furniture-container .description p {
+    font-size: 20px;
   }
 }
 @media only screen and (max-width: 800px) {
@@ -340,6 +670,73 @@ a:hover {
     font-size: 16px !important;
   }
 }
+@media only screen and (max-width: 600px) {
+  #furniture-container {
+    padding: 4.5rem 1rem;
+  }
+  #furniture-container .pictures-container {
+    height: 550px;
+    width: 410px;
+    margin: 0 auto;
+  }
+  #furniture-container .pictures-container .one img {
+    width: 200px;
+    border-radius: 70px;
+  }
+  #furniture-container .pictures-container .one h3 {
+    top: 160px;
+    left: 25px;
+    font-size: 1.7rem;
+    width: 12rem;
+  }
+  #furniture-container .pictures-container .two img {
+    right: 0px;
+    width: 140px;
+    border-radius: 35px;
+  }
+  #furniture-container .pictures-container .two h3 {
+    top: 90px;
+    right: 5px;
+    font-size: 1.2rem;
+    width: 7.5rem;
+  }
+  #furniture-container .pictures-container .three img {
+    top: 200px;
+    right: 75px;
+    width: 100px;
+    border-radius: 20px;
+  }
+  #furniture-container .pictures-container .three h3 {
+    top: 255px;
+    right: 70px;
+    font-size: 0.8rem;
+    width: 6rem;
+  }
+  #furniture-container .pictures-container .four img {
+    top: 280px;
+    left: 20px;
+    width: 145px;
+    border-radius: 40px;
+  }
+  #furniture-container .pictures-container .four h3 {
+    top: 340px;
+    left: 40px;
+    font-size: 1.2rem;
+    width: 7rem;
+  }
+  #furniture-container .pictures-container .five img {
+    top: 320px;
+    right: 60px;
+    width: 150px;
+    border-radius: 40px;
+  }
+  #furniture-container .pictures-container .five h3 {
+    top: 400px;
+    right: 65px;
+    font-size: 1.3rem;
+    width: 8rem;
+  }
+}
 @media only screen and (max-width: 500px) {
   #search-idea-container {
     padding: 6rem 1.5rem 9rem 1.5rem;
@@ -373,12 +770,72 @@ a:hover {
     margin-top: 2rem;
   }
   #search-idea-container .description p {
-    width: 90%;
+    width: 80%;
+    font-size: 16px;
   }
   #search-idea-container h1 {
     font-size: 2rem;
   }
   .appear-500 {
     display: block;
+  }
+  #furniture-container .description {
+    margin-top: 1rem;
+  }
+  #furniture-container .description p {
+    width: 80%;
+    font-size: 16px;
+  }
+  #furniture-container h1 {
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #furniture-container {
+    padding: 4.7rem 1rem;
+  }
+  #furniture-container .pictures-container {
+    height: 550px;
+    width: 370px;
+    margin: 0 auto;
+  }
+  #furniture-container .pictures-container .one img {
+    width: 200px;
+    border-radius: 50px;
+  }
+  #furniture-container .pictures-container .one h3 {
+    top: 160px;
+    left: 25px;
+    font-size: 1.7rem;
+    width: 12rem;
+  }
+  #furniture-container .pictures-container .two img {
+    right: 5px;
+    width: 140px;
+    border-radius: 35px;
+  }
+  #furniture-container .pictures-container .two h3 {
+    right: 10px;
+  }
+  #furniture-container .pictures-container .three img {
+    top: 200px;
+    right: 50px;
+    width: 100px;
+    border-radius: 20px;
+  }
+  #furniture-container .pictures-container .three h3 {
+    right: 45px;
+  }
+  #furniture-container .pictures-container .four img {
+    left: 20px;
+  }
+  #furniture-container .pictures-container .four h3 {
+    left: 40px;
+  }
+  #furniture-container .pictures-container .five img {
+    right: 30px;
+  }
+  #furniture-container .pictures-container .five h3 {
+    right: 35px;
   }
 }/*# sourceMappingURL=home.css.map */
