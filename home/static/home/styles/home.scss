@@ -5,6 +5,9 @@ $dark-violet: #6E0E3D;
 $sky-blue: #DBFEF5;
 $dark-green: #0F6A6C;
 $light-yellow: #FEFD92;
+$light-pink: #FEE3EA;
+$dark-pink: #C22E00;
+$facebook-color: #2476F3;
 
 nav {
     font-weight: 500;
@@ -17,6 +20,13 @@ nav {
     .logo {
         width: 140px;
     }
+}
+
+h1, a {
+    letter-spacing: 1px;
+}
+h1 {
+    font-size: 3.2rem;
 }
 
 a:hover {
@@ -41,6 +51,119 @@ a:hover {
 .no-bullet {
     list-style-type: none;
   }
+
+// Modal
+  .modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  
+  
+    .modal {
+      background-color: white !important;
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: auto;
+    }
+
+    .modal-header {
+      // align-items: center;
+      border-bottom: 1px solid #e6e6e6;
+      display: flex;
+      flex-direction: column;
+      // justify-content: space-between;
+      padding: 20px;
+    }
+
+    .modal-header .pinterest-logo {
+      width: 8%;
+      margin: 1.3rem 0;
+    }
+
+    .modal-header h2 {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .close-button {
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 40px;
+      position: absolute;
+      right: 15px;
+      top: 0;
+    }
+
+    .modal-body {
+      padding: 0 20px 20px 20px;
+      width: 318px;
+      margin: 0 auto;
+    }
+
+    .form-group input {
+      border-radius: 15px;
+      padding: .8rem;
+    }
+
+    .form-label {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      padding: 8px;
+      letter-spacing: 1px;
+      font-weight: 500;
+      font-size: 15px;
+    }  
+
+    .facebook-button {
+      background-color: $facebook-color;
+      color: white;
+    }
+
+    .sign {
+        font-size: 12px;
+        color: #4C4C4C;
+   
+    }
+
+    span {
+        font-size: 11px;
+        color: #4C4C4C;
+        a:hover {
+            text-decoration: underline;
+        }    
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    p {
+        margin: .5rem 0;
+        letter-spacing: 1px;
+        font-size: 14px;
+    }
+}
 
 #weeknight-dinner {
     margin-top: 13rem;
@@ -156,12 +279,6 @@ a:hover {
         position: absolute;
         top: 55%;
         left: 65%;
-    }
-    h1, a {
-        letter-spacing: 1px;
-    }
-    h1 {
-        font-size: 3.2rem;
     }
     .description {
         color: $search-red;
@@ -290,15 +407,43 @@ a:hover {
         font-size: 24px;
         word-spacing: 1px;
     }
-    h1, a {
-        letter-spacing: 1px;
-    }
-    h1 {
-        font-size: 3.2rem;
-    }
     a {
         background-color: $dark-green;
         color: $sky-blue;
+        padding: 1rem;
+        border-radius: 30px;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+#beauty-container {
+    background-color: $light-pink;
+    color: $dark-pink;
+    .row {
+       margin-right: 0; 
+    }
+    .description {
+        margin: auto 0;
+    }
+    img {
+        height: 100vh;
+        width: 50vw;
+    }
+    h1 {
+        width: 400px;    
+        margin: 0 auto;
+    }
+    .description p {
+        margin-top: 1rem;
+        width: 50%;
+        font-size: 24px;
+        word-spacing: 1px;
+    }
+    a {
+        background-color: $dark-pink;
+        color: $light-pink;
         padding: 1rem;
         border-radius: 30px;
         &:hover {
@@ -385,7 +530,6 @@ a:hover {
             word-spacing: 1px;
         }
     }
-
     #search-idea-container {
         .pictures-container .one {
             width: 130px;
@@ -434,6 +578,11 @@ a:hover {
     }
     #search-idea-container {    
         padding: 6.5rem 3rem;
+    }
+    #beauty-container {
+        img {
+            height: 70vh;
+        }        
     }
 }
 
@@ -637,6 +786,23 @@ a:hover {
             font-size: 20px;
         }
     }
+    #beauty-container {
+        .row {
+            flex-direction: column;
+        }
+        .col-6 {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }  
+        .description {
+            margin: 3rem 0;
+        }    
+        .description p {
+            font-size: 20px;
+        }
+    }
 }
 
 @media only screen and (max-width: 800px) {  
@@ -769,7 +935,7 @@ a:hover {
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px) {    
     #search-idea-container { 
         padding: 6rem 1.5rem 9rem 1.5rem;
         .pictures-container {
@@ -800,13 +966,7 @@ a:hover {
         .description {
             margin-top: 2rem;
         }
-        .description p {
-            width: 80%;
-            font-size: 16px;
-        }        
-        h1 {
-            font-size: 2rem;
-        }       
+                  
     }
     .appear-500 {
         display: block;
@@ -814,19 +974,36 @@ a:hover {
     #furniture-container {
         .description {
             margin-top: 1rem;
+        }  
+    }
+    h1 {
+        font-size: 2rem !important;
+    }  
+    #beauty-container {
+        .row > *{
+            padding-right: 0 !important;
         }
-        .description p {
-            width: 80%;
-            font-size: 16px;
+        .col-6 {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            height: 50vh;
         }  
         h1 {
-            font-size: 2rem;
-        }  
-
+            width: 280px;    
+        }
+        .description {
+            padding: 2.5rem 0;
+        }           
     }
+    .description p {
+        width: 80%;
+        font-size: 16px !important;
+    }  
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 400px) {    
     #furniture-container {
         padding: 4.7rem 1rem;
         .pictures-container {
@@ -874,4 +1051,20 @@ a:hover {
             right: 35px;
         }      
     }
+    #beauty-container {
+        img {
+            height: 40vh;
+        }
+        .description {
+            padding: 1.5rem 0;
+        }  
+    }
+}
+
+// Remove the spinner from number input.
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
