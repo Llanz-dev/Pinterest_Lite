@@ -112,10 +112,6 @@ a:hover {
   font-weight: 500;
   font-size: 15px;
 }
-.modal-container .facebook-button {
-  background-color: #2476F3;
-  color: white;
-}
 .modal-container .sign {
   font-size: 12px;
   color: #4C4C4C;
@@ -777,7 +773,7 @@ a:hover {
   #weeknight-dinner .absolute {
     z-index: 2;
     position: absolute;
-    top: 0;
+    top: 4px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -942,6 +938,9 @@ a:hover {
   }
 }
 @media only screen and (max-width: 400px) {
+  .modal-container .modal-header h2 {
+    font-size: 25px !important;
+  }
   #furniture-container {
     padding: 4.7rem 1rem;
   }
@@ -1001,4 +1000,4 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}/*# sourceMappingURL=home.css.map */
+}/*# sourceMappingURL=landing_page.css.map */

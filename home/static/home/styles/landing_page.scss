@@ -7,7 +7,6 @@ $dark-green: #0F6A6C;
 $light-yellow: #FEFD92;
 $light-pink: #FEE3EA;
 $dark-pink: #C22E00;
-$facebook-color: #2476F3;
 
 nav {
     font-weight: 500;
@@ -134,11 +133,6 @@ a:hover {
       font-weight: 500;
       font-size: 15px;
     }  
-
-    .facebook-button {
-      background-color: $facebook-color;
-      color: white;
-    }
 
     .sign {
         font-size: 12px;
@@ -826,7 +820,7 @@ a:hover {
         .absolute {   
             z-index: 2;
             position: absolute;
-            top: 0;
+            top: 4px;
             bottom: 0;
             left: 0;
             right: 0;
@@ -935,7 +929,12 @@ a:hover {
     }
 }
 
-@media only screen and (max-width: 500px) {    
+@media only screen and (max-width: 500px) {  
+    #weeknight-dinner {
+        img {
+            margin: .1rem 0;
+        }
+    }  
     #search-idea-container { 
         padding: 6rem 1.5rem 9rem 1.5rem;
         .pictures-container {
@@ -1004,6 +1003,11 @@ a:hover {
 }
 
 @media only screen and (max-width: 400px) {    
+    .modal-container {    
+        .modal-header h2 {
+          font-size: 25px !important;
+        }
+    }
     #furniture-container {
         padding: 4.7rem 1rem;
         .pictures-container {

@@ -24,4 +24,4 @@ Interested:
     Men's Health Fitness, Game of Thrones, DIY Home Decor.
 
 Todo
- X icon and the sign up
+ Enable the log-in.
