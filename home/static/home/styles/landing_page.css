@@ -1,48 +1,41 @@
-nav {
+#landing-page nav {
   font-weight: 500;
 }
-nav .log-in, nav .sign-up {
+#landing-page nav .log-in, #landing-page nav .sign-up {
   padding: 0.8rem 0.7rem;
 }
-nav .log-in:hover, nav .log-in:hover, nav .sign-up:hover, nav .sign-up:hover {
+#landing-page nav .log-in:hover, #landing-page nav .log-in:hover, #landing-page nav .sign-up:hover, #landing-page nav .sign-up:hover {
   text-decoration: none;
 }
-nav .logo {
+#landing-page nav .logo {
   width: 140px;
 }
-
-h1, a {
+#landing-page h1, #landing-page a {
   letter-spacing: 1px;
 }
-
-h1 {
+#landing-page h1 {
   font-size: 3.2rem;
 }
-
-a:hover {
+#landing-page a:hover {
   text-decoration: underline;
   color: black;
 }
-
-.log-in {
+#landing-page .log-in {
   color: white !important;
 }
-.log-in:hover {
+#landing-page .log-in:hover {
   background-color: #aa001a;
 }
-
-.sign-up {
+#landing-page .sign-up {
   background-color: #EFEFEF !important;
 }
-.sign-up:hover {
+#landing-page .sign-up:hover {
   background-color: #E3E3E2 !important;
 }
-
-.no-bullet {
+#landing-page .no-bullet {
   list-style-type: none;
 }
-
-.modal-container {
+#landing-page .modal-container {
   display: none;
   position: fixed;
   top: 0;
@@ -51,7 +44,7 @@ a:hover {
   bottom: 0;
   z-index: 2;
 }
-.modal-container .modal {
+#landing-page .modal-container .modal {
   background-color: white !important;
   border-radius: 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -65,21 +58,21 @@ a:hover {
   width: 80%;
   height: auto;
 }
-.modal-container .modal-header {
+#landing-page .modal-container .modal-header {
   border-bottom: 1px solid #e6e6e6;
   display: flex;
   flex-direction: column;
   padding: 20px;
 }
-.modal-container .modal-header .pinterest-logo {
+#landing-page .modal-container .modal-header .pinterest-logo {
   width: 8%;
   margin: 1.3rem 0;
 }
-.modal-container .modal-header h2 {
+#landing-page .modal-container .modal-header h2 {
   font-size: 32px;
   margin: 0;
 }
-.modal-container .close-button {
+#landing-page .modal-container .close-button {
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -88,20 +81,20 @@ a:hover {
   right: 15px;
   top: 0;
 }
-.modal-container .modal-body {
+#landing-page .modal-container .modal-body {
   padding: 0 20px 20px 20px;
   width: 318px;
   margin: 0 auto;
 }
-.modal-container .form-group input {
+#landing-page .modal-container .form-group input {
   border-radius: 15px;
   padding: 0.8rem;
 }
-.modal-container .form-label {
+#landing-page .modal-container .form-label {
   font-size: 14px;
   margin-bottom: 0;
 }
-.modal-container .button {
+#landing-page .modal-container .button {
   border: 0;
   border-radius: 20px;
   cursor: pointer;
@@ -112,41 +105,40 @@ a:hover {
   font-weight: 500;
   font-size: 15px;
 }
-.modal-container .sign {
+#landing-page .modal-container .sign {
   font-size: 12px;
   color: #4C4C4C;
 }
-.modal-container span {
+#landing-page .modal-container span {
   font-size: 11px;
   color: #4C4C4C;
 }
-.modal-container span a:hover {
+#landing-page .modal-container span a:hover {
   text-decoration: underline;
 }
-.modal-container a:hover {
+#landing-page .modal-container a:hover {
   text-decoration: none;
 }
-.modal-container p {
+#landing-page .modal-container p {
   margin: 0.5rem 0;
   letter-spacing: 1px;
   font-size: 14px;
 }
-
-#weeknight-dinner {
+#landing-page #weeknight-dinner {
   margin-top: 13rem;
   margin-left: 6rem;
   margin-bottom: 0;
   margin-right: 6rem;
   position: relative;
 }
-#weeknight-dinner h1 {
+#landing-page #weeknight-dinner h1 {
   font-size: 3.8rem;
 }
-#weeknight-dinner img {
+#landing-page #weeknight-dinner img {
   border-radius: 15px;
   margin: 0.5rem;
 }
-#weeknight-dinner .absolute {
+#landing-page #weeknight-dinner .absolute {
   position: absolute;
   top: 1rem;
   left: 0;
@@ -154,65 +146,59 @@ a:hover {
   bottom: 0;
   margin: auto;
 }
-#weeknight-dinner .width-plus {
+#landing-page #weeknight-dinner .width-plus {
   display: block;
 }
-#weeknight-dinner .width-800 {
+#landing-page #weeknight-dinner .width-800 {
   display: none;
 }
-
-#pictures-container-1200 {
+#landing-page #pictures-container-1200 {
   display: none;
 }
-
-#pictures-container-800 {
+#landing-page #pictures-container-800 {
   display: none;
 }
-
-#pictures-container-500 {
+#landing-page #pictures-container-500 {
   display: none;
 }
-
-.appear-500 {
+#landing-page .appear-500 {
   display: none;
 }
-
-#pictures-container-plus {
+#landing-page #pictures-container-plus {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
 }
-#pictures-container-plus .column {
+#landing-page #pictures-container-plus .column {
   display: flex;
   flex-direction: column;
 }
-#pictures-container-plus .first {
+#landing-page #pictures-container-plus .first {
   margin-top: 1.5em;
 }
-#pictures-container-plus .second {
+#landing-page #pictures-container-plus .second {
   margin-top: 8.4em;
 }
-#pictures-container-plus .third {
+#landing-page #pictures-container-plus .third {
   margin-top: 14em;
 }
-#pictures-container-plus .fourth {
+#landing-page #pictures-container-plus .fourth {
   margin-top: 1.5em;
 }
-
-#search-idea-container {
+#landing-page #search-idea-container {
   padding: 8.5rem 5rem;
   background-color: #FEFD92;
 }
-#search-idea-container .pictures-container {
+#landing-page #search-idea-container .pictures-container {
   position: relative;
   height: 700px;
   width: 600px;
   margin: 0 auto;
 }
-#search-idea-container .pictures-container img {
+#landing-page #search-idea-container .pictures-container img {
   border-radius: 35px;
 }
-#search-idea-container .pictures-container h4 {
+#landing-page #search-idea-container .pictures-container h4 {
   color: #6E0E3D;
   border-radius: 45px;
   width: 20rem;
@@ -222,13 +208,13 @@ a:hover {
   transform: translate(-50%, -50%);
   z-index: 5;
 }
-#search-idea-container .pictures-container .one {
+#landing-page #search-idea-container .pictures-container .one {
   width: 150px;
   position: absolute;
   top: 12%;
   left: 71%;
 }
-#search-idea-container .pictures-container .two {
+#landing-page #search-idea-container .pictures-container .two {
   width: 300px;
   position: absolute;
   top: 50%;
@@ -236,245 +222,242 @@ a:hover {
   transform: translate(-50%, -50%);
   z-index: 2;
 }
-#search-idea-container .pictures-container .three {
+#landing-page #search-idea-container .pictures-container .three {
   width: 180px;
   position: absolute;
   top: 32%;
   left: 8%;
 }
-#search-idea-container .pictures-container .four {
+#landing-page #search-idea-container .pictures-container .four {
   width: 180px;
   position: absolute;
   top: 55%;
   left: 65%;
 }
-#search-idea-container .description {
+#landing-page #search-idea-container .description {
   color: #C31952;
   margin: auto 0;
 }
-#search-idea-container .description a {
+#landing-page #search-idea-container .description a {
   margin-top: 1rem;
   color: #FEFD92;
 }
-#search-idea-container .description p {
+#landing-page #search-idea-container .description p {
   margin: 1rem 0;
   width: 45%;
   font-size: 24px;
   word-spacing: 1px;
 }
-#search-idea-container a {
+#landing-page #search-idea-container a {
   background-color: #C31952;
   color: white;
   padding: 1rem;
   border-radius: 30px;
 }
-#search-idea-container a:hover {
+#landing-page #search-idea-container a:hover {
   text-decoration: none;
 }
-
-#furniture-container {
+#landing-page #furniture-container {
   padding: 8.5rem 5rem;
   background-color: #DBFEF5;
 }
-#furniture-container .pictures-container {
+#landing-page #furniture-container .pictures-container {
   position: relative;
   height: 700px;
   width: 670px;
 }
-#furniture-container .pictures-container img {
+#landing-page #furniture-container .pictures-container img {
   filter: brightness(80%);
 }
-#furniture-container .pictures-container h3 {
+#landing-page #furniture-container .pictures-container h3 {
   color: white;
 }
-#furniture-container .pictures-container .one {
+#landing-page #furniture-container .pictures-container .one {
   position: relative;
 }
-#furniture-container .pictures-container .one img {
+#landing-page #furniture-container .pictures-container .one img {
   position: absolute;
   top: 10%;
   left: 0;
   width: 350px;
   border-radius: 95px;
 }
-#furniture-container .pictures-container .one h3 {
+#landing-page #furniture-container .pictures-container .one h3 {
   position: absolute;
   top: 280px;
   left: 40px;
   font-size: 3rem;
   width: 20rem;
 }
-#furniture-container .pictures-container .two {
+#landing-page #furniture-container .pictures-container .two {
   position: relative;
 }
-#furniture-container .pictures-container .two img {
+#landing-page #furniture-container .pictures-container .two img {
   position: absolute;
   top: 10%;
   right: 0;
   width: 240px;
   border-radius: 50px;
 }
-#furniture-container .pictures-container .two h3 {
+#landing-page #furniture-container .pictures-container .two h3 {
   position: absolute;
   top: 170px;
   right: 50px;
   font-size: 1.8rem;
   width: 10rem;
 }
-#furniture-container .pictures-container .three img {
+#landing-page #furniture-container .pictures-container .three img {
   position: absolute;
   top: 49%;
   right: 90px;
   width: 175px;
   border-radius: 35px;
 }
-#furniture-container .pictures-container .three h3 {
+#landing-page #furniture-container .pictures-container .three h3 {
   position: absolute;
   top: 449px;
   right: 90px;
   font-size: 1.2rem;
   width: 10rem;
 }
-#furniture-container .pictures-container .four img {
+#landing-page #furniture-container .pictures-container .four img {
   position: absolute;
   top: 67%;
   left: 110px;
   width: 215px;
   border-radius: 50px;
 }
-#furniture-container .pictures-container .four h3 {
+#landing-page #furniture-container .pictures-container .four h3 {
   position: absolute;
   top: 570px;
   left: 140px;
   font-size: 1.6rem;
   width: 8rem;
 }
-#furniture-container .pictures-container .five img {
+#landing-page #furniture-container .pictures-container .five img {
   position: absolute;
   top: 77%;
   right: 85px;
   width: 200px;
   border-radius: 50px;
 }
-#furniture-container .pictures-container .five h3 {
+#landing-page #furniture-container .pictures-container .five h3 {
   position: absolute;
   top: 640px;
   right: 130px;
   font-size: 1.8rem;
   width: 8rem;
 }
-#furniture-container .description {
+#landing-page #furniture-container .description {
   color: #0F6A6C;
   margin: auto 0;
 }
-#furniture-container .description p {
+#landing-page #furniture-container .description p {
   margin: 1rem 0;
   width: 45%;
   font-size: 24px;
   word-spacing: 1px;
 }
-#furniture-container a {
+#landing-page #furniture-container a {
   background-color: #0F6A6C;
   color: #DBFEF5;
   padding: 1rem;
   border-radius: 30px;
 }
-#furniture-container a:hover {
+#landing-page #furniture-container a:hover {
   text-decoration: none;
 }
-
-#beauty-container {
+#landing-page #beauty-container {
   background-color: #FEE3EA;
   color: #C22E00;
 }
-#beauty-container .row {
+#landing-page #beauty-container .row {
   margin-right: 0;
 }
-#beauty-container .description {
+#landing-page #beauty-container .description {
   margin: auto 0;
 }
-#beauty-container img {
+#landing-page #beauty-container img {
   height: 100vh;
   width: 50vw;
 }
-#beauty-container h1 {
+#landing-page #beauty-container h1 {
   width: 400px;
   margin: 0 auto;
 }
-#beauty-container .description p {
+#landing-page #beauty-container .description p {
   margin-top: 1rem;
   width: 50%;
   font-size: 24px;
   word-spacing: 1px;
 }
-#beauty-container a {
+#landing-page #beauty-container a {
   background-color: #C22E00;
   color: #FEE3EA;
   padding: 1rem;
   border-radius: 30px;
 }
-#beauty-container a:hover {
+#landing-page #beauty-container a:hover {
   text-decoration: none;
 }
-
 @media only screen and (max-width: 1400px) {
-  #furniture-container .pictures-container {
+  #landing-page #furniture-container .pictures-container {
     height: 690px;
     width: 550px;
   }
-  #furniture-container .pictures-container .one img {
+  #landing-page #furniture-container .pictures-container .one img {
     width: 300px;
     border-radius: 90px;
   }
-  #furniture-container .pictures-container .one h3 {
+  #landing-page #furniture-container .pictures-container .one h3 {
     top: 240px;
     font-size: 2.5rem;
     width: 16rem;
   }
-  #furniture-container .pictures-container .two img {
+  #landing-page #furniture-container .pictures-container .two img {
     top: 10%;
     right: 0;
     width: 190px;
     border-radius: 45px;
   }
-  #furniture-container .pictures-container .two h3 {
+  #landing-page #furniture-container .pictures-container .two h3 {
     top: 130px;
     right: 10px;
     font-size: 1.5rem;
     width: 10rem;
   }
-  #furniture-container .pictures-container .three img {
+  #landing-page #furniture-container .pictures-container .three img {
     top: 40%;
     right: 80px;
     width: 135px;
     border-radius: 30px;
   }
-  #furniture-container .pictures-container .three h3 {
+  #landing-page #furniture-container .pictures-container .three h3 {
     top: 350px;
     right: 60px;
     font-size: 1rem;
     width: 9rem;
   }
-  #furniture-container .pictures-container .four img {
+  #landing-page #furniture-container .pictures-container .four img {
     top: 58%;
     left: 60px;
     width: 215px;
     border-radius: 50px;
   }
-  #furniture-container .pictures-container .four h3 {
+  #landing-page #furniture-container .pictures-container .four h3 {
     position: absolute;
     top: 500px;
     left: 90px;
     font-size: 1.6rem;
     width: 8rem;
   }
-  #furniture-container .pictures-container .five img {
+  #landing-page #furniture-container .pictures-container .five img {
     top: 63%;
     right: 40px;
     width: 200px;
     border-radius: 50px;
   }
-  #furniture-container .pictures-container .five h3 {
+  #landing-page #furniture-container .pictures-container .five h3 {
     position: absolute;
     top: 542px;
     right: 85px;
@@ -483,294 +466,294 @@ a:hover {
   }
 }
 @media only screen and (max-width: 1300px) {
-  #furniture-container .description p {
+  #landing-page #furniture-container .description p {
     margin: 1rem 0;
     width: 60%;
     font-size: 24px;
     word-spacing: 1px;
   }
-  #search-idea-container .pictures-container .one {
+  #landing-page #search-idea-container .pictures-container .one {
     width: 130px;
     left: 71%;
   }
-  #search-idea-container .pictures-container .two {
+  #landing-page #search-idea-container .pictures-container .two {
     width: 280px;
     left: 57%;
   }
-  #search-idea-container .pictures-container .three {
+  #landing-page #search-idea-container .pictures-container .three {
     width: 160px;
     left: 12%;
   }
-  #search-idea-container .pictures-container .four {
+  #landing-page #search-idea-container .pictures-container .four {
     width: 160px;
   }
-  #search-idea-container .description p {
+  #landing-page #search-idea-container .description p {
     width: 65%;
   }
 }
 @media only screen and (max-width: 1200px) {
-  #pictures-container-plus {
+  #landing-page #pictures-container-plus {
     display: none;
   }
-  #pictures-container-1200 {
+  #landing-page #pictures-container-1200 {
     display: flex;
   }
-  #pictures-container-1200 img {
+  #landing-page #pictures-container-1200 img {
     padding: 0 0.5rem;
   }
-  #weeknight-dinner {
+  #landing-page #weeknight-dinner {
     margin-top: 8rem;
     margin-left: 5rem;
     margin-right: 5rem;
   }
-  #weeknight-dinner h1 {
+  #landing-page #weeknight-dinner h1 {
     font-size: 3rem;
   }
-  #weeknight-dinner .absolute {
+  #landing-page #weeknight-dinner .absolute {
     position: static;
   }
-  #weeknight-dinner img {
+  #landing-page #weeknight-dinner img {
     margin: 0.5rem 0;
   }
-  #search-idea-container {
+  #landing-page #search-idea-container {
     padding: 6.5rem 3rem;
   }
-  #beauty-container img {
+  #landing-page #beauty-container img {
     height: 70vh;
   }
 }
 @media only screen and (max-width: 1100px) {
-  #furniture-container {
+  #landing-page #furniture-container {
     padding: 6.5rem 3rem;
   }
-  #furniture-container .pictures-container {
+  #landing-page #furniture-container .pictures-container {
     height: 650px;
     width: 480px;
   }
-  #furniture-container .pictures-container .one img {
+  #landing-page #furniture-container .pictures-container .one img {
     width: 250px;
     border-radius: 85px;
   }
-  #furniture-container .pictures-container .one h3 {
+  #landing-page #furniture-container .pictures-container .one h3 {
     top: 200px;
     left: 30px;
     font-size: 2rem;
     width: 12rem;
   }
-  #furniture-container .pictures-container .two img {
+  #landing-page #furniture-container .pictures-container .two img {
     top: 10%;
     right: 0;
     width: 190px;
     border-radius: 45px;
   }
-  #furniture-container .pictures-container .two h3 {
+  #landing-page #furniture-container .pictures-container .two h3 {
     top: 130px;
     right: 10px;
     font-size: 1.5rem;
     width: 10rem;
   }
-  #furniture-container .pictures-container .three img {
+  #landing-page #furniture-container .pictures-container .three img {
     top: 40%;
     right: 80px;
     width: 135px;
     border-radius: 30px;
   }
-  #furniture-container .pictures-container .three h3 {
+  #landing-page #furniture-container .pictures-container .three h3 {
     top: 340px;
     right: 60px;
     font-size: 1rem;
     width: 9rem;
   }
-  #furniture-container .pictures-container .four img {
+  #landing-page #furniture-container .pictures-container .four img {
     top: 52%;
     left: 20px;
     width: 165px;
     border-radius: 45px;
   }
-  #furniture-container .pictures-container .four h3 {
+  #landing-page #furniture-container .pictures-container .four h3 {
     top: 400px;
     left: 40px;
     font-size: 1.4rem;
     width: 7rem;
   }
-  #furniture-container .pictures-container .five img {
+  #landing-page #furniture-container .pictures-container .five img {
     top: 64%;
     right: 90px;
     width: 150px;
     border-radius: 45px;
   }
-  #furniture-container .pictures-container .five h3 {
+  #landing-page #furniture-container .pictures-container .five h3 {
     top: 470px;
     right: 95px;
     font-size: 1.6rem;
     width: 8rem;
   }
-  #search-idea-container .pictures-container {
+  #landing-page #search-idea-container .pictures-container {
     height: 500px;
     width: 400px;
   }
-  #search-idea-container .pictures-container h4 {
+  #landing-page #search-idea-container .pictures-container h4 {
     font-size: 19px;
     width: 17rem;
   }
-  #search-idea-container .pictures-container .one {
+  #landing-page #search-idea-container .pictures-container .one {
     width: 120px;
     left: 75%;
     top: 7%;
   }
-  #search-idea-container .pictures-container .two {
+  #landing-page #search-idea-container .pictures-container .two {
     width: 220px;
     left: 57%;
   }
-  #search-idea-container .pictures-container .three {
+  #landing-page #search-idea-container .pictures-container .three {
     width: 130px;
     left: 2%;
   }
-  #search-idea-container .pictures-container .four {
+  #landing-page #search-idea-container .pictures-container .four {
     width: 130px;
     left: 73%;
   }
-  #search-idea-container .description p {
+  #landing-page #search-idea-container .description p {
     width: 65%;
   }
 }
 @media only screen and (max-width: 900px) {
-  #pictures-container-1200 .remove-1200 {
+  #landing-page #pictures-container-1200 .remove-1200 {
     display: none;
   }
-  #weeknight-dinner {
+  #landing-page #weeknight-dinner {
     margin-top: 5rem;
     margin-left: 3rem;
     margin-right: 3rem;
   }
-  #search-idea-container {
+  #landing-page #search-idea-container {
     padding: 4rem 1.5rem;
   }
-  #search-idea-container .row {
+  #landing-page #search-idea-container .row {
     flex-direction: column;
   }
-  #search-idea-container .description {
+  #landing-page #search-idea-container .description {
     margin-top: 3rem;
   }
-  #search-idea-container .description p {
+  #landing-page #search-idea-container .description p {
     font-size: 20px;
   }
-  #search-idea-container .pictures-container img {
+  #landing-page #search-idea-container .pictures-container img {
     width: 12%;
   }
-  #furniture-container {
+  #landing-page #furniture-container {
     padding: 6.5rem 3rem;
   }
-  #furniture-container .row {
+  #landing-page #furniture-container .row {
     flex-direction: column-reverse;
   }
-  #furniture-container .pictures-container {
+  #landing-page #furniture-container .pictures-container {
     height: 650px;
     width: 480px;
     margin: 0 auto;
   }
-  #furniture-container .pictures-container .one img {
+  #landing-page #furniture-container .pictures-container .one img {
     width: 250px;
     border-radius: 85px;
   }
-  #furniture-container .pictures-container .one h3 {
+  #landing-page #furniture-container .pictures-container .one h3 {
     top: 200px;
     left: 30px;
     font-size: 2rem;
     width: 12rem;
   }
-  #furniture-container .pictures-container .two img {
+  #landing-page #furniture-container .pictures-container .two img {
     top: 10%;
     right: 0;
     width: 190px;
     border-radius: 45px;
   }
-  #furniture-container .pictures-container .two h3 {
+  #landing-page #furniture-container .pictures-container .two h3 {
     top: 130px;
     right: 10px;
     font-size: 1.5rem;
     width: 10rem;
   }
-  #furniture-container .pictures-container .three img {
+  #landing-page #furniture-container .pictures-container .three img {
     top: 40%;
     right: 80px;
     width: 135px;
     border-radius: 30px;
   }
-  #furniture-container .pictures-container .three h3 {
+  #landing-page #furniture-container .pictures-container .three h3 {
     top: 340px;
     right: 60px;
     font-size: 1rem;
     width: 9rem;
   }
-  #furniture-container .pictures-container .four img {
+  #landing-page #furniture-container .pictures-container .four img {
     top: 52%;
     left: 20px;
     width: 165px;
     border-radius: 45px;
   }
-  #furniture-container .pictures-container .four h3 {
+  #landing-page #furniture-container .pictures-container .four h3 {
     position: absolute;
     top: 400px;
     left: 40px;
     font-size: 1.4rem;
     width: 7rem;
   }
-  #furniture-container .pictures-container .five img {
+  #landing-page #furniture-container .pictures-container .five img {
     top: 64%;
     right: 90px;
     width: 150px;
     border-radius: 45px;
   }
-  #furniture-container .pictures-container .five h3 {
+  #landing-page #furniture-container .pictures-container .five h3 {
     position: absolute;
     top: 470px;
     right: 95px;
     font-size: 1.6rem;
     width: 8rem;
   }
-  #furniture-container .description {
+  #landing-page #furniture-container .description {
     margin-top: 1rem;
   }
-  #furniture-container .description p {
+  #landing-page #furniture-container .description p {
     font-size: 20px;
   }
-  #beauty-container .row {
+  #landing-page #beauty-container .row {
     flex-direction: column;
   }
-  #beauty-container .col-6 {
+  #landing-page #beauty-container .col-6 {
     width: 100%;
   }
-  #beauty-container img {
+  #landing-page #beauty-container img {
     width: 100%;
   }
-  #beauty-container .description {
+  #landing-page #beauty-container .description {
     margin: 3rem 0;
   }
-  #beauty-container .description p {
+  #landing-page #beauty-container .description p {
     font-size: 20px;
   }
 }
 @media only screen and (max-width: 800px) {
-  body {
+  #landing-page body {
     background-color: rgb(126, 126, 126);
   }
-  .top-nav {
+  #landing-page .top-nav {
     display: none !important;
   }
-  #pictures-container-1200 {
+  #landing-page #pictures-container-1200 {
     display: none;
   }
-  #weeknight-dinner {
+  #landing-page #weeknight-dinner {
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
   }
-  #weeknight-dinner img {
+  #landing-page #weeknight-dinner img {
     border-radius: 15px;
     margin: 0.3rem 0;
   }
-  #weeknight-dinner .absolute {
+  #landing-page #weeknight-dinner .absolute {
     z-index: 2;
     position: absolute;
     top: 4px;
@@ -781,94 +764,94 @@ a:hover {
     width: 50%;
     height: 50%;
   }
-  #weeknight-dinner .width-plus {
+  #landing-page #weeknight-dinner .width-plus {
     display: none;
   }
-  #weeknight-dinner .width-800 {
+  #landing-page #weeknight-dinner .width-800 {
     display: block;
   }
-  #weeknight-dinner h1 {
+  #landing-page #weeknight-dinner h1 {
     font-size: 2rem;
     color: white;
   }
-  #pictures-container-800 {
+  #landing-page #pictures-container-800 {
     display: flex;
     filter: brightness(35%);
   }
-  #pictures-container-800 img {
+  #landing-page #pictures-container-800 img {
     padding: 0 0.2rem;
   }
-  a:hover {
+  #landing-page a:hover {
     text-decoration: none !important;
   }
-  .description h1 {
+  #landing-page .description h1 {
     font-size: 2.5rem;
   }
-  .description .description p {
+  #landing-page .description .description p {
     font-size: 16px !important;
   }
 }
 @media only screen and (max-width: 600px) {
-  #furniture-container {
+  #landing-page #furniture-container {
     padding: 4.5rem 1rem;
   }
-  #furniture-container .pictures-container {
+  #landing-page #furniture-container .pictures-container {
     height: 550px;
     width: 410px;
     margin: 0 auto;
   }
-  #furniture-container .pictures-container .one img {
+  #landing-page #furniture-container .pictures-container .one img {
     width: 200px;
     border-radius: 70px;
   }
-  #furniture-container .pictures-container .one h3 {
+  #landing-page #furniture-container .pictures-container .one h3 {
     top: 160px;
     left: 25px;
     font-size: 1.7rem;
     width: 12rem;
   }
-  #furniture-container .pictures-container .two img {
+  #landing-page #furniture-container .pictures-container .two img {
     right: 0px;
     width: 140px;
     border-radius: 35px;
   }
-  #furniture-container .pictures-container .two h3 {
+  #landing-page #furniture-container .pictures-container .two h3 {
     top: 90px;
     right: 5px;
     font-size: 1.2rem;
     width: 7.5rem;
   }
-  #furniture-container .pictures-container .three img {
+  #landing-page #furniture-container .pictures-container .three img {
     top: 200px;
     right: 75px;
     width: 100px;
     border-radius: 20px;
   }
-  #furniture-container .pictures-container .three h3 {
+  #landing-page #furniture-container .pictures-container .three h3 {
     top: 255px;
     right: 70px;
     font-size: 0.8rem;
     width: 6rem;
   }
-  #furniture-container .pictures-container .four img {
+  #landing-page #furniture-container .pictures-container .four img {
     top: 280px;
     left: 20px;
     width: 145px;
     border-radius: 40px;
   }
-  #furniture-container .pictures-container .four h3 {
+  #landing-page #furniture-container .pictures-container .four h3 {
     top: 340px;
     left: 40px;
     font-size: 1.2rem;
     width: 7rem;
   }
-  #furniture-container .pictures-container .five img {
+  #landing-page #furniture-container .pictures-container .five img {
     top: 320px;
     right: 60px;
     width: 150px;
     border-radius: 40px;
   }
-  #furniture-container .pictures-container .five h3 {
+  #landing-page #furniture-container .pictures-container .five h3 {
     top: 400px;
     right: 65px;
     font-size: 1.3rem;
@@ -876,125 +859,129 @@ a:hover {
   }
 }
 @media only screen and (max-width: 500px) {
-  #search-idea-container {
+  #landing-page #weeknight-dinner img {
+    margin: 0.1rem 0;
+  }
+  #landing-page #search-idea-container {
     padding: 6rem 1.5rem 9rem 1.5rem;
   }
-  #search-idea-container .pictures-container {
+  #landing-page #search-idea-container .pictures-container {
     height: 400px;
     width: 300px;
   }
-  #search-idea-container .pictures-container h4 {
+  #landing-page #search-idea-container .pictures-container h4 {
     font-size: 17px;
     width: 14rem;
   }
-  #search-idea-container .pictures-container .one {
+  #landing-page #search-idea-container .pictures-container .one {
     width: 90px;
     left: 71%;
     top: 0;
   }
-  #search-idea-container .pictures-container .two {
+  #landing-page #search-idea-container .pictures-container .two {
     width: 190px;
     left: 50%;
   }
-  #search-idea-container .pictures-container .three {
+  #landing-page #search-idea-container .pictures-container .three {
     width: 100px;
     left: -10%;
   }
-  #search-idea-container .pictures-container .four {
+  #landing-page #search-idea-container .pictures-container .four {
     width: 100px;
     left: 69%;
   }
-  #search-idea-container .description {
+  #landing-page #search-idea-container .description {
     margin-top: 2rem;
   }
-  .appear-500 {
+  #landing-page .appear-500 {
     display: block;
   }
-  #furniture-container .description {
+  #landing-page #furniture-container .description {
     margin-top: 1rem;
   }
-  h1 {
+  #landing-page h1 {
     font-size: 2rem !important;
   }
-  #beauty-container .row > * {
+  #landing-page #beauty-container .row > * {
     padding-right: 0 !important;
   }
-  #beauty-container .col-6 {
+  #landing-page #beauty-container .col-6 {
     width: 100%;
   }
-  #beauty-container img {
+  #landing-page #beauty-container img {
     width: 100%;
     height: 50vh;
   }
-  #beauty-container h1 {
+  #landing-page #beauty-container h1 {
     width: 280px;
   }
-  #beauty-container .description {
+  #landing-page #beauty-container .description {
     padding: 2.5rem 0;
   }
-  .description p {
+  #landing-page .description p {
     width: 80%;
     font-size: 16px !important;
   }
 }
 @media only screen and (max-width: 400px) {
-  .modal-container .modal-header h2 {
+  #landing-page .modal-container .modal-header h2 {
     font-size: 25px !important;
   }
-  #furniture-container {
+  #landing-page #furniture-container {
     padding: 4.7rem 1rem;
   }
-  #furniture-container .pictures-container {
+  #landing-page #furniture-container .pictures-container {
     height: 550px;
     width: 370px;
     margin: 0 auto;
   }
-  #furniture-container .pictures-container .one img {
+  #landing-page #furniture-container .pictures-container .one img {
     width: 200px;
     border-radius: 50px;
   }
-  #furniture-container .pictures-container .one h3 {
+  #landing-page #furniture-container .pictures-container .one h3 {
     top: 160px;
     left: 25px;
     font-size: 1.7rem;
     width: 12rem;
   }
-  #furniture-container .pictures-container .two img {
+  #landing-page #furniture-container .pictures-container .two img {
     right: 5px;
     width: 140px;
     border-radius: 35px;
   }
-  #furniture-container .pictures-container .two h3 {
+  #landing-page #furniture-container .pictures-container .two h3 {
     right: 10px;
   }
-  #furniture-container .pictures-container .three img {
+  #landing-page #furniture-container .pictures-container .three img {
     top: 200px;
     right: 50px;
     width: 100px;
     border-radius: 20px;
   }
-  #furniture-container .pictures-container .three h3 {
+  #landing-page #furniture-container .pictures-container .three h3 {
     right: 45px;
   }
-  #furniture-container .pictures-container .four img {
+  #landing-page #furniture-container .pictures-container .four img {
     left: 20px;
   }
-  #furniture-container .pictures-container .four h3 {
+  #landing-page #furniture-container .pictures-container .four h3 {
     left: 40px;
   }
-  #furniture-container .pictures-container .five img {
+  #landing-page #furniture-container .pictures-container .five img {
     right: 30px;
   }
-  #furniture-container .pictures-container .five h3 {
+  #landing-page #furniture-container .pictures-container .five h3 {
     right: 35px;
   }
-  #beauty-container img {
+  #landing-page #beauty-container img {
     height: 40vh;
   }
-  #beauty-container .description {
+  #landing-page #beauty-container .description {
     padding: 1.5rem 0;
   }
 }
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

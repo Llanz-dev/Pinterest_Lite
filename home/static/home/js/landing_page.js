@@ -1,3 +1,4 @@
+// For Register and Log in.
 const log_in = document.getElementsByClassName('log-in');
 const sign_up = document.getElementsByClassName('sign-up');
 const login_container = document.getElementById('login-container');
@@ -7,7 +8,12 @@ const weeknight_dinner = document.getElementById('weeknight-dinner');
 const login_close_button = document.getElementById('login-close-button');
 const signup_close_button = document.getElementById('signup-close-button');
 
-let form = null;
+// For search field.
+const search_field = document.getElementById('search-field');
+const is_user_logged_in = document.getElementById('is-user-logged-in').textContent;
+if (is_user_logged_in == 'AnonymousUser') {
+    console.log('Not user logged in', is_user_logged_in);
+    let form = null;
 log_in[0].onclick = () => {
     form = 'log-in';
     form_display(form, 35);
@@ -77,4 +83,8 @@ const login_form_link = document.getElementById('login-form-link');
 login_form_link.onclick = () => {
     login_display(35);
     signup_container.style.display = 'none';
+}
+
+} else {
+    console.log('User is logged in', is_user_logged_in);
 }

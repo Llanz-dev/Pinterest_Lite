@@ -14,3 +14,7 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = UserProfile
         fields = ['email', 'password1', 'password2', 'age']
+
+class SearchForm(forms.Form):
+    search_term = forms.CharField(label='', max_length=60, widget=forms.TextInput(attrs={'placeholder': 'Search'}))
+        

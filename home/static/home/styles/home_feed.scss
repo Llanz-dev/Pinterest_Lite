@@ -1,0 +1,40 @@
+#home-feed {
+    a:hover {
+        color: inherit;
+    } 
+    h5 {
+        position: absolute;
+        top: 5px;
+        left: 45px;
+    }
+    img {
+        width: 20px;
+    }
+    .home {
+        position: relative;   
+    }
+    .create-button {
+        padding: .5rem;
+        margin: 0 1rem;
+    }
+    .logo {
+        width: 30px;
+        margin-bottom: 1rem;
+    }
+    .search-field {
+        background-color: #E9ECEF;
+        padding: .5rem 0;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-left: none;
+        &:focus {
+            background-color: #E9ECEF !important;
+        }
+    }
+    
+    .col-10 .input-group-text {
+        border-right: none;
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+    }
+}

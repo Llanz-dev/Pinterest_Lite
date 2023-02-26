@@ -1,0 +1,25 @@
+{% load widget_tweaks %}
+{% load static %}
+
+<section id="home-feed">
+    <nav class="top-nav row justify-content-sm-between mx-4 top-margin">
+      <div class="row align-items-center">
+        <div class="col-1 home">
+          <a href="" class="">
+            <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo">    
+            <h5 class="d-flex align-items-end">Pinterest</h5>
+          </a>
+        </div>
+        <div class="col-10">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">
+              <img src="{% static 'bootstrap/icons/search.png' %}" alt="food image">
+            </span>
+            {% render_field search_form.search_term class="form-control search-field" id="search-field" %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <h2>logged in</h2>
+    <h3>User: {{ request.user }}</h3>
+  </section>

@@ -8,6 +8,7 @@ $light-yellow: #FEFD92;
 $light-pink: #FEE3EA;
 $dark-pink: #C22E00;
 
+#landing-page {
 nav {
     font-weight: 500;
     .log-in, .sign-up {
@@ -1064,6 +1065,9 @@ a:hover {
         }  
     }
 }
+
+}
+
 
 // Remove the spinner from number input.
 /* Chrome, Safari, Edge, Opera */
