@@ -2,24 +2,38 @@
 {% load static %}
 
 <section id="home-feed">
-    <nav class="top-nav row justify-content-sm-between mx-4 top-margin">
+    <nav class="top-nav row justify-content-sm-between mx-2 top-margin">
       <div class="row align-items-center">
         <div class="col-1 home">
           <a href="" class="">
-            <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo">    
-            <h5 class="d-flex align-items-end">Pinterest</h5>
+            <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
+            <h5 class="d-flex align-items-end title">Pinterest</h5>
           </a>
         </div>
-        <div class="col-10">
+        <div class="col-1 create mt-1">
+          <h5><a href="#create">Create</a></h5>
+        </div>
+        <div class="col-9">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">
+            <span class="input-group-text search-icon mt-3" id="search-icon">
               <img src="{% static 'bootstrap/icons/search.png' %}" alt="food image">
             </span>
-            {% render_field search_form.search_term class="form-control search-field" id="search-field" %}
+            {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" %}
           </div>
+        </div>
+        <div class="col-1 profile">
+          <h5 class="mt-1">L</h5>
+        </div>
+        <div class="col-1 chat-icon">
+          <h5 class="mt-1"><img src="{% static 'bootstrap/icons/chat-bubble.png' %}" alt=""></h5>          
+        </div>
+        <div class="col-1 arrow-down">
+          <h5 class="mt-1"><img src="{% static 'bootstrap/icons/arrow-down.png' %}" alt=""></h5>          
         </div>
       </div>
     </nav>
+
     <h2>logged in</h2>
+    <h2><a href="{% url 'home:log-out' %}">Log out</a></h2>
     <h3>User: {{ request.user }}</h3>
   </section>

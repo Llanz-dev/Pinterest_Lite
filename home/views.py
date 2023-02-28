@@ -1,7 +1,9 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect
-from accounts.models import UserProfile
 from .forms import SignUpForm, SearchForm
+from accounts.models import UserProfile
+from django.urls import reverse_lazy
 from django.views import View
 
 # Create your views here.
@@ -19,15 +21,18 @@ class LandingPage(View):
             if request.method == 'POST':
                 email = request.POST['email']
                 password = request.POST['password']
-
+                
+                # Authenticate the user 
                 user = authenticate(request, username=email, password=password)
 
+                # Check if authentication was successful
                 if user is not None:
                     login(request, user)
                     return redirect('home:home')
-                else:
-                    error_message = 'Invalid email or password'
-                    return render(request, 'login.html', {'error_message': error_message})
+                else:        
+                    error_authentication = 'Invalid email or password'
+                    return render(request, 'home/landing_page.html', {'error_authentication': error_authentication})  
+                                  
             context = {'form': form}                
             return render(request, 'home/landing_page.html', context)
         
@@ -47,3 +52,6 @@ class LandingPage(View):
             
         context = {'form': form}
         return render(request, 'home/landing_page.html', context)
+
+class Logout(LogoutView):
+    next_page = reverse_lazy('home:home')    

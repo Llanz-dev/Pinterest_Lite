@@ -3,8 +3,11 @@
 {% load widget_tweaks %}
 
 {% block file_css %}
-    <link rel="stylesheet" href="{% static 'home/styles/landing_page.css' %}">  
+  {% if not request.user.is_authenticated %}
+    <link rel="stylesheet" href="{% static 'home/styles/landing_page.css' %}">    
+  {% else %} 
     <link rel="stylesheet" href="{% static 'home/styles/home_feed.css' %}">  
+  {% endif %}      
 {% endblock file_css %}
     
 
@@ -12,10 +15,9 @@
     
 
 {% block content %}
+<p id="is-user-logged-in" class="d-none">{{ request.user }}</p>
 
 {% if not request.user.is_authenticated %}
-{% load widget_tweaks %}
-{% load static %}
 <section id="landing-page">
     <!-- Nav. -->
     <nav class="top-nav d-flex justify-content-sm-between mx-4 top-margin">
@@ -31,8 +33,15 @@
           <li class="mx-1"><a href="#sign-up" class="sign-up rounded-pill">Sign up</a></li>
         </ul>
     </nav>
-    <p id="is-user-logged-in">{{ request.user }}</p>
-    <!-- Error message. -->
+    
+    <!-- Error message. -->    
+    {% if error_authentication %}      
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {{ error_authentication }}
+      </div>
+    {% endif %}
+
     {% if form.errors %}
         {% for field in form %}
             {% for error in field.errors %}        
@@ -308,8 +317,6 @@
     </div>
 </section>
 {% else %}
-<p id="is-user-logged-in">{{ request.user }}</p>
-
   {% include 'home/sections/home_feed.html' %}
 {% endif %}
 {% endblock content %}
