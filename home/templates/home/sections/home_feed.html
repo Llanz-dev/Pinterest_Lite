@@ -2,21 +2,22 @@
 {% load static %}
 
 <section id="home-feed">
-    <nav class="top-nav row justify-content-sm-between mx-2 top-margin">
-      <div class="row align-items-center">
-        <div class="col-1 home">
-          <a href="" class="">
-            <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
-            <h5 class="d-flex align-items-end title">Pinterest</h5>
-          </a>
-        </div>
-        <div class="col-1 create mt-1">
-          <h5><a href="#create">Create</a></h5>
-        </div>
-        <div class="col-9">
+    <!-- Top navbar -->
+    <nav class="top-nav row justify-content-sm-between mx-2">
+      <div class="d-flex align-items-center">
+        <a href="" class="pinterest-logo">
+          <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
+        </a>
+        <a href="" class="mt-1 home">
+          <h5 class="home-name">Home</h5>
+        </a>
+        <a href="" class="create mt-1">
+          <h5>Create</h5>
+        </a>
+        <div class="w-75">
           <div class="input-group mb-3">
             <span class="input-group-text search-icon mt-3" id="search-icon">
-              <img src="{% static 'bootstrap/icons/search.png' %}" alt="food image">
+              <img src="{% static 'icons/search.png' %}" alt="food image">
             </span>
             {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" %}
           </div>
@@ -25,14 +26,26 @@
           <h5 class="mt-1">L</h5>
         </div>
         <div class="col-1 chat-icon">
-          <h5 class="mt-1"><img src="{% static 'bootstrap/icons/chat-bubble.png' %}" alt=""></h5>          
+          <h5 class="mt-1"><img src="{% static 'icons/chat-bubble.png' %}" alt=""></h5>          
         </div>
         <div class="col-1 arrow-down">
-          <h5 class="mt-1"><img src="{% static 'bootstrap/icons/arrow-down.png' %}" alt=""></h5>          
+          <h5 class="mt-1"><img src="{% static 'icons/arrow-down.png' %}" alt=""></h5>          
         </div>
       </div>
     </nav>
 
+    <!-- Bottom navbar -->
+    <footer>
+      <nav>
+        <ul>
+          <li><img src="{% static 'icons/home-37.png' %}" alt="home icon"></li>
+          <li><img src="{% static 'icons/search-37.png' %}" alt="search icon"></li>
+          <li><img src="{% static 'icons/chat-bubble-37.png' %}" alt="message icon"></li>
+          <li><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></li>
+        </ul>
+      </nav>
+    </footer>
+    
     <h2>logged in</h2>
     <h2><a href="{% url 'home:log-out' %}">Log out</a></h2>
     <h3>User: {{ request.user }}</h3>

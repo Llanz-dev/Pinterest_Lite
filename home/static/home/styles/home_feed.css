@@ -1,91 +1,116 @@
-.top-margin {
+nav {
+  height: 80px;
+}
+nav a {
+  margin: 0 0.2rem;
+  padding: 1rem;
+  border-radius: 100%;
+}
+nav .pinterest-logo:hover {
+  background-color: rgb(224, 224, 224);
+}
+nav .top-margin {
   margin-top: 0;
 }
-
-h5.title {
-  position: absolute;
-  top: 5px;
-  left: 45px;
+nav .home-name {
+  margin: auto 0 auto 0;
 }
-
-img {
-  width: 20px;
-}
-
-.home {
-  position: relative;
-}
-
-.create {
-  width: 100px;
-}
-.create h5 {
+nav .create h5 {
   margin-bottom: 0;
 }
-
-.logo {
+nav .logo {
   width: 30px;
 }
-
-.search-field {
+nav .search-field {
   background-color: #E9ECEF;
   padding: 0.6rem 0.6rem 0.6rem 0;
+  margin-right: 0.5rem;
   border-top-right-radius: 60px;
   border-bottom-right-radius: 60px;
   border-left: none;
 }
-.search-field:hover {
+nav .search-field:hover {
   background-color: rgb(224, 224, 224);
 }
-
-.search-icon {
+nav .search-icon {
   padding-left: 0.9rem;
   border-right: none;
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
 }
-
-.search-click {
+nav .search-click {
   border-bottom-left-radius: 60px;
   border-top-left-radius: 60px;
   padding: 0.6rem 1rem;
   background-color: rgb(224, 224, 224);
 }
-
-.profile {
-  width: 40px;
-  padding: 5px;
-  border-radius: 100%;
-  text-align: center;
-  cursor: pointer;
+nav .arrow-down img, nav .chat-icon img, nav .search-icon img {
+  width: 20px;
 }
-.profile:hover {
-  background-color: #E8E8E9;
-}
-
-.chat-icon {
+nav .chat-icon {
   margin: 0 0.8rem;
+}
+nav .profile {
+  background-color: #eeeeee;
+}
+nav .arrow-down, nav .chat-icon, nav .profile {
   width: 40px;
   padding: 5px;
   border-radius: 100%;
   text-align: center;
   cursor: pointer;
 }
-.chat-icon:hover {
+nav .arrow-down:hover, nav .chat-icon:hover, nav .profile:hover {
   background-color: #E8E8E9;
 }
-
-.arrow-down {
-  width: 40px;
-  padding: 5px;
-  border-radius: 100%;
-  text-align: center;
-  cursor: pointer;
-}
-.arrow-down:hover {
-  background-color: #E8E8E9;
-}
-
-a:hover {
+nav a:hover {
   color: inherit;
+}
+
+footer {
+  display: none;
+}
+
+@media only screen and (max-width: 849px) {
+  nav .home {
+    display: none;
+  }
+  nav a {
+    margin: 0 0.1rem;
+    padding: 0.7rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  nav a {
+    margin: 0 0;
+    padding: 0.5rem;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .top-nav {
+    display: none;
+  }
+  footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+  }
+  nav {
+    height: 50px;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  nav li {
+    flex: 1;
+    text-align: center;
+  }
 }/*# sourceMappingURL=home_feed.css.map */

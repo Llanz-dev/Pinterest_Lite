@@ -6,6 +6,7 @@
   {% if not request.user.is_authenticated %}
     <link rel="stylesheet" href="{% static 'home/styles/landing_page.css' %}">    
   {% else %} 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'home/styles/home_feed.css' %}">  
   {% endif %}      
 {% endblock file_css %}
@@ -19,10 +20,11 @@
 
 {% if not request.user.is_authenticated %}
 <section id="landing-page">
-    <!-- Nav. -->
+    <!-- Top nav -->
     <nav class="top-nav d-flex justify-content-sm-between mx-4 top-margin">
-      <div class="col">
-        <img src="{% static 'logo/pinterest.png' %}" alt="Logo" class="logo">
+      <div class="col d-flex align-items-center">
+        <img src="{% static 'logo/pinterest-badge.png' %}" alt="Logo" class="logo">
+        <h5 class="pinterest-name text-primaryColor">Pinterest</h5>
       </div>
         <ul class="no-bullet d-flex align-items-center my-auto mx-0">
           <li class="mx-3"><a href="https://help.pinterest.com/en/guide/all-about-pinterest" target="_blank">About</a></li>
@@ -34,7 +36,7 @@
         </ul>
     </nav>
     
-    <!-- Error message. -->    
+    <!-- Error message -->    
     {% if error_authentication %}      
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -59,7 +61,7 @@
         {% endfor %}
     {% endif %}
   
-    <!-- Log in. -->
+    <!-- Log in -->
     <div class="modal-container" id="login-container">
       <div class="modal" id="modal">
         <div class="modal-header">
@@ -93,7 +95,7 @@
       <div class="overlay"></div>
     </div>
   
-    <!-- Sign up. -->
+    <!-- Sign up -->
     <div class="modal-container" id="signup-container">
       <div class="modal" id="modal">
         <div class="modal-header">
@@ -136,7 +138,7 @@
       <div class="overlay"></div>
     </div>
   
-    <!-- Weeknight Dinner. -->
+    <!-- Weeknight Dinner -->
     <div id="weeknight-dinner">
       <!-- This container is for 1200 plus width screen size -->
       <div id="pictures-container-plus">
@@ -244,7 +246,7 @@
   
     <br>
   
-    <!-- Search Idea. -->
+    <!-- Search Idea -->
     <div id="search-idea-container">
         <div class="row">
           <div class="col">
@@ -253,7 +255,7 @@
               <img src="{% static 'images/foods/fryer-chicken.jpg' %}" alt="food image" class="two">
               <img src="{% static 'images/foods/grilled-wings.jpg' %}" alt="food image" class="three">
               <img src="{% static 'images/foods/bbq-chicken-salad.jpg' %}" alt="food image" class="four">
-              <h4 class="p-4 bg-white fw-bold"><img src="{% static 'bootstrap/icons/search.png' %}" alt="food image"> easy chicken dinner</h4>
+              <h4 class="p-4 bg-white fw-bold"><img src="{% static 'icons/search.png' %}" alt="food image"> easy chicken dinner</h4>
             </div>
           </div>
           <div class="col text-center description">
@@ -265,7 +267,7 @@
         </div>
     </div>
   
-    <!-- Furniture. -->
+    <!-- Furniture -->
     <div id="furniture-container">
       <div class="row">
         <div class="col text-center description">

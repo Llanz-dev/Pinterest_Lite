@@ -8,7 +8,11 @@
   text-decoration: none;
 }
 #landing-page nav .logo {
-  width: 140px;
+  width: 32px;
+}
+#landing-page nav .pinterest-name {
+  margin: auto 0 auto 0.2rem;
+  font-size: 20px;
 }
 #landing-page h1, #landing-page a {
   letter-spacing: 1px;
