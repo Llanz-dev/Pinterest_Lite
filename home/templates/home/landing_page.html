@@ -6,7 +6,7 @@
   {% if not request.user.is_authenticated %}
     <link rel="stylesheet" href="{% static 'home/styles/landing_page.css' %}">    
   {% else %} 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'home/styles/home_feed.css' %}">  
   {% endif %}      
 {% endblock file_css %}
@@ -221,25 +221,25 @@
        <!-- 'appear-500' will display if its reach the breakpoints of 500px width below. -->
       <div id="pictures-container-800">
         <div>      
-          <img src="{% static 'images/animals/2-cats.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/person/black-girl.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/travel/beach.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/things/house.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/fashion-wear/london-fashion.jpg' %}" alt="food image" class="img-fluid appear-500">
+          <img src="{% static 'images/animals/2-cats.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/person/black-girl.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/travel/beach.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/things/house.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/fashion-wear/london-fashion.jpg' %}" class="img-fluid appear-500">
         </div>
         <div>
-          <img src="{% static 'images/person/shadow-girl.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/things/watch.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/person/elvis-botta.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/things/winter-outfits.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/things/phone.jpg' %}" alt="food image" class="img-fluid appear-500">
+          <img src="{% static 'images/person/shadow-girl.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/things/watch.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/person/elvis-botta.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/things/winter-outfits.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/things/phone.jpg' %}" class="img-fluid appear-500">
         </div>
         <div>
-          <img src="{% static 'images/person/tommy-shelby.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/things/boat.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/things/home-setup.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/things/hand-bentley.jpg' %}" alt="food image" class="img-fluid">
-          <img src="{% static 'images/person/nana.jpg' %}" alt="food image" class="img-fluid appear-500">
+          <img src="{% static 'images/person/tommy-shelby.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/things/boat.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/things/home-setup.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/things/hand-bentley.jpg' %}" class="img-fluid">
+          <img src="{% static 'images/person/nana.jpg' %}" class="img-fluid appear-500">
         </div>
       </div>
     </div>

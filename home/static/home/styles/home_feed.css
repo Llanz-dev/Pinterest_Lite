@@ -5,15 +5,13 @@ nav a {
   margin: 0 0.2rem;
   padding: 1rem;
   border-radius: 100%;
+  font-weight: 500;
 }
 nav .pinterest-logo:hover {
   background-color: rgb(224, 224, 224);
 }
 nav .top-margin {
   margin-top: 0;
-}
-nav .home-name {
-  margin: auto 0 auto 0;
 }
 nav .create h5 {
   margin-bottom: 0;
@@ -55,7 +53,7 @@ nav .profile {
 }
 nav .arrow-down, nav .chat-icon, nav .profile {
   width: 40px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 100%;
   text-align: center;
   cursor: pointer;
@@ -67,10 +65,100 @@ nav a:hover {
   color: inherit;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 5rem;
+}
+.flex-container .card {
+  margin: 1rem 0.2rem;
+  width: 14.8rem;
+  border: none;
+}
+.flex-container .card-body {
+  padding: 0.5rem 0 0 0.4rem;
+}
+.flex-container .card-text {
+  font-size: 14px;
+  color: #111111;
+  font-weight: 500;
+}
+.flex-container .card img {
+  border-radius: 18px;
+}
+
 footer {
   display: none;
 }
 
+@media only screen and (max-width: 910px) {
+  .flex-container {
+    margin: 0 4rem;
+  }
+  .flex-container .card {
+    width: 12.8rem;
+  }
+}
+@media only screen and (max-width: 780px) {
+  .flex-container {
+    margin: 0 3rem;
+  }
+  .flex-container .card {
+    width: 11.8rem;
+  }
+}
+@media only screen and (max-width: 705px) {
+  .flex-container {
+    margin: 0 5rem;
+  }
+  .flex-container .card {
+    width: 13rem;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .flex-container {
+    margin: 0 4rem;
+  }
+  .flex-container .card {
+    width: 12.8rem;
+  }
+}
+@media only screen and (max-width: 570px) {
+  .flex-container {
+    margin: 0 3rem;
+  }
+}
+@media only screen and (max-width: 542px) {
+  .flex-container {
+    margin: 0 2rem;
+  }
+}
+@media only screen and (max-width: 512px) {
+  .flex-container {
+    margin: 0 1rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .flex-container .card {
+    width: 11.8rem;
+  }
+}
+@media only screen and (max-width: 422px) {
+  .flex-container .card {
+    width: 10.8rem;
+  }
+}
+@media only screen and (max-width: 396px) {
+  .flex-container .card {
+    width: 10.5rem;
+  }
+}
+@media only screen and (max-width: 386px) {
+  .flex-container .card {
+    width: 9.5rem;
+  }
+}
 @media only screen and (max-width: 849px) {
   nav .home {
     display: none;
@@ -95,12 +183,13 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 9999;
+    padding-top: 0.6rem;
+    background-color: white;
   }
   nav {
-    height: 50px;
+    height: 45px;
   }
   nav ul {
     display: flex;

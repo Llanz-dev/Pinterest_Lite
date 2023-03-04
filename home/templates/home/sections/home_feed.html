@@ -1,52 +1,361 @@
 {% load widget_tweaks %}
 {% load static %}
-
-<section id="home-feed">
-    <!-- Top navbar -->
-    <nav class="top-nav row justify-content-sm-between mx-2">
-      <div class="d-flex align-items-center">
-        <a href="" class="pinterest-logo">
-          <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
-        </a>
-        <a href="" class="mt-1 home">
-          <h5 class="home-name">Home</h5>
-        </a>
-        <a href="" class="create mt-1">
-          <h5>Create</h5>
-        </a>
-        <div class="w-75">
-          <div class="input-group mb-3">
-            <span class="input-group-text search-icon mt-3" id="search-icon">
-              <img src="{% static 'icons/search.png' %}" alt="food image">
-            </span>
-            {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" %}
-          </div>
-        </div>
-        <div class="col-1 profile">
-          <h5 class="mt-1">L</h5>
-        </div>
-        <div class="col-1 chat-icon">
-          <h5 class="mt-1"><img src="{% static 'icons/chat-bubble.png' %}" alt=""></h5>          
-        </div>
-        <div class="col-1 arrow-down">
-          <h5 class="mt-1"><img src="{% static 'icons/arrow-down.png' %}" alt=""></h5>          
-        </div>
-      </div>
-    </nav>
-
-    <!-- Bottom navbar -->
-    <footer>
-      <nav>
-        <ul>
-          <li><img src="{% static 'icons/home-37.png' %}" alt="home icon"></li>
-          <li><img src="{% static 'icons/search-37.png' %}" alt="search icon"></li>
-          <li><img src="{% static 'icons/chat-bubble-37.png' %}" alt="message icon"></li>
-          <li><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></li>
-        </ul>
-      </nav>
-    </footer>
-    
-    <h2>logged in</h2>
+    <!-- <h2>logged in</h2>
     <h2><a href="{% url 'home:log-out' %}">Log out</a></h2>
-    <h3>User: {{ request.user }}</h3>
-  </section>
+    <h3>User: {{ request.user }}</h3> -->
+
+<!-- Top navbar -->
+<nav class="top-nav row justify-content-sm-between mx-2">
+  <div class="d-flex align-items-center">
+    <a href="" class="pinterest-logo">
+      <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
+    </a>
+    <a href="#home" class="mt-1 home">
+      Home
+    </a>
+    <a href="#create" class="create mt-1">
+      Create
+    </a>
+    <div class="w-75">
+      <div class="input-group mb-3">
+        <span class="input-group-text search-icon mt-3" id="search-icon">
+          <img src="{% static 'icons/search.png' %}" alt="food image">
+        </span>
+        {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" %}
+      </div>
+    </div>
+    <a href="#profile" class="col-1 profile mt-1">
+      L
+    </a>
+    <a href="#chat" class="col-1 chat-icon mt-1">
+      <img src="{% static 'icons/chat-bubble.png' %}" alt=""> 
+    </a>
+    <a href="#settings" class="col-1 arrow-down mt-1">
+      <img src="{% static 'icons/arrow-down.png' %}" alt="">          
+    </a>
+  </div>
+</nav>
+
+<!-- Bottom navbar -->
+<footer>
+  <nav>
+    <ul>
+      <li><a href="#home"><img src="{% static 'icons/home-37.png' %}" alt="home icon"></a></li>
+      <li><a href="#search"><img src="{% static 'icons/search-37.png' %}" alt="search icon"></a></li>
+      <li><a href="#chat"><img src="{% static 'icons/chat-bubble-37.png' %}" alt="message icon"></a></li>
+      <li><a href="#profile"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
+    </ul>
+  </nav>
+</footer>
+
+<!-- Home feed content -->
+<div class="flex-container">
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'images/anime/mitsuki.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/gaara.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/ino.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/boruto.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/orochimaru.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/sakura.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/tobirama.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>    
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'images/anime/nezuko1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/sarada2.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/person/kill-it.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/shikimaru-temari.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/nezuko.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/onepunch-man.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/person/kill-it1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>    
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'images/person/tommy-shelby.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/luffy.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/pain.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/kurama-naruto.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/death-note.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/kawaki1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/obito-rin.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>    
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'images/anime/code.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/sarada1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/kakashi1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/hashirama.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/person/jhonny.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/gai.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/hinata.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>    
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'images/person/nana1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">After School's Nana models watches and handbags for 'Fossil'</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/madara.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/luffy1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/kaguya.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/jiraiya.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/itachi1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/isshiki.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>    
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'images/anime/boruto-sarada.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/zerochan.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/shohoku.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/sasuke1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/person/peaky-blinders1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/kaguya.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/kawaki2.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>    
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'images/anime/pikachu.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/luffy1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/minato.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/naruto1.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/hagoromo.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/person/peaky-blinders2.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="{% static 'images/anime/tanjiro.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">Card title</p>
+      </div>
+    </div>    
+  </div>
+</div>
