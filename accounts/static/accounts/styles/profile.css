@@ -1,0 +1,117 @@
+body {
+  color: #101110;
+}
+
+a {
+  padding: 1rem;
+  font-weight: 500;
+}
+a:hover {
+  color: #101110;
+}
+
+#top h1 {
+  padding: 42px;
+  background-color: #E9E9E9;
+}
+#top .caption {
+  margin-bottom: 0.4rem;
+}
+#top .following {
+  margin-bottom: 1.5rem;
+}
+#top a {
+  background-color: #E9E9E9;
+}
+
+#middle {
+  margin: 3rem 0;
+}
+
+#bottom .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 1rem;
+}
+#bottom .flex-container .row > * {
+  padding-left: 0;
+  padding-right: 0;
+}
+#bottom .flex-container .card {
+  margin: 1rem 1rem;
+  border: none;
+}
+#bottom .flex-container .card .left {
+  width: 200px;
+}
+#bottom .flex-container .card .right {
+  width: 100px;
+}
+#bottom .flex-container .card .left img {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+#bottom .flex-container .card .right img {
+  height: 170px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+#bottom .flex-container .card-body {
+  padding: 0.5rem 0 0 0.4rem;
+}
+#bottom .flex-container .card-title {
+  margin-bottom: 0.2rem;
+}
+#bottom .flex-container .card-text {
+  font-size: 12px;
+  color: #111111;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 660px) {
+  #bottom .flex-container .card .left {
+    width: 180px;
+  }
+  #bottom .flex-container .card .right {
+    width: 80px;
+  }
+  #bottom .flex-container .card .right img {
+    height: 150px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  #middle {
+    margin: 2rem 0;
+  }
+  #bottom .flex-container .card .left {
+    width: 150px;
+  }
+  #bottom .flex-container .card .right {
+    width: 60px;
+  }
+  #bottom .flex-container .card .right img {
+    height: 130px;
+  }
+}
+@media only screen and (max-width: 468px) {
+  #middle {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  #bottom {
+    margin-bottom: 5rem;
+  }
+  #bottom .flex-container {
+    flex-direction: column;
+  }
+  #bottom .flex-container .card .left {
+    width: 120px;
+  }
+  #bottom .flex-container .card .right {
+    width: 70px;
+  }
+  #bottom .flex-container .card .right img {
+    height: 100px;
+  }
+}/*# sourceMappingURL=profile.css.map */

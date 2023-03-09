@@ -1,52 +1,12 @@
 {% load widget_tweaks %}
 {% load static %}
+
     <!-- <h2>logged in</h2>
     <h2><a href="{% url 'home:log-out' %}">Log out</a></h2>
     <h3>User: {{ request.user }}</h3> -->
 
-<!-- Top navbar -->
-<nav class="top-nav row justify-content-sm-between mx-2">
-  <div class="d-flex align-items-center">
-    <a href="" class="pinterest-logo">
-      <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
-    </a>
-    <a href="#home" class="mt-1 home">
-      Home
-    </a>
-    <a href="#create" class="create mt-1">
-      Create
-    </a>
-    <div class="w-75">
-      <div class="input-group mb-3">
-        <span class="input-group-text search-icon mt-3" id="search-icon">
-          <img src="{% static 'icons/search.png' %}" alt="food image">
-        </span>
-        {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" %}
-      </div>
-    </div>
-    <a href="#profile" class="col-1 profile mt-1">
-      L
-    </a>
-    <a href="#chat" class="col-1 chat-icon mt-1">
-      <img src="{% static 'icons/chat-bubble.png' %}" alt=""> 
-    </a>
-    <a href="#settings" class="col-1 arrow-down mt-1">
-      <img src="{% static 'icons/arrow-down.png' %}" alt="">          
-    </a>
-  </div>
-</nav>
-
-<!-- Bottom navbar -->
-<footer>
-  <nav>
-    <ul>
-      <li><a href="#home"><img src="{% static 'icons/home-37.png' %}" alt="home icon"></a></li>
-      <li><a href="#search"><img src="{% static 'icons/search-37.png' %}" alt="search icon"></a></li>
-      <li><a href="#chat"><img src="{% static 'icons/chat-bubble-37.png' %}" alt="message icon"></a></li>
-      <li><a href="#profile"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
-    </ul>
-  </nav>
-</footer>
+    
+{% include 'sections/navbar.html' %}
 
 <!-- Home feed content -->
 <div class="flex-container">

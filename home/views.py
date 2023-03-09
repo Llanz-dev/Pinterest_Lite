@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 from .forms import SignUpForm, SearchForm
 from accounts.models import UserProfile
 from django.urls import reverse_lazy
@@ -17,6 +18,7 @@ class LandingPage(View):
 
     def post(self, request, *args, **kwargs):
         form = SignUpForm()
+        # Log in
         if request.POST.get('submit') == 'log_in':         
             if request.method == 'POST':
                 email = request.POST['email']
@@ -35,23 +37,17 @@ class LandingPage(View):
                                   
             context = {'form': form}                
             return render(request, 'home/landing_page.html', context)
-        
+        # Register
         elif request.POST.get('submit') == 'sign_up':
             form = SignUpForm(request.POST)          
             if form.is_valid():
                 print('Success')
                 form.save()
-                return redirect('home:home')
-            else:
-                print('Error')
-                for field in form:
-                    for error in field.errors:
-                        print(error)
-                
-            print('Sign up', request.POST.get('submit'))
-            
+                return redirect('home:home')            
+                            
         context = {'form': form}
         return render(request, 'home/landing_page.html', context)
+
 
 class Logout(LogoutView):
     next_page = reverse_lazy('home:home')    
