@@ -41,21 +41,19 @@
 #profile-settings textarea {
   resize: none;
 }
-#profile-settings input, #profile-settings textarea, #profile-settings select {
+#profile-settings input[type=text], #profile-settings input[type=email], #profile-settings textarea, #profile-settings select {
   border: 2px solid #CDCDCD;
   border-radius: 16px;
   padding: 10px 15px;
 }
-#profile-settings input:hover, #profile-settings textarea:hover, #profile-settings select:hover {
+#profile-settings input[type=text]:hover, #profile-settings input[type=email]:hover, #profile-settings textarea:hover, #profile-settings select:hover {
   border-color: #a0a0a0;
 }
-
-.save-container {
-  margin-top: 3rem;
-  text-align: center;
-}
-.save-container a {
+#profile-settings input[type=submit] {
   border-radius: 24px;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 3rem;
 }
 
 @media only screen and (max-width: 568px) {
@@ -94,9 +92,6 @@
   #profile-settings {
     width: 100%;
     margin-top: 1rem;
-    margin-bottom: 3rem;
-  }
-  .save-container {
     margin-bottom: 5rem;
   }
 }/*# sourceMappingURL=edit-profile.css.map */

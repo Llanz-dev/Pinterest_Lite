@@ -13,8 +13,8 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
-    <section class="container" id="profile-settings">
-        <!-- This will remove if reach the breakpoint of 568px -->
+    <form method="POST" class="container" id="profile-settings">
+        {% csrf_token %}
         <div class="remove-568">
             <h1>Public profile</h1>
             <p>People visiting your profile will see the following info</p>
@@ -49,14 +49,21 @@
             {% render_field profile_form.website class='form-control' placeholder="Add a link to drive traffic to your site" %} 
         </div>  
         <div class="my-2">
+            <span class="label">Email</span>
+            {% render_field profile_form.email class='form-control' placeholder="Email" %} 
+        </div>  
+        <div class="my-2">
             <span class="label">Username</span>
             {% render_field profile_form.username class='form-control' placeholder="Choose wisely so others can find you" %} 
         </div>  
-    </section>
-
-    <section class="save-container">
-        <a href="" class="background-primaryColor text-white">Save</a>
-    </section>
+        <div class="my-2">
+            <span class="label">Age</span>
+            {% render_field profile_form.age class='form-control' %} 
+        </div>  
+        <div class="text-center">
+            <input type="submit" value="Save" class="background-primaryColor text-white">
+        </div>
+    </form>   
 {% endblock content %}    
 
 {% block file_script %}

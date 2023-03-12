@@ -4,11 +4,10 @@ from django import forms
 from .models import UserProfile
 
 class ProfileForm(ModelForm):
-    profile_picture = forms.ImageField(widget=CustomClearableFileInput)
+    profile_picture = forms.ImageField(widget=CustomClearableFileInput, required=False)
     
     class Meta:
         model = UserProfile
-        exclude = ['is_active', 'is_staff']
-        fields = '__all__'
+        fields = ['profile_picture', 'email', 'age', 'firstname', 'lastname', 'about', 'pronouns', 'website', 'username']
         
         
