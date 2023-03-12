@@ -1,4 +1,6 @@
 $font-color: #101110;
+$light-grey: #EFEEEE;
+$grey-hover: #e0e0e0;
 
 body {
     color: $font-color;
@@ -14,17 +16,33 @@ a {
 
 #top {
     h1 {
-        padding: 42px;
         background-color: #E9E9E9;
+        width: 8rem;
+        padding: 42px;
     }
-    .caption {
+    .username-pronoun {
+        font-size: 14px;
+    }
+    .website {
+        font-weight: 500;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .about {
         margin-bottom: .4rem;
     }
     .following {
         margin-bottom: 1.5rem;
     }
-    a {
-        background-color: #E9E9E9;
+    p {
+        margin-bottom: 0;
+    }     
+    .edit-profile {        
+        background-color: $light-grey;
+        &:hover{
+            background-color: $grey-hover;
+        }
     }
 }
 

@@ -11,17 +11,33 @@ a:hover {
 }
 
 #top h1 {
-  padding: 42px;
   background-color: #E9E9E9;
+  width: 8rem;
+  padding: 42px;
 }
-#top .caption {
+#top .username-pronoun {
+  font-size: 14px;
+}
+#top .website {
+  font-weight: 500;
+}
+#top .website:hover {
+  text-decoration: underline;
+}
+#top .about {
   margin-bottom: 0.4rem;
 }
 #top .following {
   margin-bottom: 1.5rem;
 }
-#top a {
-  background-color: #E9E9E9;
+#top p {
+  margin-bottom: 0;
+}
+#top .edit-profile {
+  background-color: #EFEEEE;
+}
+#top .edit-profile:hover {
+  background-color: #e0e0e0;
 }
 
 #middle {

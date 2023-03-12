@@ -14,11 +14,13 @@
     {% include 'sections/navbar.html' %}
     <section id="top" class="d-flex justify-content-center">
         <div class="content text-center">
-            <h1 class="d-flex justify-content-center w-50 my-0 mx-auto rounded-circle mb-3">L</h1>
-            <h2>Llanz Kenneth Luy</h2>
-            <p class="text-muted caption">I like web</p>
+            <h1 class="d-flex justify-content-center my-0 mx-auto rounded-circle mb-3">N/A</h1>
+            <h2 class="">Set your fullname</h2>
+            <p class="text-muted username-pronoun mb-1"><span>@llanzkenneth</span> · <span>he/him</span></p>
+            <a href="https://www.youtube.com/" class="website" target="_blank">https://www.youtube.com/</a>
+            <p class="text-muted about mt-1">I like web</p>
             <p class="text-muted following">0 following</p>
-            <a href="#edit-profile" class="rounded-pill">Edit Profile</a>
+            <a href="{% url 'accounts:edit-profile' %}" class="edit-profile rounded-pill">Edit Profile</a>            
         </div>
     </section>
 
@@ -127,5 +129,6 @@
 
 {% block file_script %}
     <script src="{% static 'scripts/navbar.js' %}"></script>   
+    <script src="{% static 'accounts/scripts/profile.js' %}"></script>   
 {% endblock file_script %}
     

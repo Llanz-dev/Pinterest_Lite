@@ -28,10 +28,27 @@ class UserProfileManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+PRONOUN_CHOICES = (
+    ('ey/em', 'ey/em'),
+    ('ne/nem', 'ne/nem'),
+    ('she/her', 'she/her'),
+    ('they/them', 'they/them'),
+    ('ve/ver', 've/ver'),
+    ('xe/xem', 'xe/xem'),
+    ('xie/xem', 'xie/xem'),
+    ('ze/zer', 'ze/zer')
+)
+
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     """ Database model for users in the system """
+    profile_picture = models.ImageField(upload_to='profile_pics', blank=True, null=True)
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255)
+    firstname = models.CharField(max_length=100, null=True)
+    lastname = models.CharField(max_length=100, null=True)
+    about = models.TextField(max_length=250, null=True)
+    pronouns = models.CharField(choices=PRONOUN_CHOICES, max_length=20)
+    website = models.CharField(max_length=200, null=True)
+    username = models.CharField(max_length=80, null=True)
     age = models.PositiveIntegerField(null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

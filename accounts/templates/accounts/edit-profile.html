@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block file_css %}
+    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">  
+    <link rel="stylesheet" href="{% static 'accounts/styles/profile.css' %}">  
+    <link rel="stylesheet" href="{% static 'accounts/styles/edit-profile.css' %}">  
+{% endblock file_css %}
+    
+{% block title %} Pinterest {% endblock title %}
+
+
+{% block content %}
+    {% include 'sections/navbar.html' %}
+    <section class="container" id="profile-settings">
+        <!-- This will remove if reach the breakpoint of 568px -->
+        <div class="remove-568">
+            <h1>Public profile</h1>
+            <p>People visiting your profile will see the following info</p>
+        </div>
+        <p class="label text-muted mb-0 remove-568">Photo</p>
+        <div class="picture-container">
+            <h2 class="rounded-circle">L</h2>
+            {% render_field profile_form.profile_picture class='d-none' %}  
+            <label for="{{ profile_form.profile_picture.id_for_label }}" class="change-button rounded-pill">Change</label>            
+        </div>
+        <div class="first-last-name mt-3">
+            <div class="col">
+                <span class="label d-block">First name</span>
+                {% render_field profile_form.firstname class='form-control' %}
+            </div>
+            <div class="mx-2"></div>  
+            <div class="col">
+                <span class="label">Last name</span>
+                {% render_field profile_form.lastname class='form-control' %}  
+            </div>
+        </div>
+        <div class="my-2">
+            <span class="label">About</span>
+            {% render_field profile_form.about class='form-control' rows='3' placeholder="Tell your story" %} 
+        </div>  
+        <div class="my-2">
+            <span class="label">Pronouns</span>
+            {% render_field profile_form.pronouns class='form-select' rows='4' %} 
+        </div>  
+        <div class="my-2">
+            <span class="label">Website</span>
+            {% render_field profile_form.website class='form-control' placeholder="Add a link to drive traffic to your site" %} 
+        </div>  
+        <div class="my-2">
+            <span class="label">Username</span>
+            {% render_field profile_form.username class='form-control' placeholder="Choose wisely so others can find you" %} 
+        </div>  
+    </section>
+
+    <section class="save-container">
+        <a href="" class="background-primaryColor text-white">Save</a>
+    </section>
+{% endblock content %}    
+
+{% block file_script %}
+    <script src="{% static 'scripts/navbar.js' %}"></script>   
+    <script src="{% static 'accounts/scripts/profile.js' %}"></script>   
+{% endblock file_script %}
+    
