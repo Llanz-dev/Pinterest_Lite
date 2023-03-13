@@ -25,7 +25,7 @@
             {% if request.user.profile_picture %}
                 <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture">
             {% else %}
-                <h2 class="rounded-circle">L</h2>
+                <h2 class="rounded-circle">{{ request.user.firstname|slice:"1" }}</h2>
             {% endif %}
                 
             <div class="d-none">

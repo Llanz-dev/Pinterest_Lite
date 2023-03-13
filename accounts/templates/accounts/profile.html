@@ -22,8 +22,7 @@
   {% endif %}
 
     <section id="top" class="d-flex justify-content-center">
-        <div class="content text-center">
-            
+        <div class="content text-center">            
             {% if request.user.firstname and not request.user.profile_picture %}
                 <h1 class="d-flex justify-content-center my-0 mx-auto rounded-circle mb-3">{{ request.user.firstname|slice:"1" }}</h1>                
             {% elif request.user.firstname and request.user.profile_picture %}

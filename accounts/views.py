@@ -9,7 +9,6 @@ from django.views import View
 
 def profile(request):
     search_form = SearchForm()        
-    print('Image:', request.user.profile_picture.url)
         
     context = {'search_form': search_form}
     return render(request, 'accounts/profile.html',context)
@@ -20,8 +19,7 @@ def edit_profile(request):
 
     if request.method == 'POST':
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user)
-        print(profile_form.has_changed())
-        if profile_form.is_valid():
+        if profile_form.is_valid() and profile_form.has_changed():
             profile_form.save()
             messages.success(request, 'Your profile was updated successfully!')
             return redirect('accounts:profile')
