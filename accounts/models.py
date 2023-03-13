@@ -30,6 +30,7 @@ class UserProfileManager(BaseUserManager):
 
 PRONOUN_CHOICES = (
     ('ey/em', 'ey/em'),
+    ('he/him', 'he/him'),
     ('ne/nem', 'ne/nem'),
     ('she/her', 'she/her'),
     ('they/them', 'they/them'),

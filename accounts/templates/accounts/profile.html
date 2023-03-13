@@ -12,13 +12,47 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
+    {% if messages %}                
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>        
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}            
+      </div>
+  {% endif %}
+
     <section id="top" class="d-flex justify-content-center">
         <div class="content text-center">
-            <h1 class="d-flex justify-content-center my-0 mx-auto rounded-circle mb-3">N/A</h1>
-            <h2 class="">Set your fullname</h2>
-            <p class="text-muted username-pronoun mb-1"><span>@llanzkenneth</span> · <span>he/him</span></p>
-            <a href="https://www.youtube.com/" class="website" target="_blank">https://www.youtube.com/</a>
-            <p class="text-muted about mt-1">I like web</p>
+            
+            {% if request.user.firstname and not request.user.profile_picture %}
+                <h1 class="d-flex justify-content-center my-0 mx-auto rounded-circle mb-3">{{ request.user.firstname|slice:"1" }}</h1>                
+            {% elif request.user.firstname and request.user.profile_picture %}
+                <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture">                                  
+            {% else %}
+                <h1 class="d-flex justify-content-center my-0 mx-auto rounded-circle mb-3">N/A</h1>            
+            {% endif %}
+                
+            <h2>{{ request.user.firstname }} {{ request.user.lastname }}</h2>
+            <p class="text-muted username-pronoun mb-1">                
+                {% if request.user.username %}
+                    <span>{{ request.user.username }}</span>
+                {% endif %}           
+                
+                {% if request.user.pronouns %}
+                    · <span>{{ request.user.pronouns }}</span>                    
+                {% endif %}
+                                                                                 
+            </p>            
+            
+            {% if user_profile_object.website %}
+                <a href="{{ user_profile_object.website }}" class="website" target="_blank">{{ user_profile_object.website }}</a>                
+            {% endif %}
+                
+            
+            {% if user_profile_object.about %}
+                <p class="text-muted about mt-1">{{ user_profile_object.about }}</p>                
+            {% endif %}
+                
             <p class="text-muted following">0 following</p>
             <a href="{% url 'accounts:edit-profile' %}" class="edit-profile rounded-pill">Edit Profile</a>            
         </div>

@@ -13,7 +13,7 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
-    <form method="POST" class="container" id="profile-settings">
+    <form method="POST" class="container" id="profile-settings" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="remove-568">
             <h1>Public profile</h1>
@@ -21,8 +21,16 @@
         </div>
         <p class="label text-muted mb-0 remove-568">Photo</p>
         <div class="picture-container">
-            <h2 class="rounded-circle">L</h2>
-            {% render_field profile_form.profile_picture class='d-none' %}  
+            
+            {% if request.user.profile_picture %}
+                <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture">
+            {% else %}
+                <h2 class="rounded-circle">L</h2>
+            {% endif %}
+                
+            <div class="d-none">
+                {% render_field profile_form.profile_picture %}  
+            </div>
             <label for="{{ profile_form.profile_picture.id_for_label }}" class="change-button rounded-pill">Change</label>            
         </div>
         <div class="first-last-name mt-3">

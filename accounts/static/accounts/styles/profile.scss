@@ -15,6 +15,11 @@ a {
 }
 
 #top {
+    .profile-picture {
+        width: 100px;
+        margin-bottom: 1rem;
+        border-radius: 100%;
+    }
     h1 {
         background-color: #E9E9E9;
         width: 8rem;

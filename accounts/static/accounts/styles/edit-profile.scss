@@ -1,6 +1,10 @@
 #profile-settings {
     width: 550px;
     margin-top: 3rem;
+    .profile-picture {
+        width: 100px;
+        border-radius: 100%;
+    }
     h1 {
         font-size: 28px;
     }  
@@ -53,11 +57,11 @@
         border: none;
         padding: 10px 15px;
         margin-top: 3rem;
+        margin-bottom: 1rem;
     }
 }
 
-@media only screen and (max-width: 568px) {
-  
+@media only screen and (max-width: 568px) {  
     .remove-568 {
         display: none;
     }

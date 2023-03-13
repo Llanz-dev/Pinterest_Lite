@@ -10,4 +10,9 @@ class ProfileForm(ModelForm):
         model = UserProfile
         fields = ['profile_picture', 'email', 'age', 'firstname', 'lastname', 'about', 'pronouns', 'website', 'username']
         
-        
+    def has_changed(self):
+        changed_data = super().has_changed()
+        if not changed_data:
+            return False
+        else:
+            return True

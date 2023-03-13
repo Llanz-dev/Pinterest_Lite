@@ -1,9 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
 from .forms import SignUpForm, SearchForm
-from accounts.models import UserProfile
 from django.urls import reverse_lazy
 from django.views import View
 
@@ -41,7 +39,6 @@ class LandingPage(View):
         elif request.POST.get('submit') == 'sign_up':
             form = SignUpForm(request.POST)          
             if form.is_valid():
-                print('Success')
                 form.save()
                 return redirect('home:home')            
                             
