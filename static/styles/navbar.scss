@@ -1,0 +1,137 @@
+$grey-hover: rgb(224, 224, 224);
+
+nav {
+    height: 80px;
+
+    a {
+        margin: 0 .2rem;
+        padding: 1rem;    
+        border-radius: 100%;
+        font-weight: 500;
+
+    }
+
+    .pinterest-logo:hover {
+        background-color: $grey-hover;
+    }
+
+    .top-margin {
+        margin-top: 0;
+    } 
+    
+    .create h5 {
+        margin-bottom: 0;
+    }
+    
+    .logo {
+        width: 30px;
+    }
+    
+    .search-field {
+        background-color: #E9ECEF;
+        padding: .6rem .6rem .6rem 0;
+        margin-right: .5rem;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+        border-left: none;
+        &:hover {
+            background-color: $grey-hover;
+        }
+    }    
+    
+    .search-icon {
+        padding-left: .9rem;
+        border-right: none;
+        border-top-left-radius: 60px;
+        border-bottom-left-radius: 60px;
+    }
+    
+    .search-click {
+        border-bottom-left-radius: 60px;
+        border-top-left-radius: 60px;
+        padding: .6rem 1rem;
+        background-color: $grey-hover;
+    }
+    
+    .arrow-down img, .chat-icon img, .search-icon img {
+        width: 20px;
+    }
+    
+    .chat-icon {
+        margin: 0 .8rem;        
+    }
+
+    .profile {
+        background-color: #eeeeee;
+    }
+    
+    .arrow-down, .chat-icon, .profile {
+        width: 40px;
+        padding: 10px;
+        border-radius: 100%;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+            background-color: #E8E8E9;
+        }
+    }
+    
+    a:hover {
+        color: inherit;
+    }
+} 
+
+footer { 
+    display: none;
+}
+
+@media only screen and (max-width: 849px) {
+    nav {
+        .create {
+            display: none;
+        }  
+        a {
+            margin: 0 .1rem;
+            padding: .7rem;    
+        }      
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .top-nav {
+        display: none;
+    }
+
+    #top {
+        margin-top: 1rem;
+    }
+
+    // Bottom navbar.
+    footer {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        padding-top: .6rem;
+        background-color: white;
+      }
+
+      nav {
+        height: 45px;
+      }
+      
+      nav ul {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      
+      nav li {
+        flex: 1;
+        text-align: center;
+      }     
+}

@@ -1,0 +1,102 @@
+#profile-settings {
+  width: 550px;
+  margin-top: 3rem;
+}
+#profile-settings .profile-picture {
+  width: 100px;
+  border-radius: 100%;
+}
+#profile-settings h1 {
+  font-size: 28px;
+}
+#profile-settings .label {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+#profile-settings .change-button {
+  font-weight: 500;
+  padding: 0.8rem;
+  background-color: #EFEEEE;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: 0.1s;
+}
+#profile-settings .change-button:hover {
+  background-color: #e0e0e0;
+}
+#profile-settings .picture-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#profile-settings h2 {
+  margin: auto 0;
+  font-size: 26px;
+  width: 80px;
+  text-align: center;
+  background-color: #E9E9E9;
+  padding: 1.4rem;
+}
+#profile-settings .first-last-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#profile-settings textarea {
+  resize: none;
+}
+#profile-settings input[type=text], #profile-settings input[type=email], #profile-settings textarea, #profile-settings select {
+  border: 2px solid #CDCDCD;
+  border-radius: 16px;
+  padding: 10px 15px;
+}
+#profile-settings input[type=text]:hover, #profile-settings input[type=email]:hover, #profile-settings textarea:hover, #profile-settings select:hover {
+  border-color: #a0a0a0;
+}
+#profile-settings input[type=submit] {
+  border-radius: 24px;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 568px) {
+  .remove-568 {
+    display: none;
+  }
+  #profile-settings {
+    margin-top: 1rem;
+  }
+  #profile-settings .change-button {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  #profile-settings .picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #profile-settings h2 {
+    font-size: 40px;
+    width: 110px;
+    padding: 1.8rem;
+  }
+  #profile-settings .first-last-name {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .save-container {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (max-width: 440px) {
+  #profile-settings {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+  }
+}/*# sourceMappingURL=edit-profile.css.map */

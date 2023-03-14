@@ -1,0 +1,96 @@
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 5rem;
+}
+.flex-container .card {
+  margin: 1rem 0.2rem;
+  width: 14.8rem;
+  border: none;
+}
+.flex-container .card-body {
+  padding: 0.5rem 0 0 0.4rem;
+}
+.flex-container .card-text {
+  font-size: 14px;
+  color: #111111;
+  font-weight: 500;
+}
+.flex-container .card img {
+  border-radius: 18px;
+}
+
+@media only screen and (max-width: 910px) {
+  .flex-container {
+    margin: 0 4rem;
+  }
+  .flex-container .card {
+    width: 12.8rem;
+  }
+}
+@media only screen and (max-width: 780px) {
+  .flex-container {
+    margin: 0 3rem;
+  }
+  .flex-container .card {
+    width: 11.8rem;
+  }
+}
+@media only screen and (max-width: 705px) {
+  .flex-container {
+    margin: 0 5rem;
+  }
+  .flex-container .card {
+    width: 13rem;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .flex-container {
+    margin: 0 4rem;
+  }
+  .flex-container .card {
+    width: 12.8rem;
+  }
+}
+@media only screen and (max-width: 570px) {
+  .flex-container {
+    margin: 0 3rem;
+  }
+}
+@media only screen and (max-width: 542px) {
+  .flex-container {
+    margin: 0 2rem;
+  }
+}
+@media only screen and (max-width: 512px) {
+  .flex-container {
+    margin: 0 1rem;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .flex-container .card {
+    width: 11.8rem;
+  }
+}
+@media only screen and (max-width: 422px) {
+  .flex-container .card {
+    width: 10.8rem;
+  }
+}
+@media only screen and (max-width: 396px) {
+  .flex-container .card {
+    width: 10.5rem;
+  }
+}
+@media only screen and (max-width: 386px) {
+  .flex-container .card {
+    width: 9.5rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  nav a {
+    margin: 0 0;
+    padding: 0.5rem;
+  }
+}/*# sourceMappingURL=home_feed.css.map */

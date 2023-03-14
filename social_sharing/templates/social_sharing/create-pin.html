@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block file_css %}
+  <link rel="stylesheet" href="{% static 'home/styles/create-pin.css' %}">        
+{% endblock file_css %}
+    
+
+{% block title %} Pinterest {% endblock title %}
+    
+
+{% block content %}
+{% include 'sections/navbar.html' %}
+
+  <h2>Create a pin</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente ad quasi molestiae reiciendis ab dicta laudantium iste quia illum quas!</p>
+
+{% endblock content %}
+
+{% block file_script %}
+  <script src="{% static 'home/js/landing_page.js' %}"></script>   
+  <script src="{% static 'scripts/navbar.js' %}"></script>   
+{% endblock file_script %}

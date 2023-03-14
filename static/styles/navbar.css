@@ -1,0 +1,112 @@
+nav {
+  height: 80px;
+}
+nav a {
+  margin: 0 0.2rem;
+  padding: 1rem;
+  border-radius: 100%;
+  font-weight: 500;
+}
+nav .pinterest-logo:hover {
+  background-color: rgb(224, 224, 224);
+}
+nav .top-margin {
+  margin-top: 0;
+}
+nav .create h5 {
+  margin-bottom: 0;
+}
+nav .logo {
+  width: 30px;
+}
+nav .search-field {
+  background-color: #E9ECEF;
+  padding: 0.6rem 0.6rem 0.6rem 0;
+  margin-right: 0.5rem;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-left: none;
+}
+nav .search-field:hover {
+  background-color: rgb(224, 224, 224);
+}
+nav .search-icon {
+  padding-left: 0.9rem;
+  border-right: none;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+}
+nav .search-click {
+  border-bottom-left-radius: 60px;
+  border-top-left-radius: 60px;
+  padding: 0.6rem 1rem;
+  background-color: rgb(224, 224, 224);
+}
+nav .arrow-down img, nav .chat-icon img, nav .search-icon img {
+  width: 20px;
+}
+nav .chat-icon {
+  margin: 0 0.8rem;
+}
+nav .profile {
+  background-color: #eeeeee;
+}
+nav .arrow-down, nav .chat-icon, nav .profile {
+  width: 40px;
+  padding: 10px;
+  border-radius: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+nav .arrow-down:hover, nav .chat-icon:hover, nav .profile:hover {
+  background-color: #E8E8E9;
+}
+nav a:hover {
+  color: inherit;
+}
+
+footer {
+  display: none;
+}
+
+@media only screen and (max-width: 849px) {
+  nav .create {
+    display: none;
+  }
+  nav a {
+    margin: 0 0.1rem;
+    padding: 0.7rem;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .top-nav {
+    display: none;
+  }
+  #top {
+    margin-top: 1rem;
+  }
+  footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    padding-top: 0.6rem;
+    background-color: white;
+  }
+  nav {
+    height: 45px;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  nav li {
+    flex: 1;
+    text-align: center;
+  }
+}/*# sourceMappingURL=navbar.css.map */

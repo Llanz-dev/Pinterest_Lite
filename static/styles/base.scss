@@ -1,1 +1,20 @@
-$primaryColor: #E60222;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import './colors';
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $font-color;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.top-margin {
+    margin-top: 1.3rem;
+}

@@ -1,1 +1,29 @@
-/*# sourceMappingURL=base.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+.text-brownGold {
+  color: #C28B02;
+}
+
+.text-primaryColor {
+  color: #E70223;
+}
+
+.background-primaryColor {
+  background-color: #E70223;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #101110;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.top-margin {
+  margin-top: 1.3rem;
+}/*# sourceMappingURL=base.css.map */
