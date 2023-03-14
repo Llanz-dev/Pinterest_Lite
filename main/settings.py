@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'accounts',
-    'home'
+    'home',
+    'social_sharing'
 ]
 
 AUTH_USER_MODEL = 'accounts.UserProfile'

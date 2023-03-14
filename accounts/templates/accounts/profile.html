@@ -3,7 +3,6 @@
 {% load widget_tweaks %}
 
 {% block file_css %}
-    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">  
     <link rel="stylesheet" href="{% static 'accounts/styles/profile.css' %}">  
 {% endblock file_css %}
     
@@ -39,17 +38,15 @@
                 
                 {% if request.user.pronouns %}
                     · <span>{{ request.user.pronouns }}</span>                    
-                {% endif %}
-                                                                                 
+                {% endif %}                                                                                 
             </p>            
             
-            {% if user_profile_object.website %}
-                <a href="{{ user_profile_object.website }}" class="website" target="_blank">{{ user_profile_object.website }}</a>                
+            {% if request.user.website %}
+                <a href="{{ request.user.website }}" class="website" target="_blank">{{ request.user.website }}</a>                                            
             {% endif %}
                 
-            
-            {% if user_profile_object.about %}
-                <p class="text-muted about mt-1">{{ user_profile_object.about }}</p>                
+            {% if request.user.about %}
+                <p class="text-muted about mt-1">{{ request.user.about }}</p>                
             {% endif %}
                 
             <p class="text-muted following">0 following</p>

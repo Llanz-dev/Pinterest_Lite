@@ -1,9 +1,4 @@
-body {
-  color: #101110;
-}
-
 a {
-  padding: 1rem;
   font-weight: 500;
 }
 a:hover {
@@ -44,9 +39,19 @@ a:hover {
 #top .edit-profile:hover {
   background-color: #e0e0e0;
 }
+#top a {
+  padding: 1rem;
+}
 
 #middle {
   margin: 3rem 0;
+}
+#middle a {
+  border-radius: 15%;
+  padding: 0.5rem;
+}
+#middle a:hover {
+  background-color: #e9e9e9;
 }
 
 #bottom .flex-container {
@@ -90,7 +95,7 @@ a:hover {
   font-weight: 500;
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 665px) {
   #bottom .flex-container .card .left {
     width: 180px;
   }
@@ -101,7 +106,7 @@ a:hover {
     height: 150px;
   }
 }
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 584px) {
   #middle {
     margin: 2rem 0;
   }
