@@ -2,13 +2,15 @@ $grey-hover: rgb(224, 224, 224);
 
 nav {
     height: 80px;
-
+    background-color: #FFFEFE;
+    .row {
+        --bs-gutter-x: 0 !important;
+      }
     a {
         margin: 0 .2rem;
         padding: 1rem;    
         border-radius: 100%;
         font-weight: 500;
-
     }
 
     .pinterest-logo:hover {

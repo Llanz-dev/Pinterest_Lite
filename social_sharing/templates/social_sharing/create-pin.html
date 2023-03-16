@@ -3,7 +3,7 @@
 {% load widget_tweaks %}
 
 {% block file_css %}
-  <link rel="stylesheet" href="{% static 'home/styles/create-pin.css' %}">        
+  <link rel="stylesheet" href="{% static 'social_sharing/styles/create-pin.css' %}">        
 {% endblock file_css %}
     
 
@@ -11,14 +11,41 @@
     
 
 {% block content %}
-{% include 'sections/navbar.html' %}
-
-  <h2>Create a pin</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente ad quasi molestiae reiciendis ab dicta laudantium iste quia illum quas!</p>
-
+  {% include 'sections/navbar.html' %}
+  <div id="pin-creator-container">
+    <div class="row">
+      <div class="d-none">
+        {% render_field pin_form.image %}
+      </div>
+      <label for="{{ pin_form.image.id_for_label }}" class="col-5 upload-picture-col">
+        <div class="mt-5">
+          <img src="{% static 'icons/arrow-up.png' %}" alt="">
+          <h4 class="mt-4">Click to upload</h4>
+        </div>
+        <p>We recommend using high quality .jpg files less than 20MB</p>
+      </label>
+      <div class="col-7 form-col">
+        <div>
+          {% render_field pin_form.title class='title-field-custom' placeholder='Add your title' %}
+          <div class="d-flex align-items-center profile-name">
+            <div class="col-1">
+              <img src="{{ request.user.profile_picture.url }}" alt="" class="img-fluid rounded-circle">                        
+            </div>
+            <div class="mx-1"></div>
+            <div class="col-11">
+              <p style="font-size: 14px; font-weight: 500;" class="my-auto">{{ request.user.firstname }} {{ request.user.lastname }}</p>
+            </div>
+          </div>
+          {% render_field pin_form.description class='description-field-custom' placeholder='Tell everyone what your Pin is about' %}
+        </div>
+        <div>
+          {% render_field pin_form.destination_link class='link-field-custom' placeholder='Add a destination link' %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
 
 {% block file_script %}
-  <script src="{% static 'home/js/landing_page.js' %}"></script>   
   <script src="{% static 'scripts/navbar.js' %}"></script>   
 {% endblock file_script %}

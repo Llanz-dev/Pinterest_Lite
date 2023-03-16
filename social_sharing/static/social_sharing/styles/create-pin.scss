@@ -1,0 +1,76 @@
+body {
+    background-color: #E8E8E9;
+}
+
+#pin-creator-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+
+    .row {
+        background-color: #FFFEFE;
+        padding: 40px;
+        width: 880px;
+        border-radius: 16px;        
+    }
+
+    .upload-picture-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #EEEEEF;
+        min-height: 500px;
+        text-align: center;
+        cursor: pointer;
+        border-style: dashed;
+        border-color: #dbdbdb;
+    }
+
+    .upload-picture-col p {
+        margin: 2rem 0;
+        width: 200px;
+    }
+
+    .form-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .form-col .title-field-custom, .description-field-custom, .link-field-custom {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+        &:focus {
+            outline: none;
+            border: none;
+            border-bottom: 1px solid black;
+        }
+    }
+    
+    .form-col .title-field-custom {
+        font-size: 36px;
+        font-weight: 700;
+        margin-top: 1rem;
+    }
+
+    .form-col .profile-name {
+        margin: 2rem 0;
+    }
+
+    .form-col .description-field-custom, .link-field-custom {
+        font-size: 16px;
+        padding-bottom: 15px;
+    }
+
+    .form-col .description-field-custom {
+        font-size: 16px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+    }
+
+    .form-col .link-field-custom {
+        font-size: 18px;
+    }
+}

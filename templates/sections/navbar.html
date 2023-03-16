@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 
 <!-- Top navbar -->
-<nav class="top-nav row justify-content-sm-between mx-2">
+<nav class="top-nav row g-0 justify-content-sm-between">
     <div class="d-flex align-items-center">
       <a href="{% url 'home:home' %}" class="pinterest-logo">
         <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
@@ -13,6 +13,7 @@
       <a href="{% url 'social_sharing:pin-builder' %}" class="create mt-1">
         Create
       </a>
+
       <div class="w-75">
         <div class="input-group mb-3">
           <span class="input-group-text search-icon mt-3" id="search-icon">
