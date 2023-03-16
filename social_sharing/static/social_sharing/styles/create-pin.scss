@@ -7,13 +7,53 @@ body {
     display: flex;
     justify-content: center;
 
-    .row {
+    .content {
         background-color: #FFFEFE;
-        padding: 40px;
-        width: 880px;
         border-radius: 16px;        
+        padding: 45px;
+        width: 880px;
     }
 
+    .save-button-container {
+        position: relative;
+        height: 40px;
+    }
+
+    .save-button-container div {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 0;
+    }
+ 
+    select {
+        padding: 10px 90px 10px 5px;
+        height: 40px;
+        margin-right: 0;
+        border: 0;
+        background-color: #EEEFEE;
+        border-radius: 8px 0px 0px 8px;      
+        &:focus {
+            outline: none;
+        }
+    }
+      
+    option {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      
+    button {        
+        color:white;
+        border: 0;
+        width: 100px;
+        padding: 0px 14px;
+        margin: 0;
+        border-radius: 0px 8px 8px 0px;
+        height: 40px;
+        width: 60px;
+    }
+  
     .upload-picture-col {
         display: flex;
         flex-direction: column;
@@ -59,7 +99,7 @@ body {
         margin: 2rem 0;
     }
 
-    .form-col .description-field-custom, .link-field-custom {
+    .form-col .description-field-custom {
         font-size: 16px;
         padding-bottom: 15px;
     }

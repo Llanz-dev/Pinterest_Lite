@@ -13,7 +13,16 @@
 {% block content %}
   {% include 'sections/navbar.html' %}
   <div id="pin-creator-container">
-    <div class="row">
+    <form method="POST">
+    {% csrf_token %}
+    <div class="content">
+    <div class="save-button-container">
+      <div>
+        {% render_field pin_form.board class='board' %}
+        <button type="submit" class="background-primaryColor">Save</button>
+      </div>
+    </div>
+    <div class="row mt-4">
       <div class="d-none">
         {% render_field pin_form.image %}
       </div>
@@ -43,6 +52,8 @@
         </div>
       </div>
     </div>
+    </div>
+    </form>
   </div>
 {% endblock content %}
 
