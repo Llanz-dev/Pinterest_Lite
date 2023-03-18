@@ -16,42 +16,42 @@
     <form method="POST">
     {% csrf_token %}
     <div class="content">
-    <div class="save-button-container">
-      <div>
-        {% render_field pin_form.board class='board' %}
-        <button type="submit" class="background-primaryColor">Save</button>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="d-none">
-        {% render_field pin_form.image %}
-      </div>
-      <label for="{{ pin_form.image.id_for_label }}" class="col-5 upload-picture-col">
-        <div class="mt-5">
-          <img src="{% static 'icons/arrow-up.png' %}" alt="">
-          <h4 class="mt-4">Click to upload</h4>
-        </div>
-        <p>We recommend using high quality .jpg files less than 20MB</p>
-      </label>
-      <div class="col-7 form-col">
+      <section class="save-button-container">
         <div>
-          {% render_field pin_form.title class='title-field-custom' placeholder='Add your title' %}
-          <div class="d-flex align-items-center profile-name">
-            <div class="col-1">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="img-fluid rounded-circle">                        
-            </div>
-            <div class="mx-1"></div>
-            <div class="col-11">
-              <p style="font-size: 14px; font-weight: 500;" class="my-auto">{{ request.user.firstname }} {{ request.user.lastname }}</p>
-            </div>
+          {% render_field pin_form.board class='board' %}
+          <button type="submit" class="background-primaryColor">Save</button>
+        </div>
+      </section>
+      <section class="row mt-4">
+        <div class="d-none">
+          {% render_field pin_form.image %}
+        </div>
+        <label for="{{ pin_form.image.id_for_label }}" class="col-5 upload-picture-col">
+          <div class="mt-5">
+            <img src="{% static 'icons/arrow-up.png' %}" alt="">
+            <h4 class="mt-4">Click to upload</h4>
           </div>
-          {% render_field pin_form.description class='description-field-custom' placeholder='Tell everyone what your Pin is about' %}
+          <p>We recommend using high quality .jpg files less than 20MB</p>
+        </label>
+        <div class="col-7 form-col">
+          <div>
+            {% render_field pin_form.title class='title-field-custom' placeholder='Add your title' %}
+            <div class="d-flex align-items-center profile-name">
+              <div class="col-1">
+                <img src="{{ request.user.profile_picture.url }}" alt="" class="img-fluid rounded-circle">                        
+              </div>
+              <div class="mx-1"></div>
+              <div class="col-11">
+                <p style="font-size: 14px; font-weight: 500;" class="my-auto">{{ request.user.firstname }} {{ request.user.lastname }}</p>
+              </div>
+            </div>
+            {% render_field pin_form.description class='description-field-custom' placeholder='Tell everyone what your Pin is about' %}
+          </div>
+          <div>
+            {% render_field pin_form.destination_link class='link-field-custom' placeholder='Add a destination link' %}
+          </div>
         </div>
-        <div>
-          {% render_field pin_form.destination_link class='link-field-custom' placeholder='Add a destination link' %}
-        </div>
-      </div>
-    </div>
+      </section>
     </div>
     </form>
   </div>

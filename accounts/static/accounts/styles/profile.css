@@ -2,7 +2,7 @@ a {
   font-weight: 500;
 }
 a:hover {
-  color: #101110;
+  color: inherit;
 }
 
 #top .profile-picture {
@@ -104,6 +104,11 @@ a:hover {
   }
   #bottom .flex-container .card .right img {
     height: 150px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #bottom {
+    margin-bottom: 4rem;
   }
 }
 @media only screen and (max-width: 584px) {

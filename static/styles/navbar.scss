@@ -13,7 +13,7 @@ nav {
         font-weight: 500;
     }
 
-    .pinterest-logo:hover {
+    .pinterest-logo:hover, .home:hover, .create:hover {
         background-color: $grey-hover;
     }
 
@@ -74,7 +74,7 @@ nav {
         text-align: center;
         cursor: pointer;
         &:hover {
-            background-color: #E8E8E9;
+            background-color: $grey-hover;
         }
     }
     
@@ -99,7 +99,7 @@ footer {
     }
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 600px) {
     .top-nav {
         display: none;
     }
