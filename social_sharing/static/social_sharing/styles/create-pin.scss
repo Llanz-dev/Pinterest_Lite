@@ -54,6 +54,14 @@ body {
         height: 40px;
         width: 60px;
     }
+
+    #image-preview {
+        display: none;
+    }
+
+    #pin-image {
+        width: 271px;
+    }
   
     .upload-picture-col {
         display: flex;
@@ -61,7 +69,7 @@ body {
         align-items: center;
         justify-content: space-between;
         background-color: #EEEEEF;
-        min-height: 500px;
+        height: 510px;
         text-align: center;
         cursor: pointer;
         border-style: dashed;
@@ -158,7 +166,7 @@ body {
         }
 
         .upload-picture-col {
-            min-height: 400px;
+            height: 400px;
             width: 300px;
         }
 

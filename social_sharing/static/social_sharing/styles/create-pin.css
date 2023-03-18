@@ -49,13 +49,19 @@ body {
   height: 40px;
   width: 60px;
 }
+#pin-creator-container #image-preview {
+  display: none;
+}
+#pin-creator-container #pin-image {
+  width: 271px;
+}
 #pin-creator-container .upload-picture-col {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: #EEEEEF;
-  min-height: 500px;
+  height: 510px;
   text-align: center;
   cursor: pointer;
   border-style: dashed;
@@ -133,7 +139,7 @@ body {
     margin: 0 auto;
   }
   #pin-creator-container .upload-picture-col {
-    min-height: 400px;
+    height: 400px;
     width: 300px;
   }
   #pin-creator-container .col-7 {

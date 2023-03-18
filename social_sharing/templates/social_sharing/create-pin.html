@@ -26,7 +26,10 @@
         <div class="d-none">
           {% render_field pin_form.image %}
         </div>
-        <label for="{{ pin_form.image.id_for_label }}" class="col-5 upload-picture-col">
+        <div id="image-preview" class="col-5">
+          <img src="" alt="" id="pin-image">
+        </div>
+        <label for="{{ pin_form.image.id_for_label }}" class="col-5 upload-picture-col" id="{{ pin_form.image.id_for_label }}">
           <div class="mt-5">
             <img src="{% static 'icons/arrow-up.png' %}" alt="">
             <h4 class="mt-4">Click to upload</h4>
@@ -59,4 +62,5 @@
 
 {% block file_script %}
   <script src="{% static 'scripts/navbar.js' %}"></script>   
+  <script src="{% static 'social_sharing/js/create-pin.js' %}"></script>   
 {% endblock file_script %}
