@@ -12,7 +12,7 @@ class Board(models.Model):
 class Pin(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
-    destination_link = models.URLField(max_length=200)
+    destination_link = models.URLField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='pins')
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     

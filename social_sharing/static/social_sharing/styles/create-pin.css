@@ -7,6 +7,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  /* Show title attribute instantly on hover */
 }
 #pin-creator-container .content {
   background-color: #FFFEFE;
@@ -35,6 +36,9 @@ body {
 #pin-creator-container select:focus {
   outline: none;
 }
+#pin-creator-container *[title] {
+  transition: none;
+}
 #pin-creator-container option {
   margin-bottom: 0;
   padding-bottom: 0;
@@ -51,11 +55,22 @@ body {
 }
 #pin-creator-container #image-preview {
   display: none;
+  position: relative;
+}
+#pin-creator-container #delete-button {
+  cursor: pointer;
+  padding: 12px;
+  position: absolute;
+  background-color: #FFFEFE;
+  border-radius: 100%;
+  top: 50%;
+  left: 34px;
 }
 #pin-creator-container #pin-image {
   width: 271px;
 }
 #pin-creator-container .upload-picture-col {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,10 +126,16 @@ body {
   #pin-creator-container .content {
     width: 700px;
   }
+  #pin-creator-container #pin-image {
+    width: 241px;
+  }
 }
 @media only screen and (max-width: 735px) {
   #pin-creator-container .content {
     width: 600px;
+  }
+  #pin-creator-container #pin-image {
+    width: 211px;
   }
 }
 @media only screen and (max-width: 640px) {
@@ -130,6 +151,12 @@ body {
   #pin-creator-container .save-button-container div {
     justify-content: center;
     position: static;
+  }
+  #pin-creator-container #image-preview {
+    width: 71.66666667%;
+  }
+  #pin-creator-container #pin-image {
+    width: 100%;
   }
   #pin-creator-container .row {
     flex-direction: column;
@@ -148,6 +175,7 @@ body {
   }
   #pin-creator-container .link-field-custom {
     margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 }
 @media only screen and (max-width: 500px) {
