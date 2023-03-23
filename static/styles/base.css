@@ -17,6 +17,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   color: #101110;
+  background-color: #FEFEFF;
 }
 
 a {
@@ -25,5 +26,5 @@ a {
 }
 
 .top-margin {
-  margin-top: 0.5;
+  margin-top: 0;
 }/*# sourceMappingURL=base.css.map */

@@ -7,7 +7,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* Show title attribute instantly on hover */
 }
 #pin-creator-container .content {
   background-color: #FFFEFE;
@@ -35,9 +34,6 @@ body {
 }
 #pin-creator-container select:focus {
   outline: none;
-}
-#pin-creator-container *[title] {
-  transition: none;
 }
 #pin-creator-container option {
   margin-bottom: 0;

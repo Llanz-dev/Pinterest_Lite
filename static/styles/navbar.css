@@ -24,6 +24,7 @@ nav .logo {
   width: 30px;
 }
 nav .search-field {
+  border: 0 !important;
   background-color: #E9ECEF;
   padding: 0.6rem 0.6rem 0.6rem 0;
   margin-right: 0.5rem;
@@ -35,6 +36,7 @@ nav .search-field:hover {
   background-color: rgb(224, 224, 224);
 }
 nav .search-icon {
+  border: 0 !important;
   padding-left: 0.9rem;
   border-right: none;
   border-top-left-radius: 60px;

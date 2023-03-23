@@ -38,16 +38,11 @@ body {
             outline: none;
         }
     }
-
-    /* Show title attribute instantly on hover */
-*[title] {
-    transition: none;
-}
       
     option {
         margin-bottom: 0;
         padding-bottom: 0;
-      }
+    }
       
     button {        
         color:white;

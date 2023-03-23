@@ -3,9 +3,11 @@ $grey-hover: rgb(224, 224, 224);
 nav {
     height: 80px;
     background-color: #FFFEFE;
+    
     .row {
         --bs-gutter-x: 0 !important;
-      }
+    }
+
     a {
         margin: 0 .2rem;
         padding: 1rem;    
@@ -30,6 +32,7 @@ nav {
     }
     
     .search-field {
+        border: 0 !important;
         background-color: #E9ECEF;
         padding: .6rem .6rem .6rem 0;
         margin-right: .5rem;
@@ -42,6 +45,7 @@ nav {
     }    
     
     .search-icon {
+        border: 0 !important;
         padding-left: .9rem;
         border-right: none;
         border-top-left-radius: 60px;

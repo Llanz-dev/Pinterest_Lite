@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from home.forms import SearchForm
-from .forms import PinForm
+from .forms import PinForm, BoardForm
 
 # Create your views here.
 def pin_builder(request):

@@ -10,6 +10,7 @@ if (is_user_logged_in === 'AnonymousUser') {
         form = 'log-in';
         form_display(form, 35);
     }
+
     sign_up.onclick = () => {
         form = 'sign-up';
         form_display(form, 35);
@@ -86,9 +87,5 @@ if (is_user_logged_in === 'AnonymousUser') {
     login_form_link.onclick = () => {
         login_display(35);
         signup_container.style.display = 'none';
-    }
-
-    
+    }    
 }
-
-

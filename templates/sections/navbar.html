@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 
 <!-- Top navbar -->
-<nav class="top-nav row g-0 justify-content-sm-between">
+<nav class="top-nav row g-0 justify-content-sm-between" id="top-nav">
     <div class="d-flex align-items-center">
       <a href="{% url 'home:home' %}" class="pinterest-logo">
         <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
@@ -13,23 +13,22 @@
       <a href="{% url 'social_sharing:pin-builder' %}" class="create mt-1">
         Create
       </a>
-
       <div class="w-75">
         <div class="input-group mb-3">
           <span class="input-group-text search-icon mt-3" id="search-icon">
             <img src="{% static 'icons/search.png' %}" alt="food image">
           </span>
-          {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" %}
+          {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" tabindex="2" %}
         </div>
       </div>
-      <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1">
+      <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">
         L
       </a>
       <a href="#chat" class="col-1 chat-icon mt-1">
-        <img src="{% static 'icons/chat-bubble.png' %}" alt=""> 
+        <img src="{% static 'icons/chat-bubble.png' %}" alt="chat icon"> 
       </a>
       <a href="#settings" class="col-1 arrow-down mt-1">
-        <img src="{% static 'icons/arrow-down.png' %}" alt="">          
+        <img src="{% static 'icons/arrow-down.png' %}" alt="arrow down icon">          
       </a>
     </div>
 </nav>
