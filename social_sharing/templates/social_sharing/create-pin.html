@@ -41,8 +41,12 @@
           <div>
             {% render_field pin_form.title class='title-field-custom' placeholder='Add your title' %}
             <div class="d-flex align-items-center profile-name">
-              <div class="col-1">
-                <img src="{{ request.user.profile_picture.url }}" alt="" class="img-fluid rounded-circle">                        
+              <div class="col-1">                
+                {% if request.user.profile_picture %}
+                  <img src="{{ request.user.profile_picture.url }}" class="img-fluid rounded-circle">                                        
+                {% else %}
+                  <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>                  
+                {% endif %}                  
               </div>
               <div class="mx-1"></div>
               <div class="col-11">

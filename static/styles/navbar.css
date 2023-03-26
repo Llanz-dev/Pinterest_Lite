@@ -57,6 +57,13 @@ nav .chat-icon {
 nav .profile {
   background-color: #eeeeee;
 }
+nav img.profile-picture {
+  width: 25px;
+  border-radius: 100%;
+}
+nav a.profile-link {
+  padding: 8px;
+}
 nav .arrow-down, nav .chat-icon, nav .profile {
   width: 40px;
   padding: 10px;
@@ -73,6 +80,10 @@ nav a:hover {
 
 footer {
   display: none;
+}
+footer img.profile-picture {
+  width: 28px;
+  border-radius: 100%;
 }
 
 @media only screen and (max-width: 849px) {

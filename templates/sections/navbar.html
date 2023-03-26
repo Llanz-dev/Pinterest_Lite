@@ -21,9 +21,16 @@
           {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" tabindex="2" %}
         </div>
       </div>
-      <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">
-        L
+      
+      {% if request.user.profile_picture %}
+      <a href="{% url 'accounts:profile' %}" class="mt-1 text-center profile-link">
+        <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture" id="profile">                
       </a>
+      {% else %}
+        <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">
+          L
+        </a>
+      {% endif %}              
       <a href="#chat" class="col-1 chat-icon mt-1">
         <img src="{% static 'icons/chat-bubble.png' %}" alt="chat icon"> 
       </a>
@@ -40,7 +47,13 @@
       <li><a href="{% url 'home:home' %}"><img src="{% static 'icons/home-37.png' %}" alt="home icon"></a></li>
       <li><a href="#search"><img src="{% static 'icons/search-37.png' %}" alt="search icon"></a></li>
       <li><a href="#chat"><img src="{% static 'icons/chat-bubble-37.png' %}" alt="message icon"></a></li>
-      <li><a href="{% url 'accounts:profile' %}"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
+      
+      {% if request.user.profile_picture %}
+        <li><a href="{% url 'accounts:profile' %}"><img src="{{ request.user.profile_picture.url }}" alt="profile icon" class="profile-picture"></a></li>
+      {% else %}  
+        <li><a href="{% url 'accounts:profile' %}"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
+      {% endif %}
+        
     </ul>
   </nav>
 </footer>

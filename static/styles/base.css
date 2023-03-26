@@ -27,4 +27,13 @@ a {
 
 .top-margin {
   margin-top: 0;
+}
+
+h2.first-letter {
+  margin: auto 0;
+  font-size: 26px;
+  width: 80px;
+  text-align: center;
+  background-color: #E9E9E9;
+  padding: 1.4rem;
 }/*# sourceMappingURL=base.css.map */

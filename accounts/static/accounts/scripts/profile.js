@@ -35,6 +35,7 @@ create_board_button.addEventListener('click', () => {
 
   // Set the profile icon to match the dark background
   profile.style.backgroundColor = '#333333';
+  profile.style.filter = 'brightness(35%)';
 
   // Remember that the container was opened by a button click
   isOpenedByButton = true;
@@ -60,6 +61,7 @@ function handleClickOutside(event) {
 
     // Reset the profile icon to match the light background
     profile.style.backgroundColor = '#eeeeee';
+    profile.style.filter = 'brightness(100%)';
   }
 
   // Reset the flag that indicates whether the container was opened by a button click

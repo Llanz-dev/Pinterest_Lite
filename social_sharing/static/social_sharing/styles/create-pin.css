@@ -24,6 +24,11 @@ body {
   position: absolute;
   right: 0;
 }
+#pin-creator-container h2.first-letter {
+  font-size: 24px;
+  width: 60px;
+  padding: 1rem;
+}
 #pin-creator-container select {
   padding: 10px 90px 10px 5px;
   height: 40px;
