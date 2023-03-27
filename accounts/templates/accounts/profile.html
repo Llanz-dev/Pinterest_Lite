@@ -21,8 +21,10 @@
   {% endif %}
 
 
-<section id="create-board-container">
+<form method="POST" id="create-board-container">
+    {% csrf_token %}
     <h2>Create board</h2>
+    
     <div class="my-2">
         <small class="text-muted">Name</small>
         {% render_field board_form.name class='form-control' %}
@@ -40,9 +42,9 @@
     <div class="button-div d-flex justify-content-end">
         <button type="submit" class="text-white background-primaryColor">Create</button>
     </div>
-</section>
+</form>
 
-<div id="whole-content">
+<div id="whole-content">    
     <section id="top" class="d-flex justify-content-center">
         <div class="content text-center">            
             {% if request.user.firstname and not request.user.profile_picture %}

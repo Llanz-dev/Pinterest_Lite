@@ -14,9 +14,9 @@ class PinForm(forms.ModelForm):
 class BoardForm(forms.ModelForm):
     class Meta:
         model = Board
-        fields = '__all__'   
+        # fields = '__all__' 
+        fields = ['name', 'is_secret']
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Like "Places to Go" or "Recipes to Make"'}),
-    
         }
         

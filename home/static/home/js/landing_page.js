@@ -38,7 +38,7 @@ if (is_user_logged_in === 'AnonymousUser') {
         modal.style.backgroundColor = 'white';
         document.body.style.position = "fixed";
         document.body.style.overflowY = "scroll";
-        document.body.style.backgroundColor = "gray";
+        document.body.style.backgroundColor = "#666767";
         weeknight_dinner.style.filter = "brightness(" + brightness_percent + "%)";
 
     }
@@ -51,7 +51,7 @@ if (is_user_logged_in === 'AnonymousUser') {
         modal.style.backgroundColor = 'white';
         document.body.style.position = "fixed";
         document.body.style.overflowY = "scroll";
-        document.body.style.backgroundColor = "gray";
+        document.body.style.backgroundColor = "#666767";
         weeknight_dinner.style.filter = "brightness(" + brightness_percent + "%)";
     }
 

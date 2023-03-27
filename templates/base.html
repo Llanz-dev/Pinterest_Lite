@@ -23,5 +23,10 @@
     {% block file_script %}
 
     {% endblock file_script %}
+    
+    {% if request.user.is_authenticated %}
+        <script src="{% static 'scripts/navbar.js' %}"></script>           
+    {% endif %}
+        
 </body>
 </html>

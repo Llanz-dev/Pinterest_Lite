@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block file_css %}
+{% endblock file_css %}
+    
+{% block title %} Pinterest {% endblock title %}
+
+
+{% block content %}
+{% include 'sections/navbar.html' %}
+
+    <h1>Specific board</h1>
+    <h3>{{ board_name }}</h3>
+{% endblock content %}
+    
