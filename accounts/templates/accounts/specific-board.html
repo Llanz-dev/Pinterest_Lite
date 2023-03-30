@@ -2,16 +2,52 @@
 {% load static %}
 {% load widget_tweaks %}
 
+
 {% block file_css %}
+    <link rel="stylesheet" href="{% static 'accounts/styles/specific-board.css' %}">  
+    <link rel="stylesheet" href="{% static 'accounts/styles/plus-button.css' %}">  
 {% endblock file_css %}
+
     
 {% block title %} Pinterest {% endblock title %}
 
 
 {% block content %}
-{% include 'sections/navbar.html' %}
+    {% include 'sections/navbar.html' %}
 
-    <h1>Specific board</h1>
-    <h3>{{ board_name }}</h3>
+    <div id="whole-content">
+        <h1 class="text-center mt-3">{{ board_name }}</h1>
+        <h4 class="pins-count">0 Pins</h4>
+        <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>
+        <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
+                <a href="#suggest" class="ideas-board">
+                    <h4>Find some ideas for this board:</h4>
+                    <img src="{% static 'images/animals/2-cats.jpg' %}" alt="">
+                    <img src="{% static 'images/anime/boruto-sarada.jpg' %}" alt="">
+                    <img src="{% static 'images/anime/kawaki2.jpg' %}" alt="">
+                    <img src="{% static 'images/furniture/backyard-patio.jpg' %}" alt="">
+                    <img src="{% static 'images/travel/tuscany.jpg' %}" alt="">                                       
+                </a>
+                <div class="plus-container" id="plus-container">
+                    <small class="text-muted">Create</small>
+                    <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
+                </div>
+        </section>
+        <div class="for-mobile-container" id="for-mobile">
+            <small class="text-muted">Create</small>
+            <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
+        </div>
+        <section class="plus-icon">
+            <img src="{% static 'icons/plus-40.png' %}" alt="" id="plus-button" class="plus-button" tabindex="0">   
+            <img src="{% static 'icons/plus-40.png' %}" alt="" id="for-mobile-button" class="for-mobile-button" tabindex="0">      
+        </section>
+        </section>
+    </div>
 {% endblock content %}
     
+
+{% block file_script %}
+    <script src="{% static 'accounts/scripts/specific-board.js' %}"></script> 
+    <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
+{% endblock file_script %}
+        

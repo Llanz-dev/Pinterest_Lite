@@ -1,5 +1,3 @@
-
-// For search field.
 const search_field = document.getElementById('search-field');
 const search_icon = document.getElementById('search-icon');
 

@@ -326,7 +326,5 @@
 {% block file_script %}  
   {% if not request.user.is_authenticated %}
     <script src="{% static 'home/js/landing_page.js' %}"></script>       
-  {% else %}
-    <script src="{% static 'scripts/navbar.js' %}"></script>   
   {% endif %}    
 {% endblock file_script %}

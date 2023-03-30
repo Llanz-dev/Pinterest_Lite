@@ -1,0 +1,92 @@
+h1 {
+    font-size: 36px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.pins-count {
+    margin: 5rem 0 5rem 2rem;
+}
+
+#message {
+    margin-bottom: 6rem;
+}
+
+.ideas-board {
+    position: relative;
+    padding: 1.3rem;
+    border-radius: 16px;
+    img {
+        width: 150px;
+    }
+    &:hover {
+        background-color: #E8E9E8;
+    }
+}
+
+.plus-icon {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.show {
+    display: block !important;
+ 
+}
+
+#ideas-board-container {
+    position: relative;
+}
+
+.plus-container {
+    position: absolute;
+    bottom: 0px;
+}
+
+#for-mobile-button {
+    display: none;
+}
+
+@media only screen and (max-width: 852px) {
+    .ideas-board {   
+        img {
+            width: 120px;
+        }
+    }
+}
+
+@media only screen and (max-width: 689px) {
+    #ideas-board-container {
+        display: none !important;
+    }  
+
+    .plus-button {
+        display: none !important;
+    }
+    .plus-icon {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    #for-mobile-button {
+        display: block;
+    }    
+    .for-mobile-container {
+        position: fixed;
+        bottom: 120px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .plus-icon {
+        bottom: 60px;
+    }
+   
+}

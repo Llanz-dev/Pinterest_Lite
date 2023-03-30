@@ -1,6 +1,4 @@
 // Get DOM elements
-const plus_button = document.getElementById('plus-button');
-const plus_container = document.getElementById('plus-container');
 const whole_content = document.getElementById('whole-content');
 const top_nav = document.getElementById('top-nav');
 const create_board_button = document.getElementById('create-board-button');
@@ -10,16 +8,14 @@ const profile = document.getElementById('profile');
 // Keep track of whether the "create board" container was opened by a button click
 let isOpenedByButton = false;
 
-// Handle click events on the plus button
-plus_button.addEventListener('click', () => {
-  plus_container.classList.toggle('show');
-  plus_button.classList.toggle('plus-button-click');
-});
-
 // Handle click events on the create board button
 create_board_button.addEventListener('click', () => {
   // Set the body styles to disable scrolling and darken the background
   document.body.style.position = 'fixed';
+  document.body.style.top = '0';
+  document.body.style.bottom = '0';
+  document.body.style.height = '100%';
+  document.body.style.width = '100%';
   document.body.style.backgroundColor = '#333333';
   document.body.style.pointerEvents = 'none';
   document.body.style.overflowY = 'scroll';
