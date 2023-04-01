@@ -5,5 +5,5 @@ app_name = 'accounts'
 urlpatterns = [
     path('', profile, name='profile'),
     path('edit-profile/', edit_profile, name='edit-profile'),
-    path('<str:board_name>/', specific_board, name='specific-board'),
+    path('<slug:board_slug>/', specific_board, name='specific-board'),
 ]

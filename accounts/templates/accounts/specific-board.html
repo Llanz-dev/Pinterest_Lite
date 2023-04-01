@@ -14,10 +14,14 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
-
     <div id="whole-content">
-        <h1 class="text-center mt-3">{{ board_name }}</h1>
+        <h1 class="text-center mt-3">{{ board_slug }}</h1>
         <h4 class="pins-count">0 Pins</h4>
+        
+        {% for pin in pins %}
+            <h4>{{ pin.title }}</h4>
+        {% endfor %}
+            
         <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>
         <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
                 <a href="#suggest" class="ideas-board">

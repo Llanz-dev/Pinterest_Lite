@@ -13,7 +13,7 @@
 {% block content %}
   {% include 'sections/navbar.html' %}
   <div id="pin-creator-container">
-    <form method="POST">
+    <form method="POST" id="create-pin-form" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="content">
       <section class="save-button-container">
@@ -23,8 +23,9 @@
         </div>
       </section>
       <section class="row mt-4">
-        <div class="d-none">
-          {% render_field pin_form.image %}
+        <div class="dis">
+          <label for="{{ pin_form.image.id_for_label }}">Image:</label>
+          {% render_field pin_form.image  %}
         </div>
         <div id="image-preview" class="col-5">
           <img src="{% static 'icons/trash-20.png' %}" alt="" id="delete-button" title="Delete image">
@@ -32,8 +33,8 @@
         </div>
         <label for="{{ pin_form.image.id_for_label }}" class="col-5 upload-picture-col" id="{{ pin_form.image.id_for_label }}">
           <div class="mt-5">
-            <img src="{% static 'icons/arrow-up.png' %}" alt="">
-            <h4 class="mt-4">Click to upload</h4>
+            <img src="{% static 'icons/arrow-up.png' %}" alt="" id="arrow-to-priority">
+            <h4 class="mt-4" id="upload-text">Click to upload</h4>
           </div>
           <p>We recommend using high quality .jpg files less than 20MB</p>
         </label>

@@ -5,6 +5,9 @@ class PinForm(forms.ModelForm):
     class Meta:
         model = Pin
         fields = '__all__'
+        widgets = {
+            'image': forms.ClearableFileInput(attrs={'required': False})
+        }
         
     def __init__(self, *args, **kwargs):
         super(PinForm, self).__init__(*args, **kwargs)
@@ -14,7 +17,6 @@ class PinForm(forms.ModelForm):
 class BoardForm(forms.ModelForm):
     class Meta:
         model = Board
-        # fields = '__all__' 
         fields = ['name', 'is_secret']
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Like "Places to Go" or "Recipes to Make"'}),

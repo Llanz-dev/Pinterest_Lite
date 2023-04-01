@@ -1,13 +1,31 @@
 // Get the necessary DOM elements
-const image_input = document.getElementById('id_image');
+const createPinForm = document.getElementById("create-pin-form");
+const imageInput = document.getElementById('id_image');
+const uploadText = document.getElementById('upload-text');
 const pin_image = document.getElementById('pin-image');
 const picture_col = document.getElementsByClassName('upload-picture-col')[0];
 const link_field_custom = document.getElementById('link-field-custom');
 const image_preview = document.getElementById('image-preview');
 const delete_button = document.getElementById('delete-button');
 
+createPinForm.addEventListener('submit', (event) => {
+  // Get the "fileInput" element
+  const fileInput = document.getElementById('id_image');
+  
+  // Check if the fileInput value is empty
+  if (fileInput.value === '') {
+    // If it is empty, prevent the default form submission
+    event.preventDefault();
+    // Change the display to error message
+    document.getElementById('arrow-to-priority').src = "/static/icons/high-priority-37.png"
+    console.log(picture_col);
+    picture_col.style.backgroundColor = '#FFE1E0';
+    picture_col.style.borderColor = '#CD0200';
+    uploadText.textContent = 'An image is required to create a Pin';
+  }
+});
 // Add an event listener to the image input
-image_input.addEventListener('change', function() {
+imageInput.addEventListener('change', function() {
   // When a file is selected, create a FileReader object
   const file = this.files[0];
   const reader = new FileReader();
