@@ -79,9 +79,7 @@
         </div>
     </section>
     <section id="middle" class="d-flex justify-content-center">
-        <a href="#created">Created</a>
-        <div class="mx-3"></div>
-        <a href="#saved">Saved</a>
+        <p>Saved</p>
     </section>
     <section class="text-end">
         <img src="{% static 'icons/plus-40.png' %}" alt="" id="plus-button" class="plus-button" tabindex="0">      
@@ -100,8 +98,8 @@
                             <img src="{% static 'images/anime/mitsuki.jpg' %}" class="card-img-top">
                         </div>
                         <div class="right d-flex flex-column justify-content-between">
-                            <img src="{% static 'images/anime/ino.jpg' %}" class="card-img-top">
-                            <img src="{% static 'images/anime/boruto.jpg' %}" class="card-img-top">
+                            <img src="{% static 'images/anime/ino.jpg' %}" class="card-img-top top">
+                            <img src="{% static 'images/anime/boruto.jpg' %}" class="card-img-top bottom">
                         </div>
                     </div>
                     <div class="card-body">
@@ -109,24 +107,26 @@
                         <p class="card-text text-muted">25 pins</p>
                     </div>
                 </div>   
-            {% endif %}
-            
+            {% endif %}                          
             {% if user_boards.exists %}         
-                {% for board in user_boards %}                                              
-                    <a href="{% url 'accounts:specific-board' board.slug %}" class="card text-center">                
-                        <div class="row justify-content-center">
-                            <div class="left">
-                                <img src="{% static 'images/anime/orochimaru.jpg' %}" class="card-img-top">
-                            </div>
-                            <div class="right d-flex flex-column justify-content-between">
-                                <img src="{% static 'images/anime/sakura.jpg' %}" class="card-img-top">
-                                <img src="{% static 'images/anime/tobirama.jpg' %}" class="card-img-top">
-                            </div>
+                {% for board, pin_count in board_pins %}
+                    <a href="{% url 'accounts:specific-board' board.slug %}" class="card text-center">
+                      <div class="row justify-content-center">
+                        <div class="left">                            
+                            {% if board.is_secret %}                                
+                                <img src="{% static 'icons/lock-25.png' %}" class="lock-icon">
+                            {% endif %}                                
+                            <img src="{% static 'images/anime/orochimaru.jpg' %}" class="card-img-top">
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ board.name }}</h5>
-                            <p class="card-text text-muted">3 pins</p>
+                        <div class="right d-flex flex-column justify-content-between">
+                          <img src="{% static 'images/anime/sakura.jpg' %}" class="card-img-top top">
+                          <img src="{% static 'images/anime/tobirama.jpg' %}" class="card-img-top bottom">
                         </div>
+                      </div>
+                      <div class="card-body">
+                          <h5 class="card-title">{{ board.name }}</h5>                
+                          <p class="card-text text-muted">{{ pin_count }} pins</p>
+                      </div>
                     </a> 
                 {% endfor %}
             {% endif %}

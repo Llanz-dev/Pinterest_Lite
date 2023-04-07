@@ -23,9 +23,9 @@
       </div>
       
       {% if request.user.profile_picture %}
-      <a href="{% url 'accounts:profile' %}" class="mt-1 text-center profile-link">
-        <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture" id="profile">                
-      </a>
+        <a href="{% url 'accounts:profile' %}" class="mt-1 text-center profile-link">
+          <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture" id="profile">                
+        </a>
       {% else %}
         <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">
           L

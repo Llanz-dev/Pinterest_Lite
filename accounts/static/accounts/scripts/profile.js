@@ -25,13 +25,13 @@ create_board_button.addEventListener('click', () => {
   search_field.style.backgroundColor = '#333333';
   search_icon.style.backgroundColor = '#333333';
 
-  // Show the create board container and darken the rest of the page
-  create_board_container.style.display = 'block';
-  whole_content.style.filter = 'brightness(35%)';
-
   // Set the profile icon to match the dark background
   profile.style.backgroundColor = '#333333';
   profile.style.filter = 'brightness(35%)';
+
+  // Show the create board container and darken the rest of the page
+  create_board_container.style.display = 'block';
+  whole_content.style.filter = 'brightness(35%)';
 
   // Remember that the container was opened by a button click
   isOpenedByButton = true;

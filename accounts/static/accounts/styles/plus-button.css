@@ -5,6 +5,10 @@ a:hover {
   color: inherit;
 }
 
+.show {
+  display: block !important;
+}
+
 .plus-button, .for-mobile-button {
   padding: 5px;
   border-radius: 100%;
@@ -12,6 +16,10 @@ a:hover {
 }
 .plus-button:hover, .for-mobile-button:hover {
   background-color: #ebebeb;
+}
+
+.plus-button {
+  margin-right: 0.5rem;
 }
 
 .plus-button-click {

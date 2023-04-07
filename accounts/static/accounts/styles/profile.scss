@@ -3,7 +3,9 @@ $grey-hover: #e0e0e0;
 
 #top {
     .profile-picture {
-        width: 100px;
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
         margin-bottom: 1rem;
         border-radius: 100%;
     }
@@ -39,10 +41,6 @@ $grey-hover: #e0e0e0;
     a {
         padding: 1rem;
     }
-}
-
-.show {
-    display: block !important;
 }
 
 .plus-container {
@@ -112,12 +110,10 @@ $grey-hover: #e0e0e0;
 
 #middle {
     margin: 3rem 0 0;
-    a {
-        border-radius: 15%;
-        padding: .5rem;
-        &:hover {
-            background-color: #e9e9e9;
-        }
+    p {
+        font-weight: 500; 
+        border-bottom: 3px solid black;     
+        border-radius: 1.5px;
     }
 }
 
@@ -133,23 +129,50 @@ $grey-hover: #e0e0e0;
             padding-right: 0;
         }
         .card {
-            margin: 1rem 1rem;
+            max-width: 252px;
+            margin: 1.2rem;
             border: none;
             background-color: transparent;
         }
         .card .left {
-            width: 200px;
+            width: unset;
+            margin-right: 3px; 
+            position: relative;         
         }
         .card .right {
-            width: 100px;            
+            width: unset;  
         }
-        .card .left img {
+        .card .left img.lock-icon {
+            position: absolute;
+            top: 7px;
+            left: 7px;
+            background-color: #FEFFFE;
+            padding: 3px;
+            border-radius: 100%;
+        }
+        .card .left img.top {
+            border-top-left-radius: 10px;
+        }
+        .card .left img.bottom {
+            border-bottom-left-radius: 10px;
+        }
+        .card .left img.card-img-top {
+            width: 157px;
+            height: 157px;
+            object-fit: cover;    
             border-bottom-left-radius: 10px;
             border-top-left-radius: 10px;
         }
-        .card .right img {
+        .card .right img.card-img-top {
+            width: 76.66px;
+            height: 76.5px;
+            object-fit: cover;
+        }
+        .card .right img.top {
+            border-top-right-radius: 10px; 
+        }
+        .card .right img.bottom {
             border-bottom-right-radius: 10px;
-            border-top-right-radius: 10px;
         }
         .card-body {
             padding: .5rem 0 0 0.4rem;
@@ -191,16 +214,6 @@ $grey-hover: #e0e0e0;
             border-radius: 24px;
         }
     }
-    #bottom {
-        .flex-container {
-            .card .left {
-                width: 180px;
-            }
-            .card .right {
-                width: 80px;            
-            }                
-        }
-    }
 }
 
 @media only screen and (max-width: 600px) {  
@@ -213,15 +226,32 @@ $grey-hover: #e0e0e0;
     #middle {
         margin: 2rem 0;
     }
+}
 
+@media only screen and (max-width: 543px) {
     #bottom {
-        .flex-container {
-            .card .left {
-                width: 150px;
+        .flex-container { 
+            margin: 0 0;   
+            .card {
+                max-width: 100%;
+                margin: 1.2rem;
+            }    
+            .card .left img.top {
+                border-top-left-radius: 7px;
             }
-            .card .right {
-                width: 60px;            
-            }                         
+            .card .left img.bottom {
+                border-bottom-left-radius: 7px;
+            }
+            .card .left img.card-img-top {
+                width: 137px;
+                height: 137px;
+                border-bottom-left-radius: 7px;
+                border-top-left-radius: 7px;
+            }
+            .card .right img.card-img-top {
+                width: 66.66px;
+                height: 66.5px;
+            }
         }
     }
 }
@@ -249,6 +279,28 @@ $grey-hover: #e0e0e0;
             min-height: 28px;
             padding: 9px 13px;
             border-radius: 20px;
+        }
+    }
+}
+
+@media only screen and (max-width: 455px) {
+ #bottom {
+        .flex-container { 
+            margin: 0 0;   
+            .card {
+                max-width: 100%;
+                margin: 1.2rem;
+            }        
+            .card .left img.card-img-top {
+                width: 117px;
+                height: 117px;
+                border-bottom-left-radius: 7px;
+                border-top-left-radius: 7px;
+            }
+            .card .right img.card-img-top {
+                width: 58.66px;
+                height: 58.5px;
+            }
         }
     }
 }

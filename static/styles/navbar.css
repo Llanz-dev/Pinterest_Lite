@@ -11,7 +11,7 @@ nav a {
   border-radius: 100%;
   font-weight: 500;
 }
-nav .pinterest-logo:hover, nav .home:hover, nav .create:hover {
+nav .pinterest-logo:hover, nav .home:hover, nav .create:hover, nav .profile:hover, nav .profile-link:hover {
   background-color: rgb(224, 224, 224);
 }
 nav .top-margin {
@@ -58,7 +58,10 @@ nav .profile {
   background-color: #eeeeee;
 }
 nav img.profile-picture {
-  width: 25px;
+  height: 30px;
+  width: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 100%;
 }
 nav a.profile-link {
@@ -82,8 +85,10 @@ footer {
   display: none;
 }
 footer img.profile-picture {
-  width: 28px;
+  width: 35px;
+  height: 35px;
   border-radius: 100%;
+  margin-top: 2px;
 }
 
 @media only screen and (max-width: 849px) {

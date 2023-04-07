@@ -5,6 +5,10 @@ a {
     }
 }
 
+.show {
+    display: block !important;
+}
+
 .plus-button, .for-mobile-button {
     padding: 5px;
     border-radius: 100%;
@@ -12,6 +16,10 @@ a {
     &:hover {
         background-color: #ebebeb;
     }
+}
+
+.plus-button {
+    margin-right: .5rem;
 }
 
 .plus-button-click {

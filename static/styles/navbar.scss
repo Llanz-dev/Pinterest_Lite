@@ -15,7 +15,7 @@ nav {
         font-weight: 500;
     }
 
-    .pinterest-logo:hover, .home:hover, .create:hover {
+    .pinterest-logo:hover, .home:hover, .create:hover, .profile:hover, .profile-link:hover {
         background-color: $grey-hover;
     }
 
@@ -72,13 +72,14 @@ nav {
     }
 
     img.profile-picture {
-        width: 25px; 
+        height: 30px;
+        width: 30px;
+        object-fit: cover;
         border-radius: 100%;
     }
 
     a.profile-link {
         padding: 8px;
-
     }
     
     .arrow-down, .chat-icon, .profile {
@@ -100,8 +101,10 @@ nav {
 footer { 
     display: none;
     img.profile-picture {
-        width: 28px; 
+        width: 35px; 
+        height: 35px; 
         border-radius: 100%;
+        margin-top: 2px;
     }
 }
 

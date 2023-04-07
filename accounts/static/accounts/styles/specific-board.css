@@ -1,5 +1,66 @@
-h1 {
+h1.board-name {
   font-size: 36px;
+}
+
+img.trash-icon {
+  background-color: #EEEFEE;
+  border-radius: 100%;
+  margin-top: 0.5rem;
+  width: 32px;
+  cursor: pointer;
+  padding: 8px;
+  width: 38px;
+}
+img.trash-icon:hover {
+  background-color: #e7e7e7;
+}
+
+#delete-board-container {
+  display: none;
+  background-color: #FFFEFE;
+  width: 540px;
+  border-radius: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  pointer-events: auto;
+}
+#delete-board-container h1.delete-question {
+  font-size: 28px;
+  padding: 24px;
+  text-align: center;
+}
+#delete-board-container p.warning-description {
+  padding: 16px;
+}
+#delete-board-container div.buttons-div {
+  padding: 24px;
+}
+#delete-board-container button {
+  padding: 4px;
+  outline: none;
+  border: 0;
+  font-weight: 500;
+  height: 48px;
+  padding: 16px;
+  text-align: center;
+  border-radius: 24px;
+  margin: 4px;
+  width: 100%;
+}
+#delete-board-container button.cancel-btn {
+  background-color: #eeefee;
+}
+#delete-board-container button.cancel-btn:hover {
+  background-color: #e2e2e2;
+}
+#delete-board-container button.delete-btn {
+  color: white;
+}
+#delete-board-container button.delete-btn:hover {
+  background-color: #be001d;
 }
 
 h4 {
@@ -7,7 +68,7 @@ h4 {
 }
 
 .pins-count {
-  margin: 5rem 0 5rem 2rem;
+  margin: 5rem 0 0 2rem;
 }
 
 #message {
@@ -26,14 +87,8 @@ h4 {
   background-color: #E8E9E8;
 }
 
-.plus-icon {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-.show {
-  display: block !important;
+.plus-button {
+  margin-right: 0 !important;
 }
 
 #ideas-board-container {
@@ -49,9 +104,83 @@ h4 {
   display: none;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 5rem;
+}
+.flex-container .card {
+  margin: 1rem 0.5rem;
+  width: 252px;
+  border: none;
+  background-color: transparent;
+}
+.flex-container .card-img-top {
+  width: 236px;
+  height: auto;
+}
+.flex-container .card-body {
+  padding: 0.5rem 0 0 0.4rem;
+}
+.flex-container .card-text {
+  font-size: 14px;
+  color: #111111;
+  font-weight: 500;
+}
+.flex-container .card img {
+  border-radius: 18px;
+}
+.flex-container .profile-pic-icon {
+  height: 32px;
+  width: 32px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.flex-container a.fullname:hover {
+  text-decoration: underline;
+}
+.flex-container span.fullname {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 992px) {
+  .flex-container {
+    margin: 0 2rem;
+  }
+}
+@media only screen and (max-width: 890px) {
+  .flex-container {
+    margin: 0 2rem;
+  }
+  .flex-container .card {
+    margin: 1rem 0.5rem;
+    width: 212px;
+  }
+  .flex-container .card-img-top {
+    width: 196px;
+  }
+}
 @media only screen and (max-width: 852px) {
   .ideas-board img {
     width: 120px;
+  }
+}
+@media only screen and (max-width: 816px) {
+  .flex-container {
+    margin: 0 1rem;
+  }
+  .flex-container .card {
+    margin: 0.4rem 0.3rem;
+    width: 192px;
+  }
+  .flex-container .card-img-top {
+    width: 186px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .flex-container .card {
+    margin: 0.4rem 0.3rem;
   }
 }
 @media only screen and (max-width: 689px) {
@@ -61,24 +190,61 @@ h4 {
   .plus-button {
     display: none !important;
   }
-  .plus-icon {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
   #for-mobile-button {
     display: block;
+    margin: 0 auto 0 auto;
   }
-  .for-mobile-container {
-    position: fixed;
-    bottom: 120px;
+  .show-mobile-container {
+    display: block !important;
+    position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+    bottom: 55px;
+  }
+}
+@media only screen and (max-width: 636px) {
+  .flex-container {
+    justify-content: space-around;
   }
 }
 @media only screen and (max-width: 600px) {
   .plus-icon {
     bottom: 60px;
+  }
+  .flex-container {
+    margin: 0 0 1rem 0;
+  }
+  .show-mobile-container {
+    bottom: 55px;
+  }
+  #for-mobile-button {
+    display: block;
+    margin: 0 auto 4rem auto;
+  }
+}
+@media only screen and (max-width: 520px) {
+  h1 {
+    font-size: 25px;
+  }
+  .pins-count {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 416px) {
+  .flex-container .card {
+    width: 172px;
+  }
+  .flex-container .card-img-top {
+    width: 166px;
+  }
+}
+@media only screen and (max-width: 416px) {
+  .flex-container .card {
+    width: 142px;
+  }
+  .flex-container .card-img-top {
+    width: 136px;
   }
 }/*# sourceMappingURL=specific-board.css.map */

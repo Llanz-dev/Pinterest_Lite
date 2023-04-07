@@ -14,15 +14,44 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
+    <form method="POST" id="delete-board-container">
+      {% csrf_token %}
+      <h1 class="delete-question">Are you sure?</h1>    
+      <p class="text-secondary warning-description">Once you delete a board and all its Pins, you can't undo it!</p>
+      <div class="buttons-div">
+        <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
+        <button type="submit" class="delete-btn background-primaryColor" id="delete-btn">Delete forever</button>
+      </div>
+    </form>
+
     <div id="whole-content">
-        <h1 class="text-center mt-3">{{ board_slug }}</h1>
-        <h4 class="pins-count">0 Pins</h4>
+        <div class="d-flex justify-content-center align-items-center align-content-center">
+          <h1 class="text-center mt-3 board-name">{{ board.name }}</h1>
+          <span class="mx-1"></span>
+          <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon d-flex align-items-center justify-content-center">
+        </div>
+        <h4 class="pins-count">{{ pins_length }} Pins</h4>
         
-        {% for pin in pins %}
-            <h4>{{ pin.title }}</h4>
-        {% endfor %}
+        <div class="flex-container">            
+            {% for pin in pins %}                            
+              <div  class="card">
+                <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+                  <img src="{{ pin.image.url }}" class="card-img-top">
+                  <div class="card-body">
+                    <p class="card-text">{{ pin.title }}</p>  
+                  </div>
+                </a>
+                <div class="card-body">
+                  <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><img src="{{ request.user.profile_picture.url }}" alt="profile picture" class="profile-pic-icon"><span class="mx-1"></span><span class="text-secondary fullname">{{ request.user.firstname }} {{ request.user.lastname }}</span></p></a>
+                </div>
+              </div>              
+            {% endfor %}    
+        </div>
+        
+        {% if pins_length == 0 %}
+            <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>            
+        {% endif %}
             
-        <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>
         <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
                 <a href="#suggest" class="ideas-board">
                     <h4>Find some ideas for this board:</h4>
@@ -37,11 +66,11 @@
                     <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
                 </div>
         </section>
-        <div class="for-mobile-container" id="for-mobile">
+        <div class="for-mobile-container" id="for-mobile-container">
             <small class="text-muted">Create</small>
             <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
         </div>
-        <section class="plus-icon">
+        <section class="text-center">
             <img src="{% static 'icons/plus-40.png' %}" alt="" id="plus-button" class="plus-button" tabindex="0">   
             <img src="{% static 'icons/plus-40.png' %}" alt="" id="for-mobile-button" class="for-mobile-button" tabindex="0">      
         </section>
