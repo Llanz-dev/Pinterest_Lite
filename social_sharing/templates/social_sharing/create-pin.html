@@ -19,7 +19,7 @@
       <section class="save-button-container">
         <div>
           {% render_field pin_form.board class='board' %}
-          <button type="submit" class="background-primaryColor">Save</button>
+          <button type="submit" class="background-primaryColor save-button">Save</button>
         </div>
       </section>
       <section class="row mt-4">
@@ -44,12 +44,12 @@
             <div class="d-flex align-items-center profile-name">
               <div class="col-1">                
                 {% if request.user.profile_picture %}
-                  <img src="{{ request.user.profile_picture.url }}" class="img-fluid rounded-circle">                                        
+                  <img src="{{ request.user.profile_picture.url }}" class="profile-picture-small">                                        
                 {% else %}
                   <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>                  
                 {% endif %}                  
               </div>
-              <div class="mx-1"></div>
+              <div class="mx-2"></div>
               <div class="col-11">
                 <p style="font-size: 14px; font-weight: 500;" class="my-auto">{{ request.user.firstname }} {{ request.user.lastname }}</p>
               </div>

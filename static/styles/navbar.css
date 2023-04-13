@@ -1,29 +1,30 @@
-nav {
+nav.top-nav {
   height: 80px;
   background-color: #FFFEFE;
+  z-index: 999;
 }
-nav .row {
+nav.top-nav .row {
   --bs-gutter-x: 0 !important;
 }
-nav a {
+nav.top-nav a {
   margin: 0 0.2rem;
   padding: 1rem;
   border-radius: 100%;
   font-weight: 500;
 }
-nav .pinterest-logo:hover, nav .home:hover, nav .create:hover, nav .profile:hover, nav .profile-link:hover {
+nav.top-nav .pinterest-logo:hover, nav.top-nav .home:hover, nav.top-nav .create:hover, nav.top-nav .profile:hover, nav.top-nav .profile-link:hover {
   background-color: rgb(224, 224, 224);
 }
-nav .top-margin {
+nav.top-nav .top-margin {
   margin-top: 0;
 }
-nav .create h5 {
+nav.top-nav .create h5 {
   margin-bottom: 0;
 }
-nav .logo {
+nav.top-nav .logo {
   width: 30px;
 }
-nav .search-field {
+nav.top-nav .search-field {
   border: 0 !important;
   background-color: #E9ECEF;
   padding: 0.6rem 0.6rem 0.6rem 0;
@@ -32,52 +33,52 @@ nav .search-field {
   border-bottom-right-radius: 60px;
   border-left: none;
 }
-nav .search-field:hover {
+nav.top-nav .search-field:hover {
   background-color: rgb(224, 224, 224);
 }
-nav .search-icon {
+nav.top-nav .search-icon {
   border: 0 !important;
   padding-left: 0.9rem;
   border-right: none;
   border-top-left-radius: 60px;
   border-bottom-left-radius: 60px;
 }
-nav .search-click {
+nav.top-nav .search-click {
   border-bottom-left-radius: 60px;
   border-top-left-radius: 60px;
   padding: 0.6rem 1rem;
   background-color: rgb(224, 224, 224);
 }
-nav .arrow-down img, nav .chat-icon img, nav .search-icon img {
+nav.top-nav .arrow-down img, nav.top-nav .chat-icon img, nav.top-nav .search-icon img {
   width: 20px;
 }
-nav .chat-icon {
+nav.top-nav .chat-icon {
   margin: 0 0.8rem;
 }
-nav .profile {
+nav.top-nav .profile {
   background-color: #eeeeee;
 }
-nav img.profile-picture {
+nav.top-nav img.profile-picture {
   height: 30px;
   width: 30px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 100%;
 }
-nav a.profile-link {
+nav.top-nav a.profile-link {
   padding: 8px;
 }
-nav .arrow-down, nav .chat-icon, nav .profile {
+nav.top-nav .arrow-down, nav.top-nav .chat-icon, nav.top-nav .profile {
   width: 40px;
   padding: 10px;
   border-radius: 100%;
   text-align: center;
   cursor: pointer;
 }
-nav .arrow-down:hover, nav .chat-icon:hover, nav .profile:hover {
+nav.top-nav .arrow-down:hover, nav.top-nav .chat-icon:hover, nav.top-nav .profile:hover {
   background-color: rgb(224, 224, 224);
 }
-nav a:hover {
+nav.top-nav a:hover {
   color: inherit;
 }
 
@@ -111,6 +112,9 @@ footer img.profile-picture {
     display: block;
     position: fixed;
     bottom: 0;
+    left: unset;
+    right: unset;
+    top: unset;
     width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 9999;

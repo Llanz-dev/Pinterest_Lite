@@ -1,6 +1,14 @@
-from .models import Pin, Board
+from .models import Pin, Board, Comment
 from django import forms
 
+class BoardForm(forms.ModelForm):
+    class Meta:
+        model = Board
+        fields = ['name', 'is_secret']
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Like "Places to Go" or "Recipes to Make"'}),
+        }
+        
 class PinForm(forms.ModelForm):
     class Meta:
         model = Pin
@@ -15,11 +23,8 @@ class PinForm(forms.ModelForm):
         self.fields['board'].empty_label = None
         self.fields['board'].initial = Board.objects.first()        
         
-class BoardForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Board
-        fields = ['name', 'is_secret']
-        widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Like "Places to Go" or "Recipes to Make"'}),
-        }
+        model = Comment
+        fields = ['text', 'hearts']       
         

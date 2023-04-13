@@ -1,0 +1,275 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    // background-color: rgb(201, 201, 201);
+    background-color: white;
+    border-radius: 32px;
+    width: 1016px;
+    margin: 1rem auto 3rem auto; 
+    box-shadow: 1px 1px 10px #cccccc;
+}
+
+.left {
+    width: 506px;
+    border-radius: 32px 0 0 32px;
+    img {
+        border-radius: 32px 0 0 32px;
+        width: inherit;
+        height: auto;
+        vertical-align: middle;
+    }
+}
+
+.right {
+    margin: 32px;
+    width: 444px;
+    .save-top {
+        position: relative;
+        height: 40px;
+    }
+    button[type='submit'] {        
+        text-align: center;
+        border-radius: 24px;
+    }
+    .trash-icon {
+        width: 40px;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 100%;
+        &:hover {
+            background-color: rgb(224, 224, 224);
+        }
+    }
+    select.board {
+        background-color: unset;
+        margin-right: .8rem;
+    }
+    .user-middle {
+        margin-top: 4rem;
+    }
+    .user-middle p, .comments-bottom p {
+        margin-bottom: 0;
+    }
+    .fullname {
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .follow-btn {
+        background-color: #EEEEEF;
+        border: 0;
+        height: 40px;
+        padding: 0 20px;
+        border-radius: 32px;
+        font-weight: 500;
+        &:hover {
+            background-color: #e2e2e2;
+        }
+    }
+    .comments-bottom {
+        margin-top: 4rem;
+    }  
+    .comments-bottom .profile-picture-small {
+        width: 32px;
+        height: 32px;
+    }
+    .comments-bottom .user-info {
+        width: 100px;
+    }
+    .comments-bottom .comment-ago, .heart-count, .text-comment {
+        font-size: 14px;
+    }
+    .comments-bottom #comment-section {
+        // height: 498px;
+        height: calc(var(--pin-image-height) / 1.8);
+        overflow: auto;
+    }
+    .comments-bottom .text-comment {
+        padding-top: 3px;
+    }
+    .comments-bottom .comment-field {
+        display: flex;
+        align-items: center;
+        height: 90px;
+    }
+    .comments-bottom .comment-input {
+        padding: 1rem;
+        border: 0;
+        outline: none;
+        background-color: #E8E8E9;
+        width: 100%;
+        border-radius: 32px;
+        height: 51px;
+        cursor: pointer;
+        &:hover {
+            background-color: #d8d8d8;
+        }
+        &:focus {
+            cursor: auto;
+        }
+    }
+    .comments-bottom .comment-field .profile-picture-small {
+        width: 55px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 100%;
+    } 
+    h2 {
+        font-size: 20px;
+        margin-bottom: 2rem;
+    }
+    .no-comments {
+        margin-top: 2rem;
+    }
+}
+
+@media only screen and (max-width: 1110px) {
+    .content {
+        border-radius: 32px;
+        width: 816px;
+    }
+    
+    .left {
+        width: 408px;
+        border-radius: 32px 0 0 32px;
+        img {
+            border-radius: 32px 0 0 32px;
+        }
+    }
+    
+    .right {
+        margin: 32px;
+        width: 408px;
+        .trash-icon, .save-top, .follow-btn {
+            height: 37px;
+        }
+        .save-top {
+            position: relative;
+        }
+        button[type='submit'] {        
+            border-radius: 24px;
+        }
+        .trash-icon {
+            padding: 9px;   
+        }
+        select.board {
+            background-color: unset;
+            margin-right: .8rem;
+        }
+        .user-middle {
+            margin-top: 3.8rem;
+        }        
+        .comments-bottom {
+            margin-top: 4rem;
+        }  
+        .comments-bottom .profile-picture-small {
+            width: 30px;
+            height: 30px;
+        }
+        .comments-bottom .user-info {
+            width: 98px;
+        }
+        .comments-bottom .comment-ago, .heart-count, .text-comment {
+            font-size: 14px;
+        } 
+        .comments-bottom .text-comment {
+            padding-top: 3px;
+        }
+        .comments-bottom .comment-field {
+            display: flex;
+            align-items: center;
+            height: 80px;
+        }
+        .comments-bottom .comment-input {
+            padding: .8rem;
+            height: 46px;          
+        }
+        .comments-bottom .comment-field .profile-picture-small {
+            width: 46px;
+            height: 46px;
+        } 
+        h2 {
+            font-size: 17px;
+            margin-bottom: 1rem;
+        }
+        .no-comments {
+            margin-top: 1.5rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 857px) {
+    .left {
+        width: fit-content;  
+        border-radius: 32px 0 0 32px;
+        img {
+            border-radius: 32px 32px 0 0;
+        }
+    }    
+ 
+    .content {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 32px;
+        margin: 1rem auto 3rem auto;
+        box-shadow: 1px 1px 10px #cccccc;
+    }
+
+    .right { 
+        .user-middle {
+            margin-top: 2rem;
+        }
+        .comments-bottom {
+            margin-top: 2.5rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 570px) {  
+    option {
+        font-weight: 10px !important;
+        display: block;
+        white-space: nowrap;
+        min-height: 12em;
+        padding: 0px 2px 1px;
+    }
+
+    .left {
+        width: 100%;  
+        border-radius: 0 0 0 0;
+        img {
+            border-radius: 0 0 0 0;
+        }
+    }    
+
+    .right {
+        margin: 32px;
+        width: 80%;
+    }
+ 
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 0;
+        margin: 0 auto 1rem auto;
+        box-shadow: none;
+    }
+    
+    .right { 
+        .user-middle {
+            margin-top: 2rem;
+        }
+        .comments-bottom {
+            margin-top: 2.5rem;
+        }
+      
+    }
+   
+}

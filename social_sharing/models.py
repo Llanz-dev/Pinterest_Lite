@@ -1,5 +1,6 @@
 from django.template.defaultfilters import slugify
 from accounts.models import UserProfile
+from django.utils import timezone
 from django.db import models
 import secrets
 
@@ -38,10 +39,12 @@ class Pin(models.Model):
         super().save(*args, **kwargs)    
 
 class Comment(models.Model):
-    text = models.TextField()
-    hearts = models.IntegerField(default=0)
+    text = models.CharField(max_length=50)
+    hearts = models.ManyToManyField(UserProfile, related_name='comment_posts')
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     pin = models.ForeignKey(Pin, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True, null=True)
     
     def __str__(self):
         return self.text[:30]
+    

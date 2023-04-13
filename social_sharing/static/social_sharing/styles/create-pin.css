@@ -36,30 +36,16 @@ body {
   width: 60px;
   padding: 1rem;
 }
-#pin-creator-container select {
-  padding: 10px 90px 10px 5px;
-  height: 40px;
+#pin-creator-container select.board {
   margin-right: 0;
-  border: 0;
   background-color: #EEEFEE;
-  border-radius: 8px 0px 0px 8px;
-}
-#pin-creator-container select:focus {
-  outline: none;
 }
 #pin-creator-container option {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 #pin-creator-container button {
-  color: white;
-  border: 0;
-  width: 100px;
-  padding: 0px 14px;
-  margin: 0;
   border-radius: 0px 8px 8px 0px;
-  height: 40px;
-  width: 60px;
 }
 #pin-creator-container #image-preview {
   display: none;
