@@ -59,7 +59,7 @@ select.board:focus {
   outline: none;
 }
 
-.profile-picture-small {
+.profile-picture-circle {
   width: 48px;
   height: 48px;
   -o-object-fit: cover;

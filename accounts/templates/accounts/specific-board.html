@@ -14,15 +14,17 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
-    <form method="POST" id="delete-board-container">
+    <section id="delete-board-container">
       {% csrf_token %}
       <h1 class="delete-question">Are you sure?</h1>    
       <p class="text-secondary warning-description">Once you delete a board and all its Pins, you can't undo it!</p>
       <div class="buttons-div">
         <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
-        <button type="submit" class="delete-btn background-primaryColor" id="delete-btn">Delete forever</button>
+        <a href="{% url 'accounts:delete-board' board.slug %}"><button type="button" class="delete-btn background-primaryColor" id="delete-btn">
+          Delete forever
+        </button></a>
       </div>
-    </form>
+    </section>
 
     <div id="whole-content">
         <div class="d-flex justify-content-center align-items-center align-content-center">

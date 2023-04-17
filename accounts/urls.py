@@ -1,9 +1,10 @@
-from .views import profile, edit_profile, specific_board
+from .views import Profile, EditProfile, SpecificBoard, DeleteBoard
 from django.urls import path
 
 app_name = 'accounts'
 urlpatterns = [
-    path('', profile, name='profile'),
-    path('edit-profile/', edit_profile, name='edit-profile'),
-    path('<slug:board_slug>/', specific_board, name='specific-board'),
+    path('', Profile.as_view(), name='profile'),
+    path('edit-profile/', EditProfile.as_view(), name='edit-profile'),
+    path('<slug:board_slug>/', SpecificBoard.as_view(), name='specific-board'),
+    path('delete-board/<slug:board_slug>/', DeleteBoard.as_view(), name='delete-board')
 ]

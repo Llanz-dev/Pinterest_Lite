@@ -68,9 +68,9 @@
 .right .comments-bottom {
   margin-top: 4rem;
 }
-.right .comments-bottom .profile-picture-small {
-  width: 32px;
-  height: 32px;
+.right .comments-bottom .profile-picture-circle {
+  width: 32px !important;
+  height: 32px !important;
 }
 .right .comments-bottom .user-info {
   width: 100px;
@@ -106,9 +106,9 @@
 .right .comments-bottom .comment-input:focus {
   cursor: auto;
 }
-.right .comments-bottom .comment-field .profile-picture-small {
-  width: 55px;
-  height: 48px;
+.right .comments-bottom .comment-field .profile-picture-circle {
+  width: 55px !important;
+  height: 48px !important;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 100%;
@@ -159,7 +159,7 @@
   .right .comments-bottom {
     margin-top: 4rem;
   }
-  .right .comments-bottom .profile-picture-small {
+  .right .comments-bottom .profile-picture-circle {
     width: 30px;
     height: 30px;
   }
@@ -181,7 +181,7 @@
     padding: 0.8rem;
     height: 46px;
   }
-  .right .comments-bottom .comment-field .profile-picture-small {
+  .right .comments-bottom .comment-field .profile-picture-circle {
     width: 46px;
     height: 46px;
   }

@@ -68,9 +68,9 @@
     .comments-bottom {
         margin-top: 4rem;
     }  
-    .comments-bottom .profile-picture-small {
-        width: 32px;
-        height: 32px;
+    .comments-bottom .profile-picture-circle {
+        width: 32px !important;
+        height: 32px !important;
     }
     .comments-bottom .user-info {
         width: 100px;
@@ -107,9 +107,9 @@
             cursor: auto;
         }
     }
-    .comments-bottom .comment-field .profile-picture-small {
-        width: 55px;
-        height: 48px;
+    .comments-bottom .comment-field .profile-picture-circle {
+        width: 55px !important;
+        height: 48px !important;
         object-fit: cover;
         border-radius: 100%;
     } 
@@ -161,7 +161,7 @@
         .comments-bottom {
             margin-top: 4rem;
         }  
-        .comments-bottom .profile-picture-small {
+        .comments-bottom .profile-picture-circle {
             width: 30px;
             height: 30px;
         }
@@ -183,7 +183,7 @@
             padding: .8rem;
             height: 46px;          
         }
-        .comments-bottom .comment-field .profile-picture-small {
+        .comments-bottom .comment-field .profile-picture-circle {
             width: 46px;
             height: 46px;
         } 

@@ -2,7 +2,9 @@
     width: 550px;
     margin-top: 3rem;
     .profile-picture {
-        width: 100px;
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
         border-radius: 100%;
     }
     h1 {
@@ -39,7 +41,7 @@
     textarea {
         resize: none;
       }
-    input[type=text], input[type=email], textarea, select {
+    input[type=text], input[type=email], input[type=number], textarea, select {
         border: 2px solid #CDCDCD;
         border-radius: 16px;
         padding: 10px 15px;

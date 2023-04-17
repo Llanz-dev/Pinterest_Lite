@@ -27,8 +27,6 @@ def pin_detail(request, pin_id):
     comments = Comment.objects.filter(pin=pin)
     comment_form = CommentForm()
     comments_length = len(comments)
-    for comment in comments:
-        print(comment)
 
     context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'social_sharing/pin-detail.html', context)

@@ -44,7 +44,7 @@
             <div class="d-flex align-items-center profile-name">
               <div class="col-1">                
                 {% if request.user.profile_picture %}
-                  <img src="{{ request.user.profile_picture.url }}" class="profile-picture-small">                                        
+                  <img src="{{ request.user.profile_picture.url }}" class="profile-picture-circle">                                        
                 {% else %}
                   <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>                  
                 {% endif %}                  
