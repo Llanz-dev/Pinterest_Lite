@@ -42,152 +42,38 @@
         </div>
 
         <div class="comments-bottom">
-          <h2>9 Comments</h2>
-          <div id="comment-section">
-          <!-- <p class="text-muted no-comments">No comments yet! Add one to start the conversation.</p> -->
+          <h2>{{ comments_length }} Comments</h2>
+          <div id="comment-section">            
+          {% if not comments %}                          
+          <p class="text-muted no-comments">No comments yet! Add one to start the conversation.</p>
+          {% else %}
+          {% for comment in comments %}                        
+            <div class="d-flex mt-2">
+              <div class="d-flex">
+                <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
+                <div class="mx-1"></div>
+                  <div class="user-info">
+                    <span class="fullname">{{ request.user.firstname }}</span>
+                    <br>
+                    <span class="text-muted comment-ago">2d</span>
+                    <span class="mx-2"></span>
+                    <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
+                    <span class="text-muted heart-count">1</span>
+                  </div>      
+              </div>  
+              <span class="text-comment">{{ comment }}</span>                       
+            </div>   
+          {% endfor %}
+          {% endif %}      
 
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <span class="text-comment">Lorem ipsum.</span>                       
-          </div>    
-
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis quasi adipisci accusamus soluta voluptatibus libero odit accusantium, suscipit rerum veniam alias. Quae obcaecati quisquam, commodi est cum nobis laudantium.</p>                       
-          </div>          
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis quasi adipisci accusamus soluta voluptatibus libero odit accusantium, suscipit rerum veniam alias. Quae obcaecati quisquam, commodi est cum nobis laudantium.</p>                       
-          </div> 
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis quasi adipisci accusamus soluta voluptatibus libero odit accusantium, suscipit rerum veniam alias. Quae obcaecati quisquam, commodi est cum nobis laudantium.</p>                       
-          </div>          
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis quasi adipisci accusamus soluta voluptatibus libero odit accusantium, suscipit rerum veniam alias. Quae obcaecati quisquam, commodi est cum nobis laudantium.</p>                       
-          </div>          
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">gfg</p>                       
-          </div>          
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis quasi adipisci accusamus soluta voluptatibus libero odit accusantium, suscipit rerum veniam alias. Quae obcaecati quisquam, commodi est cum nobis laudantium.</p>                       
-          </div>          
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis quasi adipisci accusamus soluta voluptatibus libero odit accusantium, suscipit rerum veniam alias. Quae obcaecati quisquam, commodi est cum nobis laudantium.</p>                       
-          </div>          
-          <div class="d-flex mt-2">
-            <div class="d-flex">
-              <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-              <div class="mx-1"></div>
-                <div class="user-info">
-                  <span class="fullname">{{ request.user.firstname }}</span>
-                  <br>
-                  <span class="text-muted comment-ago">2d</span>
-                  <span class="mx-2"></span>
-                  <a href="" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                  <span class="text-muted heart-count">1</span>
-                </div>      
-            </div>  
-            <p class="text-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis quasi adipisci accusamus soluta voluptatibus libero odit accusantium, suscipit rerum veniam alias. Quae obcaecati quisquam, commodi est cum nobis laudantium.</p>                       
-          </div>    
         </div>  
-        <div class="comment-field">
-          <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-          <div class="mx-1"></div>
-          {% render_field comment_form.text class='comment-input' placeholder='Add a public comment' %}
-        </div>
+          <form method="POST" class="comment-field">
+            {% csrf_token %}
+            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
+            <div class="mx-1"></div>
+            {% render_field form.text class='comment-input' placeholder='Add a public comment' %}
+            <button type="submit" class="comment-btn"><img src="{% static 'icons/comment-right-arrow-18.png' %}" alt="" class="arrow-icon"></button>
+          </form>
         </div>
       </section>
     </div>

@@ -79,7 +79,6 @@
         font-size: 14px;
     }
     .comments-bottom #comment-section {
-        // height: 498px;
         height: calc(var(--pin-image-height) / 1.8);
         overflow: auto;
     }
@@ -108,11 +107,30 @@
         }
     }
     .comments-bottom .comment-field .profile-picture-circle {
-        width: 55px !important;
+        width: 63.5px !important;
         height: 48px !important;
         object-fit: cover;
         border-radius: 100%;
     } 
+    .comments-bottom .comment-btn {
+        width: 55px;
+        height: 45px;
+        border-radius: 100%;
+        background-color: #d8d8d8;  
+        position: relative;
+        border: 0;
+        &:hover {
+            background-color: #cfcfcf;  
+        }
+    }
+    .comments-bottom .arrow-icon {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
     h2 {
         font-size: 20px;
         margin-bottom: 2rem;
@@ -202,7 +220,7 @@
         width: fit-content;  
         border-radius: 32px 0 0 32px;
         img {
-            border-radius: 32px 32px 0 0;
+            border-radius: 32px 0 0 32px;
         }
     }    
  
@@ -268,8 +286,6 @@
         }
         .comments-bottom {
             margin-top: 2.5rem;
-        }
-      
-    }
-   
+        }      
+    }   
 }

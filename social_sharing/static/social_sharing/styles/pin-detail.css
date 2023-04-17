@@ -107,11 +107,30 @@
   cursor: auto;
 }
 .right .comments-bottom .comment-field .profile-picture-circle {
-  width: 55px !important;
+  width: 63.5px !important;
   height: 48px !important;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 100%;
+}
+.right .comments-bottom .comment-btn {
+  width: 55px;
+  height: 45px;
+  border-radius: 100%;
+  background-color: #d8d8d8;
+  position: relative;
+  border: 0;
+}
+.right .comments-bottom .comment-btn:hover {
+  background-color: #cfcfcf;
+}
+.right .comments-bottom .arrow-icon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .right h2 {
   font-size: 20px;
@@ -200,7 +219,7 @@
     border-radius: 32px 0 0 32px;
   }
   .left img {
-    border-radius: 32px 32px 0 0;
+    border-radius: 32px 0 0 32px;
   }
   .content {
     width: -moz-fit-content;
