@@ -55,7 +55,7 @@
                   <div class="user-info">
                     <span class="fullname">{{ request.user.firstname }}</span>
                     <br>
-                    <span class="text-muted comment-ago">2d</span>
+                    <span class="text-muted comment-ago">{{ comment.date_added|date:"F j, Y" }}</span>
                     <span class="mx-2"></span>
                     {% if request.user in comment.hearts.all %}
                       <a href="{% url 'social_sharing:heart-decrement' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-red-16.png' %}" alt=""></a>                  
