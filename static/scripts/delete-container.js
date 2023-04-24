@@ -1,16 +1,16 @@
-// Get DOM elements
+const delete_board_button = document.getElementById('delete-board-button');
+const delete_board_container = document.getElementById('delete-board-container');
+const pinterest_logo = document.getElementById('pinterest-logo');
+const cancel_btn = document.getElementById('cancel-btn');
 const whole_content = document.getElementById('whole-content');
 const top_nav = document.getElementById('top-nav');
-const create_board_button = document.getElementById('create-board-button');
-const create_board_container = document.getElementById('create-board-container');
-const pinterest_logo = document.getElementById('pinterest-logo');
 const profile = document.getElementById('profile');
 
-// Keep track of whether the "create board" container was opened by a button click
+// Keep track of whether the "delete board" container was opened by a button click
 let isOpenedByButton = false;
 
-// Handle click events on the create board button
-create_board_button.addEventListener('click', () => {
+  // Handle click events on the delete board button
+delete_board_button.addEventListener('click', () => {
   // Set the body styles to disable scrolling and darken the background
   document.body.style.position = 'fixed';
   document.body.style.top = '0';
@@ -30,20 +30,21 @@ create_board_button.addEventListener('click', () => {
   profile.style.backgroundColor = '#333333';
   profile.style.filter = 'brightness(35%)';
 
-  // Show the create board container and darken the rest of the page
-  create_board_container.style.display = 'block';
-  whole_content.style.filter = 'brightness(35%)';
-
   // Set the pinterest logo to match the dark background
   pinterest_logo.style.filter = 'brightness(35%)';
+
+  // Show the delete board container and darken the rest of the page
+  delete_board_container.style.display = 'block';
+  whole_content.style.filter = 'brightness(35%)';
 
   // Remember that the container was opened by a button click
   isOpenedByButton = true;
 });
 
-// Handle click events outside the create board container
+// Handle click events outside the delete board container
 function handleClickOutside(event) {
-  if (!isOpenedByButton && !create_board_container.contains(event.target)) {
+
+  if (!isOpenedByButton && !delete_board_container.contains(event.target)) {
     // Reset the body styles to re-enable scrolling and restore the background
     document.body.style.position = 'static';
     document.body.style.backgroundColor = '#FEFEFF';
@@ -55,16 +56,13 @@ function handleClickOutside(event) {
     search_field.style.backgroundColor = '#E9ECEF';
     search_icon.style.backgroundColor = '#E9ECEF';
 
-    // Hide the create board container and restore the rest of the page
-    create_board_container.style.display = 'none';
+    // Hide the delete board container and restore the rest of the page
+    delete_board_container.style.display = 'none';
     whole_content.style.filter = 'brightness(100%)';
 
     // Reset the profile icon to match the light background
     profile.style.backgroundColor = '#eeeeee';
     profile.style.filter = 'brightness(100%)';
-
-    // Reset the pinterest icon to match the light background
-    pinterest_logo.style.filter = 'brightness(100%)';      
   }
 
   // Reset the flag that indicates whether the container was opened by a button click
@@ -73,3 +71,27 @@ function handleClickOutside(event) {
 
 // Add a click event listener to the document to handle clicks outside the container
 document.addEventListener('click', handleClickOutside);
+cancel_btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      // Reset the body styles to re-enable scrolling and restore the background
+      document.body.style.position = 'static';
+      document.body.style.backgroundColor = '#FEFEFF';
+      document.body.style.pointerEvents = 'auto';
+      document.body.style.overflowY = 'visible';
+  
+      // Reset the top navigation and search bar styles to match the light background
+      top_nav.style.backgroundColor = '#FFFEFE';
+      search_field.style.backgroundColor = '#E9ECEF';
+      search_icon.style.backgroundColor = '#E9ECEF';
+  
+      // Hide the delete board container and restore the rest of the page
+      delete_board_container.style.display = 'none';
+      whole_content.style.filter = 'brightness(100%)';
+  
+      // Reset the profile icon to match the light background
+      profile.style.backgroundColor = '#eeeeee';
+      profile.style.filter = 'brightness(100%)';
+
+      // Reset the pinterest icon to match the light background
+      pinterest_logo.style.filter = 'brightness(100%)';      
+});

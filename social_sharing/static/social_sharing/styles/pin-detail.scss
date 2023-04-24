@@ -14,7 +14,7 @@
     border-radius: 32px 0 0 32px;
     img {
         border-radius: 32px 0 0 32px;
-        width: inherit;
+        width: 100%;
         height: auto;
         vertical-align: middle;
     }
@@ -67,7 +67,12 @@
     }
     .comments-bottom {
         margin-top: 4rem;
-    }  
+    } 
+    .comments-bottom .fullname {
+        &:hover {
+            text-decoration: underline;
+        }
+    } 
     .comments-bottom .profile-picture-circle {
         width: 32px !important;
         height: 32px !important;
@@ -137,6 +142,59 @@
     }
     .no-comments {
         margin-top: 2rem;
+    }
+    a:hover {
+        color: inherit;
+    }
+}
+
+#delete-board-container  {
+    display: none;
+    background-color: #FFFEFE;
+    width: 540px;
+    border-radius: 16px;
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 99;
+    pointer-events: auto;
+
+    h1.delete-question {
+        font-size: 28px;
+        padding: 24px;
+        text-align: center;
+    }
+    p.warning-description {
+        padding: 16px;
+        text-align: center !important;
+    }
+    div.buttons-div {
+        padding: 24px;
+    }
+    button {
+        padding: 4px;
+        outline: none;
+        border: 0;
+        font-weight: 500;
+        height: 48px;
+        padding: 16px;
+        text-align: center;
+        border-radius: 24px;
+        margin: 4px;
+        width: 100%;
+    }
+    button.cancel-btn {
+        background-color: #eeefee;
+        &:hover {
+            background-color: #e2e2e2;            
+        }
+    }
+    button.delete-btn {
+        color: white;
+        &:hover {
+            background-color: #be001d;
+        }
     }
 }
 
@@ -220,7 +278,11 @@
         width: fit-content;  
         border-radius: 32px 0 0 32px;
         img {
-            border-radius: 32px 0 0 32px;
+            width: 65%;
+            border-radius: 32px 32px 0 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     }    
  
@@ -260,6 +322,7 @@
         border-radius: 0 0 0 0;
         img {
             border-radius: 0 0 0 0;
+            width: 100%;
         }
     }    
 

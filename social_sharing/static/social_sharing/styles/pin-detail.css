@@ -14,7 +14,7 @@
 }
 .left img {
   border-radius: 32px 0 0 32px;
-  width: inherit;
+  width: 100%;
   height: auto;
   vertical-align: middle;
 }
@@ -67,6 +67,9 @@
 }
 .right .comments-bottom {
   margin-top: 4rem;
+}
+.right .comments-bottom .fullname:hover {
+  text-decoration: underline;
 }
 .right .comments-bottom .profile-picture-circle {
   width: 32px !important;
@@ -138,6 +141,58 @@
 }
 .right .no-comments {
   margin-top: 2rem;
+}
+.right a:hover {
+  color: inherit;
+}
+
+#delete-board-container {
+  display: none;
+  background-color: #FFFEFE;
+  width: 540px;
+  border-radius: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  pointer-events: auto;
+}
+#delete-board-container h1.delete-question {
+  font-size: 28px;
+  padding: 24px;
+  text-align: center;
+}
+#delete-board-container p.warning-description {
+  padding: 16px;
+  text-align: center !important;
+}
+#delete-board-container div.buttons-div {
+  padding: 24px;
+}
+#delete-board-container button {
+  padding: 4px;
+  outline: none;
+  border: 0;
+  font-weight: 500;
+  height: 48px;
+  padding: 16px;
+  text-align: center;
+  border-radius: 24px;
+  margin: 4px;
+  width: 100%;
+}
+#delete-board-container button.cancel-btn {
+  background-color: #eeefee;
+}
+#delete-board-container button.cancel-btn:hover {
+  background-color: #e2e2e2;
+}
+#delete-board-container button.delete-btn {
+  color: white;
+}
+#delete-board-container button.delete-btn:hover {
+  background-color: #be001d;
 }
 
 @media only screen and (max-width: 1110px) {
@@ -219,7 +274,11 @@
     border-radius: 32px 0 0 32px;
   }
   .left img {
-    border-radius: 32px 0 0 32px;
+    width: 65%;
+    border-radius: 32px 32px 0 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   .content {
     width: -moz-fit-content;
@@ -254,6 +313,7 @@
   }
   .left img {
     border-radius: 0 0 0 0;
+    width: 100%;
   }
   .right {
     margin: 32px;

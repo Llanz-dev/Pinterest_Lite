@@ -16,27 +16,40 @@ class PinBuilder(LoginRequiredMixin, CreateView):
     template_name = 'social_sharing/pin-builder.html'
     success_url = reverse_lazy('home:home')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SearchForm()
+        return context    
+
 @login_required
 def pin_detail(request, pin_id):
     search_form = SearchForm()    
     pin = get_object_or_404(Pin, pin_id=pin_id)
     pin_form = PinForm(instance=pin)
     comments = Comment.objects.filter(pin=pin)
-    form = CommentForm()
+    comment_form = CommentForm()
     comments_length = len(comments)
 
     if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.pin = pin
-            instance.save()
-            return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
-        else:
-            print(form.errors)
+        if 'save_pin' in request.POST:
+            pin_form = PinForm(instance=pin)            
+            if pin_form.is_valid():
+                pin_form.save()                
+            else:
+                print('Pin form error', pin_form.errors)
+            print(pin_form.errors)
+        elif 'comment_add' in request.POST: 
+            comment_form = CommentForm(request.POST)                       
+            if comment_form.is_valid():
+                instance = comment_form.save(commit=False)
+                instance.user = request.user
+                instance.pin = pin
+                instance.save()
+            else:
+                print('Comment form error', comment_form.errors)
+        return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
 
-    context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'form': form, 'search_form': search_form}
+    context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'comment_form': comment_form,  'search_form': search_form}
     return render(request, 'social_sharing/pin-detail.html', context)
 
 class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
@@ -60,6 +73,7 @@ class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
         context['search_form'] = SearchForm()
         return context
 
+    # For comment.
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
@@ -72,6 +86,12 @@ class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
         else:
             return self.form_invalid(form)
 
+def add_comment(request, pin_id):
+    form = CommentForm(request.POST or None)
+    if form.is_valid():
+        pass
+    return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
+
 def heart_increment(request, pin_id, text, pk):
     comment = get_object_or_404(Comment, text=text, pin__pin_id=pin_id, pk=pk)
     comment.hearts.add(request.user)
@@ -80,8 +100,25 @@ def heart_increment(request, pin_id, text, pk):
     
 def heart_decrement(request, pin_id, text, pk):
     comment = get_object_or_404(Comment, text=text, pin__pin_id=pin_id, pk=pk)
-    print('ZZZZZZZZZZZZZZZ')
     comment.hearts.remove(request.user)
     comment.save()
     return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
-    # return redirect('social_sharing:pin-detail', pin_id)
+
+def pin_delete(request, pin_id):
+    pin = get_object_or_404(Pin, pin_id=pin_id)
+    pin.delete()
+    return redirect('accounts:specific-board', pin.board.slug)
+
+class SavePin(CreateView):
+    model = Pin
+
+    def get_success_url(self):
+        return redirect('accounts:specific-board', self.kwargs.get('board_slug'))
+
+def save_pin(request, pin_id):
+    pin = get_object_or_404(Pin, pin_id=pin_id)
+    pin_form = PinForm()
+    print(pin_form.board)
+    pin_create = Pin(title=pin.title, description=pin.description, destination_link=pin.destination_link, image=pin.image, board=pin.board)
+
+    return redirect('social_sharing:pin-detail', pin_id)

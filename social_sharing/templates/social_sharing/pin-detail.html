@@ -11,8 +11,11 @@
     
 
 {% block content %}
-  {% include 'sections/navbar.html' %}
-  <div id="whole">
+  {% include 'sections/navbar.html' %}  
+  {% url 'social_sharing:pin-delete' pin_id=pin.pin_id as link %}
+  {% include 'sections/delete-container.html' with description="Once you delete a Pin, you can't undo it!" link=link %}
+  
+  <div id="whole-content">
     <div class="content">
       <section class="left">
         <img src="{{ pin.image.url }}" alt="" id="pin-image">
@@ -24,7 +27,7 @@
           </div>  
           <div>
             {% render_field pin_form.board class='board' %}
-            <button type="submit" class="background-primaryColor save-button">Save</button>
+            <a href="{% url 'social_sharing:save-pin' pin.pin_id %}" class="text-white"><button class="background-primaryColor save-button">Save</button></a>
           </div>
         </div>
         <div class="user-middle d-flex align-items-center justify-content-between">
@@ -32,7 +35,7 @@
             <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
             <div class="mx-2"></div>
             <div class="d-flex flex-column align-items-center justify-content-center">
-              <p class="fullname">{{ request.user.firstname }} {{ request.user.lastname }}</p>
+              <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ request.user.firstname }} {{ request.user.lastname }}</p></a>
               <p class="text-muted">685 followers</p>
             </div>  
           </div>
@@ -47,27 +50,32 @@
           {% if not comments %}                          
           <p class="text-muted no-comments">No comments yet! Add one to start the conversation.</p>
           {% else %}
-          {% for comment in comments %}                        
-            <div class="d-flex mt-2">
-              <div class="d-flex">
-                <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-                <div class="mx-1"></div>
-                  <div class="user-info">
-                    <span class="fullname">{{ request.user.firstname }}</span>
-                    <br>
-                    <span class="text-muted comment-ago">{{ comment.date_added|date:"F j, Y" }}</span>
-                    <span class="mx-2"></span>
-                    {% if request.user in comment.hearts.all %}
-                      <a href="{% url 'social_sharing:heart-decrement' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-red-16.png' %}" alt=""></a>                  
-                    {% else %}
-                      <a href="{% url 'social_sharing:heart-increment' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                    {% endif %}
-                    <span class="text-muted heart-count">{{ comment.hearts.all.count }}</span>
-                  </div>      
-              </div>  
-              <span class="text-comment">{{ comment }}</span>                       
-            </div>   
-          {% endfor %}
+            {% for comment in comments %}                        
+              <div class="d-flex mt-2">
+                <div class="d-flex">
+                  <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
+                  <div class="mx-1"></div>
+                    <div class="user-info">
+
+                      {% if request.user %}
+                       <a href="{% url 'accounts:profile' %}"><span class="fullname">{{ request.user.firstname }}</span></a>
+                      {% else %}
+                        <a href="">hello</a>                      
+                      {% endif %}
+
+                      <br>
+                      <span class="text-muted comment-ago">{{ comment.date_added|date:"F j, Y" }}</span>
+                      {% if request.user in comment.hearts.all %}
+                        <a href="{% url 'social_sharing:heart-decrement' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-red-16.png' %}" alt=""></a>                  
+                      {% else %}
+                        <a href="{% url 'social_sharing:heart-increment' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
+                      {% endif %}
+                      <span class="text-muted heart-count">{{ comment.hearts.all.count }}</span>
+                    </div>      
+                </div>  
+                <span class="text-comment">{{ comment }}</span>                       
+              </div>   
+            {% endfor %}
           {% endif %}      
         </div>  
           <form method="POST" class="comment-field">
@@ -75,7 +83,7 @@
             <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
             <div class="mx-1"></div>
             {% render_field form.text class='comment-input' placeholder='Add a public comment' %}
-            <button type="submit" class="comment-btn"><img src="{% static 'icons/comment-right-arrow-18.png' %}" alt="" class="arrow-icon"></button>
+            <button type="submit" class="comment-btn" name="comment_add"><img src="{% static 'icons/comment-right-arrow-18.png' %}" alt="" class="arrow-icon"></button>
           </form>
         </div>
       </section>
@@ -86,4 +94,5 @@
 
 {% block file_script %}
   <script src="{% static 'social_sharing/js/pin-detail.js' %}"></script>   
+  <script src="{% static 'scripts/delete-container.js' %}"></script> 
 {% endblock file_script %}
