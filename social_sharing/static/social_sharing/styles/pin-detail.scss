@@ -1,3 +1,8 @@
+h1 {
+    font-size: 28px;
+    margin-top: 3.5rem;
+}
+
 .content {
     display: flex;
     flex-direction: row;
@@ -45,7 +50,7 @@
         margin-right: .8rem;
     }
     .user-middle {
-        margin-top: 4rem;
+        margin-top: 1rem;
     }
     .user-middle p, .comments-bottom p {
         margin-bottom: 0;
@@ -66,7 +71,7 @@
         }
     }
     .comments-bottom {
-        margin-top: 4rem;
+        margin-top: 3.5rem;
     } 
     .comments-bottom .fullname {
         &:hover {

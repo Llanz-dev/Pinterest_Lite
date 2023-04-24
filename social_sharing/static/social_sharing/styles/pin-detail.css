@@ -1,3 +1,8 @@
+h1 {
+  font-size: 28px;
+  margin-top: 3.5rem;
+}
+
 .content {
   display: flex;
   flex-direction: row;
@@ -45,7 +50,7 @@
   margin-right: 0.8rem;
 }
 .right .user-middle {
-  margin-top: 4rem;
+  margin-top: 1rem;
 }
 .right .user-middle p, .right .comments-bottom p {
   margin-bottom: 0;
@@ -66,7 +71,7 @@
   background-color: #e2e2e2;
 }
 .right .comments-bottom {
-  margin-top: 4rem;
+  margin-top: 3.5rem;
 }
 .right .comments-bottom .fullname:hover {
   text-decoration: underline;

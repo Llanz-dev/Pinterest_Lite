@@ -30,14 +30,16 @@ def pin_detail(request, pin_id):
     comment_form = CommentForm()
     comments_length = len(comments)
 
+    print('Request:', request.method)
     if request.method == 'POST':
         if 'save_pin' in request.POST:
-            pin_form = PinForm(instance=pin)            
+            pin_form = PinForm(request.POST, request.FILES)  
             if pin_form.is_valid():
-                pin_form.save()                
+                print('Nice')
+                pin_form.save()  
+                return redirect('social_sharing:pin-detail', pin_id)
             else:
-                print('Pin form error', pin_form.errors)
-            print(pin_form.errors)
+                print('Error')                                                                         
         elif 'comment_add' in request.POST: 
             comment_form = CommentForm(request.POST)                       
             if comment_form.is_valid():
@@ -45,9 +47,7 @@ def pin_detail(request, pin_id):
                 instance.user = request.user
                 instance.pin = pin
                 instance.save()
-            else:
-                print('Comment form error', comment_form.errors)
-        return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
+                return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
 
     context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'comment_form': comment_form,  'search_form': search_form}
     return render(request, 'social_sharing/pin-detail.html', context)
@@ -71,25 +71,23 @@ class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
         context['comments'] = Comment.objects.filter(pin=self.object)
         context['comments_length'] = len(context['comments'])
         context['search_form'] = SearchForm()
-        return context
-
-    # For comment.
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        form = self.get_form()
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = self.request.user
-            instance.pin = self.object
-            instance.save()
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
-
+        return context   
+    #    form = self.get_form()
+    #     if form.is_valid():
+    #         instance = form.save(commit=False)
+    #         instance.user = self.request.user
+    #         instance.pin = self.object
+    #         instance.save()
+    #         return self.form_valid(form)
+    #     else:
+    #         return self.form_invalid(form)
 def add_comment(request, pin_id):
-    form = CommentForm(request.POST or None)
-    if form.is_valid():
-        pass
+    print('Add comment') 
+    form = CommentForm(request.POST)
+    if form.is_valid():        
+        print(form.cleaned_data.get('title'))
+    else:
+        print('error', form.errors)
     return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
 
 def heart_increment(request, pin_id, text, pk):
@@ -118,7 +116,6 @@ class SavePin(CreateView):
 def save_pin(request, pin_id):
     pin = get_object_or_404(Pin, pin_id=pin_id)
     pin_form = PinForm()
-    print(pin_form.board)
     pin_create = Pin(title=pin.title, description=pin.description, destination_link=pin.destination_link, image=pin.image, board=pin.board)
 
     return redirect('social_sharing:pin-detail', pin_id)

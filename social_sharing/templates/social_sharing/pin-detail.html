@@ -25,11 +25,20 @@
           <div>
             <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon d-flex align-items-center justify-content-center">
           </div>  
-          <div>
+          <form method="POST">
+            {% csrf_token %}
+            <div class="d-none">
+              {% render_field pin_form.title %}
+              {% render_field pin_form.description %}
+              {% render_field pin_form.destination_link %}
+              {% render_field pin_form.image %}
+            </div>
             {% render_field pin_form.board class='board' %}
-            <a href="{% url 'social_sharing:save-pin' pin.pin_id %}" class="text-white"><button class="background-primaryColor save-button">Save</button></a>
-          </div>
+            <!-- <a href="{% url 'social_sharing:save-pin' pin.pin_id %}" class="text-white"><button class="background-primaryColor save-button">Save</button></a> -->
+            <button class="" type="submit" name="save_pin">Add</button>
+          </form>
         </div>
+        <h1>{{ pin.title }}</h1>
         <div class="user-middle d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center justify-content-between">
             <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
@@ -78,13 +87,13 @@
             {% endfor %}
           {% endif %}      
         </div>  
-          <form method="POST" class="comment-field">
-            {% csrf_token %}
-            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
-            <div class="mx-1"></div>
-            {% render_field form.text class='comment-input' placeholder='Add a public comment' %}
-            <button type="submit" class="comment-btn" name="comment_add"><img src="{% static 'icons/comment-right-arrow-18.png' %}" alt="" class="arrow-icon"></button>
-          </form>
+        <form method="POST" class="comment-field">
+          {% csrf_token %}
+          <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
+          <div class="mx-1"></div>
+          {% render_field comment_form.text class='comment-input' placeholder='Add a public comment' %}
+          <button type="submit" class="comment-btn" name="comment_add"><img src="{% static 'icons/comment-right-arrow-18.png' %}" alt="" class="arrow-icon"></button>
+        </form>
         </div>
       </section>
     </div>
