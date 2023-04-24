@@ -30,16 +30,16 @@ def pin_detail(request, pin_id):
     comment_form = CommentForm()
     comments_length = len(comments)
 
-    print('Request:', request.method)
     if request.method == 'POST':
+        # For save pin.
         if 'save_pin' in request.POST:
             pin_form = PinForm(request.POST, request.FILES)  
             if pin_form.is_valid():
-                print('Nice')
-                pin_form.save()  
-                return redirect('social_sharing:pin-detail', pin_id)
-            else:
-                print('Error')                                                                         
+                instance = pin_form.save(commit=False)  
+                instance.image = pin.image
+                instance.save()
+                return redirect('accounts:specific-board', instance.board.slug)
+        # For comment add.                
         elif 'comment_add' in request.POST: 
             comment_form = CommentForm(request.POST)                       
             if comment_form.is_valid():
@@ -47,8 +47,7 @@ def pin_detail(request, pin_id):
                 instance.user = request.user
                 instance.pin = pin
                 instance.save()
-                return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
-
+                return redirect('social_sharing:pin-detail', pin_id)                                                                            
     context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'comment_form': comment_form,  'search_form': search_form}
     return render(request, 'social_sharing/pin-detail.html', context)
 

@@ -25,7 +25,7 @@
           <div>
             <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon d-flex align-items-center justify-content-center">
           </div>  
-          <form method="POST">
+          <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="d-none">
               {% render_field pin_form.title %}
@@ -34,8 +34,7 @@
               {% render_field pin_form.image %}
             </div>
             {% render_field pin_form.board class='board' %}
-            <!-- <a href="{% url 'social_sharing:save-pin' pin.pin_id %}" class="text-white"><button class="background-primaryColor save-button">Save</button></a> -->
-            <button class="" type="submit" name="save_pin">Add</button>
+            <button class="background-primaryColor save-button" name="save_pin">Save</button>
           </form>
         </div>
         <h1>{{ pin.title }}</h1>

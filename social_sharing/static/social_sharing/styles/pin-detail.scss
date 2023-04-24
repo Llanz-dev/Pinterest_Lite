@@ -32,9 +32,10 @@ h1 {
         position: relative;
         height: 40px;
     }
-    button[type='submit'] {        
+    .save-button {        
         text-align: center;
         border-radius: 24px;
+        color: white;
     }
     .trash-icon {
         width: 40px;
