@@ -37,7 +37,17 @@
             <button class="background-primaryColor save-button" name="save_pin">Save</button>
           </form>
         </div>
-        <h1>{{ pin.title }}</h1>
+        <div class="pin-values">          
+          {% if pin.destination_link %}                        
+            <a href="{{ pin.destination_link }}" target="_blank" class="destination-link">{{ pin.destination_link }}</a>
+          {% endif %}
+
+          <h1>{{ pin.title }}</h1>          
+
+          {% if pin.description %}                        
+            <p>{{ pin.description }}</p>
+          {% endif %}
+        </div>
         <div class="user-middle d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center justify-content-between">
             <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">

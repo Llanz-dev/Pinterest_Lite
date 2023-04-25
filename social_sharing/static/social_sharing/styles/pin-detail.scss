@@ -1,6 +1,6 @@
 h1 {
     font-size: 28px;
-    margin-top: 3.5rem;
+    margin-top: 1rem;
 }
 
 .content {
@@ -50,6 +50,9 @@ h1 {
         background-color: unset;
         margin-right: .8rem;
     }
+    .pin-values {
+        margin-top: 1rem;
+    }
     .user-middle {
         margin-top: 1rem;
     }
@@ -90,7 +93,7 @@ h1 {
         font-size: 14px;
     }
     .comments-bottom #comment-section {
-        height: calc(var(--pin-image-height) / 1.8);
+        height: calc(var(--pin-image-height) / 2);
         overflow: auto;
     }
     .comments-bottom .text-comment {
@@ -148,6 +151,9 @@ h1 {
     }
     .no-comments {
         margin-top: 2rem;
+    }
+    a.destination-link {
+        text-decoration: underline;
     }
     a:hover {
         color: inherit;
