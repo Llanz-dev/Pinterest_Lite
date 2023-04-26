@@ -32,9 +32,11 @@ class Profile(LoginRequiredMixin, CreateView):
             board_pins.append((board, pin_count))   
         for data in user_boards:
             pin = data.pin_set.all()
-            pins_length.append(pin.count())                    
+            pins_length.append(pin.count())    
+        pins = Pin.objects.filter(board__user=self.request.user).order_by('?')
         pins_length = sum(pins_length)
         context.update({
+            'pins': pins,
             'board_form': self.form_class(),
             'board_str1': board_str1,
             'board_str2': board_str2,
@@ -44,6 +46,7 @@ class Profile(LoginRequiredMixin, CreateView):
             'board_pins': board_pins,
             'search_form': search_form        
         })
+        
         return context
 
     def form_valid(self, form):
@@ -98,6 +101,13 @@ class SpecificBoard(LoginRequiredMixin, ListView):
         pins = self.get_queryset()
         context['pins_length'] = len(pins)
         return context
+
+def all_pins(request):    
+    search_form = SearchForm()
+    pins = Pin.objects.filter(board__user=request.user)
+    
+    context = {'pins': pins, 'search_form': search_form}
+    return render(request, 'accounts/all-pins.html', context)
     
 class DeleteBoard(RedirectView):
     pattern_name = 'accounts:profile'

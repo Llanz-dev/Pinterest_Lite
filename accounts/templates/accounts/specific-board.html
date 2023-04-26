@@ -45,18 +45,18 @@
         {% endif %}
             
         <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
-                <a href="#suggest" class="ideas-board">
-                    <h4>Find some ideas for this board:</h4>
-                    <img src="{% static 'images/animals/2-cats.jpg' %}" alt="">
-                    <img src="{% static 'images/anime/boruto-sarada.jpg' %}" alt="">
-                    <img src="{% static 'images/anime/kawaki2.jpg' %}" alt="">
-                    <img src="{% static 'images/furniture/backyard-patio.jpg' %}" alt="">
-                    <img src="{% static 'images/travel/tuscany.jpg' %}" alt="">                                       
-                </a>
-                <div class="plus-container" id="plus-container">
-                    <small class="text-muted">Create</small>
-                    <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
-                </div>
+            <a href="#suggest" class="ideas-board">
+                <h4>Find some ideas for this board:</h4>
+                <img src="{% static 'images/animals/2-cats.jpg' %}" alt="">
+                <img src="{% static 'images/anime/boruto-sarada.jpg' %}" alt="">
+                <img src="{% static 'images/anime/kawaki2.jpg' %}" alt="">
+                <img src="{% static 'images/furniture/backyard-patio.jpg' %}" alt="">
+                <img src="{% static 'images/travel/tuscany.jpg' %}" alt="">                                       
+            </a>
+            <div class="plus-container" id="plus-container">
+                <small class="text-muted">Create</small>
+                <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
+            </div>
         </section>
         <div class="for-mobile-container" id="for-mobile-container">
             <small class="text-muted">Create</small>
@@ -68,9 +68,8 @@
         </section>
         </section>
     </div>
-{% endblock content %}
-    
-
+{% endblock content %}  
+        
 {% block file_script %}
     <script src="{% static 'accounts/scripts/specific-board.js' %}"></script> 
     <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
