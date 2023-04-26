@@ -91,7 +91,7 @@
             <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
         </div>
         <div class="flex-container text-center">            
-            {% if user_boards.exists and boards_length > 1 %}      
+            {% if user_boards.exists and boards_length > 1 %}   
                 <div class="card text-center">                
                     <div class="row justify-content-center">
                         <div class="left">
@@ -104,30 +104,32 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">All Pins</h5>
-                        <p class="card-text text-muted">25 pins</p>
+                        <p class="card-text text-muted">{{ pins_length }} pins</p>
                     </div>
                 </div>   
             {% endif %}                          
-            {% if user_boards.exists %}         
+            {% if user_boards.exists %} 
                 {% for board, pin_count in board_pins %}
-                    <a href="{% url 'accounts:specific-board' board.slug %}" class="card text-center">
-                      <div class="row justify-content-center">
-                        <div class="left">                            
-                            {% if board.is_secret %}                                
-                                <img src="{% static 'icons/lock-25.png' %}" class="lock-icon">
-                            {% endif %}                                
-                            <img src="{% static 'images/anime/orochimaru.jpg' %}" class="card-img-top">
-                        </div>
-                        <div class="right d-flex flex-column justify-content-between">
-                          <img src="{% static 'images/anime/sakura.jpg' %}" class="card-img-top top">
-                          <img src="{% static 'images/anime/tobirama.jpg' %}" class="card-img-top bottom">
-                        </div>
-                      </div>
-                      <div class="card-body">
-                          <h5 class="card-title">{{ board.name }}</h5>                
-                          <p class="card-text text-muted">{{ pin_count }} pins</p>
-                      </div>
-                    </a> 
+                    {% with pins=board.pin_set.all %} 
+                        <a href="{% url 'accounts:specific-board' board.slug %}" class="card text-center">
+                            <div class="row justify-content-center">
+                                <div class="left">                            
+                                    {% if board.is_secret %}           
+                                        <img src="{% static 'icons/lock-25.png' %}" class="lock-icon">
+                                    {% endif %}                                       
+                                    <img src="{{ pins.0.image.url }}" class="card-img-top">
+                                </div>
+                                <div class="right d-flex flex-column justify-content-between">
+                                    <img src="{{ pins.1.image.url }}" class="card-img-top top">
+                                    <img src="{{ pins.2.image.url }}" class="card-img-top bottom">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ board.name }}</h5>                
+                                <p class="card-text text-muted">{{ pin_count }} pins</p>
+                            </div>
+                        </a> 
+                    {% endwith %}
                 {% endfor %}
             {% endif %}
         </div>

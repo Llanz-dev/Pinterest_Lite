@@ -80,6 +80,7 @@ class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
     #         return self.form_valid(form)
     #     else:
     #         return self.form_invalid(form)
+    
 def add_comment(request, pin_id):
     print('Add comment') 
     form = CommentForm(request.POST)
@@ -111,10 +112,3 @@ class SavePin(CreateView):
 
     def get_success_url(self):
         return redirect('accounts:specific-board', self.kwargs.get('board_slug'))
-
-def save_pin(request, pin_id):
-    pin = get_object_or_404(Pin, pin_id=pin_id)
-    pin_form = PinForm()
-    pin_create = Pin(title=pin.title, description=pin.description, destination_link=pin.destination_link, image=pin.image, board=pin.board)
-
-    return redirect('social_sharing:pin-detail', pin_id)

@@ -22,20 +22,27 @@ class Profile(LoginRequiredMixin, CreateView):
         search_form = SearchForm()
         board_str1 = 'Like "Places to Go" or "Recipes to Make"'
         board_str2 = 'Recipes to Make'
-        user_boards = Board.objects.filter(user=self.request.user)
-        boards_length = len(user_boards)
-        board_pins = []
+        user_boards = Board.objects.filter(user=self.request.user)        
+        boards_length = len(user_boards)  
+        board_pins = []      
+        pins_length = []
         for board in user_boards:
-            pin_count = Pin.objects.filter(board=board).count()
-            board_pins.append((board, pin_count))
+            pin = Pin.objects.filter(board=board)
+            pin_count = pin.count()        
+            board_pins.append((board, pin_count))   
+        for data in user_boards:
+            pin = data.pin_set.all()
+            pins_length.append(pin.count())                    
+        pins_length = sum(pins_length)
         context.update({
-            'search_form': search_form,
             'board_form': self.form_class(),
             'board_str1': board_str1,
             'board_str2': board_str2,
             'user_boards': user_boards,
             'boards_length': boards_length,
-            'board_pins': board_pins
+            'pins_length': pins_length,
+            'board_pins': board_pins,
+            'search_form': search_form        
         })
         return context
 
