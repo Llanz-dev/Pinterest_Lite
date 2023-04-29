@@ -12,14 +12,48 @@
 
 {% block content %}
   {% include 'sections/navbar.html' %}
+
+  <form method="POST" id="create-board-container">
+    {% csrf_token %}
+    <h2>Create board</h2>    
+    <div class="my-2">
+        <small class="text-muted">Name</small>
+        {% render_field board_form.name class='form-control' %}
+    </div>
+    <div class="d-flex align-items-center checkbox-div">
+        <div>
+            {% render_field board_form.is_secret class='form-check-input' %}
+        </div>
+        <div class="mx-1"></div>
+        <div>
+            <p class="mb-0 keep-secret">Keep this board secret</p>
+            <p class="text-muted mb-0">So only you and collaborators can see it. <a href="https://help.pinterest.com/en/article/secret-boards?source=secret_create" class="text-muted fw-light">Learn more</a></p>
+        </div>
+    </div>
+    <div class="button-div d-flex justify-content-end">
+        <button type="submit" class="text-white background-primaryColor" name="create-board">Create</button>
+    </div>
+  </form>
+
+<div id="whole-content">
   <div id="pin-creator-container">
     <form method="POST" id="create-pin-form" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="content">
       <section class="save-button-container">
-        <div>
-          {% render_field form.board class='board' %}
-          <button type="submit" class="background-primaryColor save-button">Save</button>
+        <div>                  
+          {% if has_board_created %}
+            {% render_field form.board class='board' %}            
+          {% else %}      
+            <a class="create-board-link" id="create-board-button">
+              <p class="create-board-link">
+                <img src="{% static 'icons/add-red-28.png' %}" alt="add icon" class="add-red-icon"> 
+                <span>Create board</span>
+              </p>
+            </a>
+             
+          {% endif %}
+          <button type="submit" class="background-primaryColor save-button" name="create-pin">Save</button>
         </div>
       </section>
       <section class="row mt-4">
@@ -64,8 +98,11 @@
     </div>
     </form>
   </div>
+</div>
 {% endblock content %}
 
 {% block file_script %}
+<script src="{% static 'accounts/scripts/profile.js' %}"></script> 
+
   <script src="{% static 'social_sharing/js/create-pin.js' %}"></script>   
 {% endblock file_script %}

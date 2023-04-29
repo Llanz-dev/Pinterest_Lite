@@ -7,25 +7,43 @@ from django.views.generic.edit import FormMixin
 from social_sharing.models import Pin, Comment
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
+from accounts.models import UserProfile
 from home.forms import SearchForm
+from .models import Board
 
-# Create your views here.
-class PinBuilder(LoginRequiredMixin, CreateView):
-    model = Pin
-    form_class = PinForm
-    template_name = 'social_sharing/pin-builder.html'
-    success_url = reverse_lazy('home:home')
+# Create your views here
+def pin_builder(request):
+    search_form = SearchForm()
+    form = PinForm(request.user)    
+    board_form = BoardForm()
+    has_board_created = Board.objects.filter(user=request.user).exists()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['search_form'] = SearchForm()
-        return context    
+    if request.method == 'POST':
+        # For creating a board.
+        if 'create-board' in request.POST:
+            board_form = BoardForm(request.POST)      
+            if board_form.is_valid():
+                instance = board_form.save(commit=False)
+                instance.user = UserProfile.objects.get(email=request.user.email)
+                instance.save()
+                return redirect('accounts:profile')   
+        # For creating a pin.            
+        elif 'create-pin' in request.POST:
+            form = PinForm(request.user, request.POST, request.FILES)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                board_slug = instance.board.slug
+                instance.save()
+                return redirect('accounts:specific-board', board_slug)   
+        
+    context = {'form': form, 'board_form': board_form, 'has_board_created': has_board_created, 'search_form': search_form}
+    return render(request, 'social_sharing/pin-builder.html', context)
 
 @login_required
 def pin_detail(request, pin_id):
     search_form = SearchForm()    
     pin = get_object_or_404(Pin, pin_id=pin_id)
-    pin_form = PinForm(instance=pin)
+    pin_form = PinForm(request.user, instance=pin)
     comments = Comment.objects.filter(pin=pin)
     comment_form = CommentForm()
     comments_length = len(comments)
@@ -47,7 +65,8 @@ def pin_detail(request, pin_id):
                 instance.user = request.user
                 instance.pin = pin
                 instance.save()
-                return redirect('social_sharing:pin-detail', pin_id)                                                                            
+                return redirect('social_sharing:pin-detail', pin_id)        
+                                                                                
     context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'comment_form': comment_form,  'search_form': search_form}
     return render(request, 'social_sharing/pin-detail.html', context)
 
