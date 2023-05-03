@@ -5,6 +5,7 @@ const create_board_button = document.getElementById('create-board-button');
 const create_board_container = document.getElementById('create-board-container');
 const pinterest_logo = document.getElementById('pinterest-logo');
 const profile = document.getElementById('profile');
+const is_pin_builder = document.getElementById('is-pin-builder');
 
 // Keep track of whether the "create board" container was opened by a button click
 let isOpenedByButton = false;
@@ -46,7 +47,12 @@ function handleClickOutside(event) {
   if (!isOpenedByButton && !create_board_container.contains(event.target)) {
     // Reset the body styles to re-enable scrolling and restore the background
     document.body.style.position = 'static';
-    document.body.style.backgroundColor = '#FEFEFF';
+    // If pin builder file then change to its own color background.
+    if (is_pin_builder === null) {
+      document.body.style.backgroundColor = '#FEFEFF';
+    } else {
+      document.body.style.backgroundColor = '#E8E8E9';
+    }
     document.body.style.pointerEvents = 'auto';
     document.body.style.overflowY = 'visible';
 

@@ -49,11 +49,28 @@
           {% endif %}
         </div>
         <div class="user-middle d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center justify-content-between">
-            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
+          <div class="d-flex align-items-center justify-content-between">            
+            {% if request.user.profile_picture %}
+            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
+          {% elif not request.user.profile_picture and request.user.firstname %}
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              {{ request.user.firstname|slice:"1" }}
+            </a>                                
+          {% else %}
+          <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              N
+          </a>
+          {% endif %}
+              
             <div class="mx-2"></div>
             <div class="d-flex flex-column align-items-center justify-content-center">
-              <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ request.user.firstname }} {{ request.user.lastname }}</p></a>
+              
+              {% if not request.user.firstname and not request.user.lastname and not request.user.profile_picture %}
+                <a href="{% url 'accounts:profile' %}"><p class="fullname">None</p></a>              
+              {% else %}                
+                <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ request.user.firstname }} {{ request.user.lastname }}</p></a>
+              {% endif %}
+                
               <p class="text-muted">685 followers</p>
             </div>  
           </div>
@@ -71,7 +88,13 @@
             {% for comment in comments %}                        
               <div class="d-flex mt-2">
                 <div class="d-flex">
-                  <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
+                  
+                  {% if request.user.profile_picture %}
+                  <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                    
+                  {% else %}
+                  <p>aazzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+                  {% endif %}
+                    
                   <div class="mx-1"></div>
                     <div class="user-info">
 
@@ -98,7 +121,23 @@
         </div>  
         <form method="POST" class="comment-field">
           {% csrf_token %}
-          <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">
+          
+          {% if request.user.profile_picture %}
+            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
+          {% elif not request.user.profile_picture and request.user.firstname %}
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              {{ request.user.firstname|slice:"1" }}
+            </a>            
+          {% elif not request.user.profile_picture and request.user.lastname %}
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              {{ request.user.lastname|slice:"1" }}
+            </a>            
+          {% else %}
+          <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              N
+          </a>
+          {% endif %}
+            
           <div class="mx-1"></div>
           {% render_field comment_form.text class='comment-input' placeholder='Add a public comment' %}
           <button type="submit" class="comment-btn" name="comment_add"><img src="{% static 'icons/comment-right-arrow-18.png' %}" alt="" class="arrow-icon"></button>
