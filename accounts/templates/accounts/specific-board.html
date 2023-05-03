@@ -17,13 +17,13 @@
     {% url 'accounts:delete-board' board.slug as link %}
     {% include 'sections/delete-container.html' with description="Once you delete a board and all its Pins, you can't undo it!" link=link %}
     <div id="whole-content">
+      <div class="space"></div>
         <div class="d-flex justify-content-center align-items-center align-content-center">
           <h1 class="text-center mt-3 board-name">{{ board.name }}</h1>
           <span class="mx-1"></span>
           <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon d-flex align-items-center justify-content-center">
         </div>
-        <h4 class="pins-count">{{ pins_length }} Pins</h4>
-        
+        <h4 class="pins-count">{{ pins_length }} Pins</h4>        
         <div class="flex-container">            
             {% for pin in pins %}                            
               <div  class="card">

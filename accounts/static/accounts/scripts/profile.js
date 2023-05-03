@@ -9,9 +9,10 @@ const is_pin_builder = document.getElementById('is-pin-builder');
 
 // Keep track of whether the "create board" container was opened by a button click
 let isOpenedByButton = false;
-
-// Handle click events on the create board button
-create_board_button.addEventListener('click', () => {
+const is_board_available = document.getElementById('is-board-available');
+if (is_board_available !== null) {
+  // Handle click events on the create board button
+  create_board_button.addEventListener('click', () => {
   // Set the body styles to disable scrolling and darken the background
   document.body.style.position = 'fixed';
   document.body.style.top = '0';
@@ -41,6 +42,8 @@ create_board_button.addEventListener('click', () => {
   // Remember that the container was opened by a button click
   isOpenedByButton = true;
 });
+}
+
 
 // Handle click events outside the create board container
 function handleClickOutside(event) {

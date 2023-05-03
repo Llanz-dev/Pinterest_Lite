@@ -1,6 +1,10 @@
 $light-grey: #EFEEEE;
 $grey-hover: #e0e0e0;
 
+.space {
+    margin: 5rem 0;
+}
+
 #top {
     .profile-picture {
         height: 120px;
@@ -217,6 +221,9 @@ $grey-hover: #e0e0e0;
 }
 
 @media only screen and (max-width: 600px) {  
+    .space {
+        margin: 0 0;
+    }
     #bottom {
         margin-bottom: 4rem;
     }    

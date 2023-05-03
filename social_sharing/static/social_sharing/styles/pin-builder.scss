@@ -87,10 +87,11 @@ body {
 }
 
 #pin-creator-container {
-    margin-top: 3rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    height: 100vh; 
     .content {
         background-color: #FFFEFE;
         border-radius: 16px;        

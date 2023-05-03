@@ -17,12 +17,16 @@ body {
   padding: 0;
   box-sizing: border-box;
   color: #111010;
-  background-color: #FEFFFE;
+  background-color: white;
+}
+
+.space {
+  margin: 4.5rem 0;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: #111;
 }
 
 .top-margin {

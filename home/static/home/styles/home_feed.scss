@@ -1,12 +1,12 @@
 $grey-hover: rgb(224, 224, 224);
 
 
-
 .flex-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
   .card {
     margin: 1rem .2rem;
     width: 14.8rem;

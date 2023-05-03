@@ -320,11 +320,14 @@
   </section>
 {% else %}
   {% include 'home/sections/home_feed.html' %}
+  <p id="file-name" class="d-none">landingpage</p>
 {% endif %}
 {% endblock content %}
 
 {% block file_script %}  
   {% if not request.user.is_authenticated %}
     <script src="{% static 'home/js/landing_page.js' %}"></script>       
+    <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
+       
   {% endif %}    
 {% endblock file_script %}

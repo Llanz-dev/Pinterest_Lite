@@ -13,6 +13,7 @@
 {% block content %}
   {% include 'sections/navbar.html' %}
 
+
   <form method="POST" id="create-board-container">
     {% csrf_token %}
     <h2>Create board</h2>    
@@ -34,7 +35,6 @@
         <button type="submit" class="text-white background-primaryColor" name="create-board">Create</button>
     </div>
   </form>
-
 <div id="whole-content">
   <div id="pin-creator-container">
     <form method="POST" id="create-pin-form" enctype="multipart/form-data">
@@ -98,6 +98,7 @@
     </div>
     </form>
   </div>
+
 </div>
 <span id="is-pin-builder" class="d-none">True</span>
 {% endblock content %}

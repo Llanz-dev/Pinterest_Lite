@@ -24,6 +24,7 @@
 
 <form method="POST" id="create-board-container">
     {% csrf_token %}
+    <p id="is-board-available"></p>
     <h2>Create board</h2>    
     <div class="my-2">
         <small class="text-muted">Name</small>
@@ -43,6 +44,8 @@
         <button type="submit" class="text-white background-primaryColor">Create</button>
     </div>
 </form>
+
+<div class="space"></div>
 
 <div id="whole-content">    
     <section id="top" class="d-flex justify-content-center">
@@ -141,6 +144,8 @@
         </div>
     </section>
 </div>
+<p id="file-name" class="d-none">profile</p>
+
 {% endblock content %}
     
 

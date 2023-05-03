@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 .flex-container .card {
   margin: 1rem 0.2rem;

@@ -14,7 +14,7 @@
   {% include 'sections/navbar.html' %}  
   {% url 'social_sharing:pin-delete' pin_id=pin.pin_id as link %}
   {% include 'sections/delete-container.html' with description="Once you delete a Pin, you can't undo it!" link=link %}
-  
+  <div class="space"></div>
   <div id="whole-content">
     <div class="content">
       <section class="left">
@@ -133,9 +133,9 @@
               {{ request.user.lastname|slice:"1" }}
             </a>            
           {% else %}
-          <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
-              N
-          </a>
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+                N
+            </a>
           {% endif %}
             
           <div class="mx-1"></div>
@@ -146,7 +146,6 @@
       </section>
     </div>
   </div>
-
 {% endblock %}
 
 {% block file_script %}
