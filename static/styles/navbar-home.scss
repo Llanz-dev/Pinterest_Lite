@@ -13,7 +13,6 @@ $grey-hover: rgb(224, 224, 224);
     background-color: white;
     width: 290px;
     border-radius: 0 0 16px 16px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
     ul {
         list-style-type: none;
         padding: 0 .8rem;
@@ -43,10 +42,6 @@ $grey-hover: rgb(224, 224, 224);
 nav.top-nav {
     height: 80px;
     background-color: white;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
     z-index: 999;
     .row {
         --bs-gutter-x: 0 !important;

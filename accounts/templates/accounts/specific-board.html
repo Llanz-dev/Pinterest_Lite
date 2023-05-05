@@ -14,7 +14,7 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
-    {% url 'accounts:delete-board' board.slug as link %}
+    {% url 'accounts:delete-board' board.slug board.id as link %}
     {% include 'sections/delete-container.html' with description="Once you delete a board and all its Pins, you can't undo it!" link=link %}
     <div id="whole-content">
       <div class="space"></div>

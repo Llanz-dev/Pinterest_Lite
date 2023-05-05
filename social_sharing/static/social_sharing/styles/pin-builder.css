@@ -163,6 +163,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+#pin-creator-container .form-col .space-side {
+  margin: 0 10px;
+}
 #pin-creator-container .form-col .title-field-custom, #pin-creator-container .description-field-custom, #pin-creator-container .link-field-custom {
   width: 100%;
   border: none;
@@ -197,6 +200,9 @@ body {
 @media only screen and (max-width: 900px) {
   #pin-creator-container .content {
     width: 700px;
+  }
+  #pin-creator-container .form-col .space-side {
+    margin: 0 15px;
   }
   #pin-creator-container #pin-image {
     width: 241px;

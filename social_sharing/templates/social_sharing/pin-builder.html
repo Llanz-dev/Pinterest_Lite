@@ -14,27 +14,28 @@
   {% include 'sections/navbar.html' %}
 
 
-  <form method="POST" id="create-board-container">
-    {% csrf_token %}
-    <h2>Create board</h2>    
-    <div class="my-2">
-        <small class="text-muted">Name</small>
-        {% render_field board_form.name class='form-control' %}
-    </div>
-    <div class="d-flex align-items-center checkbox-div">
-        <div>
-            {% render_field board_form.is_secret class='form-check-input' %}
-        </div>
-        <div class="mx-1"></div>
-        <div>
-            <p class="mb-0 keep-secret">Keep this board secret</p>
-            <p class="text-muted mb-0">So only you and collaborators can see it. <a href="https://help.pinterest.com/en/article/secret-boards?source=secret_create" class="text-muted fw-light">Learn more</a></p>
-        </div>
-    </div>
-    <div class="button-div d-flex justify-content-end">
-        <button type="submit" class="text-white background-primaryColor" name="create-board">Create</button>
-    </div>
-  </form>
+<form method="POST" id="create-board-container">
+  {% csrf_token %}
+  <h2>Create board</h2>    
+  <div class="my-2">
+      <small class="text-muted">Name</small>
+      {% render_field board_form.name class='form-control' %}
+  </div>
+  <div class="d-flex align-items-center checkbox-div">
+      <div>
+          {% render_field board_form.is_secret class='form-check-input' %}
+      </div>
+      <div class="mx-1"></div>
+      <div>
+          <p class="mb-0 keep-secret">Keep this board secret</p>
+          <p class="text-muted mb-0">So only you and collaborators can see it. <a href="https://help.pinterest.com/en/article/secret-boards?source=secret_create" class="text-muted fw-light">Learn more</a></p>
+      </div>
+  </div>
+  <div class="button-div d-flex justify-content-end">
+      <button type="submit" class="text-white background-primaryColor" name="create-board">Create</button>
+  </div>
+</form>
+
 <div id="whole-content">
   <div id="pin-creator-container">
     <form method="POST" id="create-pin-form" enctype="multipart/form-data">
@@ -45,13 +46,13 @@
           {% if has_board_created %}
             {% render_field form.board class='board' %}            
           {% else %}      
+            <p id="is-board-available" class="d-none"></p>
             <a class="create-board-link" id="create-board-button">
               <p class="create-board-link">
                 <img src="{% static 'icons/add-red-28.png' %}" alt="add icon" class="add-red-icon"> 
                 <span>Create board</span>
               </p>
-            </a>
-             
+            </a>             
           {% endif %}
           <button type="submit" class="background-primaryColor save-button" name="create-pin">Save</button>
         </div>
@@ -81,9 +82,9 @@
                   <img src="{{ request.user.profile_picture.url }}" class="profile-picture-circle">                                        
                 {% else %}
                   <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>                  
-                {% endif %}                  
+                {% endif %}  
               </div>
-              <div class="mx-2"></div>
+              <div class="space-side"></div>
               <div class="col-11">
                 <p style="font-size: 14px; font-weight: 500;" class="my-auto">{{ request.user.firstname }} {{ request.user.lastname }}</p>
               </div>

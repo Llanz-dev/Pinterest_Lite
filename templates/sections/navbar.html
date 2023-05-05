@@ -47,7 +47,7 @@
     <a href="https://policy.pinterest.com/en/terms-of-service" target="_blank"><li>See terms of service <img src="{% static 'icons/top-right.png' %}" class="top-right-icon"></li></a>                  
     <a href="https://policy.pinterest.com/en/privacy-policy" target="_blank"><li>See privacy policy <img src="{% static 'icons/top-right.png' %}" class="top-right-icon"></li></a>                  
     <a href="https://www.pinterest.ph/public-beta/" target="_blank"><li>Be a beta tester <img src="{% static 'icons/top-right.png' %}" class="top-right-icon"></li></a>
-    <a href=""><li>Logout</li></a>
+    <a href="{% url 'home:log-out' %}"><li>Logout</li></a>
   </ul>
 </section>
   

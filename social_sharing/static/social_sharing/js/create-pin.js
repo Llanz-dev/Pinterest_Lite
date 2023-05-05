@@ -24,6 +24,7 @@ createPinForm.addEventListener('submit', (event) => {
     uploadText.textContent = 'An image is required to create a Pin';
   }
 });
+
 // Add an event listener to the image input
 imageInput.addEventListener('change', function() {
   // When a file is selected, create a FileReader object

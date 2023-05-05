@@ -17,10 +17,12 @@ def pin_builder(request):
     form = PinForm(request.user)    
     board_form = BoardForm()
     has_board_created = Board.objects.filter(user=request.user).exists()
+    print(has_board_created)
 
     if request.method == 'POST':
         # For creating a board.
         if 'create-board' in request.POST:
+            print('Create Board')
             board_form = BoardForm(request.POST)      
             if board_form.is_valid():
                 instance = board_form.save(commit=False)
@@ -29,6 +31,7 @@ def pin_builder(request):
                 return redirect('accounts:profile')   
         # For creating a pin.            
         elif 'create-pin' in request.POST:
+            print('Create Pin')            
             form = PinForm(request.user, request.POST, request.FILES)
             if form.is_valid():
                 instance = form.save(commit=False)

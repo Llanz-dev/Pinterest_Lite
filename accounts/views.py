@@ -95,7 +95,7 @@ class SpecificBoard(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        board_slug = self.kwargs.get('board_slug')
+        board_slug = self.kwargs.get('board_slug')        
         context['board'] = get_object_or_404(Board, slug=board_slug, user=self.request.user)
         context['search_form'] = SearchForm()
         pins = self.get_queryset()
@@ -112,6 +112,6 @@ def all_pins(request):
 class DeleteBoard(RedirectView):
     pattern_name = 'accounts:profile'
 
-    def get_redirect_url(self, board_slug, *args, **kwargs):
-        get_object_or_404(Board, slug=board_slug).delete()
+    def get_redirect_url(self, board_slug, id, *args, **kwargs):
+        get_object_or_404(Board, slug=board_slug, id=id).delete()
         return super().get_redirect_url(*args, **kwargs)

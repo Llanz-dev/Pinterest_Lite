@@ -7,7 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'styles/base.css' %}">    
-    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">  
+    
+    {% if request.user.is_authenticated %}
+        <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">  
+    {% else %}
+        <link rel="stylesheet" href="{% static 'styles/navbar-home.css' %}">  
+    {% endif %}
+        
     <link rel="icon" href="{% static 'logo/pinterest-badge.png' %}" type="image/x-icon">
     {% block file_css %}
         

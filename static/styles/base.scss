@@ -60,3 +60,9 @@ select.board {
     object-fit: cover;
     border-radius: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+    .space {
+        margin: 0 0;
+    }   
+}

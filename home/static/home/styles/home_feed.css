@@ -69,6 +69,12 @@
     margin: 0 1rem;
   }
 }
+@media only screen and (max-width: 500px) {
+  nav a {
+    margin: 0 0;
+    padding: 0.5rem;
+  }
+}
 @media only screen and (max-width: 460px) {
   .flex-container .card {
     width: 11.8rem;
@@ -87,11 +93,5 @@
 @media only screen and (max-width: 386px) {
   .flex-container .card {
     width: 9.5rem;
-  }
-}
-@media only screen and (max-width: 500px) {
-  nav a {
-    margin: 0 0;
-    padding: 0.5rem;
   }
 }/*# sourceMappingURL=home_feed.css.map */

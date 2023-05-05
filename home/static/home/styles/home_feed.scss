@@ -82,6 +82,15 @@ $grey-hover: rgb(224, 224, 224);
     }    
 }
 
+@media only screen and (max-width: 500px) {  
+    nav { 
+        a {
+            margin: 0 0;
+            padding: .5rem;    
+        }      
+    }
+}
+
 @media only screen and (max-width: 460px) {
     .flex-container {
         .card {
@@ -112,13 +121,4 @@ $grey-hover: rgb(224, 224, 224);
             width: 9.5rem;
           }             
     }    
-}
-
-@media only screen and (max-width: 500px) {  
-    nav { 
-        a {
-            margin: 0 0;
-            padding: .5rem;    
-        }      
-    }
 }

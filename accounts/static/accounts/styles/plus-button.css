@@ -34,6 +34,7 @@ a:hover {
   padding: 4px 8px;
   border-radius: 16px;
   padding-top: 0.5rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 .plus-container small, .for-mobile-container small {
   font-size: 12px;

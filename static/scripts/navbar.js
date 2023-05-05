@@ -27,6 +27,7 @@ const dropdown_container = document.getElementById('dropdown-container');
 const file_name = document.getElementById('file-name');
 
 arrow_down_button.onclick = () => {
+    // This if statement function is only for Profile page.
     if (file_name !== null && file_name.textContent === 'profile') {
         var styles_dropdown = window.getComputedStyle(dropdown_container)
         const display_dropdown = styles_dropdown.getPropertyValue('display');  
@@ -35,9 +36,11 @@ arrow_down_button.onclick = () => {
         if (display_plus === 'block' && display_dropdown === 'none') {
             dropdown_container.style.display = 'block';
             plus_container.style.display = 'none';
+            plus_button.classList.remove('plus-button-click');            
         } else if (display_plus === 'none' && display_dropdown === 'block') {
             dropdown_container.style.display = 'none';
             plus_container.style.display = 'none';
+            plus_button.classList.remove('plus-button-click');            
         } else {
             dropdown_container.style.display = 'block';
         }

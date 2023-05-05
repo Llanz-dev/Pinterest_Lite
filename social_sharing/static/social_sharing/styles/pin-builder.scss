@@ -162,6 +162,9 @@ body {
         flex-direction: column;
         justify-content: space-between;
     }
+    .form-col .space-side {
+        margin: 0 10px;
+    }
     .form-col .title-field-custom, .description-field-custom, .link-field-custom {
         width: 100%;
         border: none;
@@ -198,6 +201,9 @@ body {
     #pin-creator-container {    
         .content {
             width: 700px;
+        }
+        .form-col .space-side {
+            margin: 0 15px;
         }
         #pin-image {
             width: 241px;

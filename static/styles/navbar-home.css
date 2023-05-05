@@ -11,7 +11,6 @@
   background-color: white;
   width: 290px;
   border-radius: 0 0 16px 16px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 #dropdown-container ul {
   list-style-type: none;
@@ -41,10 +40,6 @@
 nav.top-nav {
   height: 80px;
   background-color: white;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
   z-index: 999;
 }
 nav.top-nav .row {
@@ -179,4 +174,4 @@ footer img.profile-picture {
     flex: 1;
     text-align: center;
   }
-}/*# sourceMappingURL=navbar.css.map */
+}/*# sourceMappingURL=navbar-home.css.map */
