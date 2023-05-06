@@ -7,6 +7,12 @@ const picture_col = document.getElementsByClassName('upload-picture-col')[0];
 const link_field_custom = document.getElementById('link-field-custom');
 const image_preview = document.getElementById('image-preview');
 const delete_button = document.getElementById('delete-button');
+const elementHeight = pin_image.offsetHeight;
+document.documentElement.style.setProperty('--pin-image-height', `${elementHeight}px`);
+console.log('Height:', elementHeight);
+// height: calc(var(--pin-image-height) / 2);
+
+
 
 createPinForm.addEventListener('submit', (event) => {
   // Get the "fileInput" element
@@ -32,9 +38,12 @@ imageInput.addEventListener('change', function() {
   const reader = new FileReader();
 
   // When the FileReader finishes loading the file, display the image preview
-  reader.addEventListener('load', function() {
-    // Set the source of the image to the loaded file
-    pin_image.src = reader.result;
+reader.addEventListener('load', function() {
+  // Set the source of the image to the loaded file
+  pin_image.src = reader.result;
+  pin_image.onload = function() {
+    image_preview.style.height = pin_image.height;
+  
     // Hide the upload picture column and show the image preview
     picture_col.style.display = 'none';
     image_preview.style.display = 'flex';
@@ -45,15 +54,16 @@ imageInput.addEventListener('change', function() {
     image_preview.style.alignItems = 'center';
     
     // Set the height and background color of the image preview
-    image_preview.style.height = '400px';
     image_preview.style.backgroundColor = '#EEEEEF';
+    image_preview.style.height = pin_image.height + 100 + 'px';
     
     // Center the image preview horizontally
     image_preview.style.margin = '0 auto';
     
     // Show the delete button
     delete_button.style.display = 'block';
-  });
+  };
+});
 
   // Read the selected file as a data URL
   reader.readAsDataURL(file);
