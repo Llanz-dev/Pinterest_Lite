@@ -19,53 +19,53 @@
             <p>People visiting your profile will see the following info</p>
         </div>
         <p class="label text-muted mb-0 remove-568">Photo</p>
-        <div class="picture-container">
-            
-            {% if request.user.profile_picture %}
-                <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture">
-            {% else %}
-                <h2 class="rounded-circle">{{ request.user.firstname|slice:"1" }}</h2>
-            {% endif %}
-                
+        <div class="picture-container">   
             <div class="d-none">
-                {% render_field profile_form.profile_picture %}  
-            </div>
-            <label for="{{ profile_form.profile_picture.id_for_label }}" class="change-button rounded-pill">Change</label>            
+                {% render_field form.profile_picture %}  
+            </div>         
+            {% if request.user.profile_picture %}
+                <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture" id="profile-picture">                
+            {% else %}
+                <img src="" alt="image preview" id="image-preview" class="profile-picture">
+                <h2 class="rounded-circle first-letter" id="first-letter">{{ request.user.firstname|slice:"1" }}</h2>
+            {% endif %}
+                           
+            <label for="{{ form.profile_picture.id_for_label }}" class="change-button rounded-pill" id="{{ form.profile_picture.id_for_label }}">Change</label>            
         </div>
         <div class="first-last-name mt-3">
             <div class="col">
                 <span class="label d-block">First name</span>
-                {% render_field profile_form.firstname class='form-control' %}
+                {% render_field form.firstname class='form-control' %}
             </div>
             <div class="mx-2"></div>  
             <div class="col">
                 <span class="label">Last name</span>
-                {% render_field profile_form.lastname class='form-control' %}  
+                {% render_field form.lastname class='form-control' %}  
             </div>
         </div>
         <div class="my-2">
             <span class="label">About</span>
-            {% render_field profile_form.about class='form-control' rows='3' placeholder="Tell your story" %} 
+            {% render_field form.about class='form-control' rows='3' placeholder="Tell your story" %} 
         </div>  
         <div class="my-2">
             <span class="label">Pronouns</span>
-            {% render_field profile_form.pronouns class='form-select' rows='4' %} 
+            {% render_field form.pronouns class='form-select' rows='4' %} 
         </div>  
         <div class="my-2">
             <span class="label">Website</span>
-            {% render_field profile_form.website class='form-control' placeholder="Add a link to drive traffic to your site" %} 
+            {% render_field form.website class='form-control' placeholder="Add a link to drive traffic to your site" %} 
         </div>  
         <div class="my-2">
             <span class="label">Email</span>
-            {% render_field profile_form.email class='form-control' placeholder="Email" %} 
+            {% render_field form.email class='form-control' placeholder="Email" %} 
         </div>  
         <div class="my-2">
             <span class="label">Username</span>
-            {% render_field profile_form.username class='form-control' placeholder="Choose wisely so others can find you" %} 
+            {% render_field form.username class='form-control' placeholder="Choose wisely so others can find you" %} 
         </div>  
         <div class="my-2">
             <span class="label">Age</span>
-            {% render_field profile_form.age class='form-control' %} 
+            {% render_field form.age class='form-control' %} 
         </div>  
         <div class="text-center">
             <input type="submit" value="Save" class="background-primaryColor text-white">
@@ -74,7 +74,6 @@
 {% endblock content %}    
 
 {% block file_script %}
-    <script src="{% static 'scripts/navbar.js' %}"></script>   
-    <script src="{% static 'accounts/scripts/profile.js' %}"></script>   
+    <script src="{% static 'accounts/scripts/edit-profile.js' %}"></script>   
 {% endblock file_script %}
     

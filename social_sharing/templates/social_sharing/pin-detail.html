@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block file_css %}
+  <link rel="stylesheet" href="{% static 'social_sharing/styles/pin-detail.css' %}">        
+{% endblock file_css %}
+    
+
+{% block title %} Pinterest {% endblock title %}
+    
+
+{% block content %}
+  {% include 'sections/navbar.html' %}  
+  {% url 'social_sharing:pin-delete' pin_id=pin.pin_id as link %}
+  {% include 'sections/delete-container.html' with description="Once you delete a Pin, you can't undo it!" link=link %}
+  <div class="space"></div>
+  <div id="whole-content">
+    <div class="content">
+      <section class="left">
+        <img src="{{ pin.image.url }}" alt="" id="pin-image">
+      </section>
+      <section class="right">
+        <div class="save-top d-flex align-items-center justify-content-between">
+          <div>
+            <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon d-flex align-items-center justify-content-center">
+          </div>  
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="d-none">
+              {% render_field pin_form.title %}
+              {% render_field pin_form.description %}
+              {% render_field pin_form.destination_link %}
+              {% render_field pin_form.image %}
+            </div>
+            {% render_field pin_form.board class='board' %}
+            <button class="background-primaryColor save-button" name="save_pin">Save</button>
+          </form>
+        </div>
+        <div class="pin-values">          
+          {% if pin.destination_link %}                        
+            <a href="{{ pin.destination_link }}" target="_blank" class="destination-link">{{ pin.destination_link }}</a>
+          {% endif %}
+
+          <h1>{{ pin.title }}</h1>          
+
+          {% if pin.description %}                        
+            <p>{{ pin.description }}</p>
+          {% endif %}
+        </div>
+        <div class="user-middle d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-between">            
+            {% if request.user.profile_picture %}
+            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
+          {% elif not request.user.profile_picture and request.user.firstname %}
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              {{ request.user.firstname|slice:"1" }}
+            </a>                                
+          {% else %}
+          <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              N
+          </a>
+          {% endif %}
+              
+            <div class="mx-2"></div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+              
+              {% if not request.user.firstname and not request.user.lastname and not request.user.profile_picture %}
+                <a href="{% url 'accounts:profile' %}"><p class="fullname">None</p></a>              
+              {% else %}                
+                <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ request.user.firstname }} {{ request.user.lastname }}</p></a>
+              {% endif %}
+                
+              <p class="text-muted">685 followers</p>
+            </div>  
+          </div>
+          <div>
+            <button class="follow-btn">Follow</button>
+          </div>
+        </div>
+
+        <div class="comments-bottom">
+          <h2>{{ comments_length }} Comments</h2>
+          <div id="comment-section">            
+          {% if not comments %}                          
+          <p class="text-muted no-comments">No comments yet! Add one to start the conversation.</p>
+          {% else %}
+            {% for comment in comments %}                        
+              <div class="d-flex mt-2">
+                <div class="d-flex">
+                  
+                  {% if request.user.profile_picture %}
+                  <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                    
+                  {% else %}
+                  <p>aazzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+                  {% endif %}
+                    
+                  <div class="mx-1"></div>
+                    <div class="user-info">
+
+                      {% if request.user %}
+                       <a href="{% url 'accounts:profile' %}"><span class="fullname">{{ request.user.firstname }}</span></a>
+                      {% else %}
+                        <a href="">hello</a>                      
+                      {% endif %}
+
+                      <br>
+                      <span class="text-muted comment-ago">{{ comment.date_added|date:"F j, Y" }}</span>
+                      {% if request.user in comment.hearts.all %}
+                        <a href="{% url 'social_sharing:heart-decrement' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-red-16.png' %}" alt=""></a>                  
+                      {% else %}
+                        <a href="{% url 'social_sharing:heart-increment' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
+                      {% endif %}
+                      <span class="text-muted heart-count">{{ comment.hearts.all.count }}</span>
+                    </div>      
+                </div>  
+                <span class="text-comment">{{ comment }}</span>                       
+              </div>   
+            {% endfor %}
+          {% endif %}      
+        </div>  
+        <form method="POST" class="comment-field">
+          {% csrf_token %}
+          
+          {% if request.user.profile_picture %}
+            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
+          {% elif not request.user.profile_picture and request.user.firstname %}
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              {{ request.user.firstname|slice:"1" }}
+            </a>            
+          {% elif not request.user.profile_picture and request.user.lastname %}
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+              {{ request.user.lastname|slice:"1" }}
+            </a>            
+          {% else %}
+            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+                N
+            </a>
+          {% endif %}
+            
+          <div class="mx-1"></div>
+          {% render_field comment_form.text class='comment-input' placeholder='Add a public comment' %}
+          <button type="submit" class="comment-btn" name="comment_add"><img src="{% static 'icons/comment-right-arrow-18.png' %}" alt="" class="arrow-icon"></button>
+        </form>
+        </div>
+      </section>
+    </div>
+  </div>
+{% endblock %}
+
+{% block file_script %}
+  <script src="{% static 'social_sharing/js/pin-detail.js' %}"></script>   
+  <script src="{% static 'scripts/delete-container.js' %}"></script> 
+{% endblock file_script %}

@@ -3,7 +3,10 @@
   margin-top: 3rem;
 }
 #profile-settings .profile-picture {
-  width: 100px;
+  width: 75px;
+  height: 75px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 100%;
 }
 #profile-settings h1 {
@@ -29,13 +32,8 @@
   flex-direction: row;
   align-items: center;
 }
-#profile-settings h2 {
-  margin: auto 0;
-  font-size: 26px;
-  width: 80px;
-  text-align: center;
-  background-color: #E9E9E9;
-  padding: 1.4rem;
+#profile-settings #image-preview {
+  display: none;
 }
 #profile-settings .first-last-name {
   display: flex;
@@ -45,12 +43,12 @@
 #profile-settings textarea {
   resize: none;
 }
-#profile-settings input[type=text], #profile-settings input[type=email], #profile-settings textarea, #profile-settings select {
+#profile-settings input[type=text], #profile-settings input[type=email], #profile-settings input[type=number], #profile-settings textarea, #profile-settings select {
   border: 2px solid #CDCDCD;
   border-radius: 16px;
   padding: 10px 15px;
 }
-#profile-settings input[type=text]:hover, #profile-settings input[type=email]:hover, #profile-settings textarea:hover, #profile-settings select:hover {
+#profile-settings input[type=text]:hover, #profile-settings input[type=email]:hover, #profile-settings input[type=number]:hover, #profile-settings textarea:hover, #profile-settings select:hover {
   border-color: #a0a0a0;
 }
 #profile-settings input[type=submit] {
@@ -67,6 +65,7 @@
   }
   #profile-settings {
     margin-top: 1rem;
+    width: 100%;
   }
   #profile-settings .change-button {
     margin-left: 0;

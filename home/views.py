@@ -2,11 +2,12 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, SearchForm
+from django.views.generic import ListView
 from django.urls import reverse_lazy
 from django.views import View
 
 # Create your views here.
-class LandingPage(View):
+class LandingPage(ListView, View):
     def get(self, request, *args, **kwargs):
         sign_form = SignUpForm()
         search_form = SearchForm()

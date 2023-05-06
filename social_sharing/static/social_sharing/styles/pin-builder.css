@@ -1,0 +1,264 @@
+body {
+  background-color: #E8E8E9;
+}
+
+.dis {
+  opacity: 0;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.create-board-link {
+  margin: auto 0 auto 0;
+  padding: 3px 0 3px 4px;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+}
+.create-board-link p {
+  margin-right: 3rem;
+}
+.create-board-link:hover {
+  background-color: #dbdbdb;
+  color: unset;
+}
+
+#create-board-container {
+  display: none;
+  padding: 24px;
+  background-color: #FFFEFE;
+  width: 520px;
+  border-radius: 16px;
+  position: absolute;
+  top: 510px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  pointer-events: auto;
+}
+#create-board-container h2 {
+  font-size: 28px;
+  text-align: center;
+  padding: 24px;
+}
+#create-board-container small {
+  font-size: 12px;
+}
+#create-board-container input[type=text] {
+  padding: 8px 16px;
+  border-radius: 16px;
+  border-width: 2px;
+  border-style: solid;
+}
+#create-board-container input[type=text]:hover {
+  border-color: #a1a1a1;
+}
+#create-board-container .form-check-input {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 7px;
+}
+#create-board-container .form-check-input:checked {
+  background-color: #111010;
+  border-color: #111010;
+}
+#create-board-container .form-check-input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+#create-board-container .checkbox-div {
+  padding: 24px 0;
+}
+#create-board-container p.keep-secret {
+  font-weight: 500;
+}
+#create-board-container button {
+  min-width: 60px;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 24px;
+  border: 0;
+}
+
+.add-red-icon {
+  width: 28px;
+  margin-right: 1rem;
+}
+
+#pin-creator-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#pin-creator-container .content {
+  background-color: #FFFEFE;
+  border-radius: 16px;
+  padding: 45px;
+  width: 880px;
+}
+#pin-creator-container .save-button-container {
+  position: relative;
+  height: 40px;
+}
+#pin-creator-container .save-button-container div {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+#pin-creator-container h2.first-letter {
+  font-size: 24px;
+  width: 60px;
+  padding: 1rem;
+}
+#pin-creator-container select.board {
+  margin-right: 0;
+  background-color: #EEEFEE;
+}
+#pin-creator-container option {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+#pin-creator-container button {
+  border-radius: 0px 8px 8px 0px;
+}
+#pin-creator-container #image-preview {
+  display: none;
+  position: relative;
+}
+#pin-creator-container #delete-button {
+  cursor: pointer;
+  padding: 12px;
+  position: absolute;
+  background-color: #FFFEFE;
+  border-radius: 100%;
+  top: 50%;
+  left: 34px;
+}
+#pin-creator-container #pin-image {
+  width: 271px;
+}
+#pin-creator-container .upload-picture-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #EEEEEF;
+  height: 510px;
+  text-align: center;
+  cursor: pointer;
+  border-style: dashed;
+  border-color: #dbdbdb;
+}
+#pin-creator-container .upload-picture-col p {
+  margin: 2rem 0;
+  width: 200px;
+}
+#pin-creator-container .form-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#pin-creator-container .form-col .space-side {
+  margin: 0 10px;
+}
+#pin-creator-container .form-col .title-field-custom, #pin-creator-container .description-field-custom, #pin-creator-container .link-field-custom {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+}
+#pin-creator-container .form-col .title-field-custom:focus, #pin-creator-container .description-field-custom:focus, #pin-creator-container .link-field-custom:focus {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+#pin-creator-container .form-col .title-field-custom {
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+#pin-creator-container .form-col .profile-name {
+  margin: 2rem 0;
+}
+#pin-creator-container .form-col .description-field-custom {
+  font-size: 16px;
+  padding-bottom: 15px;
+}
+#pin-creator-container .form-col .description-field-custom {
+  font-size: 16px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+#pin-creator-container .form-col .link-field-custom {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 900px) {
+  #pin-creator-container .content {
+    width: 700px;
+  }
+  #pin-creator-container .form-col .space-side {
+    margin: 0 15px;
+  }
+  #pin-creator-container #pin-image {
+    width: 241px;
+  }
+}
+@media only screen and (max-width: 735px) {
+  #pin-creator-container .content {
+    width: 600px;
+  }
+  #pin-creator-container #pin-image {
+    width: 211px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  body {
+    background-color: #FFFEFE;
+  }
+  #pin-creator-container {
+    margin-top: 0;
+  }
+  #pin-creator-container .content {
+    width: 100%;
+  }
+  #pin-creator-container .save-button-container div {
+    justify-content: center;
+    position: static;
+  }
+  #pin-creator-container #image-preview {
+    width: 71.66666667%;
+  }
+  #pin-creator-container #pin-image {
+    width: 100%;
+  }
+  #pin-creator-container .row {
+    flex-direction: column;
+    justify-content: center;
+  }
+  #pin-creator-container label {
+    margin: 0 auto;
+  }
+  #pin-creator-container .upload-picture-col {
+    height: 400px;
+    width: 300px;
+  }
+  #pin-creator-container .col-7 {
+    margin: 2rem auto 0 auto;
+    width: 100% !important;
+  }
+  #pin-creator-container .link-field-custom {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #pin-creator-container .link-field-custom {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}/*# sourceMappingURL=pin-builder.css.map */

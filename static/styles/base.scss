@@ -8,13 +8,61 @@ body {
     padding: 0;
     box-sizing: border-box;
     color: $font-color;
+    background-color: white;
+}
+
+.space {
+    margin: 4.5rem 0;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: #111;
 }
 
 .top-margin {
-    margin-top: 1.3rem;
+    margin-top: 0;
+}
+
+h2.first-letter {
+    margin: auto 0;
+    font-size: 26px;
+    width: 80px;
+    text-align: center;
+    background-color: #E9E9E9;
+    padding: 1.4rem;
+}
+
+.save-button {
+    color:white;
+    border: 0;
+    width: 60px;
+    margin: 0;
+    height: 40px;
+    font-weight: 500;
+}
+
+select.board {
+    padding: 10px 90px 10px 5px;
+    height: 40px;
+    border: 0;
+    border-radius: 8px 0px 0px 8px;    
+    padding: 0px 10px;    
+    cursor: pointer;  
+    &:focus {
+        outline: none;
+    }   
+} 
+
+.profile-picture-circle {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .space {
+        margin: 0 0;
+    }   
 }

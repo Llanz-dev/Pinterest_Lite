@@ -1,17 +1,15 @@
 $light-grey: #EFEEEE;
 $grey-hover: #e0e0e0;
 
-
-a {
-    font-weight: 500;
-    &:hover {
-        color: $font-color;
-    }
+.space {
+    margin: 5rem 0;
 }
 
 #top {
     .profile-picture {
-        width: 100px;
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
         margin-bottom: 1rem;
         border-radius: 100%;
     }
@@ -49,18 +47,82 @@ a {
     }
 }
 
-#middle {
-    margin: 3rem 0;
-    a {
-        border-radius: 15%;
-        padding: .5rem;
+.plus-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 17px;
+}
+
+#create-board-container {
+    display: none;
+    padding: 24px;
+    background-color: #FFFEFE;
+    width: 520px;
+    border-radius: 16px;
+    position: absolute;
+    top: 510px; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 99;
+    pointer-events: auto;
+    h2 {
+        font-size: 28px;
+        text-align: center;
+        padding: 24px;
+    }
+    small {
+        font-size: 12px;
+    }
+    input[type=text] {
+        padding: 8px 16px;
+        border-radius: 16px;
+        border-width: 2px;
+        border-style: solid;
         &:hover {
-            background-color: #e9e9e9;
+            border-color: #a1a1a1;
         }
+    }
+    .form-check-input {
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 7px;
+        &:checked {
+            background-color: #111010;
+            border-color: #111010;
+        }
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: rgba(0, 0, 0, 0.25);
+        }
+    }
+    .checkbox-div {
+        padding: 24px 0;
+    }
+    p.keep-secret {
+        font-weight: 500;
+    }   
+    button {
+        min-width: 60px;
+        min-height: 48px;
+        padding: 12px 16px;
+        border-radius: 24px;
+        border: 0;
+    }
+}
+
+#middle {
+    margin: 3rem 0 0;
+    p {
+        font-weight: 500; 
+        border-bottom: 3px solid black;     
+        border-radius: 1.5px;
     }
 }
 
 #bottom {
+    position: relative;
     .flex-container {
         display: flex;
         flex-wrap: wrap;
@@ -71,24 +133,50 @@ a {
             padding-right: 0;
         }
         .card {
-            margin: 1rem 1rem;
+            max-width: 252px;
+            margin: 1.2rem;
             border: none;
+            background-color: transparent;
         }
-
         .card .left {
-            width: 200px;
+            width: unset;
+            margin-right: 3px; 
+            position: relative;         
         }
         .card .right {
-            width: 100px;            
+            width: unset;  
         }
-        .card .left img {
+        .card .left img.lock-icon {
+            position: absolute;
+            top: 7px;
+            left: 7px;
+            background-color: #FEFFFE;
+            padding: 3px;
+            border-radius: 100%;
+        }
+        .card .left img.top {
+            border-top-left-radius: 10px;
+        }
+        .card .left img.bottom {
+            border-bottom-left-radius: 10px;
+        }
+        .card .left img.card-img-top {
+            width: 157px;
+            height: 157px;
+            object-fit: cover;    
             border-bottom-left-radius: 10px;
             border-top-left-radius: 10px;
         }
-        .card .right img {
-            height: 170px;
+        .card .right img.card-img-top {
+            width: 76.66px;
+            height: 76.5px;
+            object-fit: cover;
+        }
+        .card .right img.top {
+            border-top-right-radius: 10px; 
+        }
+        .card .right img.bottom {
             border-bottom-right-radius: 10px;
-            border-top-right-radius: 10px;
         }
         .card-body {
             padding: .5rem 0 0 0.4rem;
@@ -105,61 +193,121 @@ a {
 }
 
 @media only screen and (max-width: 665px) {
-    #bottom {
-        .flex-container {
-            .card .left {
-                width: 180px;
-            }
-            .card .right {
-                width: 80px;            
-            }         
-            .card .right img {
-                height: 150px;
-            }        
+    #create-board-container {
+        padding: 15px;
+        width: 420px;
+        top: 410px;
+        h2 {
+            font-size: 20px;
+            padding: 15px;
+        }
+        input[type=text] {
+            padding: 6px 14px;
+            border-width: 1px;
+        }
+        .checkbox-div {
+            padding: 20px 0;
+        }
+        p {
+            font-size: 14px;
+        }
+        button {
+            min-width: 50px;
+            min-height: 38px;
+            padding: 10px 14px;
+            border-radius: 24px;
         }
     }
+}
+
+@media only screen and (max-width: 600px) {  
+    .space {
+        margin: 0 0;
+    }
+    #bottom {
+        margin-bottom: 4rem;
+    }    
 }
 
 @media only screen and (max-width: 584px) {
     #middle {
         margin: 2rem 0;
     }
+}
 
+@media only screen and (max-width: 543px) {
     #bottom {
-        .flex-container {
-            .card .left {
-                width: 150px;
+        .flex-container { 
+            margin: 0 0;   
+            .card {
+                max-width: 100%;
+                margin: 1.2rem;
+            }    
+            .card .left img.top {
+                border-top-left-radius: 7px;
             }
-            .card .right {
-                width: 60px;            
-            }         
-            .card .right img {
-                height: 130px;
-            }        
+            .card .left img.bottom {
+                border-bottom-left-radius: 7px;
+            }
+            .card .left img.card-img-top {
+                width: 137px;
+                height: 137px;
+                border-bottom-left-radius: 7px;
+                border-top-left-radius: 7px;
+            }
+            .card .right img.card-img-top {
+                width: 66.66px;
+                height: 66.5px;
+            }
         }
     }
 }
 
-@media only screen and (max-width: 468px) {
-    #middle {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
+@media only screen and (max-width: 500px) {    
+    #create-board-container {
+        padding: 15px;
+        width: 350px;
+        top: 360px;
+        h2 {
+            font-size: 19px;
+            padding: 14px;
+        }
+        input[type=text] {
+            padding: 5px 13px;
+        }
+        .checkbox-div {
+            padding: 19px 0;
+        }
+        p {
+            font-size: 13px;
+        }
+        button {
+            min-width: 40px;
+            min-height: 28px;
+            padding: 9px 13px;
+            border-radius: 20px;
+        }
     }
+}
 
-    #bottom {
-        margin-bottom: 5rem;
-        .flex-container {
-            flex-direction: column;
-            .card .left {
-                width: 120px;
-            }
-            .card .right {
-                width: 70px;            
-            }         
-            .card .right img {
-                height: 100px;
-
+@media only screen and (max-width: 455px) {
+ #bottom {
+        .flex-container { 
+            margin: 0 0;   
+            .card {
+                max-width: 100%;
+                margin: 1.2rem;
             }        
+            .card .left img.card-img-top {
+                width: 117px;
+                height: 117px;
+                border-bottom-left-radius: 7px;
+                border-top-left-radius: 7px;
+            }
+            .card .right img.card-img-top {
+                width: 58.66px;
+                height: 58.5px;
+            }
         }
     }
 }

@@ -1,0 +1,177 @@
+.w-75 {
+  width: 78% !important;
+}
+
+#dropdown-container {
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  z-index: 999;
+  background-color: white;
+  width: 290px;
+  border-radius: 0 0 16px 16px;
+}
+#dropdown-container ul {
+  list-style-type: none;
+  padding: 0 0.8rem;
+  margin-bottom: 0.5rem;
+}
+#dropdown-container ul li {
+  padding: 8px;
+  border-radius: 8px;
+}
+#dropdown-container ul li:hover {
+  background-color: #E9E9E9;
+}
+#dropdown-container .top-right-icon {
+  width: 12px;
+  height: 12px;
+  float: right;
+  margin-top: 5px;
+}
+#dropdown-container a {
+  font-weight: 500;
+}
+#dropdown-container a:hover {
+  color: inherit;
+}
+
+nav.top-nav {
+  height: 80px;
+  background-color: white;
+  z-index: 999;
+}
+nav.top-nav .row {
+  --bs-gutter-x: 0 !important;
+}
+nav.top-nav a {
+  margin: 0 0.2rem;
+  padding: 1rem;
+  border-radius: 100%;
+  font-weight: 500;
+}
+nav.top-nav .pinterest-logo:hover, nav.top-nav .home:hover, nav.top-nav .create:hover, nav.top-nav .profile:hover, nav.top-nav .profile-link:hover {
+  background-color: rgb(224, 224, 224);
+}
+nav.top-nav .top-margin {
+  margin-top: 0;
+}
+nav.top-nav .create h5 {
+  margin-bottom: 0;
+}
+nav.top-nav .logo {
+  width: 30px;
+}
+nav.top-nav .search-field {
+  border: 0 !important;
+  background-color: #E9ECEF;
+  padding: 0.6rem 0.6rem 0.6rem 0;
+  margin-right: 0.5rem;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  border-left: none;
+}
+nav.top-nav .search-field:hover {
+  background-color: rgb(224, 224, 224);
+}
+nav.top-nav .search-icon {
+  border: 0 !important;
+  padding-left: 0.9rem;
+  border-right: none;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+}
+nav.top-nav .search-click {
+  border-bottom-left-radius: 60px;
+  border-top-left-radius: 60px;
+  padding: 0.6rem 1rem;
+  background-color: rgb(224, 224, 224);
+}
+nav.top-nav .arrow-down img, nav.top-nav .chat-icon img, nav.top-nav .search-icon img {
+  width: 20px;
+}
+nav.top-nav .chat-icon {
+  margin: 0 0.8rem;
+}
+nav.top-nav .profile {
+  background-color: #eeeeee;
+}
+nav.top-nav img.profile-picture {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+}
+nav.top-nav a.profile-link {
+  padding: 8px;
+}
+nav.top-nav .arrow-down, nav.top-nav .chat-icon, nav.top-nav .profile {
+  width: 40px;
+  padding: 10px;
+  border-radius: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+nav.top-nav .arrow-down:hover, nav.top-nav .chat-icon:hover, nav.top-nav .profile:hover {
+  background-color: rgb(224, 224, 224);
+}
+nav.top-nav a:hover {
+  color: inherit;
+}
+
+footer {
+  display: none;
+}
+footer img.profile-picture {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  margin-top: 2px;
+}
+
+@media only screen and (max-width: 849px) {
+  nav .create {
+    display: none;
+  }
+  nav a {
+    margin: 0 0.1rem;
+    padding: 0.7rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .top-nav {
+    display: none;
+  }
+  #top {
+    margin-top: 1rem;
+  }
+  footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: unset;
+    right: unset;
+    top: unset;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    padding-top: 0.6rem;
+    background-color: white;
+  }
+  nav {
+    height: 45px;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  nav li {
+    flex: 1;
+    text-align: center;
+  }
+}/*# sourceMappingURL=navbar-home.css.map */

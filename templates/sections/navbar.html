@@ -2,10 +2,10 @@
 {% load widget_tweaks %}
 
 <!-- Top navbar -->
-<nav class="top-nav row justify-content-sm-between mx-2">
+<nav class="top-nav row g-0 justify-content-sm-between" id="top-nav">
     <div class="d-flex align-items-center">
       <a href="{% url 'home:home' %}" class="pinterest-logo">
-        <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center">    
+        <img src="{% static 'logo/pinterest-badge.png' %}" alt="pinterest-logo" class="logo d-flex align-items-center" id="pinterest-logo">    
       </a>
       <a href="{% url 'home:home' %}" class="mt-1 home">
         Home
@@ -18,20 +18,38 @@
           <span class="input-group-text search-icon mt-3" id="search-icon">
             <img src="{% static 'icons/search.png' %}" alt="food image">
           </span>
-          {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" %}
+          {% render_field search_form.search_term class="form-control search-field mt-3" id="search-field" tabindex="2" %}
         </div>
       </div>
-      <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1">
-        L
-      </a>
+      
+      {% if request.user.profile_picture %}
+        <a href="{% url 'accounts:profile' %}" class="mt-1 text-center profile-link">
+          <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture" id="profile">                
+        </a>
+      {% elif request.user.firstname and not request.user.profile_picture %}
+        <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">{{ request.user.firstname|slice:"1" }}</a>
+      {% else %}
+        <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">N</a>
+      {% endif %}              
       <a href="#chat" class="col-1 chat-icon mt-1">
-        <img src="{% static 'icons/chat-bubble.png' %}" alt=""> 
+        <img src="{% static 'icons/chat-bubble.png' %}" alt="chat icon"> 
       </a>
-      <a href="#settings" class="col-1 arrow-down mt-1">
-        <img src="{% static 'icons/arrow-down.png' %}" alt="">          
+      <a class="col-1 arrow-down mt-1" id="arrow-down-button">
+        <img src="{% static 'icons/arrow-down.png' %}" alt="arrow down icon">          
       </a>
     </div>
 </nav>
+
+<section id="dropdown-container">
+  <ul>
+    <a href="{% url 'accounts:edit-profile' %}"><li>Settings</li></a>              
+    <a href="https://help.pinterest.com/en?source=gear_menu_web" target="_blank"><li>Get help <img src="{% static 'icons/top-right.png' %}" class="top-right-icon"></li></a>                  
+    <a href="https://policy.pinterest.com/en/terms-of-service" target="_blank"><li>See terms of service <img src="{% static 'icons/top-right.png' %}" class="top-right-icon"></li></a>                  
+    <a href="https://policy.pinterest.com/en/privacy-policy" target="_blank"><li>See privacy policy <img src="{% static 'icons/top-right.png' %}" class="top-right-icon"></li></a>                  
+    <a href="https://www.pinterest.ph/public-beta/" target="_blank"><li>Be a beta tester <img src="{% static 'icons/top-right.png' %}" class="top-right-icon"></li></a>
+    <a href="{% url 'home:log-out' %}"><li>Logout</li></a>
+  </ul>
+</section>
   
 <!-- Bottom navbar -->
 <footer>
@@ -40,7 +58,13 @@
       <li><a href="{% url 'home:home' %}"><img src="{% static 'icons/home-37.png' %}" alt="home icon"></a></li>
       <li><a href="#search"><img src="{% static 'icons/search-37.png' %}" alt="search icon"></a></li>
       <li><a href="#chat"><img src="{% static 'icons/chat-bubble-37.png' %}" alt="message icon"></a></li>
-      <li><a href="{% url 'accounts:profile' %}"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
+      
+      {% if request.user.profile_picture %}
+        <li><a href="{% url 'accounts:profile' %}"><img src="{{ request.user.profile_picture.url }}" alt="profile icon" class="profile-picture"></a></li>
+      {% else %}  
+        <li><a href="{% url 'accounts:profile' %}"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
+      {% endif %}
+        
     </ul>
   </nav>
 </footer>
