@@ -53,7 +53,49 @@ class Profile(LoginRequiredMixin, CreateView):
         board = form.save(commit=False)
         board.user = UserProfile.objects.get(email=self.request.user.email)
         board.save()
-        return redirect('accounts:specific-board', board.slug)                                  
+        return redirect('accounts:specific-board', board.slug)    
+
+def profile(request):
+    search_form = SearchForm()
+    board_str1 = 'Like "Places to Go" or "Recipes to Make"'
+    board_str2 = 'Recipes to Make'
+    user_boards = Board.objects.filter(user=request.user)        
+    boards_length = len(user_boards)  
+    board_pins = []      
+    pins_length = []
+    for board in user_boards:
+        pin = Pin.objects.filter(board=board)
+        pin_count = pin.count()        
+        board_pins.append((board, pin_count))   
+    for data in user_boards:
+        pin = data.pin_set.all()
+        pins_length.append(pin.count())    
+    pins = Pin.objects.filter(board__user=request.user).order_by('?')
+    pins_length = sum(pins_length)
+    
+    form = BoardForm(request.POST or None)
+    if form.is_valid():        
+        instance = form.save(commit=False)
+        board_name = form.cleaned_data.get('name')
+        boards = Board.objects.filter(user=request.user)   
+        # To prevent board name duplication           
+        if boards.exists():    
+            for board in boards:
+                if board.name == board_name:             
+                    messages.error(request, 'Try a different name. You already have a board with this name!' )
+                    print('board name:', board_name)
+                    return redirect('accounts:profile')
+                else:
+                    instance.user = UserProfile.objects.get(email=request.user.email)
+                    instance.save() 
+                    return redirect('accounts:specific-board', instance.slug)  
+        else:
+            instance.user = UserProfile.objects.get(email=request.user.email)
+            instance.save() 
+            return redirect('accounts:specific-board', instance.slug)   
+
+    context = {'pins': pins, 'board_form': form, 'board_str1': board_str1, 'board_str2': board_str2, 'user_boards': user_boards, 'boards_length': boards_length, 'pins_length': pins_length, 'board_pins': board_pins, 'search_form': search_form}
+    return render(request, 'accounts/profile.html', context)
 
 class EditProfile(LoginRequiredMixin, FormView):
     template_name = 'accounts/edit-profile.html'

@@ -13,37 +13,36 @@ const is_board_available = document.getElementById('is-board-available');
 if (is_board_available !== null) {
   // Handle click events on the create board button
   create_board_button.addEventListener('click', () => {
-  // Set the body styles to disable scrolling and darken the background
-  document.body.style.position = 'fixed';
-  document.body.style.top = '0';
-  document.body.style.bottom = '0';
-  document.body.style.height = '100%';
-  document.body.style.width = '100%';
-  document.body.style.backgroundColor = '#333333';
-  document.body.style.pointerEvents = 'none';
-  document.body.style.overflowY = 'scroll';
+    // Set the body styles to disable scrolling and darken the background
+    document.body.style.position = 'fixed';
+    document.body.style.top = '0';
+    document.body.style.bottom = '0';
+    document.body.style.height = '100%';
+    document.body.style.width = '100%';
+    document.body.style.backgroundColor = '#333333';
+    document.body.style.pointerEvents = 'none';
+    document.body.style.overflowY = 'scroll';
 
-  // Set the top navigation and search bar styles to match the dark background
-  top_nav.style.backgroundColor = 'inherit';
-  search_field.style.backgroundColor = '#333333';
-  search_icon.style.backgroundColor = '#333333';
+    // Set the top navigation and search bar styles to match the dark background
+    top_nav.style.backgroundColor = 'inherit';
+    search_field.style.backgroundColor = '#333333';
+    search_icon.style.backgroundColor = '#333333';
 
-  // Set the profile icon to match the dark background
-  profile.style.backgroundColor = '#333333';
-  profile.style.filter = 'brightness(35%)';
+    // Set the profile icon to match the dark background
+    profile.style.backgroundColor = '#333333';
+    profile.style.filter = 'brightness(35%)';
 
-  // Show the create board container and darken the rest of the page
-  create_board_container.style.display = 'block';
-  whole_content.style.filter = 'brightness(35%)';
+    // Show the create board container and darken the rest of the page
+    create_board_container.style.display = 'block';
+    whole_content.style.filter = 'brightness(35%)';
 
-  // Set the pinterest logo to match the dark background
-  pinterest_logo.style.filter = 'brightness(35%)';
+    // Set the pinterest logo to match the dark background
+    pinterest_logo.style.filter = 'brightness(35%)';
 
-  // Remember that the container was opened by a button click
-  isOpenedByButton = true;
-});
+    // Remember that the container was opened by a button click
+    isOpenedByButton = true;
+  });
 }
-
 
 // Handle click events outside the create board container
 function handleClickOutside(event) {

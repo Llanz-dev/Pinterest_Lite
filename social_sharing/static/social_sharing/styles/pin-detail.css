@@ -14,7 +14,7 @@ h1 {
   border-radius: 32px;
   width: 1016px;
   margin: 1rem auto 3rem auto;
-  box-shadow: 1px 1px 10px #cccccc;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
 }
 
 .left {
@@ -80,6 +80,7 @@ h1 {
 }
 .right .comments-bottom {
   margin-top: 3.5rem;
+  position: relative;
 }
 .right .comments-bottom .fullname:hover {
   text-decoration: underline;
@@ -105,6 +106,8 @@ h1 {
   display: flex;
   align-items: center;
   height: 90px;
+  position: sticky;
+  bottom: 0;
 }
 .right .comments-bottom .comment-input {
   padding: 1rem;
@@ -313,7 +316,6 @@ h1 {
     background-color: white;
     border-radius: 32px;
     margin: 1rem auto 3rem auto;
-    box-shadow: 1px 1px 10px #cccccc;
   }
   .right .user-middle {
     margin-top: 2rem;

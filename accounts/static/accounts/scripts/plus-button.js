@@ -2,7 +2,7 @@
 const plus_button = document.getElementById('plus-button');
 // Handle click events on the plus button
 plus_button.addEventListener('click', () => {
-    plus_button.classList.toggle('plus-button-click');
+    console.log(12);
     var styles_dropdown = window.getComputedStyle(dropdown_container);
     const display_dropdown = styles_dropdown.getPropertyValue('display');
     var styles_plus = window.getComputedStyle(plus_container);
@@ -15,7 +15,6 @@ plus_button.addEventListener('click', () => {
         plus_container.style.display = 'none';
     } else {
         plus_container.style.display = 'block';
-
     }
 });
   

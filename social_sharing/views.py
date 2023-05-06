@@ -28,7 +28,7 @@ def pin_builder(request):
                 instance = board_form.save(commit=False)
                 instance.user = UserProfile.objects.get(email=request.user.email)
                 instance.save()
-                return redirect('accounts:profile')   
+                return redirect('accounts:specific-board', instance.slug)       
         # For creating a pin.            
         elif 'create-pin' in request.POST:
             print('Create Pin')            
