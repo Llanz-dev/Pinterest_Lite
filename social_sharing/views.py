@@ -17,7 +17,6 @@ def pin_builder(request):
     form = PinForm(request.user)    
     board_form = BoardForm()
     has_board_created = Board.objects.filter(user=request.user).exists()
-    print(has_board_created)
 
     if request.method == 'POST':
         # For creating a board.
@@ -54,7 +53,8 @@ def pin_detail(request, pin_id):
     if request.method == 'POST':
         # For save pin.
         if 'save_pin' in request.POST:
-            pin_form = PinForm(request.POST, request.FILES)  
+            print('save pinsss')
+            pin_form = PinForm(request.user, request.POST, request.FILES)  
             if pin_form.is_valid():
                 instance = pin_form.save(commit=False)  
                 instance.image = pin.image

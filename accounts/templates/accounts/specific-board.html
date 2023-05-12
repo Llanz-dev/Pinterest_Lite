@@ -47,23 +47,30 @@
         </div>
         
         {% if pins_length == 0 %}
-            <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>            
-        {% endif %}
-            
-        <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
-            <a href="#suggest" class="ideas-board">
-                <h4>Find some ideas for this board:</h4>
-                <img src="{% static 'images/animals/2-cats.jpg' %}" alt="">
-                <img src="{% static 'images/anime/boruto-sarada.jpg' %}" alt="">
-                <img src="{% static 'images/anime/kawaki2.jpg' %}" alt="">
-                <img src="{% static 'images/furniture/backyard-patio.jpg' %}" alt="">
-                <img src="{% static 'images/travel/tuscany.jpg' %}" alt="">                                       
-            </a>
+          <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>                        
+          <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
+              <a href="#suggest" class="ideas-board">
+                  <h4>Find some ideas for this board:</h4>
+                  <img src="{% static 'images/animals/2-cats.jpg' %}" alt="">
+                  <img src="{% static 'images/anime/boruto-sarada.jpg' %}" alt="">
+                  <img src="{% static 'images/anime/kawaki2.jpg' %}" alt="">
+                  <img src="{% static 'images/furniture/backyard-patio.jpg' %}" alt="">
+                  <img src="{% static 'images/travel/tuscany.jpg' %}" alt="">                                       
+              </a>
+              <div class="plus-container" id="plus-container">
+                  <small class="text-muted">Create</small>
+                  <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
+              </div>
+          </section>
+        {% else %}        
+          <div class="there-are-pin">
             <div class="plus-container" id="plus-container">
-                <small class="text-muted">Create</small>
-                <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
+              <small class="text-muted">Create</small>
+              <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
             </div>
-        </section>
+          </div>
+        {% endif %}
+
         <div class="for-mobile-container" id="for-mobile-container">
             <small class="text-muted">Create</small>
             <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>

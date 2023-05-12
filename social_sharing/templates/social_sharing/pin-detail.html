@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block file_css %}
   <link rel="stylesheet" href="{% static 'social_sharing/styles/pin-detail.css' %}">        
@@ -50,8 +50,8 @@
         </div>
         <div class="user-middle d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center justify-content-between">            
-            {% if request.user.profile_picture %}
-            <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
+            {% if pin.board.user.profile_picture %}
+            <img src="{{ pin.board.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
           {% elif not request.user.profile_picture and request.user.firstname %}
             <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
               {{ request.user.firstname|slice:"1" }}
@@ -65,18 +65,21 @@
             <div class="mx-2"></div>
             <div class="d-flex flex-column align-items-center justify-content-center">
               
-              {% if not request.user.firstname and not request.user.lastname and not request.user.profile_picture %}
+              {% if not request.user.firstname and not request.user.profile_picture %}
                 <a href="{% url 'accounts:profile' %}"><p class="fullname">None</p></a>              
               {% else %}                
-                <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ request.user.firstname }} {{ request.user.lastname }}</p></a>
+                <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ pin.board.user.firstname }} {{pin.board.user.lastname}}</p></a>
               {% endif %}
                 
               <p class="text-muted">685 followers</p>
             </div>  
           </div>
-          <div>
-            <button class="follow-btn">Follow</button>
-          </div>
+          {% if request.user != pin.board.user %}                        
+            <div>
+              <button class="follow-btn">Follow</button>
+            </div>
+          {% endif %}
+
         </div>
 
         <div class="comments-bottom">
@@ -90,9 +93,11 @@
                 <div class="d-flex">
                   
                   {% if request.user.profile_picture %}
-                  <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                    
+                    <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                    
                   {% else %}
-                  <p>aazzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+                    <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+                      {{ request.user.firstname|slice:"1" }}
+                    </a> 
                   {% endif %}
                     
                   <div class="mx-1"></div>

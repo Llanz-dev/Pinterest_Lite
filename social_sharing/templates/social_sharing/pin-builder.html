@@ -78,9 +78,11 @@
               <div class="d-flex align-items-center profile-name">
                 <div class="col-1">                
                   {% if request.user.profile_picture %}
-                    <img src="{{ request.user.profile_picture.url }}" class="profile-picture-circle">                                        
+                    <img src="{{ request.user.profile_picture.url }}" class="profile-picture-circle">      
+                  {% elif request.user.firstname %}                                                      
+                    <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>    
                   {% else %}
-                    <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>                  
+                    <h2 class="rounded-circle first-letter">N</h2>    
                   {% endif %}  
                 </div>
                 <div class="space-side"></div>

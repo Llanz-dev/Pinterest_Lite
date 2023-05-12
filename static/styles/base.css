@@ -73,6 +73,6 @@ select.board:focus {
 
 @media only screen and (max-width: 600px) {
   .space {
-    margin: 0 0;
+    margin: 0 0 !important;
   }
 }/*# sourceMappingURL=base.css.map */

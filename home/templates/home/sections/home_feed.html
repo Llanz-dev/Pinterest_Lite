@@ -5,6 +5,111 @@
 <div class="space"></div>
 <!-- Home feed content -->
 <div class="flex-container">
+  {% for pin in pins %}
+    {% if forloop.counter0|divisibleby:7 %}
+      <div class="column">
+    {% endif %}
+    <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+      <div class="card">
+        <img src="{{ pin.image.url }}" class="card-img-top">
+        <div class="card-body">
+          <p class="card-text">{{ pin.title }}</p>
+        </div>
+      </div>
+    </a>
+    {% if forloop.counter0|add:1|divisibleby:7 or forloop.last %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+<!-- <div class="flex-container">
+    <div class="column">
+      {% for pin in pins_1 %}
+        <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+          <div class="card">
+            <img src="{{ pin.image.url }}" class="card-img-top">
+            <div class="card-body">
+              <p class="card-text">{{ pin.title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}  
+    </div>
+    <div class="column">
+      {% for pin in pins_2 %}
+        <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+          <div class="card">
+            <img src="{{ pin.image.url }}" class="card-img-top">
+            <div class="card-body">
+              <p class="card-text">{{ pin.title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}  
+    </div>
+    <div class="column">
+      {% for pin in pins_3 %}
+        <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+          <div class="card">
+            <img src="{{ pin.image.url }}" class="card-img-top">
+            <div class="card-body">
+              <p class="card-text">{{ pin.title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}  
+    </div>
+    <div class="column">
+      {% for pin in pins_4 %}
+        <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+          <div class="card">
+            <img src="{{ pin.image.url }}" class="card-img-top">
+            <div class="card-body">
+              <p class="card-text">{{ pin.title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}  
+    </div>
+    <div class="column">
+      {% for pin in pins_5 %}
+        <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+          <div class="card">
+            <img src="{{ pin.image.url }}" class="card-img-top">
+            <div class="card-body">
+              <p class="card-text">{{ pin.title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}  
+    </div>
+    <div class="column">
+      {% for pin in pins_6 %}
+        <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+          <div class="card">
+            <img src="{{ pin.image.url }}" class="card-img-top">
+            <div class="card-body">
+              <p class="card-text">{{ pin.title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}  
+    </div>
+    <div class="column">
+      {% for pin in pins_7 %}
+        <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+          <div class="card">
+            <img src="{{ pin.image.url }}" class="card-img-top">
+            <div class="card-body">
+              <p class="card-text">{{ pin.title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}  
+    </div>
+</div> -->
+
+<!-- <div class="flex-container">
   <div class="column">
     <div class="card">
       <img src="{% static 'images/anime/mitsuki.jpg' %}" class="card-img-top">
@@ -313,4 +418,4 @@
       </div>
     </div>    
   </div>
-</div>
+</div> -->
