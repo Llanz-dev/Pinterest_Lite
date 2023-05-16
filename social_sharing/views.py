@@ -45,9 +45,10 @@ def pin_builder(request):
 def pin_detail(request, pin_id):
     search_form = SearchForm()    
     pin = get_object_or_404(Pin, pin_id=pin_id)
+    print('pin:', pin.board.user)
     pin_form = PinForm(request.user, instance=pin)
-    comments = Comment.objects.filter(pin=pin)
-    comment_form = CommentForm()
+    comments = Comment.objects.filter(pin__title=pin.title)
+    comment_form = CommentForm(instance=pin)
     comments_length = len(comments)
 
     if request.method == 'POST':
@@ -56,7 +57,11 @@ def pin_detail(request, pin_id):
             print('save pinsss')
             pin_form = PinForm(request.user, request.POST, request.FILES)  
             if pin_form.is_valid():
+                print('valid:', pin.board.user)
                 instance = pin_form.save(commit=False)  
+                instance.pk = None
+                instance.user = pin.board.user
+                print('instance:', instance.user)                                
                 instance.image = pin.image
                 instance.save()
                 return redirect('accounts:specific-board', instance.board.slug)
@@ -128,6 +133,10 @@ def pin_delete(request, pin_id):
     pin = get_object_or_404(Pin, pin_id=pin_id)
     pin.delete()
     return redirect('accounts:specific-board', pin.board.slug)
+
+def comment_delete(request, comment_id, pin_id):
+    get_object_or_404(Comment, id=comment_id).delete()
+    return redirect('social_sharing:pin-detail', pin_id)
 
 class SavePin(CreateView):
     model = Pin

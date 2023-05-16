@@ -34,12 +34,12 @@
                   </div>
                 </a>
                 <div class="card-body">                                    
-                  {% if not request.user.firstname and not request.user.lastname and not request.user.profile_picture %}
+                  {% if not pin.user.firstname and not pin.user.profile_picture %}
                     <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><span class="text-secondary fullname">None</span></p></a>                 
-                  {% elif request.user.firstname and not request.user.profile_picture %}
-                    <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><span class="text-secondary fullname">{{ request.user.firstname }} {{ request.user.lastname }}</span></p></a>
+                  {% elif pin.user.firstname and not pin.user.profile_picture %}
+                    <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><span class="text-secondary fullname">{{ pin.user.firstname }} {{ pin.user.lastname }}</span></p></a>
                   {% else %}                
-                    <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><img src="{{ request.user.profile_picture.url }}" alt="profile picture" class="profile-pic-icon"> <span class="text-secondary fullname">{{ request.user.firstname }} {{ request.user.lastname }}</span></p></a>
+                    <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><img src="{{ pin.user.profile_picture.url }}" alt="profile picture" class="profile-pic-icon"> <span class="text-secondary fullname">{{ pin.user.firstname }} {{ pin.user.lastname }}</span></p></a>
                   {% endif %}                             
                 </div>
               </div>              

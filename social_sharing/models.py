@@ -23,7 +23,8 @@ class Board(models.Model):
             super(Board, self).save(*args, **kwargs)    
 
 class Pin(models.Model):
-    pin_id = models.CharField(max_length=12, unique=True, null=True)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, blank=True)    
+    pin_id = models.CharField(max_length=18, unique=True, null=True)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=200, blank=True, null=True)
     destination_link = models.URLField(max_length=200, blank=True, null=True)

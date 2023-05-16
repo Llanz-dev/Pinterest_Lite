@@ -13,7 +13,7 @@ class PinForm(forms.ModelForm):
     class Meta:
         model = Pin
         fields = '__all__'
-        exclude = ['pin_id']
+        exclude = ['user', 'pin_id', 'created_at']
         widgets = {
             'image': forms.ClearableFileInput(attrs={'required': False})
         }
