@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
+
 {% load widget_tweaks %}
 {% load static %}
 
@@ -42,7 +44,7 @@
         </div>
         <div class="pin-values">          
           {% if pin.destination_link %}                        
-            <a href="{{ pin.destination_link }}" target="_blank" class="destination-link">{{ pin.destination_link }}</a>
+            <a href="{{ pin.destination_link }}" target="_blank" class="destination-link">{{ pin.destination_link|extract_domain }}</a>
           {% endif %}
 
           <h1>{{ pin.title }}</h1>          
