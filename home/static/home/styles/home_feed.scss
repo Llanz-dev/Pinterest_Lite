@@ -31,12 +31,6 @@ $grey-hover: rgb(224, 224, 224);
     padding: 16px;
   }
   
-  @media (max-width: 768px) {
-    .grid-container {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      grid-gap: 10px;
-    }
-  }
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -63,9 +57,6 @@ $grey-hover: rgb(224, 224, 224);
   }
 }
 
-
-
-
 @media only screen and (max-width: 910px) {
     .flex-container {
         margin: 0 4rem;
@@ -82,6 +73,13 @@ $grey-hover: rgb(224, 224, 224);
           width: 11.8rem;
         }        
     }    
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+  }
 }
 
 @media only screen and (max-width: 705px) {
