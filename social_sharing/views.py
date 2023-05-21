@@ -35,7 +35,6 @@ def pin_builder(request):
             form = PinForm(request.user, request.POST, request.FILES)
             if form.is_valid():
                 instance = form.save(commit=False)
-                instance.user = request.user
                 board_slug = instance.board.slug
                 instance.save()
                 return redirect('accounts:specific-board', board_slug)   
