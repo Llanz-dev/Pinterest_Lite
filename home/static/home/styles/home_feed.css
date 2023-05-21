@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -29,11 +30,12 @@
   padding: 16px;
 }
 
+=======
+>>>>>>> parent of 45e4393 (Link in Pin and UserProfile is now the same pin)
 .flex-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  position: relative;
   margin-left: 5rem;
   margin-right: 5rem;
 }
@@ -41,7 +43,6 @@
   margin: 1rem 0.2rem;
   width: 14.8rem;
   border: none;
-  position: absolute;
 }
 .flex-container .card-body {
   padding: 0.5rem 0 0 0.4rem;

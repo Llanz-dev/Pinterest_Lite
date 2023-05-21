@@ -1,11 +1,3 @@
-.profile {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-}
-
 h1.board-name {
     font-size: 36px;
 }
@@ -34,6 +26,7 @@ img.trash-icon {
     transform: translate(-50%, -50%); 
     z-index: 99;
     pointer-events: auto;
+
     h1.delete-question {
         font-size: 28px;
         padding: 24px;
