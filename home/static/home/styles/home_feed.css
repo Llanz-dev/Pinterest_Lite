@@ -30,8 +30,17 @@
   padding: 16px;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 45e4393 (Link in Pin and UserProfile is now the same pin)
+=======
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+  }
+}
+>>>>>>> parent of c1bfd81 (commit)
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -70,12 +79,6 @@
   }
   .flex-container .card {
     width: 11.8rem;
-  }
-}
-@media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-gap: 10px;
   }
 }
 @media only screen and (max-width: 705px) {
