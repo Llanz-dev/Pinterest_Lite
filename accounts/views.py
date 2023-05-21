@@ -1,10 +1,11 @@
-from django.views.generic import TemplateView, RedirectView, ListView, FormView
+from social_sharing.models import Board, Pin, SavePinUser, Comment
+from django.views.generic import RedirectView, ListView, FormView
+from social_sharing.forms import PinForm, BoardForm, CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import CreateView
-from social_sharing.models import Board, Pin
 from social_sharing.forms import BoardForm
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -64,16 +65,17 @@ def profile(request):
     board_pins = []      
     pins_length = []
     for board in user_boards:
-        pin = Pin.objects.filter(board=board)
+        pin = SavePinUser.objects.filter(board=board)
         pin_count = pin.count()        
         board_pins.append((board, pin_count))   
     for data in user_boards:
-        pin = data.pin_set.all()
+        pin = data.savepinuser_set.all()
         pins_length.append(pin.count())    
-    pins = Pin.objects.filter(board__user=request.user).order_by('?')
+    pins = SavePinUser.objects.filter(board__user=request.user).order_by('?')
     pins_length = sum(pins_length)
+    print(pins_length)    
     
-    form = BoardForm(request.POST or None)
+    form = BoardForm(request.POST or None)    
     if form.is_valid():        
         instance = form.save(commit=False)
         board_name = form.cleaned_data.get('name')
@@ -144,9 +146,56 @@ class SpecificBoard(LoginRequiredMixin, ListView):
         context['pins_length'] = len(pins)
         return context
 
+def specific_board(request, board_slug):
+    search_form = SearchForm()
+    pins = SavePinUser.objects.filter(board__slug=board_slug, board__user=request.user)
+    board = get_object_or_404(Board, slug=board_slug, user=request.user)
+    pins_length = len(pins)
+    print(pins)
+
+    context = {'board': board, 'pins': pins, 'pins_length': pins_length, 'search_form': search_form}
+    return render(request, 'accounts/specific-board.html', context)    
+
+@login_required
+def pin_detail_user(request, pin_id):
+    search_form = SearchForm()    
+    pin = get_object_or_404(SavePinUser, pin_id=pin_id)
+    pin_form = PinForm(request.user, instance=pin)
+    comments = Comment.objects.filter(pin__title=pin.title)
+    comment_form = CommentForm(instance=pin)
+    comments_length = len(comments)
+
+    if request.method == 'POST':
+        # For save pin.
+        if 'save_pin' in request.POST:
+            print('save pinsss')
+            pin_form = PinForm(request.user, request.POST, request.FILES)  
+            if pin_form.is_valid():
+                pin.user_pin.add(request.user)
+                pin.save()
+                print('valid:', pin.board.user)        
+                instance = pin_form.save(commit=False)  
+                instance.user = pin.board.user
+                print('instance:', instance.user)                                
+                instance.image = pin.image
+                instance.save()
+                return redirect('accounts:specific-board', instance.board.slug)
+        # For comment add.                
+        elif 'comment_add' in request.POST: 
+            comment_form = CommentForm(request.POST)                       
+            if comment_form.is_valid():
+                instance = comment_form.save(commit=False)
+                instance.user = request.user
+                instance.pin = pin
+                instance.save()
+                return redirect('social_sharing:pin-detail', pin_id)        
+                                                                                
+    context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'comment_form': comment_form,  'search_form': search_form}
+    return render(request, 'social_sharing/pin-detail.html', context)
+
 def all_pins(request):    
     search_form = SearchForm()
-    pins = Pin.objects.filter(board__user=request.user)
+    pins = SavePinUser.objects.filter(board__user=request.user)
     
     context = {'pins': pins, 'search_form': search_form}
     return render(request, 'accounts/all-pins.html', context)

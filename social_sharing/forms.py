@@ -1,4 +1,4 @@
-from .models import Pin, Board, Comment
+from .models import Pin, Board, Comment, SavePinUser
 from django import forms
 
 class BoardForm(forms.ModelForm):
@@ -11,7 +11,7 @@ class BoardForm(forms.ModelForm):
         
 class PinForm(forms.ModelForm):
     class Meta:
-        model = Pin
+        model = SavePinUser
         fields = '__all__'
         exclude = ['user', 'pin_id', 'created_at']
         widgets = {
