@@ -4,14 +4,12 @@ $grey-hover: rgb(224, 224, 224);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  position: relative;
   margin-left: 5rem;
   margin-right: 5rem;
   .card {
     margin: 1rem .2rem;
     width: 14.8rem;
     border: none;
-    position: absolute;
   }
   .card-body {
     padding: .5rem 0 0 0.4rem;

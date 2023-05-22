@@ -6,19 +6,19 @@
 <!-- Home feed content -->
 <div class="flex-container">
   {% for pin in pins %}
-    {% if forloop.counter0|divisibleby:7 %}
-      <div class="column">
-    {% endif %}
-    <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
-      <div class="card">
-        <img src="{{ pin.image.url }}" class="card-img-top">
-        <div class="card-body">
-          <p class="card-text">{{ pin.title }}</p>
-        </div>
+  {% if forloop.counter0|divisibleby:7 %}
+    <div class="column">
+  {% endif %}
+  <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+    <div class="card">
+      <img src="{{ pin.image.url }}" class="card-img-top">
+      <div class="card-body">
+        <p class="card-text">{{ pin.title }}</p>
       </div>
-    </a>
-    {% if forloop.counter0|add:1|divisibleby:7 or forloop.last %}
-      </div>
-    {% endif %}
-  {% endfor %}
+    </div>
+  </a>
+  {% if forloop.counter0|add:1|divisibleby:7 or forloop.last %}
+    </div>
+  {% endif %}
+{% endfor %}
 </div>
