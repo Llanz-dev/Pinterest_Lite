@@ -4,11 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView
 from django.views.generic.edit import FormMixin
-from social_sharing.models import Pin, Comment
+from social_sharing.models import Pin, Comment, SavePinUser
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from accounts.models import UserProfile
 from home.forms import SearchForm
+from django.http import Http404
 from .models import Board
 
 # Create your views here
@@ -44,39 +45,49 @@ def pin_builder(request):
 
 @login_required
 def pin_detail(request, pin_id):
-    search_form = SearchForm()    
-    pin = get_object_or_404(Pin, pin_id=pin_id)
-    print('pin:', pin.board.user)
+    search_form = SearchForm()
+    try:
+        pin = Pin.objects.get(pin_id=pin_id)
+    except Pin.DoesNotExist:
+        try:
+            # This is where I query your "save pin" from SavePinUser.
+            pin = SavePinUser.objects.get(pin_id=pin_id)
+        except SavePinUser.DoesNotExist:
+            raise Http404("Pin does not exist")
+    
+    print('pin:', pin)
     pin_form = PinForm(request.user, instance=pin)
     comments = Comment.objects.filter(pin__title=pin.title)
     comment_form = CommentForm(instance=pin)
     comments_length = len(comments)
-
+    print('Pin:', pin.board.user)
     if request.method == 'POST':
         # For save pin.
         if 'save_pin' in request.POST:
             print('save pinsss')
-            pin_form = PinForm(request.user, request.POST, request.FILES)  
+            pin_form = PinForm(request.user, request.POST, request.FILES)
             if pin_form.is_valid():
+                pin.user_pin.add(request.user)
+                pin.save()
                 print('valid:', pin.board.user)
-                instance = pin_form.save(commit=False)  
-                instance.pk = None
+                instance = pin_form.save(commit=False)
                 instance.user = pin.board.user
-                print('instance:', instance.user)                                
+                print('instance:', instance.user)
                 instance.image = pin.image
                 instance.save()
                 return redirect('accounts:specific-board', instance.board.slug)
-        # For comment add.                
-        elif 'comment_add' in request.POST: 
-            comment_form = CommentForm(request.POST)                       
+        # For comment add.
+        elif 'comment_add' in request.POST:
+            comment_form = CommentForm(request.POST)
             if comment_form.is_valid():
                 instance = comment_form.save(commit=False)
                 instance.user = request.user
                 instance.pin = pin
                 instance.save()
-                return redirect('social_sharing:pin-detail', pin_id)        
-                                                                                
-    context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length, 'comment_form': comment_form,  'search_form': search_form}
+                return redirect('social_sharing:pin-detail', pin_id)
+            
+    context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length,
+               'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'social_sharing/pin-detail.html', context)
 
 class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
