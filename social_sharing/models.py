@@ -40,7 +40,7 @@ class Pin(models.Model):
             self.pin_id = generate_pin_id()
         super().save(*args, **kwargs)    
 
-class SavePinUser(models.Model):
+class OwnPinUser(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)    
     pin_id = models.CharField(max_length=18, unique=True, null=True)
     title = models.CharField(max_length=100)
@@ -51,6 +51,7 @@ class SavePinUser(models.Model):
     
     def __str__(self):
         return self.title + ' - ' + self.user.email
+    
     def save(self, *args, **kwargs):
         if not self.pk:
             self.pin_id = generate_pin_id()

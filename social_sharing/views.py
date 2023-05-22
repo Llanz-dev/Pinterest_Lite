@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView
 from django.views.generic.edit import FormMixin
-from social_sharing.models import Pin, Comment, SavePinUser
+from social_sharing.models import Pin, Comment, OwnPinUser
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from accounts.models import UserProfile
@@ -50,9 +50,9 @@ def pin_detail(request, pin_id):
         pin = Pin.objects.get(pin_id=pin_id)
     except Pin.DoesNotExist:
         try:
-            # This is where I query your "save pin" from SavePinUser.
-            pin = SavePinUser.objects.get(pin_id=pin_id)
-        except SavePinUser.DoesNotExist:
+            # This is where I query your "save pin" from OwnPinUser.
+            pin = OwnPinUser.objects.get(pin_id=pin_id)
+        except OwnPinUser.DoesNotExist:
             raise Http404("Pin does not exist")
     
     print('pin:', pin)

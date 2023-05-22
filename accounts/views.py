@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, RedirectView, ListView, FormView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from social_sharing.models import Board, Pin, SavePinUser
+from social_sharing.models import Board, Pin, OwnPinUser
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import CreateView
 from social_sharing.forms import BoardForm
@@ -64,13 +64,13 @@ def profile(request):
     board_pins = []      
     pins_length = []
     for board in user_boards:
-        pin = SavePinUser.objects.filter(board=board)
+        pin = OwnPinUser.objects.filter(board=board)
         pin_count = pin.count()        
         board_pins.append((board, pin_count))   
     for data in user_boards:
-        pin = data.savepinuser_set.all()
+        pin = data.ownpinuser_set.all()
         pins_length.append(pin.count())    
-    pins = SavePinUser.objects.filter(board__user=request.user).order_by('?')
+    pins = OwnPinUser.objects.filter(board__user=request.user).order_by('?')
     pins_length = sum(pins_length)
     print(pins_length)    
     
@@ -130,7 +130,7 @@ class EditProfile(LoginRequiredMixin, FormView):
     
 def specific_board(request, board_slug):
     search_form = SearchForm()
-    pins = SavePinUser.objects.filter(board__slug=board_slug, board__user=request.user)
+    pins = OwnPinUser.objects.filter(board__slug=board_slug, board__user=request.user)
     board = get_object_or_404(Board, slug=board_slug, user=request.user)
     pins_length = len(pins)
     print(pins)
@@ -139,7 +139,7 @@ def specific_board(request, board_slug):
 
 def all_pins(request):    
     search_form = SearchForm()
-    pins = SavePinUser.objects.filter(board__user=request.user)
+    pins = OwnPinUser.objects.filter(board__user=request.user)
     
     context = {'pins': pins, 'search_form': search_form}
     return render(request, 'accounts/all-pins.html', context)
