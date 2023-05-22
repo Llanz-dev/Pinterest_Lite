@@ -34,6 +34,7 @@ def pin_builder(request):
             form = PinForm(request.user, request.POST, request.FILES)
             if form.is_valid():
                 instance = form.save(commit=False)
+                instance.user = request.user
                 board_slug = instance.board.slug
                 instance.save()
                 return redirect('accounts:specific-board', board_slug)   
@@ -98,15 +99,6 @@ class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
         context['comments_length'] = len(context['comments'])
         context['search_form'] = SearchForm()
         return context   
-    #    form = self.get_form()
-    #     if form.is_valid():
-    #         instance = form.save(commit=False)
-    #         instance.user = self.request.user
-    #         instance.pin = self.object
-    #         instance.save()
-    #         return self.form_valid(form)
-    #     else:
-    #         return self.form_invalid(form)
     
 def add_comment(request, pin_id):
     print('Add comment') 
@@ -121,13 +113,13 @@ def heart_increment(request, pin_id, text, pk):
     comment = get_object_or_404(Comment, text=text, pin__pin_id=pin_id, pk=pk)
     comment.hearts.add(request.user)
     comment.save()
-    return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
+    return redirect('social_sharing:pin-detail', pin_id)
     
 def heart_decrement(request, pin_id, text, pk):
     comment = get_object_or_404(Comment, text=text, pin__pin_id=pin_id, pk=pk)
     comment.hearts.remove(request.user)
     comment.save()
-    return HttpResponseRedirect(reverse('social_sharing:pin-detail', kwargs={'pin_id': pin_id}))
+    return redirect('social_sharing:pin-detail', pin_id)
 
 def pin_delete(request, pin_id):
     pin = get_object_or_404(Pin, pin_id=pin_id)
