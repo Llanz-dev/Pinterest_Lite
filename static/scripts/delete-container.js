@@ -65,6 +65,9 @@ function handleClickOutside(event) {
     // Reset the profile icon to match the light background
     profile.style.backgroundColor = '#eeeeee';
     profile.style.filter = 'brightness(100%)';
+
+    // Reset the pinterest icon to match the light background
+    pinterest_logo.style.filter = 'brightness(100%)';     
   }
 
   // Reset the flag that indicates whether the container was opened by a button click

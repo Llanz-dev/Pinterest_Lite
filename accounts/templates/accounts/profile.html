@@ -127,7 +127,7 @@
             {% endif %}                          
             {% if user_boards.exists %} 
                 {% for board, pin_count in board_pins %}
-                    {% with pins=board.pin_set.all %} 
+                    {% with pins=board.ownpinuser_set.all %} 
                         <a href="{% url 'accounts:specific-board' board.slug %}" class="card text-center">
                             <div class="row justify-content-center">
                                 <div class="left">                            

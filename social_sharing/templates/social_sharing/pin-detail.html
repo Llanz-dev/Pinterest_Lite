@@ -24,10 +24,12 @@
       </section>
       <section class="right">
         <div class="save-top d-flex align-items-center justify-content-between">
-          <div>
-            {% if request.user == pin.user %}
-              <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon-pin d-flex align-items-center justify-content-center">
-            {% endif %}
+          <div>            
+            {% for user in pin.user_pin.all %}              
+              {% if user == request.user %}
+                <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon-pin d-flex align-items-center justify-content-center">                
+              {% endif %}                
+            {% endfor %}
           </div>  
           <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}

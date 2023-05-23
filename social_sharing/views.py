@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from social_sharing.forms import PinForm, BoardForm, CommentForm
+from social_sharing.forms import OwnPinUserForm, BoardForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView
@@ -15,7 +15,7 @@ from .models import Board
 # Create your views here
 def pin_builder(request):
     search_form = SearchForm()
-    form = PinForm(request.user)    
+    form = OwnPinUserForm(request.user)    
     board_form = BoardForm()
     has_board_created = Board.objects.filter(user=request.user).exists()
 
@@ -28,16 +28,21 @@ def pin_builder(request):
                 instance = board_form.save(commit=False)
                 instance.user = UserProfile.objects.get(email=request.user.email)
                 instance.save()
+                
                 return redirect('accounts:specific-board', instance.slug)       
         # For creating a pin.            
         elif 'create-pin' in request.POST:
             print('Create Pin')            
-            form = PinForm(request.user, request.POST, request.FILES)
-            if form.is_valid():
+            form = OwnPinUserForm(request.user, request.POST, request.FILES)
+            if form.is_valid():                
                 instance = form.save(commit=False)
                 instance.user = request.user
                 board_slug = instance.board.slug
+                create_pin = Pin.objects.create(user=request.user, title=instance.title, description=instance.description, destination_link=instance.destination_link, image=instance.image, board=instance.board)
+                create_pin.user_pin.set([request.user])
+                create_pin.save()
                 instance.save()
+                instance.user_pin.add(request.user)                
                 return redirect('accounts:specific-board', board_slug)   
         
     context = {'form': form, 'board_form': board_form, 'has_board_created': has_board_created, 'search_form': search_form}
@@ -56,7 +61,7 @@ def pin_detail(request, pin_id):
             raise Http404("Pin does not exist")
     
     print('pin:', pin)
-    pin_form = PinForm(request.user, instance=pin)
+    pin_form = OwnPinUserForm(request.user, instance=pin)
     comments = Comment.objects.filter(pin__title=pin.title)
     comment_form = CommentForm(instance=pin)
     comments_length = len(comments)
@@ -65,7 +70,7 @@ def pin_detail(request, pin_id):
         # For save pin.
         if 'save_pin' in request.POST:
             print('save pinsss')
-            pin_form = PinForm(request.user, request.POST, request.FILES)
+            pin_form = OwnPinUserForm(request.user, request.POST, request.FILES)
             if pin_form.is_valid():
                 pin.user_pin.add(request.user)
                 pin.save()
@@ -75,6 +80,7 @@ def pin_detail(request, pin_id):
                 print('instance:', instance.user)
                 instance.image = pin.image
                 instance.save()
+                instance.user_pin.add(request.user)                
                 return redirect('accounts:specific-board', instance.board.slug)
         # For comment add.
         elif 'comment_add' in request.POST:
@@ -89,27 +95,6 @@ def pin_detail(request, pin_id):
     context = {'pin': pin, 'pin_form': pin_form, 'comments': comments, 'comments_length': comments_length,
                'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'social_sharing/pin-detail.html', context)
-
-class PinDetail(LoginRequiredMixin, FormMixin, DetailView):
-    model = Pin
-    template_name = 'social_sharing/pin-detail.html'
-    context_object_name = 'pin'
-    form_class = CommentForm
-    
-    def get_object(self, queryset=None):
-        pin_id = self.kwargs.get('pin_id')
-        return get_object_or_404(Pin, pin_id=pin_id)
-
-    def get_success_url(self):
-        return reverse('social_sharing:pin-detail', kwargs={'pin_id': self.kwargs['pin_id']})
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['pin_form'] = PinForm(instance=self.object)
-        context['comments'] = Comment.objects.filter(pin=self.object)
-        context['comments_length'] = len(context['comments'])
-        context['search_form'] = SearchForm()
-        return context   
     
 def add_comment(request, pin_id):
     print('Add comment') 
@@ -133,9 +118,9 @@ def heart_decrement(request, pin_id, text, pk):
     return redirect('social_sharing:pin-detail', pin_id)
 
 def pin_delete(request, pin_id):
-    pin = get_object_or_404(Pin, pin_id=pin_id)
-    pin.delete()
-    return redirect('accounts:specific-board', pin.board.slug)
+    own_pin_user = get_object_or_404(OwnPinUser, pin_id=pin_id)
+    own_pin_user.delete()
+    return redirect('accounts:specific-board', own_pin_user.board.slug)
 
 def comment_delete(request, comment_id, pin_id):
     get_object_or_404(Comment, id=comment_id).delete()

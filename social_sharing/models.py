@@ -41,7 +41,8 @@ class Pin(models.Model):
         super().save(*args, **kwargs)    
 
 class OwnPinUser(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)    
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)   
+    user_pin = models.ManyToManyField(UserProfile, related_name='user_pin_chosens', blank=True)       
     pin_id = models.CharField(max_length=18, unique=True, null=True)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=200, blank=True, null=True)

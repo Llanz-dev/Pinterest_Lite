@@ -9,7 +9,7 @@ class BoardForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'placeholder': 'Like "Places to Go" or "Recipes to Make"'}),
         }
         
-class PinForm(forms.ModelForm):
+class OwnPinUserForm(forms.ModelForm):
     class Meta:
         model = OwnPinUser
         fields = '__all__'
@@ -19,7 +19,7 @@ class PinForm(forms.ModelForm):
         }
         
     def __init__(self, user, *args, **kwargs):
-        super(PinForm, self).__init__(*args, **kwargs)
+        super(OwnPinUserForm, self).__init__(*args, **kwargs)
         self.fields['board'].empty_label = None
         self.fields['board'].initial = Board.objects.first()     
         self.fields['board'].queryset = Board.objects.filter(user=user)           
