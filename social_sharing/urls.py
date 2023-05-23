@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import pin_detail, PinDetail, heart_increment, heart_decrement, pin_delete, add_comment, pin_builder, comment_delete
+from .views import pin_detail, heart_increment, heart_decrement, pin_delete, add_comment, pin_builder, comment_delete
 
 app_name = 'social_sharing'
 urlpatterns = [
