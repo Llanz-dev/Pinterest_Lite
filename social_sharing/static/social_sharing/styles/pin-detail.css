@@ -72,6 +72,8 @@ h1 {
 }
 .right .fullname {
   font-weight: 500;
+}
+.right .fullname, .right .number-following {
   font-size: 14px;
 }
 .right .follow-btn {

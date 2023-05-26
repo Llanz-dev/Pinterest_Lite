@@ -8,7 +8,6 @@ const profile = document.getElementById('profile');
 // Keep track of whether the "delete board" container was opened by a button click
 let isOpenedByButton = false;
 if (delete_board_button) {
-  console.log(delete_board_button);
   // Handle click events on the delete board button
   delete_board_button.addEventListener('click', () => {
     // Set the body styles to disable scrolling and darken the background

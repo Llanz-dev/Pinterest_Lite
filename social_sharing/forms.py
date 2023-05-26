@@ -1,4 +1,4 @@
-from .models import Pin, Board, Comment, OwnPinUser
+from .models import Pin, Board, Comment, OwnPin
 from django import forms
 
 class BoardForm(forms.ModelForm):
@@ -9,17 +9,17 @@ class BoardForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'placeholder': 'Like "Places to Go" or "Recipes to Make"'}),
         }
         
-class OwnPinUserForm(forms.ModelForm):
+class OwnPinForm(forms.ModelForm):
     class Meta:
-        model = OwnPinUser
+        model = OwnPin
         fields = '__all__'
-        exclude = ['user', 'pin_id', 'created_at']
+        exclude = ['user', 'id', 'created_at']
         widgets = {
             'image': forms.ClearableFileInput(attrs={'required': False})
         }
         
     def __init__(self, user, *args, **kwargs):
-        super(OwnPinUserForm, self).__init__(*args, **kwargs)
+        super(OwnPinForm, self).__init__(*args, **kwargs)
         self.fields['board'].empty_label = None
         self.fields['board'].initial = Board.objects.first()     
         self.fields['board'].queryset = Board.objects.filter(user=user)           

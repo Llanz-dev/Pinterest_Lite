@@ -9,7 +9,7 @@
   {% if forloop.counter0|divisibleby:7 %}
     <div class="column">
   {% endif %}
-  <a href="{% url 'social_sharing:pin-detail' pin.pin_id %}">
+  <a href="{% url 'social_sharing:home-pin-detail' pin.pin_id %}">
     <div class="card">
       <img src="{{ pin.image.url }}" class="card-img-top">
       <div class="card-body">
