@@ -320,11 +320,14 @@
 {% else %}    
   {% include 'home/sections/home_feed.html' with pins=pins %}  
   <p id="file-name" class="d-none">landingpage</p>
+  <p id="has-name" class="d-none">{{ request.user.firstname }}</p>
 {% endif %}
 {% endblock content %}
 
 {% block file_script %}  
   {% if not request.user.is_authenticated %}
-    <script src="{% static 'home/js/landing_page.js' %}"></script>       
+    <script src="{% static 'home/js/landing_page.js' %}"></script>
+  {% else %}    
+    <script src="{% static 'home/js/name_check.js' %}"></script>
   {% endif %}    
 {% endblock file_script %}

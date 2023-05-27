@@ -7,6 +7,7 @@ const top_nav = document.getElementById('top-nav');
 const profile = document.getElementById('profile');
 // Keep track of whether the "delete board" container was opened by a button click
 let isOpenedByButton = false;
+
 if (delete_board_button) {
   // Handle click events on the delete board button
   delete_board_button.addEventListener('click', () => {
@@ -44,7 +45,6 @@ if (delete_board_button) {
 
 // Handle click events outside the delete board container
 function handleClickOutside(event) {
-
   if (!isOpenedByButton && !delete_board_container.contains(event.target)) {
     // Reset the body styles to re-enable scrolling and restore the background
     document.body.style.position = 'static';

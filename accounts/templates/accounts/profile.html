@@ -54,7 +54,6 @@
     </div>
 </form>
 
-
 <div id="whole-content">    
     <section id="top" class="d-flex justify-content-center">
         <div class="content text-center">            
@@ -86,7 +85,7 @@
             {% endif %}
                 
             <p class="text-muted following">0 following</p>
-            <a href="{% url 'accounts:edit-profile' %}" class="edit-profile rounded-pill">Edit Profile</a>            
+            <a href="{% url 'accounts:edit-profile' %}" class="edit-profile rounded-pill" id="edit-profile-btn">Edit Profile</a>            
         </div>
     </section>
     <section id="middle" class="d-flex justify-content-center">
@@ -129,12 +128,13 @@
         </div>
     </section>
 </div>
-<p id="file-name" class="d-none">profile</p>
 
+<p id="file-name" class="d-none">profile</p>
+<p id="has-name" class="d-none">{{ request.user.firstname }}</p>
 {% endblock content %}
     
-
 {% block file_script %}
     <script src="{% static 'scripts/create-board-container.js' %}"></script> 
     <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
+    <script src="{% static 'accounts/scripts/name-check.js' %}"></script>
 {% endblock file_script %}    

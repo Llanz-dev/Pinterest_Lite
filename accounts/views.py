@@ -51,6 +51,10 @@ def profile(request):
     context = {'pins': pins, 'board_form': form, 'board_str1': board_str1, 'board_str2': board_str2, 'user_boards': user_boards, 'boards_length': boards_length, 'board_pins': board_pins, 'search_form': search_form}
     return render(request, 'accounts/profile.html', context)
 
+@login_required
+def user_profile(request, name):
+    pass
+
 class EditProfile(LoginRequiredMixin, FormView):
     template_name = 'accounts/edit-profile.html'
     form_class = ProfileForm
