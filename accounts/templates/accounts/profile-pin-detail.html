@@ -14,19 +14,19 @@
 {% block content %}
   {% include 'sections/navbar.html' %}  
   
-  {% url 'social_sharing:pin-delete' pin_id=pin.pin_id as link %}
+  {% url 'accounts:pin-delete' pin_id=own_pin.id as link %}
   {% include 'sections/delete-container.html' with description="Once you delete a Pin, you can't undo it!" link=link %}
   
   <div class="space"></div>
   <div id="whole-content">
     <div class="content">
       <section class="left">
-        <img src="{{ pin.image.url }}" alt="" id="pin-image">
+        <img src="{{ own_pin.image.url }}" alt="" id="pin-image">
       </section>
       <section class="right">
         <div class="save-top d-flex align-items-center justify-content-between">
           <div>     
-              {% for user in pin.users_pin.all %}              
+              {% for user in own_pin.pin.users_pin.all %}              
                 {% if user == request.user %}
                   <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon-pin d-flex align-items-center justify-content-center">                
                 {% endif %}                
@@ -45,24 +45,24 @@
           </form>
         </div>
         <div class="pin-values">          
-          {% if pin.destination_link %}                        
-          <a href="{{ pin.destination_link }}" target="_blank" class="destination-link">{{ pin.destination_link|extract_domain }}</a>
+          {% if own_pin.pin.destination_link %}                        
+           <a href="{{ own_pin.pin.destination_link }}" target="_blank" class="destination-link">{{ own_pin.pin.destination_link|extract_domain }}</a>
           {% endif %}
 
-          <h1>{{ pin.title }}</h1>          
+          <h1>{{ own_pin.pin.title }}</h1>          
 
-          {% if pin.description %}                        
-            <p>{{ pin.description }}</p>
+          {% if own_pin.pin.description %}                        
+            <p>{{ own_pin.pin.description }}</p>
           {% endif %}
         </div>
         <div class="user-middle d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center justify-content-between">  
             
-              {% if pin.pin.board.user.profile_picture %}
-                <img src="{{ pin.pin.board.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
-              {% elif not pin.pin.board.user.profile_picture and pin.pin.board.user.firstname %}
+              {% if own_pin.pin.user.profile_picture %}
+                <img src="{{ own_pin.pin.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
+              {% elif not own_pin.pin.user.profile_picture and own_pin.pin.user.firstname %}
                 <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
-                  {{ pin.pin.board.user.firstname|slice:"1" }}
+                  {{ own_pin.pin.user.firstname|slice:"1" }}
                 </a>                                
               {% else %}
                 <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
@@ -73,16 +73,16 @@
             <div class="mx-2"></div>
             <div class="d-flex flex-column">
               
-              {% if not pin.pin.board.user.firstname and not pin.pin.board.user.profile_picture %}
+              {% if not own_pin.pin.user.firstname and not own_pin.pin.user.profile_picture %}
                 <a href="{% url 'accounts:profile' %}"><p class="fullname">None</p></a>              
               {% else %}                                
-                <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ pin.pin.board.user.firstname }} {{ pin.pin.board.user.lastname }}</p></a>
+                <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ own_pin.pin.user.firstname }} {{ own_pin.pin.user.lastname }} </p></a>
               {% endif %}
                 
               <p class="text-muted number-following">685 followers</p>
             </div>  
           </div>
-          {% if request.user != pin.pin.board.user %}                        
+          {% if request.user != own_pin.pin.user %}                        
             <div>
               <button class="follow-btn">Follow</button>
             </div>
@@ -122,7 +122,7 @@
                       {% endif %}
                         <span class="text-muted heart-count">{{ comment.hearts.all.count }}</span>
                       {% if request.user == comment.user %}
-                        <a href="{% url 'social_sharing:comment-delete' comment.id pin.pin_id %}"><img src="{% static 'icons/waste-16.png' %}" alt="trash icon" class="trash-icon-comment"></a>
+                        <a href="{% url 'social_sharing:comment-delete' comment.id own_pin.pin.pin_id %}"><img src="{% static 'icons/waste-16.png' %}" alt="trash icon" class="trash-icon-comment"></a>
                       {% endif %}
                     </div>      
                 </div>  

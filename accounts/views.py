@@ -18,17 +18,14 @@ def profile(request):
     board_str2 = 'Recipes to Make'
     user_boards = Board.objects.filter(user=request.user)        
     boards_length = len(user_boards)  
-    board_pins = []      
-    pins_length = []
+    board_pins = []    
+      
     for board in user_boards:
         pin = OwnPin.objects.filter(board=board)
         pin_count = pin.count()        
         board_pins.append((board, pin_count))   
-    for data in user_boards:
-        pin = data.ownpin_set.all()
-        pins_length.append(pin.count())    
+        
     pins = OwnPin.objects.filter(board__user=request.user).order_by('?')
-    pins_length = sum(pins_length)
     
     form = BoardForm(request.POST or None)
     if form.is_valid():        
@@ -51,7 +48,7 @@ def profile(request):
             instance.save() 
             return redirect('accounts:specific-board', instance.slug)   
 
-    context = {'pins': pins, 'board_form': form, 'board_str1': board_str1, 'board_str2': board_str2, 'user_boards': user_boards, 'boards_length': boards_length, 'pins_length': pins_length, 'board_pins': board_pins, 'search_form': search_form}
+    context = {'pins': pins, 'board_form': form, 'board_str1': board_str1, 'board_str2': board_str2, 'user_boards': user_boards, 'boards_length': boards_length, 'board_pins': board_pins, 'search_form': search_form}
     return render(request, 'accounts/profile.html', context)
 
 class EditProfile(LoginRequiredMixin, FormView):
@@ -89,21 +86,19 @@ def specific_board(request, board_slug):
     pins = OwnPin.objects.filter(board__slug=board_slug, board__user=request.user)
     board = get_object_or_404(Board, slug=board_slug, user=request.user)
     pins_length = len(pins)
-    for pin in pins:
-        print('pin:', pin.pin.user)
     
     context = {'board': board, 'pins': pins, 'pins_length': pins_length, 'search_form': search_form}
     return render(request, 'accounts/specific-board.html', context) 
 
 @login_required
 def profile_pin_detail(request, pin_id):
-    search_form = SearchForm()
-    from_home_page = True
-    own_pin_obj = OwnPin.objects.get(id=pin_id)      
-    pin = Pin.objects.get(title=own_pin_obj.title)
-    own_pin_form = OwnPinForm(request.user, instance=own_pin_obj)
+    search_form = SearchForm() 
+    print('URL:', pin_id)
+    own_pin = OwnPin.objects.get(id=pin_id)  
+    pin = Pin.objects.get(title=own_pin.title, id=own_pin.pin.id)
+    own_pin_form = OwnPinForm(request.user, instance=own_pin)
     comments = Comment.objects.filter(pin__title=pin.title)
-    comment_form = CommentForm(instance=own_pin_obj)
+    comment_form = CommentForm(instance=own_pin)
     comments_length = len(comments)
     
     if request.method == 'POST':
@@ -112,7 +107,7 @@ def profile_pin_detail(request, pin_id):
             print('save pinsss')
             own_pin_form = OwnPinForm(request.user, request.POST, request.FILES)
             if own_pin_form.is_valid():
-                own_pin_obj.users_pin.add(request.user)                
+                own_pin.pin.users_pin.add(request.user)                
                 instance = own_pin_form.save(commit=False)
                 instance.user = request.user
                 instance.pin = pin
@@ -129,16 +124,35 @@ def profile_pin_detail(request, pin_id):
                 instance.save()
                 return redirect('accounts:profile-pin-detail', pin_id)
             
-    context = {'pin': pin, 'own_pin_form': own_pin_form, 'from_home_page': from_home_page, 'comments': comments, 'comments_length': comments_length,
+    context = {'own_pin': own_pin, 'own_pin_form': own_pin_form, 'comments': comments, 'comments_length': comments_length,
                'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'accounts/profile-pin-detail.html', context)    
 
-def all_pins(request):    
-    search_form = SearchForm() 
-    pins = OwnPin.objects.filter(board__user=request.user)    
+def profile_pin_delete(request, pin_id):
+    own_pin_object = OwnPin.objects.filter(user=request.user, id=pin_id)   
+    pin = Pin.objects.get(title=own_pin_object.first().title)      
+    own_pin_object = OwnPin.objects.filter(user=request.user, title=pin.title)   
+    own_pin_count = len(own_pin_object)                
+    pin_owner = pin.user
     
-    context = {'pins': pins, 'search_form': search_form}
-    return render(request, 'accounts/all-pins.html', context)
+    if  pin_owner == request.user:
+        pin.delete()
+        return redirect('home:home')        
+        
+    print('Pin:', own_pin_object)
+    print('Owner:', pin.user)
+    print('Own pin object:', own_pin_object)
+    print('Given ID:', pin_id)
+    for pin_url in own_pin_object:
+        if pin_id == pin_url.id:
+            own_pin_delete = get_object_or_404(OwnPin, id=pin_id)
+            own_pin_delete.delete()
+            
+    print('Own pin object count:', own_pin_count)
+
+    if own_pin_count == 1:
+        pin.users_pin.remove(request.user)                    
+    return redirect('home:home')
     
 class DeleteBoard(RedirectView):
     pattern_name = 'accounts:profile'

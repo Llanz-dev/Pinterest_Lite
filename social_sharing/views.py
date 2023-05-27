@@ -55,8 +55,8 @@ def home_pin_detail(request, pin_id):
     except Pin.DoesNotExist:
         # This is where I query your "save pin" from OwnPin.        
         own_pin_obj = get_object_or_404(OwnPin, id=pin_id)      
-        pin = Pin.objects.get(title=own_pin_obj.title)      
-        
+        pin = Pin.objects.get(title=own_pin_obj.title)   
+           
     own_pin_form = OwnPinForm(request.user, instance=pin)
     comments = Comment.objects.filter(pin__title=pin.title)
     comment_form = CommentForm(instance=pin)
@@ -108,8 +108,14 @@ def heart_decrement(request, pin_id, text, pk):
     comment.save()
     return redirect('social_sharing:home-pin-detail', pin_id)
 
-def pin_delete(request, pin_id):
-    # Finish the pin delete
+def home_pin_delete(request, pin_id):
+    pin = Pin.objects.get(pin_id=pin_id)  
+    pin_owner = pin.user
+    
+    if pin_owner == request.user:
+        pin.delete()
+        return redirect('home:home')             
+    
     return redirect('home:home')
     
 def comment_delete(request, comment_id, pin_id):

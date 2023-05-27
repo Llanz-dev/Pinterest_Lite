@@ -27,7 +27,7 @@
         <div class="flex-container">            
             {% for pin in pins %}                            
               <div  class="card">
-                <a href="{% url 'social_sharing:home-pin-detail' pin.id %}">
+                <a href="{% url 'accounts:profile-pin-detail' pin.id %}">
                   <img src="{{ pin.image.url }}" class="card-img-top">
                   <div class="card-body">
                     <p class="card-text">{{ pin.title }}</p>  
