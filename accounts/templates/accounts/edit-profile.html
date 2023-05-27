@@ -25,9 +25,10 @@
             </div>         
             {% if request.user.profile_picture %}
                 <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture" id="profile-picture">                
-            {% else %}
-                <img src="" alt="image preview" id="image-preview" class="profile-picture">
+            {% elif request.user.firstname %}
                 <h2 class="rounded-circle first-letter" id="first-letter">{{ request.user.firstname|slice:"1" }}</h2>
+            {% else %}
+                <h2 class="rounded-circle first-letter" id="first-letter">N</h2>
             {% endif %}
                            
             <label for="{{ form.profile_picture.id_for_label }}" class="change-button rounded-pill" id="{{ form.profile_picture.id_for_label }}">Change</label>            

@@ -50,64 +50,6 @@
   right: 17px;
 }
 
-#create-board-container {
-  display: none;
-  padding: 24px;
-  background-color: #FFFEFE;
-  width: 520px;
-  border-radius: 16px;
-  position: absolute;
-  top: 510px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99;
-  pointer-events: auto;
-}
-#create-board-container h2 {
-  font-size: 28px;
-  text-align: center;
-  padding: 24px;
-}
-#create-board-container small {
-  font-size: 12px;
-}
-#create-board-container input[type=text] {
-  padding: 8px 16px;
-  border-radius: 16px;
-  border-width: 2px;
-  border-style: solid;
-}
-#create-board-container input[type=text]:hover {
-  border-color: #a1a1a1;
-}
-#create-board-container .form-check-input {
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 7px;
-}
-#create-board-container .form-check-input:checked {
-  background-color: #111010;
-  border-color: #111010;
-}
-#create-board-container .form-check-input:focus {
-  outline: none;
-  box-shadow: none;
-  border-color: rgba(0, 0, 0, 0.25);
-}
-#create-board-container .checkbox-div {
-  padding: 24px 0;
-}
-#create-board-container p.keep-secret {
-  font-weight: 500;
-}
-#create-board-container button {
-  min-width: 60px;
-  min-height: 48px;
-  padding: 12px 16px;
-  border-radius: 24px;
-  border: 0;
-}
-
 #middle {
   margin: 3rem 0 0;
 }
@@ -190,33 +132,6 @@
   font-weight: 500;
 }
 
-@media only screen and (max-width: 665px) {
-  #create-board-container {
-    padding: 15px;
-    width: 420px;
-    top: 410px;
-  }
-  #create-board-container h2 {
-    font-size: 20px;
-    padding: 15px;
-  }
-  #create-board-container input[type=text] {
-    padding: 6px 14px;
-    border-width: 1px;
-  }
-  #create-board-container .checkbox-div {
-    padding: 20px 0;
-  }
-  #create-board-container p {
-    font-size: 14px;
-  }
-  #create-board-container button {
-    min-width: 50px;
-    min-height: 38px;
-    padding: 10px 14px;
-    border-radius: 24px;
-  }
-}
 @media only screen and (max-width: 600px) {
   .space {
     margin: 0 0;
@@ -253,32 +168,6 @@
   #bottom .flex-container .card .right img.card-img-top {
     width: 66.66px;
     height: 66.5px;
-  }
-}
-@media only screen and (max-width: 500px) {
-  #create-board-container {
-    padding: 15px;
-    width: 350px;
-    top: 360px;
-  }
-  #create-board-container h2 {
-    font-size: 19px;
-    padding: 14px;
-  }
-  #create-board-container input[type=text] {
-    padding: 5px 13px;
-  }
-  #create-board-container .checkbox-div {
-    padding: 19px 0;
-  }
-  #create-board-container p {
-    font-size: 13px;
-  }
-  #create-board-container button {
-    min-width: 40px;
-    min-height: 28px;
-    padding: 9px 13px;
-    border-radius: 20px;
   }
 }
 @media only screen and (max-width: 455px) {

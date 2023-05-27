@@ -94,11 +94,17 @@ h4 {
 
 #ideas-board-container {
     position: relative;
+    .plus-container {
+        position: absolute;
+        bottom: 0px;
+    }
 }
 
-.plus-container {
+.there-are-pin .plus-container {
     position: absolute;
-    bottom: 0px;
+    bottom: 14px;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #for-mobile-button {

@@ -1,6 +1,5 @@
 $grey-hover: rgb(224, 224, 224);
-
-
+  
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -24,9 +23,6 @@ $grey-hover: rgb(224, 224, 224);
     border-radius: 18px;
   }
 }
-
-
-
 
 @media only screen and (max-width: 910px) {
     .flex-container {

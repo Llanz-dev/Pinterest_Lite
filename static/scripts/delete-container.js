@@ -5,41 +5,42 @@ const cancel_btn = document.getElementById('cancel-btn');
 const whole_content = document.getElementById('whole-content');
 const top_nav = document.getElementById('top-nav');
 const profile = document.getElementById('profile');
-
 // Keep track of whether the "delete board" container was opened by a button click
 let isOpenedByButton = false;
-
+if (delete_board_button) {
   // Handle click events on the delete board button
-delete_board_button.addEventListener('click', () => {
-  // Set the body styles to disable scrolling and darken the background
-  document.body.style.position = 'fixed';
-  document.body.style.top = '0';
-  document.body.style.bottom = '0';
-  document.body.style.height = '100%';
-  document.body.style.width = '100%';
-  document.body.style.backgroundColor = '#333333';
-  document.body.style.pointerEvents = 'none';
-  document.body.style.overflowY = 'scroll';
+  delete_board_button.addEventListener('click', () => {
+    // Set the body styles to disable scrolling and darken the background
+    document.body.style.position = 'fixed';
+    document.body.style.top = '0';
+    document.body.style.bottom = '0';
+    document.body.style.height = '100%';
+    document.body.style.width = '100%';
+    document.body.style.backgroundColor = '#333333';
+    document.body.style.pointerEvents = 'none';
+    document.body.style.overflowY = 'scroll';
 
-  // Set the top navigation and search bar styles to match the dark background
-  top_nav.style.backgroundColor = 'inherit';
-  search_field.style.backgroundColor = '#333333';
-  search_icon.style.backgroundColor = '#333333';
+    // Set the top navigation and search bar styles to match the dark background
+    top_nav.style.backgroundColor = 'inherit';
+    search_field.style.backgroundColor = '#333333';
+    search_icon.style.backgroundColor = '#333333';
 
-  // Set the profile icon to match the dark background
-  profile.style.backgroundColor = '#333333';
-  profile.style.filter = 'brightness(35%)';
+    // Set the profile icon to match the dark background
+    profile.style.backgroundColor = '#333333';
+    profile.style.filter = 'brightness(35%)';
 
-  // Set the pinterest logo to match the dark background
-  pinterest_logo.style.filter = 'brightness(35%)';
+    // Set the pinterest logo to match the dark background
+    pinterest_logo.style.filter = 'brightness(35%)';
 
-  // Show the delete board container and darken the rest of the page
-  delete_board_container.style.display = 'block';
-  whole_content.style.filter = 'brightness(35%)';
+    // Show the delete board container and darken the rest of the page
+    delete_board_container.style.display = 'block';
+    whole_content.style.filter = 'brightness(35%)';
 
-  // Remember that the container was opened by a button click
-  isOpenedByButton = true;
-});
+    // Remember that the container was opened by a button click
+    isOpenedByButton = true;
+  });
+}
+
 
 // Handle click events outside the delete board container
 function handleClickOutside(event) {
@@ -63,6 +64,9 @@ function handleClickOutside(event) {
     // Reset the profile icon to match the light background
     profile.style.backgroundColor = '#eeeeee';
     profile.style.filter = 'brightness(100%)';
+
+    // Reset the pinterest icon to match the light background
+    pinterest_logo.style.filter = 'brightness(100%)';     
   }
 
   // Reset the flag that indicates whether the container was opened by a button click

@@ -1,4 +1,4 @@
-const image_preview = document.getElementById('image-preview');
+const image_preview = document.getElementById('profile-picture');
 const first_letter = document.getElementById('first-letter');
 const image_input = document.getElementById('id_profile_picture');
 
@@ -7,6 +7,7 @@ image_input.addEventListener('change', function() {
     // When a file is selected, create a FileReader object
     const file = this.files[0];
     const reader = new FileReader();
+    console.log(reader.result)
     // When the FileReader finishes loading the file, display the image preview
     reader.addEventListener('load', function() {
         image_preview.src = reader.result;        
@@ -17,4 +18,3 @@ image_input.addEventListener('change', function() {
     // Read the selected file as a data URL
     reader.readAsDataURL(file);
   });
-  

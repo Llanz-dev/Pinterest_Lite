@@ -1,10 +1,10 @@
 h1 {
     font-size: 28px;
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 .space {
-    margin: 5rem 0 !important;
+    margin: 5rem 0;
 }
 
 .content {
@@ -14,7 +14,7 @@ h1 {
     border-radius: 32px;
     width: 1016px;
     margin: 1rem auto 3rem auto; 
-    box-shadow: 1px 1px 10px #cccccc;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
 }
 
 .left {
@@ -40,9 +40,16 @@ h1 {
         border-radius: 24px;
         color: white;
     }
-    .trash-icon {
+    .trash-icon-pin {
         width: 40px;
         padding: 10px;
+        cursor: pointer;
+        border-radius: 100%;
+        &:hover {
+            background-color: rgb(224, 224, 224);
+        }
+    }
+    .trash-icon-comment {
         cursor: pointer;
         border-radius: 100%;
         &:hover {
@@ -64,6 +71,8 @@ h1 {
     }
     .fullname {
         font-weight: 500;
+    }
+    .fullname, .number-following {
         font-size: 14px;
     }
     .follow-btn {
@@ -79,6 +88,7 @@ h1 {
     }
     .comments-bottom {
         margin-top: 3.5rem;
+        position: relative;
     } 
     .comments-bottom .fullname {
         &:hover {
@@ -106,6 +116,10 @@ h1 {
         display: flex;
         align-items: center;
         height: 90px;
+        position: sticky;
+        bottom: 0;
+        background-color: white;
+        z-index: 5;
     }
     .comments-bottom .comment-input {
         padding: 1rem;
@@ -317,7 +331,6 @@ h1 {
         background-color: white;
         border-radius: 32px;
         margin: 1rem auto 3rem auto;
-        box-shadow: 1px 1px 10px #cccccc;
     }
 
     .right { 
@@ -327,6 +340,12 @@ h1 {
         .comments-bottom {
             margin-top: 2.5rem;
         }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .right .comments-bottom .comment-field {
+        bottom: 40px;
     }
 }
 

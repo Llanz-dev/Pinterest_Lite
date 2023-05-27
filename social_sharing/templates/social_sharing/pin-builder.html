@@ -4,6 +4,7 @@
 
 {% block file_css %}
   <link rel="stylesheet" href="{% static 'social_sharing/styles/pin-builder.css' %}">        
+  <link rel="stylesheet" href="{% static 'styles/create-board-container.css' %}">        
 {% endblock file_css %}
     
 
@@ -11,9 +12,7 @@
     
 
 {% block content %}
-  {% include 'sections/navbar.html' %}
-
-
+{% include 'sections/navbar.html' %}
 <form method="POST" id="create-board-container">
   {% csrf_token %}
   <h2>Create board</h2>    
@@ -40,71 +39,74 @@
   <div id="pin-creator-container">
     <form method="POST" id="create-pin-form" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="content">
-      <section class="save-button-container">
-        <div>                  
-          {% if has_board_created %}
-            {% render_field form.board class='board' %}            
-          {% else %}      
-            <p id="is-board-available" class="d-none"></p>
-            <a class="create-board-link" id="create-board-button">
-              <p class="create-board-link">
-                <img src="{% static 'icons/add-red-28.png' %}" alt="add icon" class="add-red-icon"> 
-                <span>Create board</span>
-              </p>
-            </a>             
-          {% endif %}
-          <button type="submit" class="background-primaryColor save-button" name="create-pin">Save</button>
-        </div>
-      </section>
-      <section class="row mt-4">
-        <div class="dis">
-          <label for="{{ form.image.id_for_label }}">Image:</label>
-          {% render_field form.image  %}
-        </div>
-        <div id="image-preview" class="col-5">
-          <img src="{% static 'icons/trash-20.png' %}" alt="" id="delete-button" title="Delete image">
-          <img src="" alt="" id="pin-image">
-        </div>
-        <label for="{{ form.image.id_for_label }}" class="col-5 upload-picture-col" id="{{ form.image.id_for_label }}">
-          <div class="mt-5">
-            <img src="{% static 'icons/arrow-up.png' %}" alt="" id="arrow-to-priority">
-            <h4 class="mt-4" id="upload-text">Click to upload</h4>
+      <div class="content">
+        <section class="save-button-container">
+          <div>                  
+            {% if has_board_created %}
+              {% render_field form.board class='board' %}            
+            {% else %}      
+              <p id="is-board-available" class="d-none"></p>
+              <a class="create-board-link" id="create-board-button">
+                <p class="create-board-link">
+                  <img src="{% static 'icons/add-red-28.png' %}" alt="add icon" class="add-red-icon"> 
+                  <span>Create board</span>
+                </p>
+              </a>             
+            {% endif %}
+            <button type="submit" class="background-primaryColor save-button" name="create-pin">Save</button>
           </div>
-          <p>We recommend using high quality .jpg files less than 20MB</p>
-        </label>
-        <div class="col-7 form-col">
-          <div>
-            {% render_field form.title class='title-field-custom' placeholder='Add your title' %}
-            <div class="d-flex align-items-center profile-name">
-              <div class="col-1">                
-                {% if request.user.profile_picture %}
-                  <img src="{{ request.user.profile_picture.url }}" class="profile-picture-circle">                                        
-                {% else %}
-                  <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>                  
-                {% endif %}  
-              </div>
-              <div class="space-side"></div>
-              <div class="col-11">
-                <p style="font-size: 14px; font-weight: 500;" class="my-auto">{{ request.user.firstname }} {{ request.user.lastname }}</p>
-              </div>
+        </section>
+        <section class="row mt-4">
+          <div class="dis">
+            <label for="{{ form.image.id_for_label }}">Image:</label>
+            {% render_field form.image  %}
+          </div>
+          <div id="image-preview" class="col-5">
+            <img src="{% static 'icons/trash-20.png' %}" alt="" id="delete-button" title="Delete image">
+            <img src="" alt="" id="pin-image">
+          </div>
+          <label for="{{ form.image.id_for_label }}" class="col-5 upload-picture-col" id="{{ form.image.id_for_label }}">
+            <div class="mt-5">
+              <img src="{% static 'icons/arrow-up.png' %}" alt="" id="arrow-to-priority">
+              <h4 class="mt-4" id="upload-text">Click to upload</h4>
             </div>
-            {% render_field form.description class='description-field-custom' placeholder='Tell everyone what your Pin is about' %}
+            <p>We recommend using high quality .jpg files less than 20MB</p>
+          </label>
+          <div class="col-7 form-col">
+            <div>
+              {% render_field form.title class='title-field-custom' placeholder='Add your title' %}
+              <div class="d-flex align-items-center profile-name">
+                <div class="col-1">                
+                  {% if request.user.profile_picture %}
+                    <img src="{{ request.user.profile_picture.url }}" class="profile-picture-circle">      
+                  {% elif request.user.firstname %}                                                      
+                    <h2 class="rounded-circle first-letter">{{ request.user.firstname|slice:"1" }}</h2>    
+                  {% else %}
+                    <h2 class="rounded-circle first-letter">N</h2>    
+                  {% endif %}  
+                </div>
+                <div class="space-side"></div>
+                <div class="col-11">
+                  <p style="font-size: 14px; font-weight: 500;" class="my-auto">{{ request.user.firstname }} {{ request.user.lastname }}</p>
+                </div>
+              </div>
+              {% render_field form.description class='description-field-custom' placeholder='Tell everyone what your Pin is about' %}
+            </div>
+            <div>
+              {% render_field form.destination_link class='link-field-custom' id='link-field-custom' placeholder='Add a destination link' %}
+            </div>
           </div>
-          <div>
-            {% render_field form.destination_link class='link-field-custom' id='link-field-custom' placeholder='Add a destination link' %}
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </form>
   </div>
 
 </div>
+
 <span id="is-pin-builder" class="d-none">True</span>
 {% endblock content %}
 
 {% block file_script %}
-  <script src="{% static 'accounts/scripts/profile.js' %}"></script> 
+  <script src="{% static 'scripts/create-board-container.js' %}"></script> 
   <script src="{% static 'social_sharing/js/pin-builder.js' %}"></script>   
 {% endblock file_script %}

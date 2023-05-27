@@ -5,6 +5,7 @@
 {% block file_css %}
     <link rel="stylesheet" href="{% static 'accounts/styles/profile.css' %}">  
     <link rel="stylesheet" href="{% static 'accounts/styles/plus-button.css' %}">  
+    <link rel="stylesheet" href="{% static 'styles/create-board-container.css' %}">  
 {% endblock file_css %}
     
 {% block title %} Pinterest {% endblock title %}
@@ -12,15 +13,23 @@
 
 {% block content %}
     {% include 'sections/navbar.html' %}
-    {% if messages %}                
-    <div class="alert alert-success alert-dismissible">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>        
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}            
-      </div>
-  {% endif %}
+    <div class="space"></div>
 
+    {% if messages %}     
+        {% for message in messages %}           
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}          
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
+                        {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
+                        {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}            
+    {% endif %}
 
 <form method="POST" id="create-board-container">
     {% csrf_token %}
@@ -40,12 +49,11 @@
             <p class="text-muted mb-0">So only you and collaborators can see it. <a href="https://help.pinterest.com/en/article/secret-boards?source=secret_create" class="text-muted fw-light">Learn more</a></p>
         </div>
     </div>
-    <div class="button-div d-flex justify-content-end">
-        <button type="submit" class="text-white background-primaryColor">Create</button>
+    <div>
+        <button type="submit" class="text-white background-primaryColor" name="create-board">Create</button>
     </div>
 </form>
 
-<div class="space"></div>
 
 <div id="whole-content">    
     <section id="top" class="d-flex justify-content-center">
@@ -93,33 +101,10 @@
             <a role="button" id="create-board-button"><li>Board</li></a>
             <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
         </div>
-        <div class="flex-container text-center">            
-            {% if user_boards.exists and boards_length > 1 %}                                                      
-                <a href="{% url 'accounts:all-pins' %}" class="card text-center">                
-                    <div class="row justify-content-center">
-                        <div class="left">                        
-                            {% for pin in pins|slice:":1"  %}                                                        
-                                <img src="{{ pin.image.url }}" class="card-img-top">
-                            {% endfor %}
-                        </div>
-                        <div class="right d-flex flex-column justify-content-between">
-                            {% for pin in pins|slice:"1:2"  %}    
-                                <img src="{{ pin.image.url }}" class="card-img-top top">
-                            {% endfor %}
-                            {% for pin in pins|slice:"2:3"  %}    
-                                <img src="{{ pin.image.url }}" class="card-img-top bottom">
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">All Pins</h5>
-                        <p class="card-text text-muted">{{ pins_length }} pins</p>
-                    </div>
-                </a>     
-            {% endif %}                          
+        <div class="flex-container text-center">                                     
             {% if user_boards.exists %} 
                 {% for board, pin_count in board_pins %}
-                    {% with pins=board.pin_set.all %} 
+                    {% with pins=board.ownpin_set.all %} 
                         <a href="{% url 'accounts:specific-board' board.slug %}" class="card text-center">
                             <div class="row justify-content-center">
                                 <div class="left">                            
@@ -150,6 +135,6 @@
     
 
 {% block file_script %}
-    <script src="{% static 'accounts/scripts/profile.js' %}"></script> 
+    <script src="{% static 'scripts/create-board-container.js' %}"></script> 
     <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
 {% endblock file_script %}    
