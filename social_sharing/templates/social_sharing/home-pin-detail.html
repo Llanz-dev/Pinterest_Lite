@@ -5,6 +5,7 @@
 
 {% block file_css %}
   <link rel="stylesheet" href="{% static 'social_sharing/styles/pin-detail.css' %}">        
+  <link rel="stylesheet" href="{% static 'styles/create-board-container.css' %}">        
 {% endblock file_css %}
     
 
@@ -16,6 +17,7 @@
   
   {% url 'social_sharing:pin-delete' pin_id=pin.pin_id as link %}
   {% include 'sections/delete-container.html' with description="Once you delete a Pin, you can't undo it!" link=link %}
+  {% include 'sections/create-board-container.html' %}
   
   <div class="space"></div>
   <div id="whole-content">
@@ -24,12 +26,21 @@
         <img src="{{ pin.image.url }}" alt="" id="pin-image">
       </section>
       <section class="right">
-        <div class="save-top d-flex align-items-center justify-content-between">
+        <div class="save-top">
           <div>                 
             {% if pin.user == request.user %}                            
                 <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon-pin d-flex align-items-center justify-content-center">                                  
             {% endif %}
-          </div>  
+            {% if not has_board_created %}
+              <p id="is-board-available" class="d-none"></p>
+              <a class="create-board-link" id="create-board-button">
+                <p class="create-board-link">
+                  <img src="{% static 'icons/add-red-28.png' %}" alt="add icon" class="add-red-icon"> 
+                  <span>Create board</span>
+                </p>
+              </a>             
+            {% endif %}                    
+          
           <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="d-none">
@@ -38,13 +49,18 @@
               {% render_field own_pin_form.destination_link %}
               {% render_field own_pin_form.image %}
             </div>
-            {% render_field own_pin_form.board class='board' %}
+            
+            {% if has_board_created %}                            
+              {% render_field own_pin_form.board class='board' %} 
+            {% endif %}
+
             <button class="background-primaryColor save-button" name="save_pin">Save</button>
           </form>
+        </div> 
         </div>
         <div class="pin-values">          
           {% if pin.destination_link %}                        
-          <a href="{{ pin.destination_link }}" target="_blank" class="destination-link">{{ pin.destination_link|extract_domain }}</a>
+            <a href="{{ pin.destination_link }}" target="_blank" class="destination-link">{{ pin.destination_link|extract_domain }}</a>
           {% endif %}
 
           <h1>{{ pin.title }}</h1>          
@@ -157,6 +173,9 @@
 {% endblock %}
 
 {% block file_script %}
-  <script src="{% static 'social_sharing/js/pin-detail.js' %}"></script>   
-  <script src="{% static 'scripts/delete-container.js' %}"></script> 
+  <script src="{% static 'social_sharing/js/pin-detail.js' %}"></script> 
+  <script src="{% static 'scripts/create-board-container.js' %}"></script>   
+  {% if user.pin == request.user %}
+    <script src="{% static 'scripts/delete-container.js' %}"></script>   
+  {% endif %}    
 {% endblock file_script %}

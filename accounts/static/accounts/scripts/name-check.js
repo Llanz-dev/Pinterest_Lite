@@ -1,6 +1,5 @@
 const edit_profile_button = document.getElementById('edit-profile-btn');
 const has_name = document.getElementById('has-name').textContent;
-console.log(has_name);
 
 function handleClick(event) {
   if (has_name === 'None') {

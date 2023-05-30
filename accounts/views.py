@@ -12,6 +12,7 @@ from home.forms import SearchForm
 from .models import UserProfile
 from .forms import ProfileForm
 
+@login_required
 def profile(request):
     search_form = SearchForm()
     board_str1 = 'Like "Places to Go" or "Recipes to Make"'
@@ -85,6 +86,7 @@ class EditProfile(LoginRequiredMixin, FormView):
         kwargs['instance'] = self.request.user
         return kwargs
     
+@login_required
 def specific_board(request, board_slug):
     search_form = SearchForm()
     pins = OwnPin.objects.filter(board__slug=board_slug, board__user=request.user)
@@ -132,6 +134,7 @@ def profile_pin_detail(request, pin_id):
                'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'accounts/profile-pin-detail.html', context)    
 
+@login_required
 def profile_pin_delete(request, pin_id):
     own_pin_object = OwnPin.objects.filter(user=request.user, id=pin_id)   
     pin = Pin.objects.get(title=own_pin_object.first().title)      

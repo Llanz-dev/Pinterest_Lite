@@ -49,6 +49,9 @@ def pin_builder(request):
 @login_required
 def home_pin_detail(request, pin_id):
     search_form = SearchForm()
+    board_form = BoardForm()    
+    has_board_created = Board.objects.filter(user=request.user).exists()
+    
     from_home_page = True
     try:
         pin = Pin.objects.get(pin_id=pin_id)
@@ -73,6 +76,15 @@ def home_pin_detail(request, pin_id):
                 instance.image = pin.image
                 instance.save()
                 return redirect('accounts:specific-board', instance.board.slug)
+        # For creating a board.
+        elif 'create-board' in request.POST:
+            print('Create Board')
+            board_form = BoardForm(request.POST)      
+            if board_form.is_valid():
+                instance = board_form.save(commit=False)
+                instance.user = UserProfile.objects.get(email=request.user.email)
+                instance.save()                
+                return redirect('accounts:specific-board', instance.slug)  
         # For comment add.
         elif 'comment_add' in request.POST:
             comment_form = CommentForm(request.POST)
@@ -83,7 +95,7 @@ def home_pin_detail(request, pin_id):
                 instance.save()
                 return redirect('social_sharing:home-pin-detail', pin_id)
             
-    context = {'pin': pin, 'own_pin_form': own_pin_form, 'from_home_page': from_home_page, 'comments': comments, 'comments_length': comments_length,
+    context = {'pin': pin, 'own_pin_form': own_pin_form, 'board_form': board_form, 'from_home_page': from_home_page, 'has_board_created': has_board_created, 'comments': comments, 'comments_length': comments_length,
                'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'social_sharing/home-pin-detail.html', context)
     
@@ -116,7 +128,7 @@ def home_pin_delete(request, pin_id):
         pin.delete()
         return redirect('home:home')             
     
-    return redirect('home:home')
+    return Http404('There is something wrong. Please go back to home')
     
 def comment_delete(request, comment_id, pin_id):
     get_object_or_404(Comment, id=comment_id).delete()

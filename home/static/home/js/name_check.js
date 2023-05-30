@@ -1,6 +1,6 @@
 const profile_button = document.getElementById('profile');
 const has_name = document.getElementById('has-name').textContent;
-console.log(has_name);
+
 function handleClick(event) {
   if (has_name === 'None') {
     if (event.target !== profile_button) {
