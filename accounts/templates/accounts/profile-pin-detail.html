@@ -21,25 +21,17 @@
   <div id="whole-content">
     <div class="content">
       <section class="left">
-        <img src="{{ own_pin.image.url }}" alt="" id="pin-image">
+        <img src="{{ own_pin.pin.image.url }}" alt="" id="pin-image">
       </section>
       <section class="right">
         <div class="save-top d-flex align-items-center justify-content-between">
-          <div>     
-              {% for user in own_pin.pin.users_pin.all %}              
-                {% if user == request.user %}
-                  <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon-pin d-flex align-items-center justify-content-center">                
-                {% endif %}                
-              {% endfor %}      
+          <div>             
+            {% if own_pin.user == request.user %}            
+              <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon-pin d-flex align-items-center justify-content-center">                
+            {% endif %}
           </div>  
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="d-none">
-              {% render_field own_pin_form.title %}
-              {% render_field own_pin_form.description %}
-              {% render_field own_pin_form.destination_link %}
-              {% render_field own_pin_form.image %}
-            </div>
+          <form method="POST">
+            {% csrf_token %}           
             {% render_field own_pin_form.board class='board' %}
             <button class="background-primaryColor save-button" name="save_pin">Save</button>
           </form>
@@ -61,11 +53,11 @@
               {% if own_pin.pin.user.profile_picture %}
                 <img src="{{ own_pin.pin.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
               {% elif not own_pin.pin.user.profile_picture and own_pin.pin.user.firstname %}
-                <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+                <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1 text-center" id="profile">
                   {{ own_pin.pin.user.firstname|slice:"1" }}
                 </a>                                
               {% else %}
-                <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+                <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1 text-center" id="profile">
                     N
                 </a>
               {% endif %}                              
@@ -74,9 +66,9 @@
             <div class="d-flex flex-column">
               
               {% if not own_pin.pin.user.firstname and not own_pin.pin.user.profile_picture %}
-                <a href="{% url 'accounts:profile' %}"><p class="fullname">None</p></a>              
+                <a href="{% url 'accounts:personal-profile' %}"><p class="fullname">None</p></a>              
               {% else %}                                
-                <a href="{% url 'accounts:profile' %}"><p class="fullname">{{ own_pin.pin.user.firstname }} {{ own_pin.pin.user.lastname }} </p></a>
+                <a href="{% url 'accounts:personal-profile' %}"><p class="fullname">{{ own_pin.pin.user.firstname }} {{ own_pin.pin.user.lastname }} </p></a>
               {% endif %}
                 
               <p class="text-muted number-following">685 followers</p>
@@ -102,28 +94,30 @@
                   {% if comment.user.profile_picture %}
                     <img src="{{ comment.user.profile_picture.url }}" alt="" class="profile-picture-circle">                    
                   {% else %}
-                    <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+                    <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1 text-center" id="profile">
                       {{ request.user.firstname|slice:"1" }}
                     </a> 
                   {% endif %}                    
                   <div class="mx-1"></div>
                     <div class="user-info">
                       {% if request.user %}
-                       <a href="{% url 'accounts:profile' %}"><span class="fullname">{{ comment.user.firstname }}</span></a>
+                       <a href="{% url 'accounts:personal-profile' %}"><span class="fullname">{{ comment.user.firstname }}</span></a>
                       {% else %}
                         <a href="">hello</a>                      
                       {% endif %}
                       <br>
                       <span class="text-muted comment-ago">{{ comment.date_added|date:"F j, Y" }}</span>
-                      {% if request.user in comment.hearts.all %}
-                        <a href="{% url 'social_sharing:heart-decrement' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-red-16.png' %}" alt=""></a>                  
-                      {% else %}
-                        <a href="{% url 'social_sharing:heart-increment' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
-                      {% endif %}
-                        <span class="text-muted heart-count">{{ comment.hearts.all.count }}</span>
-                      {% if request.user == comment.user %}
-                        <a href="{% url 'social_sharing:comment-delete' comment.id own_pin.pin.pin_id %}"><img src="{% static 'icons/waste-16.png' %}" alt="trash icon" class="trash-icon-comment"></a>
-                      {% endif %}
+                      <div>
+                        {% if request.user in comment.hearts.all %}
+                          <a href="{% url 'social_sharing:heart-decrement' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-red-16.png' %}" alt=""></a>                  
+                        {% else %}
+                          <a href="{% url 'social_sharing:heart-increment' comment.pin.pin_id comment.text comment.pk %}" class="ml-2" id="heart-icon"><img src="{% static 'icons/heart-16.png' %}" alt=""></a>                  
+                        {% endif %}
+                          <span class="text-muted heart-count">{{ comment.hearts.all.count }}</span>
+                        {% if request.user == comment.user %}
+                          <a href="{% url 'social_sharing:comment-delete' comment.id own_pin.pin.pin_id %}"><img src="{% static 'icons/waste-16.png' %}" alt="trash icon" class="trash-icon-comment"></a>
+                        {% endif %}
+                      </div>
                     </div>      
                 </div>  
                 <span class="text-comment">{{ comment.text }}</span>                       
@@ -136,15 +130,15 @@
           {% if request.user.profile_picture %}
             <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture-circle">                      
           {% elif not request.user.profile_picture and request.user.firstname %}
-            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+            <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1 text-center" id="profile">
               {{ request.user.firstname|slice:"1" }}
             </a>            
           {% elif not request.user.profile_picture and request.user.firstname %}
-            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+            <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1 text-center" id="profile">
               {{ request.user.lastname|slice:"1" }}
             </a>            
           {% else %}
-            <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1 text-center" id="profile">
+            <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1 text-center" id="profile">
                 N
             </a>
           {% endif %}

@@ -45,11 +45,6 @@ h1 {
   margin-right: 0;
   background-color: #EEEFEE;
 }
-.right .save-button {
-  text-align: center;
-  border-radius: 24px;
-  color: white;
-}
 .right .trash-icon-pin {
   width: 40px;
   padding: 10px;

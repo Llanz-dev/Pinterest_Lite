@@ -1,0 +1,156 @@
+$darkRed-hover: #aa001a;
+$grey-hover: #E3E3E2;
+
+nav {
+    font-weight: 500;
+    .log-in, .sign-up {
+        padding: .8rem .7rem;
+        &:hover, &:hover {
+            text-decoration: none;
+        }
+    }    
+    .logo {
+        width: 32px;
+    }
+    .pinterest-name {
+        margin: auto 0 auto .2rem;
+        font-size: 20px;
+    }
+}
+
+h1, a {
+    letter-spacing: 1px;
+}
+h1 {
+    font-size: 3.2rem;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.log-in{
+    color: white !important;
+    &:hover {
+        background-color: $darkRed-hover;
+    }
+}
+
+.sign-up {
+    background-color: #EFEFEF !important;            
+    &:hover {
+        background-color: $grey-hover !important;
+    }
+}
+
+.no-bullet {
+    list-style-type: none;
+  }
+
+// Modal
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    
+    .modal {
+      background-color: white !important;
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: auto;
+    }
+
+    .modal-header {
+      // align-items: center;
+      border-bottom: 1px solid #e6e6e6;
+      display: flex;
+      flex-direction: column;
+      // justify-content: space-between;
+      padding: 20px;
+    }
+
+    .modal-header .pinterest-logo {
+      width: 8%;
+      margin: 1.3rem 0;
+    }
+
+    .modal-header h2 {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .close-button {
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 40px;
+      position: absolute;
+      right: 15px;
+      top: 0;
+    }
+
+    .modal-body {
+      padding: 0 20px 20px 20px;
+      width: 318px;
+      margin: 0 auto;
+    }
+
+    .form-group input {
+      border-radius: 15px;
+      padding: .8rem;
+    }
+
+    .form-label {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      padding: 8px;
+      letter-spacing: 1px;
+      font-weight: 500;
+      font-size: 15px;
+    }  
+
+    .sign {
+        font-size: 12px;
+        color: #4C4C4C;
+   
+    }
+
+    span {
+        font-size: 11px;
+        color: #4C4C4C;
+        a:hover {
+            text-decoration: underline;
+        }    
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    p {
+        margin: .5rem 0;
+        letter-spacing: 1px;
+        font-size: 14px;
+    }
+}

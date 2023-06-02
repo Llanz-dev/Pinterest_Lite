@@ -49,6 +49,8 @@ h2.first-letter {
   margin: 0;
   height: 40px;
   font-weight: 500;
+  text-align: center;
+  border-radius: 24px;
 }
 
 select.board {

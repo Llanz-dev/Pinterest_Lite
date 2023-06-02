@@ -2,6 +2,10 @@
   margin: 5rem 0;
 }
 
+.save-button {
+  width: 70px;
+}
+
 #top .profile-picture {
   height: 120px;
   width: 120px;
@@ -29,6 +33,8 @@
 }
 #top .following {
   margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: #101010 !important;
 }
 #top p {
   margin-bottom: 0;

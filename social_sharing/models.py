@@ -23,14 +23,15 @@ class Board(models.Model):
             super(Board, self).save(*args, **kwargs)    
 
 class Pin(models.Model):
+    pin_id = models.CharField(max_length=18, unique=True, null=True)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)    
     users_pin = models.ManyToManyField(UserProfile, related_name='user_pin_chosen', blank=True)  
-    pin_id = models.CharField(max_length=18, unique=True, null=True)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=200, blank=True, null=True)
     destination_link = models.URLField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to='pins', blank=True, null=True)
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.title
@@ -42,16 +43,12 @@ class Pin(models.Model):
         
 class OwnPin(models.Model):
     id = models.CharField(max_length=18, primary_key=True, unique=True)    
-    pin = models.ForeignKey(Pin, on_delete=models.CASCADE, blank=True, null=True)   
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)   
-    title = models.CharField(max_length=100)
-    description = models.CharField(max_length=200, blank=True, null=True)
-    destination_link = models.URLField(max_length=200, blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    pin = models.ForeignKey(Pin, on_delete=models.CASCADE, blank=True, null=True)   
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.title + ' - ' + self.user.email
+        return self.user.email
     
     def save(self, *args, **kwargs):
         if not self.pk:

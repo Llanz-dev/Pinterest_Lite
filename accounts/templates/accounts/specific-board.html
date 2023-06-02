@@ -28,20 +28,20 @@
             {% for pin in pins %}                            
               <div  class="card">
                 <a href="{% url 'accounts:profile-pin-detail' pin.id %}">
-                  <img src="{{ pin.image.url }}" class="card-img-top">
+                  <img src="{{ pin.pin.image.url }}" class="card-img-top">
                   <div class="card-body">
-                    <p class="card-text">{{ pin.title }}</p>  
+                    <p class="card-text">{{ pin.pin.title }}</p>  
                   </div>
                 </a>
                 <div class="card-body">                                    
                   {% if not pin.pin.user.firstname and not pin.pin.user.profile_picture %}
-                    <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><span class="text-secondary fullname">None</span></p></a>                 
+                    <a href="{% url 'accounts:personal-profile' %}" class="fullname"><p class="card-text"><span class="text-secondary fullname">None</span></p></a>                 
                   {% elif pin.pin.user.firstname and not pin.pin.user.profile_picture %}
-                    <a href="{% url 'accounts:profile' %}" class="fullname">
+                    <a href="{% url 'accounts:personal-profile' %}" class="fullname">
                       <p class="card-text row"><span class="profile col-1">{{ pin.pin.user.firstname|slice:"1" }}</span><span class="text-secondary fullname col-9 my-auto mx-0">{{ pin.pin.user.firstname }} {{ pin.pin.user.lastname }}</span></p>
                     </a>
                   {% else %}                
-                    <a href="{% url 'accounts:profile' %}" class="fullname"><p class="card-text"><img src="{{ pin.pin.user.profile_picture.url }}" alt="profile picture" class="profile-pic-icon"> <span class="text-secondary fullname">{{ pin.pin.user.firstname }} {{ pin.pin.user.lastname }}</span></p></a>                  
+                    <a href="{% url 'accounts:personal-profile' %}" class="fullname"><p class="card-text"><img src="{{ pin.pin.user.profile_picture.url }}" alt="profile picture" class="profile-pic-icon"> <span class="text-secondary fullname">{{ pin.pin.user.firstname }} {{ pin.pin.user.lastname }}</span></p></a>                  
                   {% endif %}                             
                 </div>
               </div>              

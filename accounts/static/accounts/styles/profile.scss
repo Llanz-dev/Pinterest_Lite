@@ -5,6 +5,10 @@ $grey-hover: #e0e0e0;
     margin: 5rem 0;
 }
 
+.save-button {
+    width: 70px;
+}
+
 #top {
     .profile-picture {
         height: 120px;
@@ -32,6 +36,8 @@ $grey-hover: #e0e0e0;
     }
     .following {
         margin-bottom: 1.5rem;
+        font-weight: 500;
+        color: #101010 !important;
     }
     p {
         margin-bottom: 0;
