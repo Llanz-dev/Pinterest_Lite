@@ -62,4 +62,18 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """ Return string representation of our user """
         return self.email
-    
+
+class Follow(models.Model):    
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
+    follower = models.ManyToManyField(UserProfile, related_name='followers', blank=True, null=True)
+    following = models.ManyToManyField(UserProfile, related_name='following', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def get_followers_count(self):
+        return self.follower.count()
+
+    def get_following_count(self):
+        return self.following.count()    
+
+    def __str__(self):
+        return self.user.username + ' - ' + str(self.follower.count())

@@ -64,7 +64,11 @@
                 <p class="text-muted about mt-1">{{ request.user.about }}</p>                
             {% endif %}
                 
-            <p class="text-muted following">0 following</p>
+            <div class="d-flex justify-content-center">     
+                <p class="text-muted following">{{ followers_count }} followers</p>
+                <span class="mx-2">·</span>
+                <p class="text-muted following">{{ following_count }} following</p>
+            </div>
             <a href="{% url 'accounts:edit-profile' %}" class="edit-profile rounded-pill" id="edit-profile-btn">Edit Profile</a>            
         </div>
     </section>

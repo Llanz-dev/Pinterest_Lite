@@ -6,10 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import CreateView
+from .models import UserProfile, Follow
 from django.urls import reverse_lazy
 from django.contrib import messages
 from home.forms import SearchForm
-from .models import UserProfile
 from .forms import ProfileForm
 
 @login_required
@@ -48,8 +48,14 @@ def personal_profile(request):
             instance.user = UserProfile.objects.get(email=request.user.email)
             instance.save() 
             return redirect('accounts:specific-board', instance.slug)   
+        
+    # Retrive "Follow" user table.
+    user_profile = get_object_or_404(UserProfile, username=request.user.username)    
+    follow_user = Follow.objects.get(user=user_profile)
+    followers_count = follow_user.get_followers_count()
+    following_count = follow_user.get_following_count()
 
-    context = {'pins': pins, 'board_form': form, 'board_str1': board_str1, 'board_str2': board_str2, 'user_boards': user_boards, 'boards_length': boards_length, 'board_pins': board_pins, 'search_form': search_form}
+    context = {'followers_count': followers_count, 'following_count': following_count, 'pins': pins, 'board_form': form, 'board_str1': board_str1, 'board_str2': board_str2, 'user_boards': user_boards, 'boards_length': boards_length, 'board_pins': board_pins, 'search_form': search_form}
     return render(request, 'accounts/profile.html', context)
 
 class EditProfile(LoginRequiredMixin, FormView):
@@ -105,7 +111,6 @@ def profile_pin_detail(request, pin_id):
     if request.method == 'POST':
         # For save pin.
         if 'save_pin' in request.POST:
-            print('save pinsss')
             own_pin_form = OwnPinForm(request.user, request.POST)
             if own_pin_form.is_valid():
                 instance = own_pin_form.save(commit=False)
@@ -122,8 +127,13 @@ def profile_pin_detail(request, pin_id):
                 instance.pin = pin
                 instance.save()
                 return redirect('accounts:profile-pin-detail', pin_id)
+
+    # Retrive "Follow" user table.
+    user_profile = get_object_or_404(UserProfile, username=request.user.username)    
+    follow_user = Follow.objects.get(user=user_profile)
+    following_count = follow_user.get_following_count()
             
-    context = {'own_pin': own_pin, 'own_pin_form': own_pin_form, 'comments': comments, 'comments_length': comments_length,
+    context = {'own_pin': own_pin, 'own_pin_form': own_pin_form, 'following_count': following_count, 'comments': comments, 'comments_length': comments_length,
                'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'accounts/profile-pin-detail.html', context)    
 
@@ -140,22 +150,39 @@ def profile_pin_delete(request, pin_id):
     if pin_owner == request.user:
         pin.delete()
         return redirect('accounts:specific-board', board_slug)        
-        
-    print('Pin:', own_pin_object)
-    print('Owner:', pin.user)
-    print('Own pin object:', own_pin.user)
-    print('Visitor:', request.user)
     
     if own_pin.user == request.user:
         own_pin_delete = get_object_or_404(OwnPin, id=pin_id)
         own_pin_delete.delete()
             
-    print('Own pin object count:', own_pin_count)
-
     if own_pin_count == 1:
         pin.users_pin.remove(request.user)                    
         
-    return redirect('accounts:specific-board', board_slug)        
+    return redirect('accounts:specific-board', board_slug)   
+
+@login_required
+def follow(request, username):
+    # For to save the request.user to user account. Follower
+    user_profile = UserProfile.objects.get(username=username)
+    follow_user = Follow.objects.get(user=user_profile)
+    follow_user.follower.add(request.user)
+    # For to save the user account to request.user. Following
+    request_user = UserProfile.objects.get(username=request.user.username)
+    follow_request_user = Follow.objects.get(user=request_user)
+    follow_request_user.following.add(user_profile)        
+    return redirect('home:public-profile', username)
+
+@login_required
+def unfollow(request, username):
+    # For to save the request.user to user account.
+    user_profile = UserProfile.objects.get(username=username)
+    follow_user = Follow.objects.get(user=user_profile)
+    follow_user.follower.remove(request.user)
+    # For to save the user account to request.user.
+    request_user = UserProfile.objects.get(username=request.user.username)
+    follow_request_user = Follow.objects.get(user=request_user)    
+    follow_request_user.following.remove(user_profile) 
+    return redirect('home:public-profile', username)     
     
 class DeleteBoard(RedirectView):
     pattern_name = 'accounts:personal-profile'

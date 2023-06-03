@@ -13,8 +13,7 @@
 {% block title %} Pinterest {% endblock title %}
 
 
-{% block content %}
-    
+{% block content %}    
     {% include 'sections/navbar.html' %}
 
     {% url 'accounts:delete-board' board.slug board.id as link %}

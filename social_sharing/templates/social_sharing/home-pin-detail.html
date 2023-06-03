@@ -88,13 +88,16 @@
                 <a href="{% url 'home:public-profile' pin.user.username %}"><p class="fullname">{{ pin.user.firstname }} {{ pin.user.lastname }}</p></a>
               {% endif %}
                 
-              <p class="text-muted number-following">685 followers</p>
+              <p class="text-muted number-following">{{ followers_count }} followers</p>
             </div>  
           </div>
+          <!-- Follow and following are for those who is not the creator of this pin -->
           {% if request.user != pin.board.user %}                        
-            <div>
-              <button class="follow-btn">Follow</button>
-            </div>
+            {% if request.user.is_authenticated and not do_you_follow %}                        
+                <a href="{% url 'social_sharing:follow' pin.user.username pin.pin_id %}"><button class="follow-btn" name="save-pin">follow</button></a>
+            {% else %}
+                <a href="{% url 'social_sharing:unfollow' pin.user.username pin.pin_id %}"><button class="save-button following-button" name="save-pin">following</button></a>
+            {% endif %}
           {% endif %}
 
         </div>

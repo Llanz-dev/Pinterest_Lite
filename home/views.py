@@ -8,6 +8,7 @@ from .forms import SignUpForm, SearchForm
 from django.views.generic import ListView
 from social_sharing.models import Pin
 from django.urls import reverse_lazy
+from accounts.models import Follow
 from django.db.models import Max
 from django.views import View
 
@@ -51,22 +52,28 @@ def public_profile(request, username):
     user_boards = Board.objects.filter(user=user_profile, is_secret=False) 
     boards_length = len(user_boards)  
     board_pins = []    
-      
+
+    # Retrieve all user boards and pins.  
     for board in user_boards:
         pin = OwnPin.objects.filter(user=user_profile, board=board)
         pin_count = pin.count()        
         board_pins.append((board, pin_count))   
+
+    # Retrive "Follow" user table.
+    follow_user = Follow.objects.get(user=user_profile)
+    following_count = follow_user.get_following_count()
+    followers_count = follow_user.get_followers_count()    
+
+    # Check if request.user is following to this account user.
+    do_you_follow = follow_user.follower.filter(id=request.user.id).exists()
     
-    context = {'user_profile': user_profile, 'user_boards': user_boards, 'board_pins': board_pins, 'boards_length': boards_length, 'search_form': search_form}
+    context = {'user_profile': user_profile, 'followers_count': followers_count, 'following_count': following_count, 'do_you_follow': do_you_follow, 'user_boards': user_boards, 'board_pins': board_pins, 'boards_length': boards_length, 'search_form': search_form}
     return render(request, 'accounts/public-profile.html', context)
 
 @login_required
 def public_specific_board(request, username, board_slug):
     search_form = SearchForm()
     user_profile = UserProfile.objects.get(username=username)
-    print('User:', user_profile)      
-    print(user_profile)
-    print('board:', board_slug)
     pins = OwnPin.objects.filter(board__slug=board_slug, board__user=user_profile)   
     pins_length = len(pins)
     board = Board.objects.get(slug=board_slug, user=user_profile)      

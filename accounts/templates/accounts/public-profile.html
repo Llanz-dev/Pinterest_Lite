@@ -70,16 +70,21 @@
             {% if user_profile.about %}
                 <p class="text-muted about mt-1">{{ user_profile.about }}</p>                
             {% endif %}
-                
-            <p class="text-muted following">0 following</p>
+            <div class="d-flex justify-content-center">     
+                <p class="text-muted following">{{ followers_count }} followers</p>
+                <span class="mx-2">·</span>
+                <p class="text-muted following">0 following</p>
+            </div>
         </div>
     </section>
     <section id="middle" class="d-flex justify-content-center">
         <p>Saved</p>
     </section>    
     <section class="text-center my-3">        
-        {% if request.user.is_authenticated %}                        
-            <a href="#follow"><button class="background-primaryColor save-button" name="save-pin">follow</button></a>
+        {% if request.user.is_authenticated and not do_you_follow %}                        
+            <a href="{% url 'accounts:follow' user_profile.username %}"><button class="background-primaryColor save-button" name="save-pin">follow</button></a>
+        {% else %}
+            <a href="{% url 'accounts:unfollow' user_profile.username %}"><button class="save-button following-button" name="save-pin">following</button></a>
         {% endif %}
     </section>
     <section id="bottom">

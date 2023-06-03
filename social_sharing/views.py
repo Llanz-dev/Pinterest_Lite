@@ -7,6 +7,7 @@ from django.views.generic.edit import FormMixin
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
 from accounts.models import UserProfile
+from accounts.models import Follow
 from home.forms import SearchForm
 from django.http import Http404
 from django.urls import reverse
@@ -22,7 +23,6 @@ def pin_builder(request):
     if request.method == 'POST':
         # For creating a board.
         if 'create-board' in request.POST:
-            print('Create Board')
             board_form = BoardForm(request.POST)      
             if board_form.is_valid():
                 instance = board_form.save(commit=False)
@@ -31,7 +31,6 @@ def pin_builder(request):
                 return redirect('accounts:specific-board', instance.slug)       
         # For creating a pin.            
         elif 'create-pin' in request.POST:
-            print('Create Pin')            
             form = PinForm(request.user, request.POST, request.FILES)
             if form.is_valid():
                 instance = form.save(commit=False)
@@ -69,7 +68,6 @@ def home_pin_detail(request, pin_id):
                 return redirect('accounts:specific-board', instance.board.slug)
         # For creating a board.
         elif 'create-board' in request.POST:
-            print('Create Board')
             board_form = BoardForm(request.POST)      
             if board_form.is_valid():
                 instance = board_form.save(commit=False)
@@ -86,17 +84,24 @@ def home_pin_detail(request, pin_id):
                 instance.save()
                 return redirect('social_sharing:home-pin-detail', pin_id)
             
-    context = {'pin': pin, 'own_pin_form': own_pin_form, 'board_form': board_form, 'has_board_created': has_board_created, 'comments': comments, 'comments_length': comments_length,
+    user_profile = get_object_or_404(UserProfile, username=pin.user.username)            
+    # Retrive "Follow" user table.
+    follow_user = Follow.objects.get(user=user_profile)
+    followers_count = follow_user.get_followers_count()
+    following_count = follow_user.get_following_count()
+
+    # Check if request.user is following to this account user.
+    do_you_follow = follow_user.follower.filter(id=request.user.id).exists()            
+            
+    context = {'pin': pin, 'own_pin_form': own_pin_form, 'followers_count': followers_count, 'following_count': following_count, 'do_you_follow': do_you_follow, 'board_form': board_form, 'has_board_created': has_board_created, 'comments': comments, 'comments_length': comments_length,
                'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'social_sharing/home-pin-detail.html', context)
     
 def add_comment(request, pin_id):
-    print('Add comment') 
     form = CommentForm(request.POST)
     if form.is_valid():        
         print(form.cleaned_data.get('title'))
-    else:
-        print('error', form.errors)
+        
     return HttpResponseRedirect(reverse('accounts:profile-pin-detail', kwargs={'pin_id': pin_id}))
 
 def heart_increment(request, pin_id, text, pk):
@@ -118,8 +123,6 @@ def home_pin_delete(request, pin_id):
     if pin_owner == request.user:
         pin.delete()
         return redirect('home:home')           
-    else:
-        print('Hello World!')
     
     return Http404('There is something wrong. Please go back to home')
     
@@ -127,8 +130,26 @@ def comment_delete(request, comment_id, pin_id):
     get_object_or_404(Comment, id=comment_id).delete()
     return redirect('social_sharing:home-pin-detail', pin_id)
 
-class SavePin(CreateView):
-    model = Pin
+@login_required
+def follow(request, username, pin_id):
+    # For to save the request.user to user account. Follower
+    user_profile = UserProfile.objects.get(username=username)
+    follow_user = Follow.objects.get(user=user_profile)
+    follow_user.follower.add(request.user)
+    # For to save the user account to request.user. Following
+    request_user = UserProfile.objects.get(username=request.user.username)
+    follow_request_user = Follow.objects.get(user=request_user)
+    follow_request_user.following.add(user_profile)        
+    return redirect('social_sharing:home-pin-detail', pin_id)
 
-    def get_success_url(self):
-        return redirect('accounts:specific-board', self.kwargs.get('board_slug'))
+@login_required
+def unfollow(request, username, pin_id):
+    # For to save the request.user to user account.
+    user_profile = UserProfile.objects.get(username=username)
+    follow_user = Follow.objects.get(user=user_profile)
+    follow_user.follower.remove(request.user)
+    # For to save the user account to request.user.
+    request_user = UserProfile.objects.get(username=request.user.username)
+    follow_request_user = Follow.objects.get(user=request_user)    
+    follow_request_user.following.remove(user_profile) 
+    return redirect('social_sharing:home-pin-detail', pin_id)    
