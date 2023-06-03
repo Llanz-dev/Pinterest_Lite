@@ -1,6 +1,9 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from social_sharing.models import Board, Pin, OwnPin, Comment
+from django.contrib.auth.decorators import login_required
+from accounts.views import OwnPin, Board, UserProfile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
-from django.shortcuts import render, redirect
 from .forms import SignUpForm, SearchForm
 from django.views.generic import ListView
 from social_sharing.models import Pin
@@ -13,7 +16,7 @@ import secrets
 # Create your views here.
 def landing_page(request):
     distinct_pins = Pin.objects.values('title').annotate(max_id=Max('id')).order_by('-max_id')
-    pins = Pin.objects.filter(id__in=distinct_pins.values('max_id')).order_by('-id')
+    pins = Pin.objects.filter(id__in=distinct_pins.values('max_id'), board__is_secret=False).order_by('-id')
     sign_form = SignUpForm()
     search_form = SearchForm()    
 
@@ -40,6 +43,36 @@ def landing_page(request):
         
     context = {'pins': pins, 'sign_form': sign_form, 'search_form': search_form}
     return render(request, 'home/landing_page.html', context)    
+
+@login_required
+def public_profile(request, username):
+    search_form = SearchForm()
+    user_profile = get_object_or_404(UserProfile, username=username)
+    user_boards = Board.objects.filter(user=user_profile, is_secret=False) 
+    boards_length = len(user_boards)  
+    board_pins = []    
+      
+    for board in user_boards:
+        pin = OwnPin.objects.filter(user=user_profile, board=board)
+        pin_count = pin.count()        
+        board_pins.append((board, pin_count))   
+    
+    context = {'user_profile': user_profile, 'user_boards': user_boards, 'board_pins': board_pins, 'boards_length': boards_length, 'search_form': search_form}
+    return render(request, 'accounts/public-profile.html', context)
+
+@login_required
+def public_specific_board(request, username, board_slug):
+    search_form = SearchForm()
+    user_profile = UserProfile.objects.get(username=username)
+    print('User:', user_profile)      
+    print(user_profile)
+    print('board:', board_slug)
+    pins = OwnPin.objects.filter(board__slug=board_slug, board__user=user_profile)   
+    pins_length = len(pins)
+    board = Board.objects.get(slug=board_slug, user=user_profile)      
+    
+    context = {'board': board, 'pins': pins, 'pins_length': pins_length, 'search_form': search_form}
+    return render(request, 'accounts/specific-board.html', context) 
 
 class Logout(LogoutView):
     next_page = reverse_lazy('home:home')    

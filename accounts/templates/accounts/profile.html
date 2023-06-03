@@ -15,45 +15,24 @@
     {% include 'sections/navbar.html' %}
     <div class="space"></div>
 
-    {% if messages %}     
-        {% for message in messages %}           
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}          
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
-                        {{ message }}
-                </div>
-            {% else %}
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
-                        {{ message }}
-                </div>
-            {% endif %}
-        {% endfor %}            
-    {% endif %}
+{% if messages %}     
+    {% for message in messages %}           
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}          
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
+                    {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
+                    {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}            
+{% endif %}
 
-<form method="POST" id="create-board-container">
-    {% csrf_token %}
-    <p id="is-board-available" class="d-none"></p>
-    <h2>Create board</h2>    
-    <div class="my-2">
-        <small class="text-muted">Name</small>
-        {% render_field board_form.name class='form-control' %}
-    </div>
-    <div class="d-flex align-items-center checkbox-div">
-        <div>
-            {% render_field board_form.is_secret class='form-check-input' %}
-        </div>
-        <div class="mx-1"></div>
-        <div>
-            <p class="mb-0 keep-secret">Keep this board secret</p>
-            <p class="text-muted mb-0">So only you and collaborators can see it. <a href="https://help.pinterest.com/en/article/secret-boards?source=secret_create" class="text-muted fw-light">Learn more</a></p>
-        </div>
-    </div>
-    <div>
-        <button type="submit" class="text-white background-primaryColor" name="create-board">Create</button>
-    </div>
-</form>
-
+{% include 'sections/create-board-container.html' %}
+<p id="is-board-available" class="d-none"></p>
 
 <div id="whole-content">    
     <section id="top" class="d-flex justify-content-center">
@@ -86,7 +65,7 @@
             {% endif %}
                 
             <p class="text-muted following">0 following</p>
-            <a href="{% url 'accounts:edit-profile' %}" class="edit-profile rounded-pill">Edit Profile</a>            
+            <a href="{% url 'accounts:edit-profile' %}" class="edit-profile rounded-pill" id="edit-profile-btn">Edit Profile</a>            
         </div>
     </section>
     <section id="middle" class="d-flex justify-content-center">
@@ -101,7 +80,7 @@
             <a role="button" id="create-board-button"><li>Board</li></a>
             <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
         </div>
-        <div class="flex-container text-center">                                     
+        <div class="flex-container text-center">      
             {% if user_boards.exists %} 
                 {% for board, pin_count in board_pins %}
                     {% with pins=board.ownpin_set.all %} 
@@ -111,11 +90,11 @@
                                     {% if board.is_secret %}           
                                         <img src="{% static 'icons/lock-25.png' %}" class="lock-icon">
                                     {% endif %}                                       
-                                    <img src="{{ pins.0.image.url }}" class="card-img-top">
+                                    <img src="{{ pins.0.pin.image.url }}" class="card-img-top">
                                 </div>
                                 <div class="right d-flex flex-column justify-content-between">
-                                    <img src="{{ pins.1.image.url }}" class="card-img-top top">
-                                    <img src="{{ pins.2.image.url }}" class="card-img-top bottom">
+                                    <img src="{{ pins.1.pin.image.url }}" class="card-img-top top">
+                                    <img src="{{ pins.2.pin.image.url }}" class="card-img-top bottom">
                                 </div>
                             </div>
                             <div class="card-body">
@@ -129,12 +108,13 @@
         </div>
     </section>
 </div>
-<p id="file-name" class="d-none">profile</p>
 
+<p id="file-name" class="d-none">profile</p>
+<p id="has-name" class="d-none">{{ request.user.firstname }}</p>
 {% endblock content %}
     
-
 {% block file_script %}
     <script src="{% static 'scripts/create-board-container.js' %}"></script> 
     <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
+    <script src="{% static 'accounts/scripts/name-check.js' %}"></script>
 {% endblock file_script %}    

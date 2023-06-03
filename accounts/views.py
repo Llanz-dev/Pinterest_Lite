@@ -12,7 +12,8 @@ from home.forms import SearchForm
 from .models import UserProfile
 from .forms import ProfileForm
 
-def profile(request):
+@login_required
+def personal_profile(request):
     search_form = SearchForm()
     board_str1 = 'Like "Places to Go" or "Recipes to Make"'
     board_str2 = 'Recipes to Make'
@@ -38,7 +39,7 @@ def profile(request):
                 if board.name == board_name:             
                     messages.error(request, 'Try a different name. You already have a board with this name!' )
                     print('board name:', board_name)
-                    return redirect('accounts:profile')
+                    return redirect('accounts:personal-profile')
                 else:
                     instance.user = UserProfile.objects.get(email=request.user.email)
                     instance.save() 
@@ -55,7 +56,7 @@ class EditProfile(LoginRequiredMixin, FormView):
     template_name = 'accounts/edit-profile.html'
     form_class = ProfileForm
     search_form_class = SearchForm
-    success_url = reverse_lazy('accounts:profile')
+    success_url = reverse_lazy('accounts:personal-profile')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -81,11 +82,12 @@ class EditProfile(LoginRequiredMixin, FormView):
         kwargs['instance'] = self.request.user
         return kwargs
     
+@login_required
 def specific_board(request, board_slug):
     search_form = SearchForm()
-    pins = OwnPin.objects.filter(board__slug=board_slug, board__user=request.user)
-    board = get_object_or_404(Board, slug=board_slug, user=request.user)
+    pins = OwnPin.objects.filter(board__slug=board_slug, board__user=request.user)   
     pins_length = len(pins)
+    board = get_object_or_404(Board, slug=board_slug, user=request.user)
     
     context = {'board': board, 'pins': pins, 'pins_length': pins_length, 'search_form': search_form}
     return render(request, 'accounts/specific-board.html', context) 
@@ -93,9 +95,8 @@ def specific_board(request, board_slug):
 @login_required
 def profile_pin_detail(request, pin_id):
     search_form = SearchForm() 
-    print('URL:', pin_id)
     own_pin = OwnPin.objects.get(id=pin_id)  
-    pin = Pin.objects.get(title=own_pin.title, id=own_pin.pin.id)
+    pin = Pin.objects.get(title=own_pin.pin.title, id=own_pin.pin.id)
     own_pin_form = OwnPinForm(request.user, instance=own_pin)
     comments = Comment.objects.filter(pin__title=pin.title)
     comment_form = CommentForm(instance=own_pin)
@@ -105,13 +106,11 @@ def profile_pin_detail(request, pin_id):
         # For save pin.
         if 'save_pin' in request.POST:
             print('save pinsss')
-            own_pin_form = OwnPinForm(request.user, request.POST, request.FILES)
+            own_pin_form = OwnPinForm(request.user, request.POST)
             if own_pin_form.is_valid():
-                own_pin.pin.users_pin.add(request.user)                
                 instance = own_pin_form.save(commit=False)
                 instance.user = request.user
                 instance.pin = pin
-                instance.image = pin.image
                 instance.save()
                 return redirect('accounts:specific-board', instance.board.slug)
         # For comment add.
@@ -128,34 +127,38 @@ def profile_pin_detail(request, pin_id):
                'comment_form': comment_form, 'search_form': search_form}
     return render(request, 'accounts/profile-pin-detail.html', context)    
 
+@login_required
 def profile_pin_delete(request, pin_id):
     own_pin_object = OwnPin.objects.filter(user=request.user, id=pin_id)   
-    pin = Pin.objects.get(title=own_pin_object.first().title)      
-    own_pin_object = OwnPin.objects.filter(user=request.user, title=pin.title)   
+    pin = Pin.objects.get(title=own_pin_object.first().pin.title)      
+    own_pin_object = OwnPin.objects.filter(user=request.user, pin__title=pin.title)   
     own_pin_count = len(own_pin_object)                
     pin_owner = pin.user
+    own_pin = OwnPin.objects.get(user=request.user, id=pin_id)
+    board_slug = own_pin.board.slug
     
-    if  pin_owner == request.user:
+    if pin_owner == request.user:
         pin.delete()
-        return redirect('home:home')        
+        return redirect('accounts:specific-board', board_slug)        
         
     print('Pin:', own_pin_object)
     print('Owner:', pin.user)
-    print('Own pin object:', own_pin_object)
-    print('Given ID:', pin_id)
-    for pin_url in own_pin_object:
-        if pin_id == pin_url.id:
-            own_pin_delete = get_object_or_404(OwnPin, id=pin_id)
-            own_pin_delete.delete()
+    print('Own pin object:', own_pin.user)
+    print('Visitor:', request.user)
+    
+    if own_pin.user == request.user:
+        own_pin_delete = get_object_or_404(OwnPin, id=pin_id)
+        own_pin_delete.delete()
             
     print('Own pin object count:', own_pin_count)
 
     if own_pin_count == 1:
         pin.users_pin.remove(request.user)                    
-    return redirect('home:home')
+        
+    return redirect('accounts:specific-board', board_slug)        
     
 class DeleteBoard(RedirectView):
-    pattern_name = 'accounts:profile'
+    pattern_name = 'accounts:personal-profile'
 
     def get_redirect_url(self, board_slug, id, *args, **kwargs):
         get_object_or_404(Board, slug=board_slug, id=id).delete()

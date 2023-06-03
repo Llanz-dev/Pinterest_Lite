@@ -1,0 +1,137 @@
+nav {
+  font-weight: 500;
+}
+nav .log-in, nav .sign-up {
+  padding: 0.8rem 0.7rem;
+}
+nav .log-in:hover, nav .log-in:hover, nav .sign-up:hover, nav .sign-up:hover {
+  text-decoration: none;
+}
+nav .logo {
+  width: 32px;
+}
+nav .pinterest-name {
+  margin: auto 0 auto 0.2rem;
+  font-size: 20px;
+}
+
+h1, a {
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.log-in {
+  color: white !important;
+}
+.log-in:hover {
+  background-color: #aa001a;
+}
+
+.sign-up {
+  background-color: #EFEFEF !important;
+}
+.sign-up:hover {
+  background-color: #E3E3E2 !important;
+}
+
+.no-bullet {
+  list-style-type: none;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+.modal-container .modal {
+  background-color: white !important;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: auto;
+}
+.modal-container .modal-header {
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.modal-container .modal-header .pinterest-logo {
+  width: 8%;
+  margin: 1.3rem 0;
+}
+.modal-container .modal-header h2 {
+  font-size: 32px;
+  margin: 0;
+}
+.modal-container .close-button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 40px;
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
+.modal-container .modal-body {
+  padding: 0 20px 20px 20px;
+  width: 318px;
+  margin: 0 auto;
+}
+.modal-container .form-group input {
+  border-radius: 15px;
+  padding: 0.8rem;
+}
+.modal-container .form-label {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.modal-container .button {
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  padding: 8px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 15px;
+}
+.modal-container .sign {
+  font-size: 12px;
+  color: #4C4C4C;
+}
+.modal-container span {
+  font-size: 11px;
+  color: #4C4C4C;
+}
+.modal-container span a:hover {
+  text-decoration: underline;
+}
+.modal-container a:hover {
+  text-decoration: none;
+}
+.modal-container p {
+  margin: 0.5rem 0;
+  letter-spacing: 1px;
+  font-size: 14px;
+}/*# sourceMappingURL=public-navbar.css.map */

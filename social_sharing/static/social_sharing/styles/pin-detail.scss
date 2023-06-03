@@ -35,10 +35,14 @@ h1 {
         position: relative;
         height: 40px;
     }
-    .save-button {        
-        text-align: center;
-        border-radius: 24px;
-        color: white;
+    .save-top div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    select.board {
+        margin-right: 0;
+        background-color: #EEEFEE;
     }
     .trash-icon-pin {
         width: 40px;
@@ -59,6 +63,10 @@ h1 {
     select.board {
         background-color: unset;
         margin-right: .8rem;
+    }
+    .create-board-link {
+        padding: 3px 4px 3px 4px !important;
+        border-radius: 8px !important;;
     }
     .pin-values {
         margin-top: 1rem;

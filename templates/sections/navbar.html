@@ -23,13 +23,13 @@
       </div>
       
       {% if request.user.profile_picture %}
-        <a href="{% url 'accounts:profile' %}" class="mt-1 text-center profile-link">
+        <a href="{% url 'accounts:personal-profile' %}" class="mt-1 text-center profile-link">
           <img src="{{ request.user.profile_picture.url }}" alt="" class="profile-picture" id="profile">                
         </a>
       {% elif request.user.firstname and not request.user.profile_picture %}
-        <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">{{ request.user.firstname|slice:"1" }}</a>
+        <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1" id="profile">{{ request.user.firstname|slice:"1" }}</a>
       {% else %}
-        <a href="{% url 'accounts:profile' %}" class="col-1 profile mt-1" id="profile">N</a>
+        <a href="{% url 'accounts:personal-profile' %}" class="col-1 profile mt-1" id="profile">N</a>
       {% endif %}              
       <a href="#chat" class="col-1 chat-icon mt-1">
         <img src="{% static 'icons/chat-bubble.png' %}" alt="chat icon"> 
@@ -60,9 +60,9 @@
       <li><a href="#chat"><img src="{% static 'icons/chat-bubble-37.png' %}" alt="message icon"></a></li>
       
       {% if request.user.profile_picture %}
-        <li><a href="{% url 'accounts:profile' %}"><img src="{{ request.user.profile_picture.url }}" alt="profile icon" class="profile-picture"></a></li>
+        <li><a href="{% url 'accounts:personal-profile' %}"><img src="{{ request.user.profile_picture.url }}" alt="profile icon" class="profile-picture"></a></li>
       {% else %}  
-        <li><a href="{% url 'accounts:profile' %}"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
+        <li><a href="{% url 'accounts:personal-profile' %}"><img src="{% static 'icons/profile-37.png' %}" alt="profile icon"></a></li>
       {% endif %}
         
     </ul>

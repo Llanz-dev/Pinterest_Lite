@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block file_css %}
+    <link rel="stylesheet" href="{% static 'accounts/styles/profile.css' %}">  
+    <link rel="stylesheet" href="{% static 'accounts/styles/plus-button.css' %}">  
+    <link rel="stylesheet" href="{% static 'styles/create-board-container.css' %}">  
+    
+    {% if not request.user.is_authenticated %}                
+        <link rel="stylesheet" href="{% static 'styles/public-navbar.css' %}">  
+    {% endif %}
+
+{% endblock file_css %}
+    
+{% block title %} Pinterest {% endblock title %}
+
+
+{% block content %}    
+{% if request.user.is_authenticated %}
+    {% include 'sections/navbar.html' %}
+{% else %}        
+    {% include 'sections/public-navbar.html' %}
+{% endif %}
+<div class="space"></div>
+
+{% if messages %}     
+    {% for message in messages %}           
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}          
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
+                    {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>                    
+                    {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}            
+{% endif %}
+
+{% include 'sections/create-board-container.html' %}
+<p id="is-board-available" class="d-none"></p>
+
+<div id="whole-content">    
+    <section id="top" class="d-flex justify-content-center">
+        <div class="content text-center">            
+            {% if user_profile.firstname and not user_profile.profile_picture %}
+                <h1 class="d-flex justify-content-center my-0 mx-auto rounded-circle mb-3">{{ user_profile.firstname|slice:"1" }}</h1>                
+            {% else %}
+                <img src="{{ user_profile.profile_picture.url }}" alt="" class="profile-picture">                                           
+            {% endif %}
+                
+            <h2>{{ user_profile.firstname }} {{ user_profile.lastname }}</h2>
+            <p class="text-muted username-pronoun mb-1">                
+                {% if user_profile.username %}
+                    <span>{{ user_profile.username }}</span>
+                {% endif %}           
+                
+                {% if user_profile.pronouns %}
+                    · <span>{{ user_profile.pronouns }}</span>                    
+                {% endif %}                                                                                 
+            </p>            
+            
+            {% if user_profile.website %}
+                <a href="{{ user_profile.website }}" class="website" target="_blank">{{ user_profile.website }}</a>                                            
+            {% endif %}
+                
+            {% if user_profile.about %}
+                <p class="text-muted about mt-1">{{ user_profile.about }}</p>                
+            {% endif %}
+                
+            <p class="text-muted following">0 following</p>
+        </div>
+    </section>
+    <section id="middle" class="d-flex justify-content-center">
+        <p>Saved</p>
+    </section>    
+    <section class="text-center my-3">        
+        {% if request.user.is_authenticated %}                        
+            <a href="#follow"><button class="background-primaryColor save-button" name="save-pin">follow</button></a>
+        {% endif %}
+    </section>
+    <section id="bottom">
+        <div class="plus-container" id="plus-container">
+            <small class="text-muted">Create</small>
+            <a role="button" id="create-board-button"><li>Board</li></a>
+            <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
+        </div>
+        <div class="flex-container text-center">          
+            {% if user_boards.exists %} 
+                {% for board, pin_count in board_pins %}
+                    {% with pins=board.ownpin_set.all %} 
+                        <a href="{% url 'home:public-specific-board' board.user.username board.slug %}" class="card text-center">
+                            <div class="row justify-content-center">
+                                <div class="left">                            
+                                    {% if board.is_secret %}           
+                                        <img src="{% static 'icons/lock-25.png' %}" class="lock-icon">
+                                    {% endif %}                                       
+                                    <img src="{{ pins.0.pin.image.url }}" class="card-img-top">
+                                </div>
+                                <div class="right d-flex flex-column justify-content-between">
+                                    <img src="{{ pins.1.pin.image.url }}" class="card-img-top top">
+                                    <img src="{{ pins.2.pin.image.url }}" class="card-img-top bottom">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ board.name }}</h5>                
+                                <p class="card-text text-muted">{{ pin_count }} pins</p>
+                            </div>
+                        </a> 
+                    {% endwith %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+<p id="file-name" class="d-none">profile</p>
+<p id="has-name" class="d-none">{{ user_profile.firstname }}</p>
+{% endblock content %}
+    
+{% block file_script %}
+    <script src="{% static 'scripts/create-board-container.js' %}"></script> 
+{% endblock file_script %}    

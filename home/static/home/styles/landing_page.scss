@@ -9,52 +9,6 @@ $light-pink: #FEE3EA;
 $dark-pink: #C22E00;
 
 #landing-page {
-nav {
-    font-weight: 500;
-    .log-in, .sign-up {
-        padding: .8rem .7rem;
-        &:hover, &:hover {
-            text-decoration: none;
-        }
-    }    
-    .logo {
-        width: 32px;
-    }
-    .pinterest-name {
-        margin: auto 0 auto .2rem;
-        font-size: 20px;
-    }
-}
-
-h1, a {
-    letter-spacing: 1px;
-}
-h1 {
-    font-size: 3.2rem;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: black;
-}
-
-.log-in{
-    color: white !important;
-    &:hover {
-        background-color: $darkRed-hover;
-    }
-}
-
-.sign-up {
-    background-color: #EFEFEF !important;            
-    &:hover {
-        background-color: $grey-hover !important;
-    }
-}
-
-.no-bullet {
-    list-style-type: none;
-  }
 
 // Modal
 .modal-container {

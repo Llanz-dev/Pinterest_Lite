@@ -9,20 +9,6 @@ body {
     left: -9999px;
   }
 
-.create-board-link {
-    margin: auto 0 auto 0;  
-    padding: 3px 0 3px 4px;
-    border-radius: 8px 0 0 8px;   
-    cursor: pointer;         
-    p {
-        margin-right: 3rem;
-    }
-    &:hover {
-        background-color: #dbdbdb;
-        color: unset;
-    }
-}
-
 .add-red-icon {
     width: 28px;
     margin-right: 1rem;
