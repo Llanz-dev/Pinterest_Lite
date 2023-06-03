@@ -42,6 +42,11 @@ h2.first-letter {
   padding: 1.4rem;
 }
 
+.following-button {
+  width: 100px !important;
+  background-color: #111010;
+}
+
 .save-button {
   color: white;
   border: 0;
