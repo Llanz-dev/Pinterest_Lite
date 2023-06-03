@@ -117,10 +117,10 @@
                   {% endif %}                    
                   <div class="mx-1"></div>
                     <div class="user-info">
-                      {% if request.user %}
-                       <a href="{% url 'accounts:personal-profile' %}"><span class="fullname">{{ comment.user.firstname }}</span></a>
+                      {% if request.user == comment.user %}
+                        <a href="{% url 'accounts:personal-profile' %}"><span class="fullname">{{ comment.user.firstname }}</span></a>
                       {% else %}
-                        <a href="">hello</a>                      
+                        <a href="{% url 'home:public-profile' comment.user.username %}"><span class="fullname">{{ comment.user.firstname }}</span></a>                      
                       {% endif %}
                       <br>
                       <span class="text-muted comment-ago">{{ comment.date_added|date:"F j, Y" }}</span>

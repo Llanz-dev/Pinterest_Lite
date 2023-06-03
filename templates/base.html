@@ -11,7 +11,8 @@
     {% if request.user.is_authenticated %}
         <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">  
     {% else %}
-        <link rel="stylesheet" href="{% static 'styles/navbar-home.css' %}">  
+        <link rel="stylesheet" href="{% static 'styles/navbar-home.css' %}"> 
+        <link rel="stylesheet" href="{% static 'styles/public-navbar.css' %}">  
     {% endif %}
         
     <link rel="icon" href="{% static 'logo/pinterest-badge.png' %}" type="image/x-icon">

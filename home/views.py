@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from social_sharing.models import Board, Pin, OwnPin, Comment
+from django.contrib.auth.decorators import login_required
 from accounts.views import OwnPin, Board, UserProfile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
@@ -43,10 +44,11 @@ def landing_page(request):
     context = {'pins': pins, 'sign_form': sign_form, 'search_form': search_form}
     return render(request, 'home/landing_page.html', context)    
 
+@login_required
 def public_profile(request, username):
     search_form = SearchForm()
     user_profile = get_object_or_404(UserProfile, username=username)
-    user_boards = Board.objects.filter(user=user_profile) 
+    user_boards = Board.objects.filter(user=user_profile, is_secret=False) 
     boards_length = len(user_boards)  
     board_pins = []    
       
@@ -58,6 +60,7 @@ def public_profile(request, username):
     context = {'user_profile': user_profile, 'user_boards': user_boards, 'board_pins': board_pins, 'boards_length': boards_length, 'search_form': search_form}
     return render(request, 'accounts/public-profile.html', context)
 
+@login_required
 def public_specific_board(request, username, board_slug):
     search_form = SearchForm()
     user_profile = UserProfile.objects.get(username=username)

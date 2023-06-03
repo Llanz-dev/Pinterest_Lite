@@ -96,8 +96,6 @@ def specific_board(request, board_slug):
 def profile_pin_detail(request, pin_id):
     search_form = SearchForm() 
     own_pin = OwnPin.objects.get(id=pin_id)  
-    print('Owner:', own_pin.pin.user)
-    print('Profile:', own_pin.user)
     pin = Pin.objects.get(title=own_pin.pin.title, id=own_pin.pin.id)
     own_pin_form = OwnPinForm(request.user, instance=own_pin)
     comments = Comment.objects.filter(pin__title=pin.title)

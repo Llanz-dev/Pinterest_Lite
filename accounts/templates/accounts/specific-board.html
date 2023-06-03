@@ -6,6 +6,7 @@
 {% block file_css %}
     <link rel="stylesheet" href="{% static 'accounts/styles/specific-board.css' %}">  
     <link rel="stylesheet" href="{% static 'accounts/styles/plus-button.css' %}">  
+
 {% endblock file_css %}
 
     
@@ -13,7 +14,9 @@
 
 
 {% block content %}
+    
     {% include 'sections/navbar.html' %}
+
     {% url 'accounts:delete-board' board.slug board.id as link %}
     {% include 'sections/delete-container.html' with description="Once you delete a board and all its Pins, you can't undo it!" link=link %}
     <div id="whole-content">
@@ -21,7 +24,11 @@
         <div class="d-flex justify-content-center align-items-center align-content-center">
           <h1 class="text-center mt-3 board-name">{{ board.name }}</h1>
           <span class="mx-1"></span>
-          <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon d-flex align-items-center justify-content-center">
+          
+          {% if board.user == request.user %}                        
+            <img src="{% static 'icons/waste-32.png' %}" alt="trash icon" id="delete-board-button" class="trash-icon d-flex align-items-center justify-content-center">
+          {% endif %}
+
         </div>
         <h4 class="pins-count">{{ pins_length }} Pins</h4>        
         <div class="flex-container">            
@@ -33,22 +40,21 @@
                     <p class="card-text">{{ pin.pin.title }}</p>  
                   </div>
                 </a>
-                <div class="card-body">                                    
-                  {% if not pin.pin.user.firstname and not pin.pin.user.profile_picture %}
-                    <a href="{% url 'accounts:personal-profile' %}" class="fullname"><p class="card-text"><span class="text-secondary fullname">None</span></p></a>                 
-                  {% elif pin.pin.user.firstname and not pin.pin.user.profile_picture %}
+                <div class="card-body">         
+                  {% if pin.pin.user == request.user and not pin.pin.user.profile_picture %}
                     <a href="{% url 'accounts:personal-profile' %}" class="fullname">
                       <p class="card-text row"><span class="profile col-1">{{ pin.pin.user.firstname|slice:"1" }}</span><span class="text-secondary fullname col-9 my-auto mx-0">{{ pin.pin.user.firstname }} {{ pin.pin.user.lastname }}</span></p>
                     </a>
-                  {% else %}                
+                  {% elif pin.pin.user == request.user and pin.pin.user.profile_picture %}                
                     <a href="{% url 'accounts:personal-profile' %}" class="fullname"><p class="card-text"><img src="{{ pin.pin.user.profile_picture.url }}" alt="profile picture" class="profile-pic-icon"> <span class="text-secondary fullname">{{ pin.pin.user.firstname }} {{ pin.pin.user.lastname }}</span></p></a>                  
+                  {% else %}
+                    <a href="{% url 'home:public-profile' pin.pin.user.username %}" class="fullname"><p class="card-text"><img src="{{ pin.pin.user.profile_picture.url }}" alt="profile picture" class="profile-pic-icon"> <span class="text-secondary fullname">{{ pin.pin.user.firstname }} {{ pin.pin.user.lastname }}</span></p></a>                  
                   {% endif %}                             
                 </div>
               </div>              
             {% endfor %}    
         </div>
-        
-        {% if pins_length == 0 %}
+        {% if pins_length == 0 and board.user == request.user %}
           <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>                        
           <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
               <a href="#suggest" class="ideas-board">
@@ -77,17 +83,26 @@
             <small class="text-muted">Create</small>
             <a href="{% url 'social_sharing:pin-builder' %}"><li>Pin</li></a>
         </div>
-        <section class="text-center">
-            <img src="{% static 'icons/plus-40.png' %}" alt="" id="plus-button" class="plus-button" tabindex="0">   
-            <img src="{% static 'icons/plus-40.png' %}" alt="" id="for-mobile-button" class="for-mobile-button" tabindex="0">      
-        </section>
+
+        
+        {% if board.user == request.user %}                    
+          <section class="text-center">
+              <img src="{% static 'icons/plus-40.png' %}" alt="" id="plus-button" class="plus-button" tabindex="0">   
+              <img src="{% static 'icons/plus-40.png' %}" alt="" id="for-mobile-button" class="for-mobile-button" tabindex="0">      
+          </section>
+        {% endif %}
         </section>
     </div>
 {% endblock content %}  
         
 {% block file_script %}
-    <script src="{% static 'accounts/scripts/specific-board.js' %}"></script> 
-    <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
-    <script src="{% static 'scripts/delete-container.js' %}"></script> 
+
+    {% if request.user.is_authenticated %}
+      <script src="{% static 'accounts/scripts/specific-board.js' %}"></script> 
+      <script src="{% static 'accounts/scripts/plus-button.js' %}"></script> 
+      <script src="{% static 'scripts/delete-container.js' %}"></script> 
+    {% else %}
+      <script src="{% static 'home/js/landing_page.js' %}"></script>
+    {% endif %}
 {% endblock file_script %}
         
