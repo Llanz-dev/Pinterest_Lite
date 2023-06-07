@@ -38,5 +38,8 @@ class OwnPinForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['text']       
+        fields = ['text']  
+
+class SearchForm(forms.Form):
+    search_query = forms.CharField(label='Search')             
         

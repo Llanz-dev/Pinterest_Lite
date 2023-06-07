@@ -306,7 +306,11 @@
       </div>
   </section>
 {% else %}    
-  {% include 'home/sections/home_feed.html' with pins=pins %}  
+  {% if results %}
+    {% include 'home/sections/home_feed.html' with pins=results %}  
+  {% else %}
+    {% include 'home/sections/home_feed.html' with pins=pins %}  
+  {% endif %}
   <p id="file-name" class="d-none">landingpage</p>
   <p id="has-name" class="d-none">{{ request.user.firstname }}</p>
 {% endif %}
