@@ -50,7 +50,7 @@ def personal_profile(request):
             return redirect('accounts:specific-board', instance.slug)   
         
     # Retrive "Follow" user table.
-    user_profile = get_object_or_404(UserProfile, username=request.user.username)    
+    user_profile = UserProfile.objects.get(username=request.user.username)    
     follow_user = Follow.objects.get(user=user_profile)
     followers_count = follow_user.get_followers_count()
     following_count = follow_user.get_following_count()
