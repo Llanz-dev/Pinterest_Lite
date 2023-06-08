@@ -53,9 +53,6 @@ arrow_down_button.onclick = () => {
             dropdown_container.style.display = 'none';
         }
     }
-
-   
-
 }
 
 document.onclick = () => {
@@ -67,3 +64,11 @@ document.onclick = () => {
         search_field.style.padding = '.6rem .6rem .6rem 0';
     }
 }
+
+// To submit in search field
+document.getElementById('search-field').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent the default form submission behavior
+      document.getElementById('search-form').submit(); // Manually submit the form
+    }
+  });

@@ -153,3 +153,17 @@ def unfollow(request, username, pin_id):
     follow_request_user = Follow.objects.get(user=request_user)    
     follow_request_user.following.remove(user_profile) 
     return redirect('social_sharing:home-pin-detail', pin_id)    
+
+def search(request):
+    search_form = SearchForm()
+
+    if request.method == 'GET':
+        search_term = request.GET.get('search_term')
+        if search_term:
+            # Perform your search logic based on the query
+            results = Pin.objects.filter(title__icontains=search_term)
+        else:
+            results = []
+
+    context = {'results': results, 'search_form': search_form}
+    return render(request, 'home/landing_page.html', context)   

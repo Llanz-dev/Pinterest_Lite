@@ -56,7 +56,7 @@
         {% if pins_length == 0 and board.user == request.user %}
           <p class="text-secondary text-center" id="message">There aren’t any Pins on this board yet</p>                        
           <section class="d-flex flex-column justify-content-center align-items-center" id="ideas-board-container">
-              <a href="#suggest" class="ideas-board">
+              <a href="{% url 'home:home' %}" class="ideas-board">
                   <h4>Find some ideas for this board:</h4>
                   <img src="{% static 'images/animals/2-cats.jpg' %}" alt="">
                   <img src="{% static 'images/anime/boruto-sarada.jpg' %}" alt="">

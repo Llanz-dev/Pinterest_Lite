@@ -1,9 +1,5 @@
 $grey-hover: rgb(224, 224, 224);
 
-.w-75 {
-    width: 78% !important;
-}
-
 #dropdown-container {
     display: none;
     position: fixed;
@@ -95,6 +91,10 @@ nav.top-nav {
         border-top-left-radius: 60px;
         border-bottom-left-radius: 60px;
     }
+
+    #search-form {
+        width: 96%;
+    }
     
     .search-click {
         border-bottom-left-radius: 60px;
@@ -152,6 +152,25 @@ footer {
     }
 }
 
+@media only screen and (max-width: 1538px) {
+    #search-form {
+        width: 93% !important;
+    }
+}
+
+@media only screen and (max-width: 1068px) {
+    #search-form {
+        width: 88% !important;
+    }
+}
+
+
+@media only screen and (max-width: 855px) {
+    #search-form {
+        width: 85% !important;
+    }
+}
+
 @media only screen and (max-width: 849px) {
     nav {
         .create {
@@ -163,6 +182,13 @@ footer {
         }      
     }
 }
+
+@media only screen and (max-width: 616px) {
+    #search-form {
+        width: 82% !important;
+    }
+}
+
 
 @media only screen and (max-width: 600px) {
     .top-nav {

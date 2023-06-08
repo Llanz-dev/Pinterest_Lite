@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import home_pin_detail, heart_increment, heart_decrement, home_pin_delete, add_comment, pin_builder, comment_delete, follow, unfollow
+from .views import home_pin_detail, heart_increment, heart_decrement, home_pin_delete, add_comment, pin_builder, comment_delete, follow, unfollow, search
 
 app_name = 'social_sharing'
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('heart-decrement/<str:pin_id>/<str:text>/<int:pk>/', heart_decrement, name='heart-decrement'),
     path('pin-delete/<str:pin_id>/', home_pin_delete, name='pin-delete'),
     path('comment-delete/<int:comment_id>/<str:pin_id>/', comment_delete, name='comment-delete'),
+    path('search/', search, name='search'),
 ]

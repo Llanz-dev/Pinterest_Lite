@@ -1,25 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from social_sharing.models import Board, Pin, OwnPin, Comment
+from social_sharing.models import Board, Pin, OwnPin
 from django.contrib.auth.decorators import login_required
 from accounts.views import OwnPin, Board, UserProfile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
 from .forms import SignUpForm, SearchForm
-from django.views.generic import ListView
-from social_sharing.models import Pin
 from django.urls import reverse_lazy
 from accounts.models import Follow
 from django.db.models import Max
-from django.views import View
 
-import secrets
 
 # Create your views here.
 def landing_page(request):
     distinct_pins = Pin.objects.values('title').annotate(max_id=Max('id')).order_by('-max_id')
     pins = Pin.objects.filter(id__in=distinct_pins.values('max_id'), board__is_secret=False).order_by('-id')
     sign_form = SignUpForm()
-    search_form = SearchForm()    
+    search_form = SearchForm()  
 
     if request.POST.get('submit') == 'log_in':         
         email = request.POST['email']
@@ -37,10 +33,12 @@ def landing_page(request):
             return render(request, 'home/landing_page.html', {'error_authentication': error_authentication})                                  
     # Register
     elif request.POST.get('submit') == 'sign_up':
-        sign_form = SignUpForm(request.POST)          
+        sign_form = SignUpForm(request.POST)
         if sign_form.is_valid():
-            sign_form.save()
-            return redirect('home:home') 
+            user = sign_form.save()  # Save the user object from the form
+            follow_object = Follow.objects.create(user=user)  # Associate the user with the Follow object
+            follow_object.save()
+            return redirect('home:home')
         
     context = {'pins': pins, 'sign_form': sign_form, 'search_form': search_form}
     return render(request, 'home/landing_page.html', context)    
