@@ -40,10 +40,8 @@ python manage.py runserver
 To learn how to use the Pinterest Lite project, please watch the following video presentation:
 
 <!-- The video -->
-<video width="640" height="360" controls>
-  <source src="./demo/Pinterest_Lite.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[![Video Name](demo/Untitled.png)](https://vimeo.com/user201948794)
+<a href="https://vimeo.com/user201948794">Video Link</a>
 
 In the video presentation, you will be guided through the various features and functionalities of Pinterest Lite. You'll discover how to:
 
