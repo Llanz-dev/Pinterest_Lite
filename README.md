@@ -52,6 +52,10 @@ In the video presentation, you will be guided through the various features and f
 4. Saving and Organizing: Find out how to save your favorite images and create boards to organize them effectively.
 
 5. Interacting with the Community: Learn how to engage with other users by liking, commenting on, and sharing images.
+
+6. Deletion of Pins: Understand how to delete individual pins from your boards. This feature allows you to manage your saved pins and remove any content you no longer wish to keep.
+
+7. Managing Boards: Explore the process of deleting entire boards. You'll learn how to remove boards that are no longer needed or relevant to your interests, helping you keep your Pinterest Lite account organized and clutter-free.
    
 The video presentation provides a visual demonstration of how to navigate and interact with the Pinterest Lite project, allowing you to grasp the usage and capabilities of the platform more effectively.
 
