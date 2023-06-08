@@ -165,6 +165,5 @@ def search(request):
         else:
             results = []
 
-    print('Final:', results)
     context = {'results': results, 'search_form': search_form}
     return render(request, 'home/landing_page.html', context)   
