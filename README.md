@@ -23,6 +23,9 @@ The Pinterest Lite project is a lightweight version of the popular image-sharing
 - setuptools (65.6.3)
 - wheel (0.38.4)
 
+## Entity Relationship Diagram (ERD)
+![Diagram](demo/ERD.png?raw=true)
+
 ## How to Install and Run the Project
 
 Install the Pinterest_Lite with the following:
