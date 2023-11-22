@@ -67,4 +67,4 @@ The video presentation provides a visual demonstration of how to navigate and in
 Please make sure to watch the video presentation to get the most out of the Pinterest Lite project and start exploring, saving, and sharing inspiring visual content. Enjoy your Pinterest Lite experience!
 
 ## Acknowledgment
-I would like to express my gratitude to [icons8.com](https://icons8.com/)  for providing the icons used in the Pinterest Lite project. Their extensive collection of high-quality icons greatly contributed to the visual appeal and user experience of our application.
+I would like to express my gratitude to [icons8.com](https://icons8.com/)  for providing the icons used in the Pinterest Lite project. Their extensive collection of high-quality icons greatly contributed to the visual appeal and user experience of my application.
