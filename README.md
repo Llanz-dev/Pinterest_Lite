@@ -35,7 +35,7 @@ Install the Pinterest_Lite with the following:
 ```bash
 pip install -r requirements.txt
 ```
-To run the Cafe_Riama project, execute the following command:
+To run the Pinterest_Lite project, execute the following command:
 ```bash
 python manage.py runserver
 ```
